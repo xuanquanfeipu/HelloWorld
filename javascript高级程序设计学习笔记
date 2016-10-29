@@ -6,3 +6,18 @@ javascript是一种专为网页交互而设计的脚本语言，由三个不同�
 嵌入代码与外部文件——外部文件的优点
 1.可维护性
 2.可缓存
+
+ECMAScript中有五种基本数据类型：Undefined/Null/Boolean/Number/String。一种复杂类型Object。
+
+对一个值使用typeof返回值可能是：
+
+undefined
+boolean
+string
+number
+object(如果这个值是对象或null)
+function
+
+未声明的变量和声明但未初始化的变量 执行typeof都返回undefined 区别：前者只能使用typeof检测，不能用在其他地方，否则会报错
+
+undefined == null //true
