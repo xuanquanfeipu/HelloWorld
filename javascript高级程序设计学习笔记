@@ -21,3 +21,105 @@ function
 未声明的变量和声明但未初始化的变量 执行typeof都返回undefined 区别：前者只能使用typeof检测，不能用在其他地方，否则会报错
 
 undefined == null //true
+
+Float浮点数 精度问题
+
+不要做这样的测试
+var a=0.1,b=0.2;
+if（a+b==0.3）{
+//do something
+}
+
+最小值、最大值、无穷值
+Number.MIN_VALUE/Number.MAX_VALUE/Number.NEGTIVE_INFINITY/Number.POSITIVE_INFINITY
+
+判断一个值是否是无穷值 
+
+isFinite（n）;
+
+n/a或N/A（not applicable的缩写），表示不适用，对应的boolean值 true
+
+NAN(not a number)两个特点：
+1.任何涉及NaN的操作，都返回NaN
+2.NaN与任何值都不等，包括NaN本身。   alert(NaN==NaN) //false
+
+判断一个值是否是NaN 用 isNaN（n）
+
+数值转换
+Number（用于任何数据类型），parseInt、parseFloat将字符串转换为数值。
+
+使用后面两个函数解析时，为了消除不同ECMAScript版本的分歧，转换不同的进制时，需要使用第二个参数：转换基数（指定进制）。
+
+转换为字符串
+1.toString（），还可以传递一个参数：输出数值的基数。null和undefined没有这个方法
+2.String()转型函数
+
+创建对象 
+new Object()或new Object没有参数的情况下，可以省略圆括号，但是不推荐。
+
+Object的实例所具有的属性和方法：
+Constructor：保存着用于创建当前对象的函数。
+hasOwenProperty（propertyName）：检查给定的属性在当前对象实例中（而不是原型中）是否存在。其中的参数必须以字符串形式指定。
+isPrototypeOf（object）：用于检查传入的对象是否是另一个对象的原型。
+propertyIsEnumerable（propertyName）：用于检查给定的属性是否可以使用for-in语句进行枚举。其中的参数必须以字符串形式指定。
+toLocaleString（）：返回对象的字符串表示。与执行环境地区对应。
+toString（）:返回对象的字符串表示。
+valueOf（）：返回对象的字符串、数值、布尔值表示。
+
+任何操作数与NaN用==比较都返回false，用!=比较都返回true NaN==NaN //false  NaN!==NaN //true
+null==undefined
+false==0
+
+全等和不全等操作符：操作数未经转换就相等
+
+for-in语句
+for(property in expression) statement
+
+label语句
+label:statement
+一般与for语句配合，将来由break或continue引用。
+
+with语句
+with（expression）statement 将代码的作用域限定到一个特定的对象中。
+
+switch(expression)
+case value:statement
+break;
+case value:statement
+break;
+defalut:statement
+
+ECMAScript函数的一个特性：命名的参数只提供便利，而非必需。
+函数无需指定返回值。
+无函数签名的概念。
+没有重载。
+ECMAScript不能像传统的意义上那样实现重载。
+
+非严格模式下
+修改argument中的参数值，会同步到命名参数，即它的值是与命名参数同步的（如果传递了对应的参数值的话）。但是这两个值并不是存在相同的内存空间，
+他们是空间独立的。反之，修改命名参数的值不会影响argument中的值，因为argument对象的长度是由传入的参数个数决定的，不是由命名的参数个数决定。
+
+ECMAScript中的所有参数传递的都是值，不可能通过引用传递参数。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
