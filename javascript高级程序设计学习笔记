@@ -129,7 +129,131 @@ with语句
 检测数组
 value instanceof Array或者Array.isArray(value) 
 
+join、push、pop、shift、unshift、sort、reverse、concat、slice(start,end)、splice（起始位置、要删除的项数、插入项）
+indexOf/lastIndexOf/every/filter/forEach/map/some/reduce/reduceRight
 
+new Date(ms)/Date.parse(datestr)/Date.UTC(year,month,date,hour/min/sec)
+var d = new Date();返回是时间对象
+console.log(Date.now())返回的是毫秒数
+console.log(+new Date())返回的是毫秒数
+
+Date还有很多方法：getTime、getFullYear、getDate、getDay、getHour等等
+
+RegExp类型
+var expression = /pattern/ flags;
+
+flags取值：g/i/m  分别表示全局、是否忽略大小写、多行模式
+
+RegExp实例属性：
+global、ignoreCase、lastIndex、multiline、source
+
+var pattern1= /\[bc\]at/i;或者 var pattern2 = new RegExp("\\[bc\\]at","i");
+
+实例方法：
+exec：返回包含第一个匹配项信息的数组
+test：在参数与模式匹配时，返回true
+
+RegExp的构造器属性（静态属性）：input、lastMatch、lastParen、leftContext、multiline、rightContext
+
+函数定义方式：
+1.声明语法
+2.表达式语法
+3.Function构造函数
+
+函数声明会被解析器提升，而表达式不会。
+
+function createComparisonFunction(propertyName){
+	return function(object1,object2){
+		var value1= object1[(propertyName)];
+		var value2= object2[(propertyName)];
+		if(value1<value2){
+			return -1;
+		}else if(value1>value2){
+			return 1;
+		}else{
+			return 0;
+		}
+	}
+}
+
+arguments与this
+arguments的callee属性表示拥有该参数对象的函数
+
+function factorial(num){
+	if(num<=1){
+		return 1;
+	}else{
+		return num*factorial(num-1);
+	}
+}
+
+解决函数名耦合问题：
+function factorial(num){
+	if(num<=1){
+		return 1;
+	}else{
+		return num*arguments.callee(num-1);
+	}
+}
+
+函数的caller属性 表示该调用该函数的函数
+也可以使用arguments.callee.caller
+
+函数属性：length（命名参数个数）、prototype
+
+函数方法：apply(this,arguments)、call(this,arg1,arg2,...)
+fun.bind(obj) 创建 创建函数fun的实例，并将其this指向obj
+
+typeof Number(value) //转型函数  返回number
+typeof (new Number(value))//构造函数 返回 Object
+
+typeof falseValue //基本类型 返回boolean
+typeof  falseObject //包装类型 返回 Object
+falseValue  instanceof  Boolean  //返回false
+falseObject instanceof  Boolean  //返回true
+
+num.toFixed(精度)
+
+字符方法：
+charAt返回指定位置字符/charCodeAt返回指定位置字符的编码
+concat、slice(s,e)、substr(s,l)、substring(s,e)
+indexOf/lastIndexOf
+trim
+toLowerCase/toUpperCase
+
+字符串的模式匹配方法：
+str.match(正则表达式/RegExp对象) 与pattern.exec(str)相同 返回数组，第一项是与整个模式匹配的字符串，后面是与每个捕获组匹配的值。
+str.search(正则表达式/RegExp对象)返回第一个匹配项的位置
+str.replace(RegExp对象/字符串,字符串/函数)
+str.split(delimitor,length)  //length数组长度可选
+str.localCompre(str2) 字符串比较
+fromCharCode(code1,code2,code3)  字符编码转换为字符串
+encodeURI对整个URI进行编码、encodeURIComponent用于对URI某一段进行编码
+前者不会对本身属于URI的特殊字符进行编码，后者会对它发现的任何非标准字符编码
+与之对应 decodeURI/decodeURIComponent
+
+eval方法
+
+Math的方法：
+min、max、ceil、floor、round、random
+
+属性类型
+
+1.数据属性
+[[Configurable]]:delete
+[[Enumerable]]:for-in
+[[Writable]]:修改
+[[Value]]:读写位置
+
+修改属性默认特性：
+Object.defineProperty(属性所在对象,属性名,描述符对象)
+
+2.访问器属性
+[[Configurable]]:delete
+[[Enumerable]]:for-in
+[[Get]]:
+[[Set]]:
+访问器属性不能直接定义，必须使用Object.defineProperty来定义。
 
 
 
