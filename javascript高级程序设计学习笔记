@@ -101,7 +101,33 @@ ECMAScript不能像传统的意义上那样实现重载。
 
 ECMAScript中的所有参数传递的都是值，不可能通过引用传递参数。
 
+基本类型的变量不能像引用类型一样动态添加属性和方法。
 
+基本类型变量的复制，复制的是值，引用类型的复制，复制的是引用。
+
+类型检测
+variable instanceof constructor
+
+使用typeof检测函数时，返回“function”
+
+延长作用域链的方式
+
+try catch与catch块
+with语句
+
+无块级作用域
+
+垃圾收集方式：标记清除、引用计数
+
+创建Object实例的两种方式：new Object()、对象字面量 (方括号表示)
+
+对象属性访问方式：点表示法和方括号表示法。
+
+创建数组的两种方式：new Array()/数组字面量
+可以传递长度 new Array(length)、可以传递包含项 new Array("item1","item2")
+
+检测数组
+value instanceof Array或者Array.isArray(value) 
 
 
 
