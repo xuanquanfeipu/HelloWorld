@@ -361,18 +361,131 @@ Object.keys(Person.prototype);//返回原型的可枚举属性
 
 Object.getOwnPropertyNames()返回所有属性，无论是否可枚举。
 
+对象字面量重写原型的语法：
 
+function Person(){
+}
 
+Person.prototype={
+	name:'hhh',
+	age:30,
+	job:'software enginner',
+	sayName:function(){
+		alert(this.name);
+	}
+}
 
+constuctor属性不再指向Person了。此时，constructor指向Object构造函数了。
 
+如果需要，可以将constructor重置如下：
+function Person(){
+}
 
+Person.prototype = {
+	constructor:Person,
+	name:'hhh',
+	age:30,
+	job:'software enginner',
+	sayName:function(){
+		alert(this.name);
+	}
+}
 
+注意，这种方式重置constructor属性会导致它的[[Enumerable]]特性变为true.而默认情况下，原生的constructor是不可枚举的。如果想兼容ECMAScript5,可以使用
+Object.defineProperty().
 
+function Person(){
+}
 
+Person.prototype = {
+	name:'hhh',
+	age:30,
+	job:'software enginner',
+	sayName:function(){
+		alert(this.name);
+	}
+}
+//重置构造器，适用于兼容ECMAScript5的浏览器
+Object.defineProperty(Person.prototype, "constructor",{
+	enumerable:false,
+	value:Person
+});
 
+原型动态性
 
+我们对原型所做的修改会立即从实例上反映出来，即使先创建实例后修改原型。
+var friend = new Person();
+Person.prototype.sayHi = function(){
+	alert("hi");
+}
+friend.sayHi();//hi
 
+但是，重写了整个原型对象的话，情况就不一样了。
 
+调用构造函数会
+function Person(){
+}
+
+var friend = new Person();
+
+Person.prototype = {
+	constructor:Person,
+	name:'hhh',
+	age:30,
+	job:'software enginner',
+	sayName:function(){
+		alert(this.name);
+	}
+}
+
+friend.sayName();//error
+调用构造函数会为实例添加一个指向最初原型的[[prototype]]指针，而我们把原型对象修改为另一个对象就等于切断了构造函数与最初原型之间的联系。
+__实例中的指针指向原型，而不是构造函数__
+
+原生对象的原型
+
+尽管我们可以修改原生对象的原型，但是不推荐。
+
+原型对象的问题：原型中的所有属性被很多实例共享。 这对于函数来说比较合适，对于基本值属性也说得过去，毕竟通过在实例上添加同名属性，可以隐藏原型中的对应
+属性。然而，对于包含引用类型值的属性来说，问题就比较突出了。
+
+组合使用构造函数模式和原型模式
+
+构造函数用于定义实例属性，原型用于定义方法和共享属性。
+
+function Person(){
+	name:'hhh',
+	age:30,
+	job:'software enginner',
+	this.friend = ["aa","bb"]
+}
+
+Person.prototype = {
+	constructor:Person,	
+	sayName:function(){
+		alert(this.name);
+	}
+}
+
+#动态原型模式
+
+所有信息封装在构造函数中，而通过构造函数中的初始化原型（仅在必要情况下），又保持了同时使用构造函数和原型的优点。即通过检测某个应该存在的方法是否有效，
+来决定是否需要初始化原型。
+
+'''
+function Person(name,age,job){
+	this.name=name;
+	this.age = age;
+	this.job = job;
+	if(typeof this.sayName !="function"){
+		Person.prototype.sayName = sayName:function(){
+			alert(this.name);
+		}
+	}
+}
+'''
+
+#寄生构造函数模式
 
 
 
