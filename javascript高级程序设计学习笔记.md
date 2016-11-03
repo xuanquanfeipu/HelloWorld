@@ -25,11 +25,12 @@ undefined == null //true
 Float浮点数 精度问题
 
 不要做这样的测试
+```
 var a=0.1,b=0.2;
 if（a+b==0.3）{
 //do something
 }
-
+```
 最小值、最大值、无穷值
 Number.MIN_VALUE/Number.MAX_VALUE/Number.NEGTIVE_INFINITY/Number.POSITIVE_INFINITY
 
@@ -161,7 +162,7 @@ RegExp的构造器属性（静态属性）：input、lastMatch、lastParen、lef
 3.Function构造函数
 
 函数声明会被解析器提升，而表达式不会。
-
+```
 function createComparisonFunction(propertyName){
 	return function(object1,object2){
 		var value1= object1[(propertyName)];
@@ -175,10 +176,10 @@ function createComparisonFunction(propertyName){
 		}
 	}
 }
-
+```
 arguments与this
 arguments的callee属性表示拥有该参数对象的函数
-
+```
 function factorial(num){
 	if(num<=1){
 		return 1;
@@ -186,16 +187,17 @@ function factorial(num){
 		return num*factorial(num-1);
 	}
 }
-
+```
 解决函数名耦合问题：
+```
 function factorial(num){
-	if(num<=1){
+	if(num <= 1){
 		return 1;
 	}else{
 		return num*arguments.callee(num-1);
 	}
 }
-
+```
 函数的caller属性 表示该调用该函数的函数
 也可以使用arguments.callee.caller
 
@@ -258,6 +260,7 @@ Object.defineProperty(属性所在对象,属性名,描述符对象)
 创建对象
 
 工厂模式：
+```
 function createPerson(name,age,job){
 	var o = new Object();
 	o.name = name;
@@ -268,11 +271,11 @@ function createPerson(name,age,job){
 	}
 	return o;
 }
-
+```
 工厂模式虽然解决了创建多个相似对象的问题，但却没有解决对象识别的问题（即怎么知道一个对象的类型）
 
 构造函数模式：
-
+```
 function Person(name,age,job){
 	this.name = name;
 	this.age = age;
@@ -281,22 +284,22 @@ function Person(name,age,job){
 		alert(this.name);
 	}
 }
-
+```
 没有显式地创建对象
 直接将属性和方法赋给了this对象
 没有return语句
 主要问题：每个方法都要在每个实例上重新创建一遍（new Function()）
-
+```
 function Person(name,age,job){
 	this.name = name;
 	this.age = age;
 	this.job = job;
 	this.sayName = Function("alert(this.name)");
 }
-
+```
 1.函数构造函数可以当作普通函数调用（在全局作用域或在另一个对象上call、apply）
 
-
+```
 function Person(name,age,job){
 	this.name = name;
 	this.age = age;
@@ -307,7 +310,7 @@ function Person(name,age,job){
 function sayName(){
 	alert(this.name);
 }
-
+```
 全局作用域定义的函数，却只能被对象调用，而且对于自定义类型而言，没有封装性。
 
 原型模式
@@ -316,7 +319,7 @@ function sayName(){
 就是通过调用构造函数而创建的那个对象实例的原型对象。
 
 好处：可以让所有对象共享它所包含的属性和方法。
-
+```
 function Person(name,age,job){
 	
 }
@@ -331,7 +334,7 @@ Person.prototype指向Person的原型对象，而Person.prototype.constructor又
 Person实例person1包含一个内部属性[[prototype]]指向Person.prototype
 Person.prototype.isPrototypeOf(person1);//true
 Object.getPrototypeOf(person1) == Person.prototype;//true
-
+```
 原型最初只包含constructor属性，而该属性也是共享的，隐藏可以通过对象实例访问。
 
 虽然可以通过对象实例访问保存在原型中的值，但却不能通过对象实例重新原型中的值。
@@ -345,13 +348,14 @@ Object.getOwnPropertyDescriptor()方法只能用于实例属性，要取得原�
 
 in操作符的两个使用方式：
 1.单独使用时，in操作符会在通过对象能够访问给定属性时返回true,无论该属性是在于实例中还是原型中。
+```
 alert("name" in person1)
 
 
 function hasPrototypeProperty(obj,name){
 	return !obj.hasOwnProperty(name) && (name in obj);
 }
-
+```
 2.for-in
 返回的是所有能够通过对象访问的、可枚举的属性（实例的、原型的）。屏蔽了原型中的不可枚举属性的实例属性也会返回。开发人员自定义的属性都可枚举。
 
@@ -362,7 +366,7 @@ Object.keys(Person.prototype);//返回原型的可枚举属性
 Object.getOwnPropertyNames()返回所有属性，无论是否可枚举。
 
 对象字面量重写原型的语法：
-
+```
 function Person(){
 }
 
@@ -374,10 +378,11 @@ Person.prototype={
 		alert(this.name);
 	}
 }
-
+```
 constuctor属性不再指向Person了。此时，constructor指向Object构造函数了。
 
 如果需要，可以将constructor重置如下：
+```
 function Person(){
 }
 
@@ -390,8 +395,9 @@ Person.prototype = {
 		alert(this.name);
 	}
 }
-
+```
 注意，这种方式重置constructor属性会导致它的[[Enumerable]]特性变为true.而默认情况下，原生的constructor是不可枚举的。如果想兼容ECMAScript5,可以使用
+```
 Object.defineProperty().
 
 function Person(){
@@ -405,24 +411,28 @@ Person.prototype = {
 		alert(this.name);
 	}
 }
+
 //重置构造器，适用于兼容ECMAScript5的浏览器
+
 Object.defineProperty(Person.prototype, "constructor",{
 	enumerable:false,
 	value:Person
 });
-
+```
 原型动态性
 
 我们对原型所做的修改会立即从实例上反映出来，即使先创建实例后修改原型。
+```
 var friend = new Person();
 Person.prototype.sayHi = function(){
 	alert("hi");
 }
 friend.sayHi();//hi
-
+```
 但是，重写了整个原型对象的话，情况就不一样了。
 
 调用构造函数会
+```
 function Person(){
 }
 
@@ -439,6 +449,7 @@ Person.prototype = {
 }
 
 friend.sayName();//error
+```
 调用构造函数会为实例添加一个指向最初原型的[[prototype]]指针，而我们把原型对象修改为另一个对象就等于切断了构造函数与最初原型之间的联系。
 __实例中的指针指向原型，而不是构造函数__
 
@@ -452,7 +463,7 @@ __实例中的指针指向原型，而不是构造函数__
 组合使用构造函数模式和原型模式
 
 构造函数用于定义实例属性，原型用于定义方法和共享属性。
-
+```
 function Person(){
 	name:'hhh',
 	age:30,
@@ -466,7 +477,7 @@ Person.prototype = {
 		alert(this.name);
 	}
 }
-
+```
 #动态原型模式
 
 所有信息封装在构造函数中，而通过构造函数中的初始化原型（仅在必要情况下），又保持了同时使用构造函数和原型的优点。即通过检测某个应该存在的方法是否有效，
