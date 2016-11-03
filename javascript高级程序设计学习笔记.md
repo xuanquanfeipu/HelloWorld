@@ -472,7 +472,7 @@ Person.prototype = {
 所有信息封装在构造函数中，而通过构造函数中的初始化原型（仅在必要情况下），又保持了同时使用构造函数和原型的优点。即通过检测某个应该存在的方法是否有效，
 来决定是否需要初始化原型。
 
-'''
+```
 function Person(name,age,job){
 	this.name=name;
 	this.age = age;
@@ -483,7 +483,7 @@ function Person(name,age,job){
 		}
 	}
 }
-'''
+```
 
 #寄生构造函数模式
 
