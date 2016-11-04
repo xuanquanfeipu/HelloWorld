@@ -498,5 +498,79 @@ function Person(name,age,job){
 
 #寄生构造函数模式
 
+···
+function Person(name, age, job) {
+	var o = new Object();
+	o.name = name;
+	o.age = age;
+	o.job = job;
+	o.sayName = function() {
+		alert(this.name);
+	}
+	return o;
+}
+
+var friend = new Person("hhy", 30, "Software Enginner");
+friend.sayName(); //"hhy"
+···
+该函数的作用仅仅是封装创建对象的代码， 然后再返回创建的对象。 实际跟工厂模式一样。
+
+该模式可以在特殊情况下为对象创建构造函数。 比如想创建一个具有额外方法的特殊数组。 不能直接修改
+Array构造函数， 可以使用这个模式。
+
+···
+function SpecialArray() {
+
+	//创建数组
+	var values = new Array();
+	//添加值
+	values.push.apply(values, arguments);
+
+	//添加方法
+	values.toPipedString = function() {
+		return this.join("|");
+	}
+
+	return values;
+}
+
+var colors = new SpecialArray("red", "blue", "green");
+alert(colors.toPipedString()); //"red|blue|green"
+···
+__寄生构造函数有一点需要说明：返回的对象与构造函数或者构造函数原型没有关系，即构造函数内返回的
+对象和在构造函数外创建的对象没有什么不同。因此，不能依赖instanceof来确定对象类型。__
+
+稳妥构造函数模式
+
+所谓稳妥对象，指的是没有公共属性，而且方法也不能引用this 的对象。适合在安全的环境中，或者
+防止程序被其他应用程序改动。
+
+稳妥共组函数与寄生构造函数类似，但有两点不同：
+1、新创建的对象的实例方法不引用this；
+2、不使用new操作符调用构造函数。
+
+···
+
+function Person(name, age, job) {
+	var o = new Object();
+	//可以在这里定义私有变量和函数
+	//添加方法
+	o.sayName = function() {
+		alert(this.name);
+	}
+	return o;
+}
+
+var friend = new Person("hhy", 30, "Software Enginner");
+friend.sayName(); //"hhy"
+···
+
+注意，这种模式创建的对象，除了使用sayName()方法外，没有其他办法访问name值。
+
+与寄生构造函数类似，使用稳妥构造函数返回的对象与构造函数或者构造函数原型没有关系，
+不能依赖instanceof来确定对象类型。
+
+#继承
+
 
 
