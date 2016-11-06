@@ -610,6 +610,8 @@ function subType(){
 
 思路：使用原型链实现对原型属性和方法的继承，而使用借用构造函数实现对实例属性的继承。
 
+缺点：总是会调用两次超类构造函数，一次是在创建子类型原型的时候，一次是子类型构造函数内部。
+
 #原型式继承
 
 该方法没有严格意义上的构造函数，思想是借助原型可以基于已有的对象创建新对象，而不必因此创建自定义类型。
@@ -675,4 +677,45 @@ alert(anotherPerson.name);//Greg
 
 #寄生式继承
 
+思路：与寄生构造函数和工厂模式类似，即创建一个仅用于封装继承过程的函数，该函数在内部以某种方式增强对象，最后像真地是它做了所有工作一样返回对象。
+
+缺点：与构造函数类似，为对象添加的函数，不能做到函数复用。
+```
+function createAnother(original){
+	var clone = object(original);//通过调用函数（任意能够返回新对象的函数）创建一个新对象
+	clone.sayHi = function(){//以某种方式增强对象
+		alert("hi");		
+	}
+	return clone;//返回对象
+}
+可以这样来使用：
+person = {
+	name:"Nik",
+	friends:["hh","hh2"]
+}
+
+var anotherPerson = createAnother(person)
+anotherPerson.sayHi();//hi
+```
+
+#寄生组合式继承 （引用类型最理想的的继承范式）
+
+所谓寄生组合式继承，即通过借助构造函数来继承属性，通过原型链的混成形式来继承方法。
+
+其背后的基本思路是：不必为了指定子类型的原型而调用超类型的构造函数，我们所需要的无非就是超类型原型的一个副本而已。
+
+本质上，就是使用寄生式继承来继承超类型的原型，然后再将结果指定给子类型的原型。继承组合式继承基本模式如下所示：
+
+
+function inheritPrototype(subType,superType){
+
+	var prototype = object(superType.prototype);//创建对象 创建超类型原型的一个副本
+
+	prototype.constructor = subType;//增强对象
+
+	subType.prototype = prototype;//自定对象
+
+}
+
+只调用了一次超类构造函数，避免了在子类原型上创建多余的属性，原型链保持不变。
 
