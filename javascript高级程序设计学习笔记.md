@@ -572,5 +572,107 @@ friend.sayName(); //"hhy"
 
 #继承
 
+确定原型与实例的关系
+
+1、instanceof操作符
+2、isPrototypeOf
+只要是原型链中出现过的原型，用这两个操作符测试都会返回true。
+
+谨慎地定义方法
+
+给子类添加方法或者重写父类方法时，一定要放在替换原型的语句之后。
+
+还有，通过原型链继承时，不能使用对象字面量方式创建原型，这样会重写原型链。
+
+原型链的问题
+1.引用类型值的原型属性会被所有实例共享。
+2.在创建子类型的实例时，不能向超类型的构造函数传递参数。实际应该说，没有办法在不影响所有对象实例的情况下，给超类型的构造函数传递参数。
+
+#借用构造函数（也叫伪对象或经典继承）
+
+基本思想：在子类构造函数内部调用超类构造函数。（apply、call）
+```
+function superType(){
+	this.colors = ["red","blue","green"];	
+}
+
+function subType(){
+	superType.call(this);//解决了引用值原型属性的问题
+}
+```
+相对于原型链的优势：可以在子类型构造函数中向超类构造函数传递参数。
+
+为确保超类构造函数不会重写子类的属性，可以在调用超类构造函数后，再添加应该在子类中定义的属性。
+
+借用构造函数的问题：仅仅使用借用构造函数的话，也会存在与构造函数类似的问题，即方法在构造函数中定义，无法得到复用，而且超类中定义的方法，对子类不可见。
+
+#组合继承（伪经典继承，即将原型链和借用构造函数技术组合）————javascript中最常用的继承
+
+思路：使用原型链实现对原型属性和方法的继承，而使用借用构造函数实现对实例属性的继承。
+
+#原型式继承
+
+该方法没有严格意义上的构造函数，思想是借助原型可以基于已有的对象创建新对象，而不必因此创建自定义类型。
+```
+function object(o){
+	function F(){}
+	F.prototype = o;
+	return new F();
+}
+```
+本质上，object对传入的对象进行了一次浅复制。
+```
+person = {
+	name:"Nik",
+	friends:["hh","hh2"]
+}
+var anotherPerson = object(person);
+anotherPerson.name = "Gek",
+anotherPerson.friends.push("Bob");
+
+var yetAnotherPerson = object(person);
+yetAnotherPerson.name = "Gek2",
+yetAnotherPerson.friends.push("Bob2");
+
+alert(persoon.friends);//hh,hh2,Bob,Bob2
+```
+
+引用类型的原型属性也会被共享。
+
+ECMAScript5通过新增Object.create()方法规范化了原型式继承。它接收两个参数：一个用作新对象的原型的对象和（可选的）一个为新对象定义属性的对象。在传
+入一个参数时，Object.create()与object方法的行为相同。
+```
+person = {
+	name:"Nik",
+	friends:["hh","hh2"]
+}
+var anotherPerson = Object.create(person);
+anotherPerson.name = "Gek",
+anotherPerson.friends.push("Bob");
+
+var yetAnotherPerson = Object.create(person);
+yetAnotherPerson.name = "Gek2",
+yetAnotherPerson.friends.push("Bob2");
+
+alert(persoon.friends);//hh,hh2,Bob,Bob2
+```
+Object.create()方法的第二个参数与Object.defineProperties()方法的第二个参数格式相同：每个属性都通过自己的描述符定义。这种方式定义的任何属性都会覆盖原型对象的同名属性。例如：
+
+```
+person = {
+	name:"Nik",
+	friends:["hh","hh2"]
+}
+var anotherPerson = Object.create(person{
+	name:{
+		value:"Greg"
+	}
+});
+
+alert(anotherPerson.name);//Greg
+```
+如果只想让一个对象和另一个对象保持类似，可以使用原型式继承。不过，注意，引用类型属性的共享问题。
+
+#寄生式继承
 
 
