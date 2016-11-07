@@ -781,4 +781,267 @@ function f(x) {
 __闭包__
 闭包就是能够读取其他函数内部变量的函数。
 
+由于闭包会携带包含它的函数的作用域，所以会比其他函数占用更多的内存，请谨慎使用。
+
+__闭包与变量__
+作用域链这种配置机制引出了一个副作用：闭包只能取得包含函数中任何变量的最后一个值。
+```
+function creatFunctions(){
+  var result=new Array();
+  for(var i=0 i<10;i++){
+   result[i]=function(){
+    return i;
+   }
+  }
+  return result;
+ }
+ var funcs=creatFunctions();
+ //每个函数都输出10
+ for(var i=0;i<funcs.length;i++){
+  document.write(funcs[i]()+"<br />");
+ }
+ ```
+ 我们可以通过创建另一个匿名函数强制让闭包的行为符合预期，如下所示：
+ ```
+ function creatFunctions(){
+  var result=new Array();
+  for(var i=0 i<10;i++){
+   result[i]=function(num){
+    return function(){
+     return num;
+    };
+   }(i);
+  }
+  return result;
+ }
+ var funcs=creatFunctions();
+ //分别输出0、1、2……9
+ for(var i=0;i<funcs.length;i++){
+  document.write(funcs[i]()+"<br />");
+ }
+```
+
+__闭包中的this__
+
+在闭包中使用 this 对象也可能会导致一些问题。我们知道， this 对象是在运行时基于函数的执行环境绑定的，而匿名函数的执行环境具有全局性，因此其 this 对象通常指向 window（在通过 call()或 apply()改变函数执行环境的情况下， this 就会指向其他对象），如下：
+```
+var name = "The Window";
+var object = {
+    name : "My Object",
+    getNameFunc : function(){
+        return function(){
+            return this.name;
+        };
+    }
+};
+alert(object.getNameFunc()()); //"The Window"（在非严格模式下）
+```
+把外部作用域中的 this 对象保存在一个闭包能够访问到的变量里，就可以让闭包访问该对象了，如下所示：
+
+```
+var name = "The Window";
+var object = {
+    name : "My Object",
+    getNameFunc : function(){
+        var that = this;
+        return function(){
+            return that.name;
+        };
+    }
+};
+alert(object.getNameFunc()()); //"My Object"
+```
+
+arguments 也存在同样的问题。如果想访问作用域中的 arguments 对象，必须将对该对象的引用保存到另一个闭包能够访问的变量中。
+
+__内存泄露__
+JS闭包循环引用导致内存泄漏之解决方法：
+```
+方法一、主动设置JS对象element为空，打破循环引用
+function assignHandler()
+{
+   var element=document.getElementById("div1");
+   var id=element.id;
+   element.onclick=function() //element的onclick引用了函数funciton，function通过闭包引用了element，照成循环引用
+   {
+      alert(id+element+sex);
+    }
+ /*闭包可以监听外部变量的变化，所以这里把element=null，也就是说外部这个变量相当于不存在了,虽然赋值是在闭包后面，闭包也能够检测到！所以匿名函数不会有外部的DOM对象的引用，不会内存泄漏*/
+  var sex="female";
+  element=null;
+}
+
+方法二、通过添加另外一个闭包来避免JS对象和DOM对象之间的循环引用
+ window.onload=function outerFunction()
+{
+  var anotherObj=function innerFunction()
+   {
+            alert("I have avoided the leak!");
+   }
+//通过另外一个闭包来避免JS对象和DOM对象之间的循环引用
+  function anotherInnerFunction()
+   {
+        var obj=document.getElementById("div1");
+ //DOM对象引用了anotherObj函数，但是anotherObj函数无法引用DOM对象
+        obj.onclick=anotherObj;
+  };
+  anotherInnerFunction();
+}
+方法三、通过添加另一个函数来避免闭包本身，进而阻止内存泄漏
+window.onload=function()
+{
+        var obj=document.getElementById("div1");
+        obj.onclick=doesNotLeak;
+}
+//该函数无法访问上面匿名函数中间的obj对象，从而可以阻止内存泄漏！
+function doesNotLeak()
+{
+   alert("我已经阻止内存泄漏了！");
+}
+```
+__模仿块级作用域__
+
+javascript中则没有块级作用域，首先来看一段代
+```
+function outputNumber(count){ 
+  for(var i=0;i<1000;i++){ 
+    alert(i); 
+  } 
+  alert(i);  //count 
+}
+```
+即使重新声明同一个变量，也不会改变它的值。
+```
+function outputNumber(count){ 
+  for(var i=0;i<1000;i++){ 
+    alert(i); 
+  } 
+  var i;   //重新声明变量 
+  alert(i);  //count 
+}
+```
+匿名函数可以用来模仿块级作用域并避免这个问题，用作块级作用域(也称私有作用域)的匿名函数的语法如下：
+```
+(function(){ 
+   //这是块级作用域 
+})()
+```
+如果如下这样做就会报错：
+```
+function(){
+    //块级作用域
+}();//error 
+```
+因为在javascript中，function关键字表示一个函数声明的开始，而函数声明后面不能直接跟圆括号。而函数表达式后面可以跟圆括号，来表示函数调用。在函数声明外面加一对圆括号就可以转换成函数表达式，如下：
+```
+(function(){
+
+    //块级作用域
+
+})();
+```
+当匿名函数执行完毕，其作用域链立即销毁，从而可以减少闭包占用资源问题。
+
+__私有变量__
+有权访问私有变量和私有方法的公有方法称为特权方法。
+
+有两种创建特权方法的方式：
+一是在构造函数中定义.
+```
+function MyFunction(){  
+    // 私有变量和函数  
+    var privateNum = 1;  
+    function privateFunction(){  
+        return true;  
+    }     
+  
+    // 特权方法  
+    this.publicFunction = function(){  
+        privateNum + 1;  
+        return privateFunction();  
+    };  
+}  
+```
+私有和特权方法常用于隐藏不应该被直接修改的数据，如下例子：
+```
+function User(age){  
+    this.getAge = function(){  
+        return age;  
+    }  
+    this.setAge = function(value){  
+        age = value;  
+    }  
+}  
+  
+var user = new User(18);  
+alert(user.getAge());  // 18  
+user.setAge(19);  
+alert(user.getAge());  // 19  
+```
+缺点：在构造函数中定义特权方法的方式，会对每个实例都创建同一组新方法
+
+
+二是使用静态私有变量实现。（使用原型模式）
+```
+(function(){  
+    // 私有变量和函数  
+    var privateNum = 1;  
+    function privateFunction(){  
+        return true;  
+    }     
+  
+    // 构造函数  
+    MyFunction = function(){};  
+  
+    // 特权方法(公有)  
+    MyFunction.prototype.publicFunction = function(){  
+        privateNum + 1;  
+        return privateFunction();  
+    };  
+})();  
+```
+
+以上的特权方法是在原型上定义的，这里要注意的是在定义构造方法时不是使用函数声明的方式，而是使用函数表达式，因为函数声明只能创建局部函数，同理，在声明MyFunction也没有使用var关键字，因为初始化未经声明的变量，是创建一个全局变量。（注：如果是在严格模式下，给未经声明的变量赋值会导致错误）
+
+使用私有变量和闭包会影响查找速度。
+
+__模块模式__
+前面的模式是为自定义类型创建私有变量和特权方法，而模块模式是为单例创建私有变量和特权方法。所谓单例，是指只有一个实例的对象。
+```
+var singleon = {
+	name:value,
+	method:function(){
+	//code
+	}
+}
+```
+模块模式通过为单例添加变量和特权方法而使其得到增强。如：
+```
+var singleton = function(){
+    //私有变量
+    var privateVariable = 10;
+    
+    //私有函数
+    function privateFunction(){
+        return false;
+    }
+
+    //返回对象
+    return {
+        //公有属性
+        publicProperty: true,
+        
+        //公有属性和公有方法
+        publicMethod : function(){
+            privateVariable++;
+            return privateFunction();
+        }
+    };
+}();
+```
+
+这种模式适合需要对单例进行一些初始化，又需要维护私有变量时。
+
+
+
 
