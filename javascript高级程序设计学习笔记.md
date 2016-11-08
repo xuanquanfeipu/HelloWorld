@@ -1041,6 +1041,105 @@ var singleton = function(){
 ```
 
 这种模式适合需要对单例进行一些初始化，又需要维护私有变量时。
+```
+var application = function () {
+  //私有变量和函数
+  var components = new Array();
+  //初始化
+  components.push(new BaseComponent());
+  //公共
+  return {
+    getComponentCount: function () {
+      return components.length;
+    },
+    registerComponent: function (component) {
+      if (typeof component == 'object') {
+        components.push(component);
+      }
+    }
+  };
+}();
+```
+__增强的模块模式__
+
+
+```
+var singleton = function(){
+    //私有变量
+    var privateVariable = 10;
+    
+    //私有函数
+    function privateFunction(){
+        return false;
+    }
+    var obj = new CustomType();
+    //公有属性
+    obj.publicProperty = true;
+    //公有属性和公有方法
+    obj.publicMethod = function(){
+            privateVariable++;
+            return privateFunction();
+        }
+    //返回对象
+    return obj;
+}();
+
+var application = function () {
+  //私有变量和函数
+  var components = new Array();
+  //初始化
+  components.push(new BaseComponent());
+  var app = new BaseComponent();
+  
+  app.getComponentCount = function () {
+      return components.length;
+    };
+  app.registerComponent = function (component) {
+      if (typeof component == 'object') {
+        components.push(component);
+      }
+    };  
+  //公共
+  return app;
+}();
+```
+
+#BOM
+
+定义全局变量与在window对象上定义属性的区别：
+全局变量不能通过delete操作符删除，而window的属性可以。
+
+直接访问未声明的变量会抛出错误，但是通过查询window对象，可以知道某个可能未声明的变量是否存在。
+
+var newValue = oldValue;//error
+
+var newValue = window.oldValue;//newValue的值为undefined
+
+__窗口关系及框架__
+
+如果网页中包含框架，那么每个框架都有自己的window对象，并且保存在frames集合中。可以通过索引（从0开始，从左至右，从上到下）或者框架名来访问window对象。top指向最高（最外）层的框架，即浏览器窗口。parent对象始终指向当前框架的直接上层框架。self始终指向window。
+
+注意：除非最高层窗口是通过window.open()打开的，否则其他window对象是name属性不会包含任何值。
+
+__窗口位置__
+
+screenLeft，screenTop  浏览器（IE/Chrome/Safari/Opera）页面可见区域离屏幕左边和上边的距离（浏览器工具栏高度）。
+screenTop，screenY 整个浏览器窗口相对于屏幕的坐标值。
+
+var leftPos = (typeof screenLeft == "number") ? window.screenLeft : window.screenX;
+var topPos = (typeof screenTop == "number") ? window.screenTop : window.screenY;
+
+moveTo(newX,newY);//接收新的坐标值
+moveBy(offsetX,offsetY);//接收移动像素数
+
+注意：这两个方法可能会被浏览器禁用，而且只适用于最外层window，不适用于框架。
+
+__窗口大小__
+
+
+
+
+
 
 
 
