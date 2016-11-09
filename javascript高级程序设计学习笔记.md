@@ -1124,7 +1124,7 @@ __窗口关系及框架__
 __窗口位置__
 
 screenLeft，screenTop  浏览器（IE/Chrome/Safari/Opera）页面可见区域离屏幕左边和上边的距离（浏览器工具栏高度）。
-screenTop，screenY 整个浏览器窗口相对于屏幕的坐标值。
+screenTop，screenY 整个浏览器（Firefox、Safari）窗口相对于屏幕的坐标值。
 
 var leftPos = (typeof screenLeft == "number") ? window.screenLeft : window.screenX;
 var topPos = (typeof screenTop == "number") ? window.screenTop : window.screenY;
@@ -1135,6 +1135,46 @@ moveBy(offsetX,offsetY);//接收移动像素数
 注意：这两个方法可能会被浏览器禁用，而且只适用于最外层window，不适用于框架。
 
 __窗口大小__
+
+innerWidth、innerHeight、outerWidth、outerHeight（IE9+/Chrome/Safari/Opera/Firefox均支持这些属性）
+
+outerWidth、outerHeight返回浏览器窗口本身尺寸（IE9+/Safari/Firefox)
+
+outerWidth、outerHeight返回页面视图容器大小（Opera），即单个标签页对应的浏览器窗口。
+
+innerWidth、innerHeight表示页面视图区大小（减去边框宽度）（Chrome中等于outerWidth、outerHeight的返回值）
+即视口（viewport）大小而非浏览器窗口大小。
+
+document.documentElement.clientWidth、document.documentElement.clientHeight保存了页面视口信息（IE9/Chrome/Safari/Opera/Firefox）
+
+document.body.clientWidth、 document.body.clientHeight 保存了页面视口信息（IE6）
+
+document.documentElement.clientWidth、document.documentElement.clientHeight和document.body.clientWidth、 document.body.clientHeight返回相同信息，都是视口大小（Chrome）
+
+虽然无法确定浏览器窗口大小，却可以获得页面视口大小：
+
+var pageWidth = window.innerWidth, pageHeight = window.innerHeight;
+
+if(typeof pageWidth != "number"){
+	if(document.compatMode == "CSS1Compat"){
+		pageWidth = document.documentElement.clientWidth;
+		pageHeight = document.documentElement.clientHeight;
+	}else{
+		pageWidth = document.body.clientWidth;
+		pageHeight = document.body.clientHeight;
+	}
+}
+
+window.innerWidth、window.innerHeight保存着可见视口、即屏幕上可见页面区域大小。（移动非IE浏览器）
+document.documentElement.clientWidth、document.documentElement.clientHeight保存着可见视口（IE）
+
+document.documentElement度量的是布局视口，即渲染后页面的实际大小（可见视口是这个页面的一小部分）（非IE）
+document.body.clientWidth、document.body.clientHeight保存布局视口（IE）不会随着页面缩放变化。
+
+使用resizeTo(newX,newY)和resizeBy(offsetX,offsetY)方法可以调整浏览器窗口大小。
+
+
+
 
 
 
