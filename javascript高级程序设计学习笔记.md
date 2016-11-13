@@ -1215,16 +1215,17 @@ setTimeout(要执行js代码字符串或函数, 超时时间毫秒数);
 setTimeout("alert('Hello world!')", 1000);
 
 //推荐的调用方式
+```
 var timeoutid = setTimeout(function(){
 	alert("hello world");
 },1000);
-
+```
 //注销，只要是在指定时间尚未过去之前调用，就可以完全取消超时调用
 
 clearTimeout(timeoutid);
 
 注：超时调用代码都是在全局作用域中执行的，因此函数中的this在非严格模式下指向window对象，严格模式下指向undefined。
-
+```
 setInterval（）与setTimeout类似。
 
 var num = 0;
@@ -1241,8 +1242,9 @@ function incrementNumber(){
 }
 
 intervalId = setInterval(incrementNumber,500);
-
+```
 也可以通过setTimeout来实现：
+```
 var num = 0;
 var max = 10;
 
@@ -1258,7 +1260,7 @@ function incrementNumber(){
 }
 
 setTimeout(incrementNumber,500);
-
+```
 一般认为，使用setTimeout来模拟setInterval是一种最佳模式。实际开发中很少使用setInterval，因为后一个调用可能会在前一次调用结束之前启动。
 
 __系统对话框__
@@ -1267,24 +1269,239 @@ alert()、confirm()、prompt()
 
 #location对象
 
+属性：
+hash、host、hostname、pathname、port、protocol、search
+```
+function getQueryStringArgs(){
+	var qs = (location.search.length>0)?location.search.substring(1):""),
+	args={},
+	items = qs.length?qs.split("&"):[],
+	item = null,
+	name = null,
+	value = null,
+	i = 0,
+	len = items.length;
+	
+	for(i=0, i < len; i++){
+		item=item[i].split("=");
+		name = decodeURIComponent(item[0]);
+		value = decodeURIComponent(item[1]);
+		if(name.length){
+			args[name] = value;
+		}
+	}
+	return args;
+}
+```
+__位置操作__
+使用location可以通过很多方式改变浏览器位置。首先，最常用的是assign(url)方法：
 
+location.assign("http://www.wrox.com");
 
+//下面两句代码也会调用assign方法，与显式调用assign效果一样。
+window.location = "http://www.wrox.com";
+location.href = "http://www.wrox.com";//  最常用
 
+另外，修改location对象的其他属性（hash、search、hostname、pathname、port等）也可以改变当前加载的页面。
 
+通过以上任何一种方式修改URL，浏览器都会生成一条历史记录，可以单间后退按钮导航到前一个页面。要禁用这种行为，可以使用
+replace(url)方法
 
+reload()，重新加载当前显示的页面。
+无参数时，会从缓存中重新加载，参数为true时，会强制从服务器重新加载。
 
+location.reload();//从缓存中重新加载
+location.reload(true);//从服务器重新加载
 
+#navigator对象
 
+属性和方法：（各个浏览器支持不同）
+appCodeName：浏览器名称
+appMinorVersion：次版本信息
+APPName：完整的浏览器名称
+APPVersion：浏览器版本
+buildID：浏览器编译版本
+cookieEnabled：表示cookie是否启用。
+cpuClass：客户端计算机中使用的CPU类型。
+JavaEnabled()：表示定期浏览器中是否启用了java
+language：浏览器的主语言
+mimeTypes：在浏览器中注册的MIME类型数组
+onLine：表示浏览器是否连接到了因特网
+opsProfile：不用了
+oscpu：客户端计算机的操作系统或使用的CPU
+Platform：浏览器所在的系统平台
+plugins：浏览器中安装的插件信息数组
+preference():设置用户的首选项
+product：产品名称
+productSub：关于产品的次要信息
+registerContentHandler：针对特定的MIME类型将一个站点注册为处理程序
+registerProtocolHandler：针对特定的协议将一个站点注册为处理程序
+securityPolicy：已经废弃。安全策略名称
+systemLanguage：操作系统的语言。
+taintEnabled()：已经废弃。是否允许变量被修改
+userAgent:浏览器的用户代理字符串
+userLanguage：操作系统的默认语言。
+userProfile：借以访问用户个人信息的对象。
+vendor：浏览器的品牌。
+vendorSub：有关供应商的次要信息。
 
+__检测插件__
 
+非IE浏览器使用plugins数组来达到目的。数组中的每项包含的属性：
+name：插件名。
+description：描述。
+filename：插件文件名。
+length：插件所处理的MIME类型数量。
 
+//检测插件（非IE）
+function hasPlugin(name){
+	name = name.toLowerCase();
+	for(var i=0; i < navigator.plugins.length; i++){
+		if(navigator.plugins[i].name.toLowerCase().indexOf(name){
+			return true;
+		}		
+	}
+	return false;
+}
 
+alert(hasPlugin("Flash"));
+alert(hasPlugin("QuickTime"));
 
+//检测IE中的插件
 
+function hasIEPlugin(name){
+	try{
+		new ActiveXObject(name);
+		return true;
+	}catch(ex){
+		return false;
+	}
+}
 
+//检测Flash
+alert(hasIEPlugin("ShockwaveFlash.ShockwaveFlash"));//Flash的COM对象标识符是ShockwaveFlash.ShockwaveFlash
+alert(hasIEPlugin("QuickTime.QuickTime"));
 
+//检测所有浏览器中的Flash
 
+functionhasFlash(){
+	var result = hasPlugin("Flash");
+	if(!result){
+		result = hasIEPlugin("ShockwaveFlash.ShockwaveFlash");
+	}
+	return result;
+}
 
+plugins集合有个refresh(isReload)方法:如果参数值为true会加载包含插件的所有页面，否则，只更新plugins集合，不重新加载页面。
 
+__注册处理程序__
 
+Firefox2为navigator对象新增了registerContentHandler()和registerProtocolHandler()方法。
+
+registerContentHandler(要处理的MIME类型, 处理该MIME类型的页面的URL, 应用程序名称)，如：
+navigator.registerContentHandler("appliction/rss+xml","http://www.somereader.com?feed=%s", "SomeReader");//%s表示RSS源URL
+
+registerProtocolHandler(要处理的协议, 处理该协议的页面的URL, 应用程序名称)
+navigator.registerProtocolHandler("mailto","http://www.somemailclient.com?cmd=%s","Some Mail Client");//%s表示原始的请求
+
+#Screen对象
+
+属性：（各个浏览器支持不同）
+
+availHeight：屏幕的像素高度减去系统部件高度之后的值（只读）
+availLeft：未被系统部件占用的最左侧的像素值（只读）
+availTop：未被系统部件占用的最上方的像素值（只读）
+availWidth：屏幕的像素宽度减去系统部件宽度之后的值（只读）
+bufferDepth：读、写用于呈现屏外位图的位数
+colorDepth：用于表现颜色的位数，多少系统都是32（只读）
+deviceXDPI:屏幕实际水平DPI（只读）
+deviceyDPI:屏幕实际的垂直DPI（只读）
+fontSmoothingEnabled：表示上方启用了字体平滑（只读）
+height：屏幕的像素高度
+left：当前屏幕距左边的像素距离
+logicalXDPI：屏幕逻辑水平DPI（只读）
+logicalYDPI：屏幕逻辑垂直DPI（只读）
+pixelDepth：屏幕的位深（只读）
+top：当前屏幕距上边的像素距离
+updateInterval：读、写以毫秒表示的屏幕刷新时间间隔
+width：屏幕像素宽度
+
+window.resizeTo(screen.availWidth, screen.avvailHeight);
+
+#history对象
+
+每个浏览器窗口、每个标签页乃至每个框架都有自己的history对象与特定的window对象关联。
+
+使用go()方法可以在用户的历史记录中任意的跳转，先后或者向前。
+
+//后退一页
+history.go(-1);
+
+//向前一页
+history.go(1);
+
+history.go("wrox.com");//跳转到包含该字符串的最近的历史页面
+back()/forward()方法可以代替go()方法。
+history.back();
+history.forward();
+history.length;//保存这历史记录的数量
+
+#客户端检测
+
+__能力检测__(特性检测)
+
+function getElement(id){
+	if(document.getElementById){
+		return document.getElementById(id);
+	}else if(document.all){
+		return document.all[id];
+	}else{
+		throw new Error("No way to retrieve element!");
+	}
+}
+
+//不要这样做,不是能力检测，只检测了是否存在相应的方法
+funtion isSortable(object){
+	return !!object.sort;
+}
+
+//这样更好：检查sort是不是函数
+funtion isSortable(object){
+	return typeof object.sort == "function";
+}
+
+更靠谱的方法(但并非100%可靠)：
+
+function isHostMethod(object, property){
+	var t = typeof object[property];
+	return t == 'function' ||
+	(!!(t == 'object' && object[property])) ||
+	t == 'unknown';
+}
+
+__能力检测,而不是浏览器检测__
+
+根据浏览器不同将能力组合起来更可取。
+
+#怪癖检测
+
+#用户代理检测
+
+#DOM
+
+__节点类型__
+
+NodeType	Named Constant
+1	ELEMENT_NODE
+2	ATTRIBUTE_NODE
+3	TEXT_NODE
+4	CDATA_SECTION_NODE
+5	ENTITY_REFERENCE_NODE
+6	ENTITY_NODE
+7	PROCESSING_INSTRUCTION_NODE
+8	COMMENT_NODE
+9	DOCUMENT_NODE
+10	DOCUMENT_TYPE_NODE
+11	DOCUMENT_FRAGMENT_NODE
+12	NOTATION_NODE
 
