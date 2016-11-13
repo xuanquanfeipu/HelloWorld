@@ -1174,6 +1174,110 @@ document.body.clientWidth、document.body.clientHeight保存布局视口（IE）
 使用resizeTo(newX,newY)和resizeBy(offsetX,offsetY)方法可以调整浏览器窗口大小。
 
 
+__导航和打开窗口__
+
+window.open()方法既可以导航到一个特定的URL,也可以打开一个新的浏览器窗口，这个方法可以接收4个参数：
+要加载的URL、窗口目标、一个特性字符串及一个表示新页面是否取代浏览器历史记录中当前加载页面的布尔值。
+
+window.open(要加载的URL,窗口目标,特性字符串,新页面是否取代浏览器历史记录中当前加载页面)
+
+如：window.open("http://www.wrox.com/","topFrame");
+//等价于 <a href="http:/www.wrox.com" target="topFrame"></a>
+
+第二个参数可以取值 _self、_parent、_top、_blank或者是一个窗口或者框架名，如果不是，则会新建一个以此命名的新窗口。
+
+第三个参数中的选项：
+
+fullscreen/height/left/location/menubar/resizable/scrollbars/status/toolbar/top/wigth
+
+如：var wroxWin = window.open("http://www.wrox.com/","wroxWindow","height=400,width=400,top=10,left=10,resizable=yes");
+
+wroxWin.resizeTo(500,500);
+
+wroxWin.moveTo(500,500);
+
+wroxWin.close();//只针对window.open()打开的窗口
+
+alert(wroxWin.closed);//true
+
+alert(wroxWin.opener==winodw);//true
+
+创建的window对象有个opener属性，保存着打开它的原始窗口对象。这个属性只在弹出窗口的最外层window
+对象（top）中有定义，而且执行调用window.open()的窗口或框架。
+
+chrome中，如果将新创建的标签页的opener属性设置为null，即表示在单独是进程中运行新标签页，这样新标签也和打开它的标签页之间就不能进行通信了。
+
+__间歇调用和超时调用__
+
+setTimeout(要执行js代码字符串或函数, 超时时间毫秒数);
+
+//不推荐传递字符串，导致性能损失
+setTimeout("alert('Hello world!')", 1000);
+
+//推荐的调用方式
+var timeoutid = setTimeout(function(){
+	alert("hello world");
+},1000);
+
+//注销，只要是在指定时间尚未过去之前调用，就可以完全取消超时调用
+
+clearTimeout(timeoutid);
+
+注：超时调用代码都是在全局作用域中执行的，因此函数中的this在非严格模式下指向window对象，严格模式下指向undefined。
+
+setInterval（）与setTimeout类似。
+
+var num = 0;
+var max = 10;
+var intervalId = null;
+
+function incrementNumber(){
+	num++
+	
+	if(num==max){
+		clearInterval(intervalId);
+		alert("Done");
+	}
+}
+
+intervalId = setInterval(incrementNumber,500);
+
+也可以通过setTimeout来实现：
+var num = 0;
+var max = 10;
+
+function incrementNumber(){
+	num++
+	
+	if(num < max){
+		setTimeout(incrementNumber,500);
+		
+	}else{
+		alert("Done");
+	}
+}
+
+setTimeout(incrementNumber,500);
+
+一般认为，使用setTimeout来模拟setInterval是一种最佳模式。实际开发中很少使用setInterval，因为后一个调用可能会在前一次调用结束之前启动。
+
+__系统对话框__
+
+alert()、confirm()、prompt()
+
+#location对象
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
