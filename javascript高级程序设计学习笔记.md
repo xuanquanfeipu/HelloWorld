@@ -1505,3 +1505,156 @@ NodeType	Named Constant
 11	DOCUMENT_FRAGMENT_NODE
 12	NOTATION_NODE
 
+通过比较这些常量，可以很容易确定节点的类型，如：
+```
+if(someNode.nodeType == Node.ELEMENT_NODE){//IE中无效
+	alert('Node is an element.');
+}
+```
+然而，这种方式有兼容性问题。所以最好将nodeType属性与数字值进行比较。如：
+```
+if(someNode.nodeType == 1){//适用与所以浏览器
+	alert('Node is an element.');
+}
+```
+__1.nodeName和nodeValue属性__
+
+这两个属性的值完全取决于节点的类型。
+```
+if(someNode.nodeType == 1){
+	value = someNode.nodeName; //nodeName的值是元素的标签名
+}
+```
+对于元素节点，nodeName中保存的始终都是元素的标签名，而nodeValue的值始终都是null。
+
+__2.节点关系__
+
+每个节点都有一个childNodes属性，其中保存着一个NodeList对象。NodeList是一个类数组对象。
+
+访问NodeList中的节点————可以通过方括号，也可以使用item()方法。
+
+var firstChild = someNode.childNodes[0];
+var secondChild = someNode.childNodes.item(1);
+var count = someNode.childNodes.length;
+
+使用Array.prototype.slice()方法可以将arguments和NodeList这样的类数组对象转换为数组。
+```
+var arrayOfNodes = Array.prototype.slice.call(someNode.childNodes,0);//IE8及以前版本中无效
+
+function convertToArray(nodes){//通用方法
+	var array = null;
+	try{
+		array = Array.prototype.slice.call(someNode.childNodes,0);
+	} catch(ex){
+		array = new Array();
+		for(var i=0,len = nodes.length;i<len;i++){
+			array.push(nodes[i]);
+		}
+	}
+	return array;
+}
+```
+
+每个节点都有一个parentNode属性，该属性指向该文档树中的父节点。
+
+访问同胞节点使用previousSibling和nextSibling属性。
+
+firstChild和lastChild属性分布指向childNodes列表中的第一个和最后一个节点。
+
+hasChildNodes()方法判断一个节点是否有子节点。
+
+所有节点都有的一个属性ownerDocument，该属性指向表示整个文档的文档节点。
+
+__3.操作节点__
+
+appendChild()：向childNodes列表末尾添加一个节点。如果传入的节点已经是文档的一部分，那该节点会从原来的位置转移到新位置。
+如：
+var returnNode = someNode.appendChild(newNode);
+alert(returnNode == newNode);//true
+alert(someNode.lastChild == newNode);//true
+
+insertBefore(要插入的节点,参照节点)：在某个节点前插入新节点并返回该节点。
+
+//插入后成为最后一个节点，等价于appendChild
+var returnNode = insertBefore(newNode,null);
+alert(returnNode == someNode.lastChild);//true
+
+replaceChild(要插入的节点, 要替换的节点)：插入新节点，替换并返回已有的节点。
+var returnNode = someNode.repalceChild(newNode,someNode.firstChild);//替换第一个子节点
+
+removeChild(要移除的节点)：移除某个节点。
+
+__4.其他方法__
+
+所有类型的节点都有的两个方法：
+cloneNode(boolean):参数表示是否执行深复制。false时，只复制节点本身；true时，复制节点及其整个子节点树。
+复制后的节点副本属于文档所有，并没有为它指定父节点。这个节点副本就是一个孤儿。需要通过前面的方法将其添加到文档中。
+该方法不会复制添加到DOM节点中的javascript属性。
+
+normalize()：删除空的文本节点，或者合并相邻的文本节点。
+
+#Document类型
+
+在浏览器中，document对象是HTMLDocument(继续自Document类型)的一个实例，且是window对象的一个属性。
+
+__1.文档的子节点__
+
+document.documentElement == document.childNodes[0] == document.firstChild;//true
+
+document.body;//指向body元素
+
+document.doctype;//指向<!DOCTYPE>的引用 是一个DocumentType节点
+
+__2.文档信息__
+
+document.title;//文档标题
+
+document.URL;//取得完整的URL
+document.domain;//页面的域名，可以设置，但是只能设置为来源页面URL中包含的域（一开始是松散的，不能再设置为紧绷的）
+document.referrer;//(链接到当前页面的那个页面)来源页面的URL
+
+__3.查找元素__
+
+getElementById
+getElementByTagName()：返回一个HTMLCollection对象，与NodeList类似，使用方括号语法或item()方法来访问。
+
+HTMLCollection对象还有一个namedItem()方法，该方法可以通过元素的name特性取得集合中的项。
+
+getElementByName()
+
+__4.特殊集合__
+```
+document.anchors:包含文档中所有带name特性的<a>元素。
+document.applets:包含文档中所有的<applet>元素。
+document.forms:包含文档中所有的<form>元素。
+document.images:包含文档中所有的<img>元素。
+document.links:包含文档中所有带href特性的<a>元素。
+```
+__5.DOM一致性检测__
+
+document.implimentation的hasFeature(功能名称, 版本号)方法
+
+__6.文档写入__
+
+document有四个写入文档相关的方法：write()、writeln()、open()、close().
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
