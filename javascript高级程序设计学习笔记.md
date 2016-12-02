@@ -1638,6 +1638,32 @@ __6.文档写入__
 
 document有四个写入文档相关的方法：write()、writeln()、open()、close().
 
+#Element类型
+nodeType：1
+nodeName == tagName
+nodeValue:null
+
+__1.HTML元素__
+HTMLElement类型继承自Element并添加了一些所有HTML元素共有的特性：
+id：
+title：
+lang：
+dir：语言的方向。ltr：left-to-right或rtl：right-to-left
+className：与元素的class特性对应，即为元素指定的CSS类。
+
+__2.取得特性__
+操作DOM特性的三个方法：getAttribute/setAttribute/removeAttribute  可以操作共有属性和自定义属性。
+注意：获取className时，应该传入class //element.getAttribute("class")
+特性名不区分大小写
+另外，自定义特性最好加上 data- 前缀以便验证
+__只有非自定义的属性才会以属性的形式添加到DOM对象中。所以不能通过属性访问自定义属性__
+
+getAttribute(特性名)
+有两类特性，虽然有对应的属性名，但是属性的值与通过getAttribute返回的值并不相同。
+1.style： getAttribute返回的是包含CSS的文本，属性返回的是对象。
+2.类似onclick的事件处理程序：getAttribute返回的是代码字符串，属性返回javascript函数。
+
+setAttribute(特性名,特性值)
 
 
 
