@@ -3919,6 +3919,1595 @@ function listFiles(path) {
 
 
 ///////////////////////////////////////////////////[JavaScript权威指南(第6版)].源代码\examples end ///////////////////////////
+
+/////////////////////////////////Javascript高级程序设计源代码\Examples///////////////////////////////////////////////////////
+
+/*
+ * xbObjects.js
+ * $Revision: 1.2 $ $Date: 2003/02/07 16:04:20 $
+ */
+
+/* ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is Bob Clary code.
+ *
+ * The Initial Developer of the Original Code is
+ * Bob Clary.
+ * Portions created by the Initial Developer are Copyright (C) 2000
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s): Bob Clary <bc@bclary.com>
+ *
+ * ***** END LICENSE BLOCK ***** */
+
+/*
+ChangeLog: 2001-12-19 - bclary - changed xbException init method to 
+           remove possible exception due to permission denied issues
+           in gecko 0.9.5+
+*/
+
+function _Classes()
+{
+  if (typeof(_classes) != 'undefined')
+    throw('Only one instance of _Classes() can be created');
+    
+  function registerClass(className, parentClassName)
+  {
+    if (!className)
+      throw('xbObjects.js:_Classes::registerClass: className missing');
+      
+    if (className in _classes)
+      return;
+      
+    if (className != 'xbObject' && !parentClassName)
+      parentClassName = 'xbObject';
+      
+    if (!parentClassName)
+      parentClassName = null;
+    else if ( !(parentClassName in _classes))
+      throw('xbObjects.js:_Classes::registerClass: parentClassName ' + parentClassName + ' not defined');
+
+    // evaluating and caching the prototype object in registerClass
+    // works so long as we are dealing with 'normal' source files
+    // where functions are created in the global context and then 
+    // statements executed. when evaling code blocks as in xbCOM,
+    // this no longer works and we need to defer the prototype caching
+    // to the defineClass method
+
+    _classes[className] = { 'classConstructor': null, 'parentClassName': parentClassName };
+  }
+  _Classes.prototype.registerClass = registerClass;
+
+  function defineClass(className, prototype_func)
+  {
+    var p;
+
+    if (!className)
+      throw('xbObjects.js:_Classes::defineClass: className not given');
+      
+    var classRef = _classes[className];
+    if (!classRef)
+      throw('xbObjects.js:_Classes::defineClass: className ' + className + ' not registered');
+    
+    if (classRef.classConstructor)
+      return;
+      
+    classRef.classConstructor = eval( className );
+    var childPrototype  = classRef.classConstructor.prototype;
+    var parentClassName = classRef.parentClassName;
+      
+    if (parentClassName)
+    {
+      var parentClassRef = _classes[parentClassName];
+      if (!parentClassRef)
+        throw('xbObjects.js:_Classes::defineClass: parentClassName ' + parentClassName + ' not registered');
+
+      if (!parentClassRef.classConstructor)
+      {
+        // force parent's prototype to be created by creating a dummy instance
+        // note constructor must handle 'default' constructor case
+        var dummy;
+        eval('dummy = new ' + parentClassName + '();');
+      }
+        
+      var parentPrototype = parentClassRef.classConstructor.prototype;
+    
+      for (p in parentPrototype)
+      {
+        switch (p)
+        {
+        case 'isa':
+        case 'classRef':
+        case 'parentPrototype':
+        case 'parentConstructor':
+        case 'inheritedFrom':
+          break;
+        default:
+          childPrototype[p] = parentPrototype[p];
+          break;
+        }
+      }
+    }
+
+    prototype_func();
+    
+    childPrototype.isa        = className;
+    childPrototype.classRef   = classRef;
+
+    // cache method implementor info
+    childPrototype.inheritedFrom = new Object();
+    if (parentClassName)
+    {
+      for (p in parentPrototype)
+      {
+        switch (p)
+        {
+        case 'isa':
+        case 'classRef':
+        case 'parentPrototype':
+        case 'parentConstructor':
+        case 'inheritedFrom':
+          break;
+        default:
+          if (childPrototype[p] == parentPrototype[p] && parentPrototype.inheritedFrom[p])
+          {
+            childPrototype.inheritedFrom[p] = parentPrototype.inheritedFrom[p];
+          }
+          else
+          {
+            childPrototype.inheritedFrom[p] = parentClassName;
+          }
+          break;
+        }
+      }
+    }
+  }
+  _Classes.prototype.defineClass = defineClass;
+}
+
+// create global instance
+var _classes = new _Classes();
+
+// register root class xbObject
+_classes.registerClass('xbObject');
+
+function xbObject()
+{
+  _classes.defineClass('xbObject', _prototype_func);
+
+  this.init();
+  
+  function _prototype_func()
+  {
+    // isa is set by defineClass() to the className
+    // Note that this can change dynamically as the class is cast
+    // into it's ancestors...
+    xbObject.prototype.isa        = null;  
+    
+    // classref is set by defineClass() to point to the 
+    // _classes entry for this class. This allows access 
+    // the original _class's entry no matter how it has 
+    // been recast. 
+    // *** This will never change!!!! ***
+    xbObject.prototype.classRef      = null;
+    
+    xbObject.prototype.inheritedFrom = new Object();
+
+    function init() { }
+    xbObject.prototype.init        = init;
+    
+    function destroy() {}
+    xbObject.prototype.destroy      = destroy;
+
+    function parentMethod(method, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10)
+    {
+      // find who implemented this method
+      var className       = this.isa;
+      var parentClassName = _classes[className].classConstructor.prototype.inheritedFrom[method];
+      var tempMethod      = _classes[parentClassName].classConstructor.prototype[method];
+      // 'cast' this into the implementor of the method
+      // so that if parentMethod is called by the parent's method, 
+      // the search for it's implementor will start there and not
+      // cause infinite recursion
+      this.isa   = parentClassName;
+      var retVal = tempMethod.call(this, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+      this.isa   = className;
+
+      return retVal;
+    }
+    xbObject.prototype.parentMethod    = parentMethod;
+
+    function isInstanceOf(otherClassConstructor)
+    {
+      var className = this.isa;
+      var otherClassName = otherClassConstructor.prototype.isa;
+
+      while (className)
+      {
+        if (className == otherClassName)
+          return true;
+
+        className = _classes[className].parentClassName;
+      }
+
+      return false;
+    }
+    xbObject.prototype.isInstanceOf    = isInstanceOf;
+  }
+}
+
+// eof: xbObjects.js
+
+
+Object.prototype.inheritFrom = function (fnClass) {
+
+    function inheritClasses(fnClass, arrClasses) {
+        
+        arrClasses.push(fnClass);
+
+        if (typeof fnClass.__superclasses__ == "object") {
+            for (var i=0; i < fnClass.__superclasses__.length; i++){
+                inheritClasses(fnClass.__superclasses__[i], arrClasses);
+            }
+        }
+    }
+    
+    if (typeof this.constructor.__superclasses__ == "undefined") {
+        this.constructor.__superclasses__ = new Array();
+    }
+    
+    inheritClasses(fnClass, this.constructor.__superclasses__);
+    
+    for (prop in fnClass.prototype) {
+        if (typeof fnClass.prototype[prop] == "function") {
+            this[prop] = fnClass.prototype[prop];
+        }
+    }
+};
+
+Object.prototype.instanceOf = function (func) {
+
+    if (this.constructor == func) {
+        return true;
+    } else if (typeof this.constructor.__superclasses__ == "object") {
+        for (var i=0; i < this.constructor.__superclasses__.length; i++) {
+            if (this.constructor.__superclasses__[i] == func) {
+                return true;
+            }
+        }
+        return false;
+    } else {
+        return false;
+    }
+};
+
+
+ function isValidDate(sText) {
+    var reDate = /(?:0[1-9]|[12][0-9]|3[01])\/(?:0[1-9]|1[0-2])\/(?:19|20\d{2})/; 
+    return reDate.test(sText);
+ }
+
+function isValidEmail(sText) {
+    var reEmail = /^(?:\w+\.?)*\w+@(?:\w+\.)+\w+$/;
+    return reEmail.test(sText);
+}
+
+function luhnCheckSum(sCardNum) {
+                     
+    var iOddSum = 0;
+    var iEvenSum = 0;
+    var bIsOdd = true;
+
+    for (var i=sCardNum.length-1; i >= 0; i--) {
+
+	var iNum = parseInt(sCardNum.charAt(i));
+
+	if (bIsOdd) {
+	    iOddSum += iNum;
+	} else {
+	    iNum = iNum * 2;
+	    if (iNum > 9) {
+		iNum = eval(iNum.toString().split("").join("+"));
+	    }
+	    iEvenSum += iNum;
+	}
+
+	bIsOdd = !bIsOdd;
+    }
+
+    return ((iEvenSum + iOddSum) % 10 == 0);
+}
+
+function isValidMasterCard(sText) {
+    var reMasterCard = /^(5[1-5]\d{2})[\s\-]?(\d{4})[\s\-]?(\d{4})[\s\-]?(\d{4})$/;
+
+    if (reMasterCard.test(sText)) {
+
+	var sCardNum = RegExp.$1 + RegExp.$2 + RegExp.$3 + RegExp.$4;
+
+	return luhnCheckSum(sCardNum);
+
+    } else {
+	return false;
+    }
+}
+
+ function isValidVisa(sText) {
+    var reVisa = /^(4\d{12}(?:\d{3})?)$/;
+
+    if (reVisa.test(sText)) {
+	return luhnCheckSum(RegExp.$1);
+    } else {
+	return false; 
+    }
+}
+
+String.prototype.stripHTML = function () {
+    var reTag = /<(?:.|\s)*?>/g;
+    return this.replace(reTag, "");
+};
+
+String.prototype.trim = function () {
+    var reExtraSpace = /^\s+(.*?)\s+$/;
+    return this.replace(reExtraSpace, "$1");
+};
+
+//detect
+
+var sUserAgent = navigator.userAgent;
+var fAppVersion = parseFloat(navigator.appVersion);
+
+function compareVersions(sVersion1, sVersion2) {
+
+    var aVersion1 = sVersion1.split(".");
+    var aVersion2 = sVersion2.split(".");
+    
+    if (aVersion1.length > aVersion2.length) {
+        for (var i=0; i < aVersion1.length - aVersion2.length; i++) {
+            aVersion2.push("0");
+        }
+    } else if (aVersion1.length < aVersion2.length) {
+        for (var i=0; i < aVersion2.length - aVersion1.length; i++) {
+            aVersion1.push("0");
+        }    
+    }
+    
+    for (var i=0; i < aVersion1.length; i++) {
+ 
+        if (aVersion1[i] < aVersion2[i]) {
+            return -1;
+        } else if (aVersion1[i] > aVersion2[i]) {
+            return 1;
+        }    
+    }
+    
+    return 0;
+
+}
+
+var isOpera = sUserAgent.indexOf("Opera") > -1;
+var isMinOpera4 = isMinOpera5 = isMinOpera6 = isMinOpera7 = isMinOpera7_5 = false;
+
+if (isOpera) {
+    var fOperaVersion;
+    if(navigator.appName == "Opera") {
+        fOperaVersion = fAppVersion;
+    } else {
+        var reOperaVersion = new RegExp("Opera (\\d+\\.\\d+)");
+        reOperaVersion.test(sUserAgent);
+        fOperaVersion = parseFloat(RegExp["$1"]);
+    }
+
+    isMinOpera4 = fOperaVersion >= 4;
+    isMinOpera5 = fOperaVersion >= 5;
+    isMinOpera6 = fOperaVersion >= 6;
+    isMinOpera7 = fOperaVersion >= 7;
+    isMinOpera7_5 = fOperaVersion >= 7.5;
+}
+
+var isKHTML = sUserAgent.indexOf("KHTML") > -1 
+              || sUserAgent.indexOf("Konqueror") > -1 
+              || sUserAgent.indexOf("AppleWebKit") > -1; 
+              
+var isMinSafari1 = isMinSafari1_2 = false;
+var isMinKonq2_2 = isMinKonq3 = isMinKonq3_1 = isMinKonq3_2 = false;
+
+if (isKHTML) {
+    isSafari = sUserAgent.indexOf("AppleWebKit") > -1;
+    isKonq = sUserAgent.indexOf("Konqueror") > -1;
+
+    if (isSafari) {
+        var reAppleWebKit = new RegExp("AppleWebKit\\/(\\d+(?:\\.\\d*)?)");
+        reAppleWebKit.test(sUserAgent);
+        var fAppleWebKitVersion = parseFloat(RegExp["$1"]);
+
+        isMinSafari1 = fAppleWebKitVersion >= 85;
+        isMinSafari1_2 = fAppleWebKitVersion >= 124;
+    } else if (isKonq) {
+
+        var reKonq = new RegExp("Konqueror\\/(\\d+(?:\\.\\d+(?:\\.\\d)?)?)");
+        reKonq.test(sUserAgent);
+        isMinKonq2_2 = compareVersions(RegExp["$1"], "2.2") >= 0;
+        isMinKonq3 = compareVersions(RegExp["$1"], "3.0") >= 0;
+        isMinKonq3_1 = compareVersions(RegExp["$1"], "3.1") >= 0;
+        isMinKonq3_2 = compareVersions(RegExp["$1"], "3.2") >= 0;
+    } 
+    
+}
+
+var isIE = sUserAgent.indexOf("compatible") > -1 
+           && sUserAgent.indexOf("MSIE") > -1
+           && !isOpera;
+           
+var isMinIE4 = isMinIE5 = isMinIE5_5 = isMinIE6 = false;
+
+if (isIE) {
+    var reIE = new RegExp("MSIE (\\d+\\.\\d+);");
+    reIE.test(sUserAgent);
+    var fIEVersion = parseFloat(RegExp["$1"]);
+
+    isMinIE4 = fIEVersion >= 4;
+    isMinIE5 = fIEVersion >= 5;
+    isMinIE5_5 = fIEVersion >= 5.5;
+    isMinIE6 = fIEVersion >= 6.0;
+}
+
+var isMoz = sUserAgent.indexOf("Gecko") > -1
+            && !isKHTML;
+
+var isMinMoz1 = sMinMoz1_4 = isMinMoz1_5 = false;
+
+if (isMoz) {
+    var reMoz = new RegExp("rv:(\\d+\\.\\d+(?:\\.\\d+)?)");
+    reMoz.test(sUserAgent);
+    isMinMoz1 = compareVersions(RegExp["$1"], "1.0") >= 0;
+    isMinMoz1_4 = compareVersions(RegExp["$1"], "1.4") >= 0;
+    isMinMoz1_5 = compareVersions(RegExp["$1"], "1.5") >= 0;
+}
+
+var isNS4 = !isIE && !isOpera && !isMoz && !isKHTML 
+            && (sUserAgent.indexOf("Mozilla") == 0) 
+            && (navigator.appName == "Netscape") 
+            && (fAppVersion >= 4.0 && fAppVersion < 5.0);
+
+var isMinNS4 = isMinNS4_5 = isMinNS4_7 = isMinNS4_8 = false;
+
+if (isNS4) {
+    isMinNS4 = true;
+    isMinNS4_5 = fAppVersion >= 4.5;
+    isMinNS4_7 = fAppVersion >= 4.7;
+    isMinNS4_8 = fAppVersion >= 4.8;
+}
+
+var isWin = (navigator.platform == "Win32") || (navigator.platform == "Windows");
+var isMac = (navigator.platform == "Mac68K") || (navigator.platform == "MacPPC") 
+            || (navigator.platform == "Macintosh");
+
+var isUnix = (navigator.platform == "X11") && !isWin && !isMac;
+
+var isWin95 = isWin98 = isWinNT4 = isWin2K = isWinME = isWinXP = false;
+var isMac68K = isMacPPC = false;
+var isSunOS = isMinSunOS4 = isMinSunOS5 = isMinSunOS5_5 = false;
+
+if (isWin) {
+    isWin95 = sUserAgent.indexOf("Win95") > -1 
+              || sUserAgent.indexOf("Windows 95") > -1;
+    isWin98 = sUserAgent.indexOf("Win98") > -1 
+              || sUserAgent.indexOf("Windows 98") > -1;
+    isWinME = sUserAgent.indexOf("Win 9x 4.90") > -1 
+              || sUserAgent.indexOf("Windows ME") > -1;
+    isWin2K = sUserAgent.indexOf("Windows NT 5.0") > -1 
+              || sUserAgent.indexOf("Windows 2000") > -1;
+    isWinXP = sUserAgent.indexOf("Windows NT 5.1") > -1 
+              || sUserAgent.indexOf("Windows XP") > -1;
+    isWinNT4 = sUserAgent.indexOf("WinNT") > -1 
+              || sUserAgent.indexOf("Windows NT") > -1 
+              || sUserAgent.indexOf("WinNT4.0") > -1 
+              || sUserAgent.indexOf("Windows NT 4.0") > -1 
+              && (!isWinME && !isWin2K && !isWinXP);
+} 
+
+if (isMac) {
+    isMac68K = sUserAgent.indexOf("Mac_68000") > -1 
+               || sUserAgent.indexOf("68K") > -1;
+    isMacPPC = sUserAgent.indexOf("Mac_PowerPC") > -1 
+               || sUserAgent.indexOf("PPC") > -1;  
+}
+
+if (isUnix) {
+    isSunOS = sUserAgent.indexOf("SunOS") > -1;
+
+    if (isSunOS) {
+        var reSunOS = new RegExp("SunOS (\\d+\\.\\d+(?:\\.\\d+)?)");
+        reSunOS.test(sUserAgent);
+        isMinSunOS4 = compareVersions(RegExp["$1"], "4.0") >= 0;
+        isMinSunOS5 = compareVersions(RegExp["$1"], "5.0") >= 0;
+        isMinSunOS5_5 = compareVersions(RegExp["$1"], "5.5") >= 0;
+    }
+}
+//detect end
+
+//eventutil.js
+var EventUtil = new Object;
+EventUtil.addEventHandler = function (oTarget, sEventType, fnHandler) {
+    if (oTarget.addEventListener) {
+        oTarget.addEventListener(sEventType, fnHandler, false);
+    } else if (oTarget.attachEvent) {
+        oTarget.attachEvent("on" + sEventType, fnHandler);
+    } else {
+        oTarget["on" + sEventType] = fnHandler;
+    }
+};
+        
+EventUtil.removeEventHandler = function (oTarget, sEventType, fnHandler) {
+    if (oTarget.removeEventListener) {
+        oTarget.removeEventListener(sEventType, fnHandler, false);
+    } else if (oTarget.detachEvent) {
+        oTarget.detachEvent("on" + sEventType, fnHandler);
+    } else { 
+        oTarget["on" + sEventType] = null;
+    }
+};
+
+EventUtil.formatEvent = function (oEvent) {
+    if (isIE && isWin) {
+        oEvent.charCode = (oEvent.type == "keypress") ? oEvent.keyCode : 0;
+        oEvent.eventPhase = 2;
+        oEvent.isChar = (oEvent.charCode > 0);
+        oEvent.pageX = oEvent.clientX + document.body.scrollLeft;
+        oEvent.pageY = oEvent.clientY + document.body.scrollTop;
+        oEvent.preventDefault = function () {
+            this.returnValue = false;
+        };
+
+        if (oEvent.type == "mouseout") {
+            oEvent.relatedTarget = oEvent.toElement;
+        } else if (oEvent.type == "mouseover") {
+            oEvent.relatedTarget = oEvent.fromElement;
+        }
+
+        oEvent.stopPropagation = function () {
+            this.cancelBubble = true;
+        };
+
+        oEvent.target = oEvent.srcElement;
+        oEvent.time = (new Date).getTime();
+    }
+    return oEvent;
+};
+
+EventUtil.getEvent = function() {
+    if (window.event) {
+        return this.formatEvent(window.event);
+    } else {
+        return EventUtil.getEvent.caller.arguments[0];
+    }
+};
+//eventuitl.js end
+
+/*
+getComputedStyle 和 element.style 的相同点就是二者返回的都是 CSSStyleDeclaration 对象，取相应属性值得时候都是采用的 CSS 驼峰式写法，
+均需要注意 float 属性。而不同点就是：
+element.style 读取的只是元素的内联样式，即写在元素的 style 属性上的样式；而 getComputedStyle 读取的样式是最终样式，包括了内联样式、嵌入样式和外部样式。
+element.style 既支持读也支持写，我们通过 element.style 即可改写元素的样式。而 getComputedStyle 仅支持读并不支持写入。
+我们可以通过使用 getComputedStyle 读取样式，通过 element.style 修改样式
+
+
+关于 getComputedStyle 的兼容性问题，在 Chrome 和 Firefox 是支持该属性的，同时 IE 9 10 11 也是支持相同的特性的，IE 8并不支持这个特性。 
+IE 8 支持的是 element.currentStyle 这个属性，这个属性返回的值和 getComputedStyle 的返回基本一致，只是在 float 的支持上，
+IE 8 支持的是 styleFloat,这点需要注意。
+*/
+function getBackgroundColor() {
+	var oCSSRules = document.styleSheets[0].cssRules || document.styleSheets[0].rules;
+	alert(oCSSRules[0].style.backgroundColor);
+	var oDiv = document.getElementById("div1");
+        oDiv.style.backgroundColor = "blue";
+	//oCSSRules[0].style.backgroundColor = "blue";
+	alert(oDiv.style.item(0));
+	alert(oDiv.currentStyle.backgroundColor);
+	//document.defaultView 多数情况下可以用window代替，这里为了兼容Firefox3.6和IE8，需要注意 float 属性,该使用 cssFloat, IE 8 中仅支持 styleFloat 
+	alert(document.defaultView.getComputedStyle(oDiv, null).backgroundColor);
+	alert(this.style.cssText);
+	alert(oDiv.style.getPropertyValue("background-color")); 
+        oDiv.style.removeProperty("background-color");
+	//this.style.setProperty('background-color', 'blue', '');
+}
+
+function toggle(sDivId) {
+	var oDiv = document.getElementById(sDivId);
+	oDiv.style.display = (oDiv.style.display == "none") ? "block" : "none";
+ }
+
+//#divTip1 style="background-color: yellow; position: absolute; visibility: hidden; padding: 5px"
+  function showTip(oEvent) {
+	var oDiv = document.getElementById("divTip1");
+	oDiv.style.visibility = "visible";
+	oDiv.style.left = oEvent.clientX + 5;
+	oDiv.style.top = oEvent.clientY + 5;
+  }
+
+    function hideTip(oEvent) {
+	var oDiv = document.getElementById("divTip1");
+	oDiv.style.visibility = "hidden";
+    }
+
+
+/*
+dom2级在Document类型中定义了 createRange()方法；
+
+创建range对象很简单 var range = document.createRange() 
+
+操作range对象，有两个步骤，1选择节点，2,操作节点
+
+选择节点：
+
+最简单的选择节点方法：
+
+ selectNode() :选择整个节点，包括子节点
+ selectNodeContents()  选择节点的子节点
+
+ 2.操作节点
+
+ deleteContents() 这个方法能够从文档中删除范围所包含的内容
+ extractContents() 会删除并返回文档片段
+ CloneContents() 创建范围对象的一个副本，不会影响原来的节点
+ insertNode() 向范围选区的开始处插入一个节点
+ surroundContents() 环绕范围插入内容  
+
+其他：
+
+复制 DOM 范围  ： 可以使用 cloneRange()方法复制范围。这个方法会创建调用它的范围的一个副本。
+
+ var newRange = range.cloneRange();  
+
+清理 DOM 范围 ：
+
+在使用完范围之后，最好是调用 detach() 方法，以便从创建范围的文档中分离出该范围。调用
+detach()之后，就可以放心地解除对范围的引用，从而让垃圾回收机制回收其内存了。
+
+range.detach(); //从文档中分离
+range = null; //解除引用 
+推荐在使用范围的最后再执行这两个步骤。一旦分离范围，就不能再恢复使用了。 
+*/
+
+
+var FormUtil = new Object;
+
+FormUtil.focusOnFirst = function () {
+    if (document.forms.length > 0) {
+        for (var i=0; i < document.forms[0].elements.length; i++) {
+            var oField = document.forms[0].elements[i];
+            if (oField.type != "hidden") {
+                oField.focus();
+                return;
+            }
+        }
+    }
+};
+
+FormUtil.setTextboxes = function() {
+    var colInputs = document.getElementsByTagName("input");
+    var colTextAreas = document.getElementsByTagName("textarea");
+        
+    for (var i=0; i < colInputs.length; i++){
+        if (colInputs[i].type == "text" || colInputs [i].type == "password") {
+            colInputs[i].onfocus = function () { this.select(); };
+        }
+    }
+        
+    for (var i=0; i < colTextAreas.length; i++){
+        colTextAreas[i].onfocus = function () { this.select(); };
+    }
+};
+
+FormUtil.tabForward = function(oTextbox) {
+
+    var oForm = oTextbox.form;
+
+    //make sure the textbox is not the last field in the form
+    if (oForm.elements[oForm.elements.length-1] != oTextbox 
+        && oTextbox.value.length == oTextbox.maxLength) {
+               
+        for (var i=0; i < oForm.elements.length; i++) {
+            if (oForm.elements[i] == oTextbox) {
+                 for(var j=i+1; j < oForm.elements.length; j++) {
+                     if (oForm.elements[j].type != "hidden") {
+                         oForm.elements[j].focus();
+                         return;
+                     }
+                 }
+                 return;
+            }
+        }
+    }
+};
+
+var ListUtil = new Object();
+
+ListUtil.getSelectedIndexes = function (oListbox) {
+    var arrIndexes = new Array;
+
+    for (var i=0; i < oListbox.options.length; i++) {
+        if (oListbox.options[i].selected) {
+            arrIndexes.push(i);
+        }
+    }
+
+    return arrIndexes;
+};
+
+ListUtil.add = function (oListbox, sName, sValue) {
+
+    var oOption = document.createElement("option");
+    oOption.appendChild(document.createTextNode(sName));
+
+    if (arguments.length == 3) {
+        oOption.setAttribute("value", sValue);
+    }
+
+    oListbox.appendChild(oOption);
+
+}
+
+ListUtil.remove = function (oListbox, iIndex) {
+    oListbox.remove(iIndex);
+};
+
+ListUtil.clear = function (oListbox) {
+    for (var i=oListbox.options.length-1; i >= 0; i--) {
+        ListUtil.remove(oListbox, i);
+    }
+};
+
+ListUtil.move = function (oListboxFrom, oListboxTo, iIndex) {
+    var oOption = oListboxFrom.options[iIndex];
+
+    if (oOption != null) {
+        oListboxTo.appendChild(oOption);
+    }
+};
+
+ListUtil.shiftUp = function (oListbox, iIndex) {
+    if (iIndex > 0) {    
+        var oOption = oListbox.options[iIndex];
+        var oPrevOption = oListbox.options[iIndex-1];
+        oListbox.insertBefore(oOption, oPrevOption);
+    }    
+};
+
+ListUtil.shiftDown = function (oListbox, iIndex) {
+    if (iIndex < oListbox.options.length - 1) {
+        var oOption = oListbox.options[iIndex];
+        var oNextOption = oListbox.options[iIndex+1];
+        oListbox.insertBefore(oNextOption, oOption);
+    }
+};
+
+var TextUtil = new Object;
+
+TextUtil.isNotMax = function(oTextArea) {
+    return oTextArea.value.length != oTextArea.getAttribute("maxlength");
+};
+
+TextUtil.blockChars = function (oTextbox, oEvent, bBlockPaste) {
+
+    oEvent = EventUtil.formatEvent(oEvent);
+         
+    var sInvalidChars = oTextbox.getAttribute("invalidchars");
+    var sChar = String.fromCharCode(oEvent.charCode);
+    
+    var bIsValidChar = sInvalidChars.indexOf(sChar) == -1;
+       
+    if (bBlockPaste) {
+        return bIsValidChar && !(oEvent.ctrlKey && sChar == "v");
+    } else {
+        return bIsValidChar || oEvent.ctrlKey;
+    }
+};
+
+TextUtil.allowChars = function (oTextbox, oEvent, bBlockPaste) {
+
+    oEvent = EventUtil.formatEvent(oEvent);
+         
+    var sValidChars = oTextbox.getAttribute("validchars");
+    var sChar = String.fromCharCode(oEvent.charCode);
+    
+    var bIsValidChar = sValidChars.indexOf(sChar) > -1;
+    
+    if (bBlockPaste) {
+        return bIsValidChar && !(oEvent.ctrlKey && sChar == "v");
+    } else {
+        return bIsValidChar || oEvent.ctrlKey;
+    }
+};
+
+TextUtil.blurBlock = function(oTextbox) {
+
+    //get the invalid characters
+    var sInvalidChars = oTextbox.getAttribute("invalidchars");
+
+    //split the invalid characters into a character array
+    var arrInvalidChars = sInvalidChars.split("");
+    
+    //iterate through the characters
+    for (var i=0; i< arrInvalidChars.length; i++){
+        if (oTextbox.value.indexOf(arrInvalidChars[i]) > -1) {
+            alert("Character '" + arrInvalidChars[i] + "' not allowed.");
+            oTextbox.focus();
+            oTextbox.select();
+            return;
+        }
+    }    
+};
+
+
+TextUtil.blurAllow = function(oTextbox) {
+    //get the valid characters
+    var sValidChars = oTextbox.getAttribute("validchars");
+    
+    //split the textbox value string into a character array
+    var arrTextChars = oTextbox.value.split("");
+   
+    //iterate through the characters
+    for (var i=0; i< arrTextChars.length; i++){
+        if (sValidChars.indexOf(arrTextChars[i]) == -1) {
+             alert("Character '" + arrTextChars[i] + "' not allowed.");
+             oTextbox.focus();
+             oTextbox.select();
+             return;
+        }
+    }
+};    
+
+TextUtil.numericScroll = function (oTextbox, oEvent) {
+
+    oEvent = EventUtil.formatEvent(oEvent);
+    var iValue = oTextbox.value.length == 0 ? 0 :parseInt(oTextbox.value);
+    
+    var iMax = oTextbox.getAttribute("max");
+    var iMin = oTextbox.getAttribute("min");
+
+    if (oEvent.keyCode == 38) {
+        if (iMax == null || iValue < iMax) {
+            oTextbox.value = (iValue + 1);
+        }
+    } else if (oEvent.keyCode == 40){
+        if (iMin == null || iValue > iMin) {
+            oTextbox.value = (iValue - 1);
+        }
+    }
+};
+
+TextUtil.autosuggestMatch = function (sText, arrValues) {
+
+    var arrResult = new Array;
+
+    if (sText != "") {
+        for (var i=0; i < arrValues.length; i++) {
+            if (arrValues[i].indexOf(sText) == 0) {
+                arrResult.push(arrValues[i]);
+            }
+        }
+    }
+
+   return arrResult;
+
+};
+
+TextUtil.autosuggest = function (oTextbox, arrValues, sListboxId) {
+    
+    var oListbox = document.getElementById(sListboxId);
+    var arrMatches = TextUtil.autosuggestMatch(oTextbox.value, arrValues);
+    
+    ListUtil.clear(oListbox);
+    
+    for (var i=0; i < arrMatches.length; i++) {
+        ListUtil.add(oListbox, arrMatches[i]);
+    }
+    
+};
+
+//table sort
+function convert(sValue, sDataType) {
+                switch(sDataType) {
+                    case "int":
+                        return parseInt(sValue);
+                    case "float":
+                        return parseFloat(sValue);
+                    case "date":
+                        return new Date(Date.parse(sValue));
+                    default:
+                        return sValue.toString();
+                
+                }
+            }
+        
+            function generateCompareTRs(iCol, sDataType) {
+        
+                return  function compareTRs(oTR1, oTR2) {
+                            var vValue1, vValue2;
+        
+                            if (oTR1.cells[iCol].getAttribute("value")) {
+                                vValue1 = convert(oTR1.cells[iCol].getAttribute("value"),
+                                              sDataType);
+                                vValue2 = convert(oTR2.cells[iCol].getAttribute("value"),
+                                              sDataType);
+                            } else {
+                                vValue1 = convert(oTR1.cells[iCol].firstChild.nodeValue,
+                                              sDataType);
+                                vValue2 = convert(oTR2.cells[iCol].firstChild.nodeValue,
+                                              sDataType);
+                            }
+        
+                            if (vValue1 < vValue2) {
+                                return -1;
+                            } else if (vValue1 > vValue2) {
+                                return 1;
+                            } else {
+                                return 0;
+                            }
+                        };
+            }
+           
+            function sortTable(sTableID, iCol, sDataType) {
+                var oTable = document.getElementById(sTableID);
+                var oTBody = oTable.tBodies[0];
+                var colDataRows = oTBody.rows;
+                var aTRs = new Array;
+        
+                for (var i=0; i < colDataRows.length; i++) {
+                    aTRs[i] = colDataRows[i];
+                }
+        
+                if (oTable.sortCol == iCol) {
+                    aTRs.reverse();
+                } else {
+                    aTRs.sort(generateCompareTRs(iCol, sDataType));
+                }
+        
+                var oFragment = document.createDocumentFragment();
+                for (var i=0; i < aTRs.length; i++) {
+                    oFragment.appendChild(aTRs[i]);
+                }
+       
+                oTBody.appendChild(oFragment);
+                oTable.sortCol = iCol;
+            }
+
+
+//JavaScript zEvents Library v1.0 by Nicholas C. Zakas, http://www.nczonline.net
+function zEvent() {
+	this.type = null;
+	this.target = null;
+	this.relatedTarget = null;
+	this.cancelable = false;
+	this.timeStamp = null;
+	this.returnValue = true;
+};
+zEvent.prototype.initEvent = function($a, $b) {
+	this.type = $a;
+	this.cancelable = $b;
+	this.timeStamp = (new Date()).getTime();
+};
+zEvent.prototype.preventDefault = function() {
+	if (this.cancelable) {
+		this.returnValue = false;
+	}
+};
+
+function zEventTarget() {
+	this.eventhandlers = new Object();
+};
+zEventTarget.prototype.addEventListener = function($a, $z) {
+	if (typeof this.eventhandlers[$a] == "undefined") {
+		this.eventhandlers[$a] = new Array;
+	};
+	this.eventhandlers[$a].push($z);
+};
+zEventTarget.prototype.dispatchEvent = function($d) {
+	$d.target = this;
+	if (typeof this.eventhandlers[$d.type] != "undefined") {
+		for (var i = 0; i < this.eventhandlers[$d.type].length; i++) {
+			this.eventhandlers[$d.type][i]($d);
+		}
+	};
+	return $d.returnValue;
+};
+zEventTarget.prototype.removeEventListener = function($a, $z) {
+	if (typeof this.eventhandlers[$a] != "undefined") {
+		var $e = new Array;
+		for (var i = 0; i < this.eventhandlers[$a].length; i++) {
+			if (this.eventhandlers[$a][i] != $z) {
+				$e.push(this.eventhandlers[$a][i]);
+			}
+		};
+		this.eventhandlers[$a] = $e;
+	}
+};
+//JavaScript zDragDrop Library v1.0 by Nicholas C. Zakas, http://www.nczonline.net
+function zDrag() {};
+zDrag.current = null;
+zDrag.dragging = false;
+zDrag.isDragging = function() {
+	return this.dragging;
+};
+zDrag.setCurrent = function($a) {
+	this.current = $a;
+	this.dragging = true;
+};
+zDrag.getCurrent = function() {
+	return this.current;
+};
+zDrag.clearCurrent = function() {
+	this.current = null;
+	this.dragging = false;
+};
+
+function zDraggable($b, $z) {
+	zEventTarget.call(this);
+	this.construct($b, $z);
+	this.diffX = 0;
+	this.diffY = 0;
+	this.targets = [];
+};
+zDraggable.prototype = new zEventTarget;
+zDraggable.DRAG_X = 1;
+zDraggable.DRAG_Y = 2;
+zDraggable.prototype.addDropTarget = function($e) {
+	this.targets.push($e);
+};
+zDraggable.prototype.construct = function($b, $z) {
+	this.element = $b;
+	this.constraints = $z;
+	var $f = this;
+	var $g = function() {
+		var $h = new zDragDropEvent();
+		$h.initDragDropEvent("dragstart", true);
+		if ($f.dispatchEvent($h)) {
+			var $i = arguments[0] || window.event;
+			$f.diffX = $i.clientX - $f.element.offsetLeft;
+			$f.diffY = $i.clientY - $f.element.offsetTop;
+			$f.attachEventHandlers();
+			zDrag.setCurrent($f);
+		}
+	};
+	if (this.element.addEventListener) {
+		this.element.addEventListener("mousedown", $g, false);
+	} else if (this.element.attachEvent) {
+		this.element.attachEvent("onmousedown", $g);
+	} else {
+		throw new Error("zDrag not supported in this browser.");
+	}
+};
+zDraggable.prototype.attachEventHandlers = function() {
+	var $f = this;
+	this.tempMouseMove = function() {
+		var $i = arguments[0] || window.event;
+		var $j = $i.clientX - $f.diffX;
+		var $k = $i.clientY - $f.diffY;
+		if ($f.constraints & zDraggable.DRAG_X) {
+			$f.element.style.left = $j;
+		};
+		if ($f.constraints & zDraggable.DRAG_Y) {
+			$f.element.style.top = $k;
+		};
+		var $l = new zDragDropEvent();
+		$l.initDragDropEvent("drag", false);
+		$f.dispatchEvent($l);
+	};
+	$f.tempMouseUp = function() {
+		var $i = arguments[0] || window.event;
+		var $e = $f.getDropTarget($i.clientX, $i.clientY);
+		if ($e != null) {
+			var $m = new zDragDropEvent();
+			$m.initDragDropEvent("drop", false, $f);
+			$e.dispatchEvent($m);
+		};
+		var $n = new zDragDropEvent();
+		$n.initDragDropEvent("dragend", false);
+		$f.dispatchEvent($n);
+		zDrag.clearCurrent();
+		$f.detachEventHandlers();
+	};
+	if (document.body.addEventListener) {
+		document.body.addEventListener("mousemove", this.tempMouseMove, false);
+		document.body.addEventListener("mouseup", this.tempMouseUp, false);
+	} else if (document.body.attachEvent) {
+		document.body.attachEvent("onmousemove", this.tempMouseMove);
+		document.body.attachEvent("onmouseup", this.tempMouseUp);
+	} else {
+		throw new Error("zDrag doesn't support this browser.");
+	}
+};
+zDraggable.prototype.detachEventHandlers = function() {
+	if (document.body.removeEventListener) {
+		document.body.removeEventListener("mousemove", this.tempMouseMove, false);
+		document.body.removeEventListener("mouseup", this.tempMouseUp, false);
+	} else if (document.body.detachEvent) {
+		document.body.detachEvent("onmousemove", this.tempMouseMove);
+		document.body.detachEvent("onmouseup", this.tempMouseUp);
+	} else {
+		throw new Error("zDrag doesn't support this browser.");
+	}
+};
+zDraggable.prototype.getDropTarget = function(iX, iY) {
+	for (var i = 0; i < this.targets.length; i++) {
+		if (this.targets[i].isOver(iX, iY)) {
+			return this.targets[i];
+		}
+	};
+	return null;
+};
+zDraggable.prototype.moveTo = function(iX, iY) {
+	this.element.style.left = iX + "px";
+	this.element.style.top = iY + "px";
+};
+zDraggable.prototype.getLeft = function() {
+	return this.element.offsetLeft;
+};
+zDraggable.prototype.getTop = function() {
+	return this.element.offsetTop;
+};
+
+function zDragDropEvent() {
+	zEvent.call(this);
+};
+zDragDropEvent.prototype = new zEvent();
+zDragDropEvent.prototype.initDragDropEvent = function($p, $q, $r) {
+	this.initEvent($p, $q);
+	this.relatedTarget = $r;
+};
+
+function zDropTarget($b) {
+	zEventTarget.call(this);
+	this.construct($b);
+};
+zDropTarget.prototype = new zEventTarget;
+zDropTarget.prototype.construct = function($b) {
+	this.element = $b;
+};
+zDropTarget.prototype.isOver = function(iX, iY) {
+	var $s = this.element.offsetLeft;
+	var $t = $s + this.element.offsetWidth;
+	var $u = this.element.offsetTop;
+	var $v = $u + this.element.offsetHeight;
+	return (iX >= $s && iX <= $t && iY >= $u && iY <= $v);
+};
+zDropTarget.prototype.getLeft = function() {
+	return this.element.offsetLeft;
+};
+zDropTarget.prototype.getTop = function() {
+	return this.element.offsetTop;
+};
+zDropTarget.prototype.getHeight = function() {
+	return this.element.offsetHeight;
+};
+zDropTarget.prototype.getWidth = function() {
+	return this.element.offsetWidth;
+};
+
+//xmldom
+
+
+function XmlDom() {
+    if (window.ActiveXObject) {
+        var arrSignatures = ["MSXML2.DOMDocument.5.0", "MSXML2.DOMDocument.4.0",
+                             "MSXML2.DOMDocument.3.0", "MSXML2.DOMDocument",
+                             "Microsoft.XmlDom"];
+                         
+        for (var i=0; i < arrSignatures.length; i++) {
+            try {
+        
+                var oXmlDom = new ActiveXObject(arrSignatures[i]);
+            
+                return oXmlDom;
+        
+            } catch (oError) {
+                //ignore
+            }
+        }          
+
+        throw new Error("MSXML is not installed on your system."); 
+              
+    } else if (document.implementation && document.implementation.createDocument) {
+        
+        var oXmlDom = document.implementation.createDocument("","",null);
+
+        oXmlDom.parseError = {
+            valueOf: function () { return this.errorCode; },
+            toString: function () { return this.errorCode.toString() }
+        };
+        
+        oXmlDom.__initError__();
+                
+        oXmlDom.addEventListener("load", function () {
+            this.__checkForErrors__();
+            this.__changeReadyState__(4);
+        }, false);
+
+        return oXmlDom;        
+        
+    } else {
+        throw new Error("Your browser doesn't support an XML DOM object.");
+    }
+}
+
+if (isMoz) {
+
+    Document.prototype.readyState = 0;
+    Document.prototype.onreadystatechange = null;
+
+    Document.prototype.__changeReadyState__ = function (iReadyState) {
+        this.readyState = iReadyState;
+
+        if (typeof this.onreadystatechange == "function") {
+            this.onreadystatechange();
+        }
+    };
+
+    Document.prototype.__initError__ = function () {
+        this.parseError.errorCode = 0;
+        this.parseError.filepos = -1;
+        this.parseError.line = -1;
+        this.parseError.linepos = -1;
+        this.parseError.reason = null;
+        this.parseError.srcText = null;
+        this.parseError.url = null;
+    };
+    
+    Document.prototype.__checkForErrors__ = function () {
+
+        if (this.documentElement.tagName == "parsererror") {
+
+            var reError = />([\s\S]*?)Location:([\s\S]*?)Line Number (\d+), Column (\d+):<sourcetext>([\s\S]*?)(?:\-*\^)/;
+
+            reError.test(this.xml);
+            
+            this.parseError.errorCode = -999999;
+            this.parseError.reason = RegExp.$1;
+            this.parseError.url = RegExp.$2;
+            this.parseError.line = parseInt(RegExp.$3);
+            this.parseError.linepos = parseInt(RegExp.$4);
+            this.parseError.srcText = RegExp.$5;
+        }
+    };
+    
+        
+    Document.prototype.loadXML = function (sXml) {
+    
+        this.__initError__();
+    
+        this.__changeReadyState__(1);
+    
+        var oParser = new DOMParser();
+        var oXmlDom = oParser.parseFromString(sXml, "text/xml");
+ 
+        while (this.firstChild) {
+            this.removeChild(this.firstChild);
+        }
+
+        for (var i=0; i < oXmlDom.childNodes.length; i++) {
+            var oNewNode = this.importNode(oXmlDom.childNodes[i], true);
+            this.appendChild(oNewNode);
+        }
+        
+        this.__checkForErrors__();
+        
+        this.__changeReadyState__(4);
+
+    };
+    
+    Document.prototype.__load__ = Document.prototype.load;
+
+    Document.prototype.load = function (sURL) {
+        this.__initError__();
+        this.__changeReadyState__(1);
+        this.__load__(sURL);
+    };
+    
+    Node.prototype.__defineGetter__("xml", function () {
+        var oSerializer = new XMLSerializer();
+        return oSerializer.serializeToString(this, "text/xml");
+    });
+
+}
+function setCookie(sName, sValue, oExpires, sPath, sDomain, bSecure) {
+                    var sCookie = sName + "=" + encodeURIComponent(sValue);
+                
+                    if (oExpires) {
+                        sCookie += "; expires=" + oExpires.toGMTString();
+                    }
+                
+                    if (sPath) {
+                        sCookie += "; path=" + sPath;
+                    }
+                
+                    if (sDomain) {
+                        sCookie += "; domain=" + sDomain;
+                    }
+                
+                    if (bSecure) {
+                        sCookie += "; secure";
+                    }
+                
+                    document.cookie = sCookie;
+                }
+                                
+                function getCookie(sName) {
+                
+                    var sRE = "(?:; )?" + sName + "=([^;]*);?";
+                    var oRE = new RegExp(sRE);
+                    
+                    if (oRE.test(document.cookie)) {
+                        return decodeURIComponent(RegExp["$1"]);
+                    } else {
+                        return null;
+                    }
+                
+                }                
+
+                function deleteCookie(sName, sPath, sDomain) {
+                    var sCookie = sName + "=; expires=" + (new Date(0)).toGMTString();
+                    if (sPath) {
+                        sCookie += "; path=" + sPath;
+                    }
+                
+                    if (sDomain) {
+                        sCookie += "; domain=" + sDomain;
+                    }
+                    
+                    document.cookie = sCookie;
+                }
+
+//http
+
+
+var bXmlHttpSupport = (typeof XMLHttpRequest == "function" || window.ActiveXObject);
+
+function httpPost(sURL, sParams) {
+                       
+    var oURL = new java.net.URL(sURL);
+    var oConnection = oURL.openConnection();
+
+    oConnection.setDoInput(true);
+    oConnection.setDoOutput(true);
+    oConnection.setUseCaches(false);                
+    oConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");                
+
+    var oOutput = new java.io.DataOutputStream(oConnection.getOutputStream());
+    oOutput.writeBytes(sParams);
+    oOutput.flush();
+    oOutput.close();
+
+    var sLine = "", sResponseText = "";
+
+    var oInput = new java.io.DataInputStream(oConnection.getInputStream());                                
+    sLine = oInput.readLine();
+    
+    while (sLine != null){                                
+        sResponseText += sLine + "\n";
+        sLine = oInput.readLine();
+    }
+                                  
+    oInput.close();                                  
+
+    return sResponseText;                         
+}
+
+function addPostParam(sParams, sParamName, sParamValue) {
+    if (sParams.length > 0) {
+        sParams += "&";
+    }
+    return sParams + encodeURIComponent(sParamName) + "=" 
+                   + encodeURIComponent(sParamValue);
+}
+
+function addURLParam(sURL, sParamName, sParamValue) {
+    sURL += (sURL.indexOf("?") == -1 ? "?" : "&");
+    sURL += encodeURIComponent(sParamName) + "=" + encodeURIComponent(sParamValue);
+    return sURL;   
+}
+
+function httpGet(sURL) {
+    var sResponseText = "";
+    var oURL = new java.net.URL(sURL);
+    var oStream = oURL.openStream();
+    var oReader = new java.io.BufferedReader(new java.io.InputStreamReader(oStream));
+    
+    var sLine = oReader.readLine();
+    while (sLine != null) {
+        sResponseText += sLine + "\n";
+        sLine = oReader.readLine();
+    }
+    
+    oReader.close();
+    return sResponseText;
+}
+
+if (typeof XMLHttpRequest == "undefined" && window.ActiveXObject) {
+
+    function XMLHttpRequest() {
+
+        var arrSignatures = ["MSXML2.XMLHTTP.5.0", "MSXML2.XMLHTTP.4.0",
+                             "MSXML2.XMLHTTP.3.0", "MSXML2.XMLHTTP",
+                             "Microsoft.XMLHTTP"];
+                         
+        for (var i=0; i < arrSignatures.length; i++) {
+            try {
+        
+                var oRequest = new ActiveXObject(arrSignatures[i]);
+            
+                return oRequest;
+        
+            } catch (oError) {
+                //ignore
+            }
+        }          
+
+        throw new Error("MSXML is not installed on your system.");               
+    }
+}
+
+
+var Http = new Object;
+
+Http.get = function (sURL, fnCallback) {
+ 
+    if (bXmlHttpSupport) {
+   
+        var oRequest = new XMLHttpRequest();
+        oRequest.open("get", sURL, true);
+        oRequest.onreadystatechange = function () {
+            if (oRequest.readyState == 4) {
+                fnCallback(oRequest.responseText);
+            }
+        }
+        oRequest.send(null);    
+    
+    } else if (navigator.javaEnabled() && typeof java != "undefined" 
+            && typeof java.net != "undefined") {
+            
+        setTimeout(function () {
+            fnCallback(httpGet(sURL));
+        }, 10);
+    } else {
+        alert("Your browser doesn't support HTTP requests.");
+    }          
+
+};
+
+Http.post = function (sURL, sParams, fnCallback) {
+ 
+    if (bXmlHttpSupport) {
+   
+        var oRequest = new XMLHttpRequest();
+        oRequest.open("post", sURL, true);
+        oRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        oRequest.onreadystatechange = function () {
+            if (oRequest.readyState == 4) {
+                fnCallback(oRequest.responseText);
+            }
+        }
+        oRequest.send(sParams);    
+    
+    } else if (navigator.javaEnabled() && typeof java != "undefined" 
+            && typeof java.net != "undefined") {
+            
+        setTimeout(function () {
+            fnCallback(httpPost(sURL, sParams));
+        }, 10);
+    } else {
+        alert("Your browser doesn't support HTTP requests.");
+    }          
+
+};
+
+function StringBuffer() {
+    this.__strings__ = new Array;
+}
+
+StringBuffer.prototype.append = function (str) {
+    this.__strings__.push(str);
+};
+
+StringBuffer.prototype.toString = function () {
+    return this.__strings__.join("");
+};
+
+
+function WebService() {
+    this.action = " ";
+    this.url = "";
+}
+
+WebService.prototype.buildRequest = function () {
+    return "";
+};
+
+WebService.prototype.handleResponse = function (oSOAP) {
+
+};
+
+WebService.prototype.send = function () {
+
+    if (isMoz) {        
+        try {
+            netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserRead");
+        } catch (oError) {
+            alert(oError);
+            return false;
+        } 
+    }
+    
+    var oRequest = new XMLHttpRequest;
+    oRequest.open("post", this.url, false);
+    oRequest.setRequestHeader("Content-Type", "text/xml");
+    oRequest.setRequestHeader("SOAPAction", this.action);
+    oRequest.send(this.buildRequest());
+    if (oRequest.status == 200) {
+        return this.handleResponse(oRequest.responseText);
+    } else{
+        throw new Error("Request did not complete, code " + oRequest.status);
+    }
+};
+
+
+function TemperatureService() {
+        WebService.apply(this);
+        this.url = "http://services.xmethods.net:80/soap/servlet/rpcrouter";
+        this.zipcode = "";
+}
+
+TemperatureService.prototype = new WebService;
+
+TemperatureService.prototype.buildRequest = function () {
+    var oBuffer = new StringBuffer();
+    
+    oBuffer.append("<soap:Envelope xmlns:n=\"urn:xmethods-Temperature\" ");
+    oBuffer.append("xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" ");
+    oBuffer.append("xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" ");
+    oBuffer.append("xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" ");
+    oBuffer.append("xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">");
+    oBuffer.append("<soap:Body soap:encodingStyle=");
+    oBuffer.append("\"http://schemas.xmlsoap.org/soap/encoding/\">");
+    oBuffer.append("<n:getTemp><zipcode xsi:type=\"xs:string\">");
+    oBuffer.append(this.zipcode);
+    oBuffer.append("</zipcode></n:getTemp></soap:Body></soap:Envelope>");
+    
+    return oBuffer.toString();
+};
+
+TemperatureService.prototype.handleResponse = function (sResponse) {
+    var oRE = /<return .*?>(.*)<\/return>/gi;
+    oRE.test(sResponse);
+    return parseFloat(RegExp["$1"]);
+};
+
+
+TemperatureService.prototype.webServiceSend = TemperatureService.prototype.send;
+TemperatureService.prototype.send = function (sZipcode) {
+        this.zipcode = sZipcode;
+        return this.webServiceSend();
+};
+
+
+
+
+
+/////////////////////////////////////////////////////Javascript高级程序设计源代码\Examples end////////////////////////////////////
+
+
 // A function for determining how far vertically the browser is scrolled
 function scrollY() {
     // A shortcut, in case we're using Internet Explorer 6 in Strict Mode
