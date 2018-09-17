@@ -5507,6 +5507,331 @@ TemperatureService.prototype.send = function (sZipcode) {
 
 /////////////////////////////////////////////////////Javascript高级程序设计源代码\Examples end////////////////////////////////////
 
+////////////////////////////////////////////////////精通JavaScript-Source///////////////////////////////////////////////////////
+// A simple helper that allows you to bind new functions to the
+// prototype of an object
+Function.prototype.method = function(name, func) {
+    this.prototype[name] = func;
+    return this;
+};
+
+// A (rather complex) function that allows you to gracefully inherit
+// functions from other objects and be able to still call the  'parent'
+// object's function
+Function.method('inherits', function(parent) {
+    // Keep track of how many parent-levels deep we are
+    var depth = 0;
+
+    // Inherit the parent's methods
+    var proto = this.prototype = new parent();
+
+    // Create a new 'priveledged' function called 'uber', that when called
+    // executes any function that has been written over in the inheritance
+    this.method('uber', function uber(name) {
+
+        var func; // The function to be execute
+        var ret; // The return value of the function
+        var v = parent.prototype; // The parent's prototype
+
+        // If we're already within another 'uber' function
+        if (depth) {
+            // Go the necessary depth to find the orignal prototype
+            for ( var i = d; i > 0; i += 1 ) {
+                v = v.constructor.prototype;
+            }
+
+            // and get the function from that prototype
+            func = v[name];
+
+        // Otherwise, this is the first 'uber' call
+        } else {
+            // Get the function to execute from the prototype
+            func = proto[name];
+
+            // If the function was a part of this prototype
+            if ( func == this[name] ) {
+                // Go to the parent's prototype instead
+                func = v[name];
+            }
+        }
+
+        // Keep track of how 'deep' we are in the inheritance stack
+        depth += 1;
+
+        // Call the function to execute with all the arguments but the first
+        // (which holds the name of the function that we're executing)
+        ret = func.apply(this, Array.prototype.slice.apply(arguments, [1]));
+
+        // Reset the stack depth
+        depth -= 1;
+
+        // Return the return value of the execute function
+        return ret;
+    });
+
+    return this;
+});
+
+// A function for inheriting only a couple functions from a parent object,
+// not every function using new parent()
+Function.method('swiss', function(parent) {
+    // Go through all of the methods to inherit
+    for (var i = 1; i < arguments.length; i += 1) {
+        // The name of the method to import
+        var name = arguments[i];
+
+        // Import the method into this object's prototype
+        this.prototype[name] = parent.prototype[name];
+    }
+
+    return this;
+});
+
+// Create a global object named 'Class'
+var Class = {
+    // it has a single function that creates a new object constructor
+    create: function() {
+
+        // Create an anonymous object constructor
+        return function() {
+            // This calls its own initialization method
+            this.initialize.apply(this, arguments);
+        }
+
+    }
+}
+
+// Add a static method to the Object object which copies
+// properties from one object to another
+Object.extend = function(destination, source) {
+    // Go through all of the properties to extend
+    for (property in source) {
+        // and add them to the destination object
+        destination[property] = source[property];
+    }
+
+    // return the modified object
+    return destination;
+}
+
+// Add additional methods to the String prototype
+Object.extend(String.prototype, {
+    // A new Strip Tags function that removes all HTML tags from the string
+    stripTags: function() {
+        return this.replace(/<\/?[^>]+>/gi, '');
+    },
+
+    // Converts a string to an array of characters
+    toArray: function() {
+        return this.split('');
+    },
+
+    // Converts "foo-bar" text to "fooBar" 'camel' text
+    camelize: function() {
+        // Break up the string on dashes
+        var oStringList = this.split('-');
+
+        // Return early if there are no dashes
+        if (oStringList.length == 1)
+            return oStringList[0];
+
+        // Optionally camelize the start of the string
+        var camelizedString = this.indexOf('-') == 0
+            ? oStringList[0].charAt(0).toUpperCase() + oStringList[0].substring(1)
+            : oStringList[0];
+
+        // Capitalize each subsequent portion
+        for (var i = 1, len = oStringList.length; i < len; i++) {
+            var s = oStringList[i];
+            camelizedString += s.charAt(0).toUpperCase() + s.substring(1);
+        }
+
+        // and return the modified string
+        return camelizedString;
+    }
+});
+
+// (c) 2001 Douglas Crockford
+// 2001 June 3
+// The -is- object is used to identify the browser.  Every browser edition
+// identifies itself, but there is no standard way of doing it, and some of
+// the identification is deceptive. This is because the authors of web
+// browsers are liars. For example, Microsoft's IE browsers claim to be
+// Mozilla 4. Netscape 6 claims to be version 5.
+
+var is = {
+    ie:      navigator.appName == 'Microsoft Internet Explorer',
+    java:    navigator.javaEnabled(),
+    ns:      navigator.appName == 'Netscape',
+    ua:      navigator.userAgent.toLowerCase(),
+    version: parseFloat(navigator.appVersion.substr(21)) ||
+             parseFloat(navigator.appVersion),
+    win:     navigator.platform == 'Win32'
+}
+is.mac = is.ua.indexOf('mac') >= 0;
+if (is.ua.indexOf('opera') >= 0) {
+    is.ie = is.ns = false;
+    is.opera = true;
+}
+if (is.ua.indexOf('gecko') >= 0) {
+    is.ie = is.ns = false;
+    is.gecko = true;
+}
+
+//base.js
+// The Base object constructor
+var Base = function(obj) {
+    // Only work if there's something to extend
+    if ( obj )
+        // If used as Base(), use the prototype of the caller
+        if ( this == window )
+            Base.prototype.extend.call(obj, arguments.callee.prototype);
+
+        // Otherwise, this is called as new Base(), so extend the object
+        else
+            this.extend(obj);
+};
+
+Base.version = "1.0.2";
+
+Base.prototype = {
+    // A function for overriding one object property with another
+    extend: function(source, value) {
+        var extend = Base.prototype.extend;
+
+        // Check to see if we're overriding a property with a new value
+        if (arguments.length == 2) {
+            // Remember the original parent property value
+            var ancestor = this[source];
+
+            // Check to see if we're overriding a parent method, and that this.base()
+            // is actually used by the overrider
+            if ((ancestor instanceof Function) && (value instanceof Function) &&
+                ancestor.valueOf() != value.valueOf() && /\bbase\b/.test(value)) {
+
+                // Remember the old function
+                var method = value;
+
+                // and build a new function wrapper, to have sane 
+                value = function() {
+                    // Remember the old value of this.base to be restored later
+                    var previous = this.base;
+                    // Calling this.base() calls the old parent function
+                    this.base = ancestor;
+
+                    // Execute the new, overriding, function
+                    var returnValue = method.apply(this, arguments);
+
+                    // Restore the this.base() property
+                    this.base = previous;
+
+                    // Return the accurate return value
+                    return returnValue;
+                };
+
+                // valueOf and toString get messed by our modified
+                // wrapper function, so make them appear normal
+                value.valueOf = function() { return method; };
+                value.toString = function() { return String(method); };
+            }
+
+            // Attach the new property to the source
+            return this[source] = value;
+
+        // If only a source was provided, copy all properties over from
+        // the parent class to this new child
+        } else if (source) {
+            var _prototype = {toSource: null};
+
+            // We modify these two functions later on, so protect them
+            var _protected = ["toString", "valueOf"];
+
+            // if we are prototyping then include the constructor
+            if (Base._prototyping) _protected[2] = "constructor";
+
+            // Copy over the protected functions indvidually
+            for (var i = 0; (name = _protected[i]); i++)
+                if (source[name] != _prototype[name])
+                    extend.call(this, name, source[name]);
+
+            // Copy each of the source object's properties to this object
+            for (var name in source)
+                if (!_prototype[name])
+                    extend.call(this, name, source[name]);
+        }
+
+        return this;
+    },
+
+    // The this.base() function which we'll be implementating later on
+    base: function() {}
+};
+
+// A wrapper function for creating a new object constructor
+Base.extend = function(_instance, _static) {
+    // Remember the extend function
+    var extend = Base.prototype.extend;
+
+    // Lets us do Base.extend() and get a blank object constructor
+    if (!_instance) _instance = {};
+
+    // Make sure to include the constructor later
+    Base._prototyping = true;
+
+    // Build the prototype
+    var _prototype = new this;
+    extend.call(_prototype, _instance);
+
+    // Build the constructor
+    var constructor = _prototype.constructor;
+    _prototype.constructor = this;
+
+    delete Base._prototyping;
+
+    // Create the wrapper for the constructor function
+    var klass = function() {
+        if (!Base._prototyping) constructor.apply(this, arguments);
+        this.constructor = klass;
+    };
+
+    // Which inherits from Base
+    klass.prototype = _prototype;
+
+    // Add all the extra Base methods
+    klass.extend = this.extend;
+    klass.implement = this.implement;
+    klass.toString = function() {
+        return String(constructor);
+    };
+
+    // Add in all the extra properties provided by the user
+    extend.call(klass, _static);
+
+    // Check for a single instance case
+    var object = constructor ? klass : _prototype;
+
+    // Class initialisation
+    if (object.init instanceof Function) object.init();
+
+    // Return the new object constructor
+    return object;
+};
+
+// A simple function that can be used to pull additional object properties
+// into a constructor – effectively creating multiple inheritance
+Base.implement = function(_interface) {
+    // If a constructor was provided, instead of a prototype,
+    // get the prototype instead
+    if (_interface instanceof Function) _interface = _interface.prototype;
+
+    // Extend the object with the methods from the parent object
+    this.prototype.extend(_interface);
+};
+
+
+
+
+//libaray.js
 
 // A function for determining how far vertically the browser is scrolled
 function scrollY() {
@@ -5727,4 +6052,250 @@ function prev( elem ) {
         elem = elem.previousSibling;
     } while ( elem && elem.nodeType != 1 );
     return elem;
+}
+
+function first( elem ) {
+    elem = elem.firstChild;
+    return elem && elem.nodeType != 1 ?
+        nextSibling( elem ) : elem;
+}
+
+function last( elem ) {
+    elem = elem.lastChild;
+    return elem && elem.nodeType != 1 ?
+        prevSibling( elem ) : elem;
+}
+
+function parent( elem, num ) {
+    num = num || 1;
+    for ( var i = 0; i < num; i++ )
+        if ( elem != null ) elem = elem.parentNode;
+    return elem;
+}
+
+HTMLElement.prototype.next = function() {
+    var elem = this;
+    do {
+        elem = elem.nextSibling;
+    } while ( elem && elem.nodeType != 1 );
+    return elem;
+};
+
+function id(name) {
+    return document.getElementById(name);
+}
+
+function tag(elem,name) {
+    // If the context element is not provided, search the whole document
+    return (elem || document).getElementsByTagName(name);
+}
+
+// Wait until the page is loaded
+// (Uses addEvent, described in the next chapter)
+addEvent(window, “load”, function() {
+    // Perform HTML DOM operations
+    next(  id(“everywhere”) ).style.background = ‘blue’;
+});
+
+function domReady( f ) {
+    // If the DOM is already loaded, execute the function right away
+    if ( domReady.done ) return f();
+
+    // If we’ve already added a function
+    if ( domReady.timer ) {
+        // Add it to the list of functions to execute
+        domReady.ready.push( f  );
+    } else {
+        // Attach an event for when the page finishes  loading,
+        // just in case it finishes first. Uses addEvent.
+        addEvent( window, “load”, isDOMReady );
+
+        // Initialize the array of functions to execute
+        domReady.ready = [ f ];
+
+        //  Check to see if the DOM is ready as quickly as possible
+        domReady.timer = setInterval( isDOMReady, 13 );
+    }
+}
+
+// Checks to see if the DOM is ready for navigation
+function isDOMReady() {
+    // If we already figured out that the page is ready, ignore
+    if ( domReady.done ) return false;
+
+    // Check to see if a number of functions and elements are
+    // able to be accessed
+    if ( document && document.getElementsByTagName && 
+          document.getElementById && document.body ) {
+
+        // If they’re ready, we can stop checking
+        clearInterval( domReady.timer );
+        domReady.timer = null;
+
+        // Execute all the functions that were waiting
+        for ( var i = 0; i < domReady.ready.length; i++ )
+            domReady.ready[i]();
+
+        // Remember that we’re now done
+        domReady.ready = null;
+        domReady.done = true;
+    }
+}
+
+function class(name,type) {
+    var r = [];
+    // Locate the class name (allows for multiple class names)
+    var re = new RegExp("(^|\\s)" + name + "(\\s|$)");
+
+    // Limit search by type, or look through all elements
+    var e = document.getElementsByTagName(type || “*”);
+    for ( var j = 0; j < e.length; j++ )
+        // If the element has the class, add it for return
+        if ( re.test(e[j]) ) r.push( e[j] );
+
+    // Return the list of matched elements
+    return r;
+}
+//innerText
+// Non-Mozilla Browsers:
+//Elem.innerText
+
+// All platforms:
+//Elem.firstChild.nodeValue
+
+function text(e) {
+    var t = "";
+
+    // If an element was passed, get it’s children, 
+    // otherwise assume it’s an array
+    e = e.childNodes || e;
+
+    // Look through all child nodes
+    for ( var j = 0; j < e.length; j++ ) {
+        // If it’s not an element, append its text value
+        // Otherwise, recurse through all the element’s children 
+        t += e[j].nodeType != 1 ?
+            e[j].nodeValue : text(e[j].childNodes);
+    }
+
+    // Return the matched text
+    return t;
+}
+
+function hasAttribute( elem, name ) {
+    return elem.getAttribute(name) != null;
+}
+
+function attr(elem, name, value) {
+    // Make sure that a valid name was provided
+    if ( !name || name.constructor != String ) return '';
+
+    // Figure out if the name is one of the weird naming cases
+    name = { ‘for': 'htmlFor', 'class': 'className' }[name] || name;
+
+    // If the user is setting a value, also
+    if ( value != null ) {
+        // Set the quick way first
+        elem[name] = value;
+
+        // If we can, use setAttribute
+        if ( elem.setAttribute )
+            elem.setAttribute(name,value);
+    }
+
+    // Return the value of the attribute
+    return elem[name] || elem.getAttribute(name) || '';
+}
+
+function create( elem ) {
+    return document.createElementNS ?
+        document.createElementNS( 'http://www.w3.org/1999/xhtml', elem ) :
+        document.createElement( elem );
+}
+
+function before( parent, before, elem ) {
+    // Check to see if no parent node was provided
+    if ( elem == null ) {
+        elem = before;
+        before = parent;
+        parent  = before.parentNode;
+    }
+    parent.insertBefore( checkElem( elem ), before );
+}
+
+function append( parent, elem ) {
+    parent.appendChild( checkElem( elem ) );
+}
+
+function checkElem2( elem ) {
+    // If only a string was provided, convert it into a Text Node
+    return elem && elem.constructor == String ?
+        document.createTextNode( elem ) : elem;
+}
+
+function checkElem(a) {
+    var r = [];
+    // Force the argument into an array, if it isn’t already
+    if ( a.constructor != Array ) a = [ a ];
+
+    for ( var i = 0; i < a.length; i++ ) {
+        // If there’s a String
+        if ( a[i].constructor == String ) {
+            // Create a temporary element to house the HTML
+            var div = document.createElement("div");
+
+            // Inject the HTML, to convert it into a DOM structure
+            div.innerHTML = a[i];
+
+             // Extract the DOM structure back out of the temp DIV
+             for ( var j = 0; j < div.childNodes.length; j++ )
+                 r[r.length] = div.childNodes[j];
+        } else if ( a[i].length ) { // If it’s an array
+            // Assume that it’s an array of DOM Nodes
+            for ( var j = 0; j < a[i].length; j++ )
+                r[r.length] = a[i][j];
+        } else { // Otherwise, assume it’s a DOM Node
+            r[r.length] = a[i];
+        }
+    }
+    return r;
+}
+
+function before2( parent, before, elem ) {
+    // Check to see if no parent node was provided
+    if ( elem == null ) {
+        elem = before;
+        before = parent;
+        parent  = before.parentNode;
+    }
+
+    // Get the new array of elements
+    var elems = checkElem( elem );
+
+    // Move through the array backwards,
+    // because we’re prepending elements
+    for ( var i = elems.length - 1; i >= 0; i-- ) {
+        parent.insertBefore( elems[i], before );
+    }
+}
+
+function append2( parent, elem ) {
+    // Get the array of elements
+    var elems = checkElem( elem );
+
+    // Append them all to the element
+    for ( var i = 0; i <= elems.length; i++ ) {
+        parent.appendChild( elems[i] );
+    }
+}
+
+// Remove a single Node from the DOM
+function remove( elem ) {
+    if ( elem ) elem.parentNode.removeChild( elem );
+}
+
+// Remove all of an Element’s children from the DOM
+function empty( elem ) {
+    while ( elem.firstChild )
+        remove( elem.firstChild );
 }
