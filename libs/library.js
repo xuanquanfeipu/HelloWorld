@@ -6053,7 +6053,7 @@ function prev( elem ) {
     } while ( elem && elem.nodeType != 1 );
     return elem;
 }
-
+/////////////////////////////////////////////////////library.js   end/////////////////////////////////////////////////////
 function first( elem ) {
     elem = elem.firstChild;
     return elem && elem.nodeType != 1 ?
@@ -6381,4 +6381,1583 @@ fixEvent.stopPropagation = function() {
 };
 
 
+// Get a style property (name) of a specific element (elem)
+function getStyle( elem, name ) {
+    // If the property exists in style[], then it’s been set recently (and is current)
+    if (elem.style[name])
+        return elem.style[name];
+
+    // Otherwise, try to use IE’s method
+    else if (elem.currentStyle)
+        return elem.currentStyle[name];
+
+    // Or the W3C’s method, if it exists
+    else if (document.defaultView && document.defaultView.getComputedStyle) {
+        // It uses the traditional ‘text-align’ style of rule writing, instead of textAlign
+        name = name.replace(/([A-Z])/g,"-$1");
+        name = name.toLowerCase();
+
+        // Get the style object and get the value of the property (if it exists)
+        var s = document.defaultView.getComputedStyle(elem,"");
+        return s && s.getPropertyValue(name);
+
+    // Otherwise, we’re using some other browser
+    } else
+        return null;
+}
+
+// Find the X (Horizontal, Left) position of an element
+function pageX(elem) {
+    var p = 0;
+
+    // We need to add up all of the offsets for every parent
+    while ( elem.offsetParent ) {
+        // Add the offset to the current count
+        p += elem.offsetLeft;
+
+        // and continue on to the next parent
+        elem = elem.offsetParent;
+    }
+
+    return p;
+}
+
+// Find the Y (Vertical, Top) position of an element
+function pageY(elem) {
+    var p = 0;
+
+    // We need to add up all the offsets for every parent
+    while ( elem.offsetParent ) {
+        // Add the offset to the current count
+        p += elem.offsetTop;
+
+        // and continue on to the next parent
+        elem = elem.offsetParent;
+    }
+
+    return p;
+}
+
+// Find the horizontal positioing of an element within its parent
+function parentX(elem) {  
+    return elem.parentNode == elem.offsetParent ?
+        elem.offsetLeft :
+        pageX( elem ) - pageX( elem.parentNode );
+}
+
+// Find the left position of an element
+function posX(elem) {
+    // Get the computed style and get the number out of the value
+    return parseInt( getStyle( elem, “left” ) );
+}
+
+// Find the top position of an element
+function posY(elem) {
+    // Get the computed style and get the number out of the value
+    return parseInt( getStyle( elem, “top” ) );
+}
+
+// A function for setting the horizontal position of an element
+function setX(elem, pos) {
+    // Set the ‘left’ CSS property, using pixel units
+    elem.style.left = pos + “px”;
+}
+
+// A function for setting the vertical position of an element
+function setY(elem, pos) {
+    // Set the ‘left’ CSS property, using pixel units
+    elem.style.top = pos + “px”;
+}
+
+// A function for adding a number of pixels to the horizontal
+// position of an element 
+function addX(elem,pos) {
+    // Get the current horz. position and add the offset to it.
+    setX( elem, posX(elem) + pos );
+}
+
+// A function that can be used to add a number of pixels to the
+// vertical position of an element
+function addY(elem,pos) {
+    // Get the current vertical position and add the offset to it
+    setY( elem, posY(elem) + pos );
+}
+
+// Get the actual height (using the computed CSS) of an element
+function getHeight( elem ) {
+    // Gets the computed CSS value and parses out a usable number
+    return parseInt( getStyle( elem, ‘height’ ) );
+}
+
+// Get the actual width (using the computed CSS) of an element
+function getWidth( elem ) {
+    // Gets the computed CSS value and parses out a usable number
+    return parseInt( getStyle( elem, ‘width’ ) );
+}
+
+// Find the full, possible, height of an element (not the actual,
+// current, height)
+function fullHeight( elem ) {
+    // If the element is being displayed, then offsetHeight
+    // should do the trick, barring that, getHeight() will work
+    if ( getStyle( elem, ‘display’ ) != ‘none’ )
+        return elem.offsetHeight || getHeight( elem );
+
+    // Otherwise, we have to deal with an element with a display
+    // of none, so we need to reset its CSS properties to get a more
+    // accurate reading
+    var old = resetCSS( elem, {
+        display: ‘’,
+        visibility: ‘hidden’,
+        position: ‘absolute’
+    });
+
+    // Figure out what the full height of the element is, using clientHeight
+    // and if that doesn’t work, use getHeight
+    var h = elem.clientHeight || getHeight( elem );
+
+    // Finally, restore the CSS properties back to what they were
+    restoreCSS( elem, old );
+
+    // and return the full height of the element
+    return h;
+}
+
+// Find the full, possible, width of an element (not the actual,
+// current, width)
+function fullWidth( elem ) {
+    // If the element is being displayed, then offsetWidth
+    // should do the trick, barring that, getWidth() will work
+    if ( getStyle( elem, ‘display’ ) != ‘none’ )
+        return elem.offsetWidth || getWidth( elem );
+
+    // Otherwise, we have to deal with an element with a display
+    // of none, so we need to reset its CSS properties to get a more
+    // accurate reading
+    var old = resetCSS( elem, {
+        display: ‘’,
+        visibility: ‘hidden’,
+        position: ‘absolute’
+    });
+
+    // Figure out what the full width of the element is, using clientWidth
+    // and if that doesn’t work, use getWidth
+    var w = elem.clientWidth || getWidth( elem );
+
+    // Finally, restore the CSS properties back to what they were
+    restoreCSS( elem, old );
+
+    // and return the full width of the element
+    return w;
+}
+
+// A function used for setting a set of CSS properties, which
+// can then be restored back again later
+function resetCSS( elem, prop ) {
+    var old = {};
+
+    // Go through each of the properties
+    for ( var i in prop ) {
+        // Remember the old property value
+        old[ i ] = elem.style[ i ];
+
+        // And set the new value
+        elem.style[ i ] = prop[i];
+    }
+
+    // Retun the set of changed values, to be used by restoreCSS
+    return old;
+}
+
+// A function for restoring the side effects of the resetCSS function
+function restoreCSS( elem, prop ) {
+    // Reset all the properties back to their original values
+    for ( var i in prop )
+        elem.style[ i ] = prop[ i ];
+}
+
+// A function for hiding (using display) an element
+function hide( elem ) {
+    // Find out what it’s current display state is
+    var curDisplay = getStyle( elem, ‘display’ );
+
+    //  Remember its display state for later
+    if ( curDisplay != ‘none’ )
+        elem.$oldDisplay = curDisplay;
+
+    // Set the display to none (hiding the element)
+    elem.style.display = ‘none’;
+}
+
+// A function for showing (using display) an element
+function show( elem ) {
+    // Set the display property back to what it use to be, or use
+    // ‘block’, if no previous display had been saved
+    elem.style.display = elem.$oldDisplay || ‘block’;
+}
+
+// Set an opacity level for an element
+// (where level is a number 0-100)
+function setOpacity( elem, level ) {
+    // If filters exist, then this is IE, so set the Alpha filter
+    if ( elem.filters )
+        elem.filters.alpha.opacity = level;
+
+    // Otherwise use the W3C opacity property
+    else
+        elem.style.opacity = level / 100;
+}
+
+function slideDown( elem ) {
+    // Start the slide down at  0
+    elem.style.height = '0px';
+
+    // Show the element (but you can not see it, since the height is 0)
+    show( elem );
+
+    // Find the full, potential, height of the element
+    var h = fullHeight( elem );
+
+    // We're going to do a 20 frames animation that takes
+    // place over one second
+    for ( var i = 0; i <= 100; i += 5 ) {
+        // A closure to make sure that we have the right 'i'?        (function(){
+            var pos = i;
+
+            // Set the timeout to occur at the specified time in the future
+            setTimeout(function(){
+
+                // Set the new height of the element
+                elem.style.height = ( pos / 100 ) * h ) + "px";
+
+            }, ( pos + 1 ) * 10 );
+        })();
+    }
+}
+
+function fadeIn( elem ) {
+    // Start the opacity at  0
+    setOpacity( elem, 0 );
+
+    // Show the element (but you can see it, since the opacity is 0)
+    show( elem );
+
+    // We're going to do a 20 frames animation that takes
+    // place over one second
+    for ( var i = 0; i <= 100; i += 5 ) {
+        // A closure to make sure that we have the right 'i'?        (function(){
+            var pos = i; 
+
+            // Set the timeout to occur at the specified time in the future
+            setTimeout(function(){
+
+                // Set the new opacity of the element
+                setOpacity( elem, pos );
+
+            }, ( pos + 1 ) * 10 );
+        })();
+    }
+}
+
+// Find the horizontal position of the cursor
+function getX(e) {
+    // Normalize the event object
+    e = e || window.event;
+
+    // Check for the non-IE position, then the IE position, and finally return 0
+    return e.pageX || e.clientX + document.body.scrollLeft || 0;
+}
+
+// Find the vertical position of the cursor
+function getY(e) {
+    // Normalize the event object
+    e = e || window.event;
+
+    // Check for the non-IE position, then the IE position, and finally return 0
+    return e.pageY || e.clientY + document.body.scrollTop || 0;
+}
+
+// Get the X position of the mouse relative to the element target
+// used in event object ‘e’
+function getElementX( e ) {
+    // Find the appropriate element offset
+    return ( e && e.layerX ) || window.event.offsetX;
+}
+ 
+// Get the Y position of the mouse relative to the element target
+// used in event object ‘e’
+function getElementY( e ) {
+    // Find the appropriate element offset
+    return ( e && e.layerY ) || window.event.offsetY;
+}
+
+// Returns the height of the web page
+// (could change if new content is added to the page)
+function pageHeight() {
+    return document.body.scrollHeight;
+}
+
+// Returns the width of the web page
+function pageWidth() {
+    return document.body.scrollWidth;
+}
+
+// A function for determining how far horizontally the browser is scrolled
+function scrollX() {
+    // A shortcut, in case we’re using Internet Explorer 6 in Strict Mode
+    var de = document.documentElement;
+
+    // If the pageXOffset of the browser is available, use that
+    return self.pageXOffset ||
+
+        // Otherwise, try to get the scroll left off of the root node
+        ( de && de.scrollLeft ) ||
+
+        // Finally, try to get the scroll left off of the body element
+        document.body.scrollLeft;
+}
+
+// A function for determining how far vertically the browser is scrolled
+function scrollY() {
+    // A shortcut, in case we’re using Internet Explorer 6 in Strict Mode
+    var de = document.documentElement;
+
+    // If the pageYOffset of the browser is available, use that
+    return self.pageYOffset ||
+
+        // Otherwise, try to get the scroll top off of the root node
+        ( de && de.scrollTop ) ||
+
+        // Finally, try to get the scroll top off of the body element
+        document.body.scrollTop;
+}
+
+// If you wanted to scroll the browser up to the top of the browser, you could do:
+//window.scrollTo(0,0);
+
+// Find the height of the viewport
+function windowHeight() {
+    // A shortcut, in case we’re using Internet Explorer 6 in Strict Mode
+    var de = document.documentElement;
+
+    // If the innerHeight of the browser is available, use that
+    return self.innerHeight ||
+
+        // Otherwise, try to get the height off of the root node
+        ( de && de.clientHeight ) ||
+
+        // Finally, try to get the height off of the body element
+        document.body.clientHeight;
+}
+
+// Find the width of the viewport
+function windowWidth() {
+    // A shortcut, in case we’re using Internet Explorer 6 in Strict Mode
+    var de = document.documentElement;
+
+    // If the innerWidth of the browser is available, use that
+    return self.innerWidth ||
+
+        // Otherwise, try to get the width off of the root node
+        ( de && de.clientWidth ) ||
+
+        // Finally, try to get the width off of the body element
+        document.body.clientWidth;
+}
+
+var Drag = {
+
+    // The current element being dragged
+    obj: null,
+
+    // The initalization function for the drag object
+    // o = The element to act as the drag handle
+    // oRoot = The element to be dragged, if not specified, 
+    //               the handle will be the element dragged.
+    // minX, maxX, minY, maxY = The min and max coordinates allowed for the element
+    // bSwapHorzRef = Toggle the horizontal coordinate system
+    // bSwapVertRef = Toggle the vertical coordinate system
+    // fxMapper, fyMapper =  Functions for mapping x and y coordinates to others
+    init: function(o, oRoot, minX, maxX, minY, 
+            maxY, bSwapHorzRef, bSwapVertRef, fXMapper, fYMapper) {
+
+        // Watch for the drag event to start
+        o.onmousedown = Drag.start;
+
+        // Figure out which coordinate system is being used
+        o.hmode = bSwapHorzRef ? false : true ;
+        o.vmode = bSwapVertRef ? false : true ;
+
+        // Figure out which element is acting as the draggable ‘handle’
+        o.root = oRoot && oRoot != null ? oRoot : o ;
+
+        // Initalize the specified coordinate system
+        if (o.hmode && isNaN(parseInt(o.root.style.left ))) o.root.style.left   = "0px";
+        if (o.vmode && isNaN(parseInt(o.root.style.top ))) o.root.style.top    = "0px";
+        if (!o.hmode && isNaN(parseInt(o.root.style.right ))) o.root.style.right  = "0px";
+        if (!o.vmode && isNaN(parseInt(o.root.style.bottom))) o.root.style.bottom = "0px";
+
+        // Look to see if the user provided min/max x/y coordinates
+        o.minX = typeof minX != 'undefined' ? minX : null;
+        o.minY = typeof minY != 'undefined' ? minY : null;
+        o.maxX = typeof maxX != 'undefined' ? maxX : null;
+        o.maxY = typeof maxY != 'undefined' ? maxY : null;
+
+        // Check for any specified x and y coordinate mappers
+        o.xMapper = fXMapper ? fXMapper : null;
+        o.yMapper = fYMapper ? fYMapper : null;
+
+        // Add shells for all the user-defined functions
+        o.root.onDragStart = new Function();
+        o.root.onDragEnd  = new Function();
+        o.root.onDrag = new Function();
+
+    },
+
+    start: function(e) {
+        // Figure out the object that’s being dragged
+        var o = Drag.obj = this;
+
+        // Normalize the event object
+        e = Drag.fixE(e);
+
+        // Get the current x and y coordinates
+        var y = parseInt(o.vmode ? o.root.style.top  : o.root.style.bottom);
+        var x = parseInt(o.hmode ? o.root.style.left : o.root.style.right );
+
+        // Call the user’s function with the current x and y coordinates
+        o.root.onDragStart(x, y);
+
+        // Remember the starting mouse position
+        o.lastMouseX = e.clientX;
+        o.lastMouseY = e.clientY;
+
+        // If we’re using the CSS coordinate system
+        if (o.hmode) {
+            // set the min and max coordiantes, where applicable
+            if (o.minX != null) o.minMouseX    = e.clientX - x + o.minX;
+            if (o.maxX != null) o.maxMouseX    = o.minMouseX + o.maxX - o.minX;
+
+        // Otherwise, we’re using a traditional mathematical coordinate system
+        } else {
+            if (o.minX != null) o.maxMouseX = -o.minX + e.clientX + x;
+            if (o.maxX != null) o.minMouseX = -o.maxX + e.clientX + x;
+        }
+
+        // If we’re using the CSS coordinate system
+        if (o.vmode) {
+            // set the min and max coordiantes, where applicable
+            if (o.minY != null) o.minMouseY    = e.clientY - y + o.minY;
+            if (o.maxY != null) o.maxMouseY    = o.minMouseY + o.maxY - o.minY;
+
+        // Otherwise, we’re using a traditional mathematical coordinate system
+        } else {
+            if (o.minY != null) o.maxMouseY = -o.minY + e.clientY + y;
+            if (o.maxY != null) o.minMouseY = -o.maxY + e.clientY + y;
+        }
+
+        // Watch for ‘dragging’ and ‘drag end’ events
+        document.onmousemove = Drag.drag;
+        document.onmouseup = Drag.end;
+
+        return false;
+    },
+
+    // A function to watch for all movements of the mouse during the drag event
+    drag: function(e) {
+        // Normalize the event object
+        e = Drag.fixE(e);
+
+        // Get our reference to the element being dragged
+        var o = Drag.obj;
+
+        // Get the position of the mouse within the window
+        var ey = e.clientY;
+        var ex = e.clientX;
+
+        // Get the current x and y coordinates
+        var y = parseInt(o.vmode ? o.root.style.top  : o.root.style.bottom);
+        var x = parseInt(o.hmode ? o.root.style.left : o.root.style.right );
+        var nx, ny;
+
+        // If a minimum X position was set, make sure it doesn’t go past that
+        if (o.minX != null) ex = o.hmode ? 
+            Math.max(ex, o.minMouseX) : Math.min(ex, o.maxMouseX);
+
+        // If a maximum X position was set, make sure it doesn’t go past that
+        if (o.maxX != null) ex = o.hmode ? 
+            Math.min(ex, o.maxMouseX) : Math.max(ex, o.minMouseX);
+
+        // If a minimum Y position was set, make sure it doesn’t go past that
+        if (o.minY != null) ey = o.vmode ? 
+            Math.max(ey, o.minMouseY) : Math.min(ey, o.maxMouseY);
+
+        // If a maximum Y position was set, make sure it doesn’t go past that
+        if (o.maxY != null) ey = o.vmode ? 
+            Math.min(ey, o.maxMouseY) : Math.max(ey, o.minMouseY);
+
+        // Figure out the newly translated x and y coordinates
+        nx = x + ((ex - o.lastMouseX) * (o.hmode ? 1 : -1));
+        ny = y + ((ey - o.lastMouseY) * (o.vmode ? 1 : -1));
+
+        // and translate them using an x or y mapper function (if provided)
+        if (o.xMapper) nx = o.xMapper(y)
+        else if (o.yMapper) ny = o.yMapper(x)
+
+        // Set the new x and y coordinates onto the element
+        Drag.obj.root.style[o.hmode ? "left" : "right"] = nx + "px";
+        Drag.obj.root.style[o.vmode ? "top" : "bottom"] = ny + "px";
+
+        // and remember  the last position of the mouse
+        Drag.obj.lastMouseX = ex;
+        Drag.obj.lastMouseY = ey;
+
+        // Call the user’s onDrag  function with the current x and y coordinates
+        Drag.obj.root.onDrag(nx, ny);
+
+        return false;
+    },
+
+    // Function that handles the end of a drag event
+    end: function() {
+        // No longer watch for mouse events (as the drag is done)
+        document.onmousemove = null;
+        document.onmouseup = null;
+
+        // Call our special onDragEnd function with the x and y coordinates
+        // of the element at the end of the drag event
+        Drag.obj.root.onDragEnd( 
+            parseInt(Drag.obj.root.style[Drag.obj.hmode ? "left" : "right"]), 
+            parseInt(Drag.obj.root.style[Drag.obj.vmode ? "top" : "bottom"]));
+        // No longer watch the object for drags
+        Drag.obj = null;
+    },
+
+    // A function for normalizes the event object
+    fixE: function(e) {
+        // If no event object exists, then this is IE, so provide IE’s event object
+        if (typeof e == 'undefined') e = window.event;
+
+        // If the layer properties aren’t set, get the values from the equivalent
+        // offset properties
+        if (typeof e.layerX == 'undefined') e.layerX = e.offsetX;
+        if (typeof e.layerY == 'undefined') e.layerY = e.offsetY;
+
+        return e;
+    }
+};
+
+// A generic function for checking to see if an input element
+// looks like an email address
+function checkEmail( elem ) {
+    // Make sure that something was entered and that it looks like
+    // a valid email address
+    return !elem.value || /^[a-z0-9_+.-]+\@([a-z0-9-]+\.)+[a-z0-9]{2,4}$/i.test( elem.value );
+}
+
+// A generic function for checking to see if an input element has
+// a  URL contained in it
+function checkURL( elem ) {
+    // Make sure that some text was entered, and that it's
+    // not the default http:// text
+    return !elem.value || elem.value == 'http://' ||
+        // Make sure that it looks like a valid URL
+        /^https?:\/\/([a-z0-9-]+\.)+[a-z0-9]{2,4}.*$/.test( elem.value );
+}
+
+// A generic function for checking to see if an input element has
+// a Phone Number entered in it
+function checkPhone( elem ) {
+    // Check to see if we have something that looks like
+    // a valid phone number
+    var m = /(\d{3}).*(\d{3}).*(\d{4})/.exec( elem.value );
+			
+    // If it is, seemingly, valid - force it into the specific
+    // format that we desire: (123) 456-7890
+    if ( m ) obj.value = "(" + m[1] + ") " + m[2] + "-" + m[3];
+				
+    return !elem.value || m;
+}
+
+// A generic function for checking to see if an input element has
+// a date entered into it
+function checkDate( elem ) {
+    // Make sure that something is entered, and that it
+    // looks like a valid MM/DD/YYYY date
+    return !elem.value || /^\d{2}\/\d{2}\/\d{2,4}$/.test(obj.value);
+}
+
+var errMsg = {
+    // Checks for when a specified field is required
+    required: {
+        msg: "This field is required.",
+        test: function(obj,load) {
+            // Make sure that something was not entered and that this
+            // isn't on page load (showing 'field required' messages
+            // would be annoying on page load)
+            return obj.value || load || obj.value == obj.defaultValue;
+        }
+    },
+	
+    // Makes sure that the field s a valid email address
+    email: {
+        msg: "Not a valid email address.",
+        test: function(obj) {
+            // Make sure that something was entered and that it looks like
+            // an email address
+            return !obj.value || 
+                /^[a-z0-9_+.-]+\@([a-z0-9-]+\.)+[a-z0-9]{2,4}$/i.test( obj.value );
+        }
+    },
+	
+    // Makes sure the field is a phone number and
+    // auto-formats the number if it is one
+    phone: {
+        msg: "Not a valid phone number.",
+        test: function(obj) {
+            // Check to see if we have something that looks like
+            // a valid phone number
+            var m = /(\d{3}).*(\d{3}).*(\d{4})/.exec( obj.value );
+			
+            // If it is, seemingly, valid - force it into the specific
+            // format that we desire: (123) 456-7890
+            if ( m ) obj.value = "(" + m[1] + ") " + m[2] + "-" + m[3];
+				
+            return !obj.value || m;
+        }
+    },
+	
+    // Makes sure that the field is a valid MM/DD/YYYY date
+    date: {
+        msg: "Not a valid date.",
+        test: function(obj) {
+            // Make sure that something is entered, and that it
+            // looks like a valid MM/DD/YYYY date
+            return !obj.value || /^\d{2}\/\d{2}\/\d{2,4}$/.test(obj.value);
+        }
+    },
+	
+    // Makes sure that the field is a valid URL
+    url: {
+        msg: "Not a valid URL.",
+        test: function(obj) {
+            // Make sure that some text was entered, and that it's
+            // not the default http:// text
+                return !obj.value || obj.value == 'http://' ||
+                    // Make sure that it looks like a valid URL
+                    /^https?:\/\/([a-z0-9-]+\.)+[a-z0-9]{2,4}.*$/.test( obj.value );
+        }
+    }
+};
+
+// Hide any validation error messages that are currently shown
+function hideErrors( elem ) {
+    // Find the next element after the current field
+    var next = elem.nextSibling;
+
+    // If the next element is a ul and has a class of errors
+    if ( next && next.nodeName == "UL" && next.className == "errors" )
+        // Remove it (which is our means of  'hiding')
+        elem.parenttNode.removeChild( next );
+}
+
+// Show a set of errors messages for a specific field within a form
+function showErrors( elem, errors ) {
+    // Find the next element after the field
+    var next = elem.nextSibling;
+
+    // If the field isn't one of our special error-holders.
+    if ( next && ( next.nodeName != "UL" || next.className != "errors" ) ) {
+        // We need to make one instead
+        next = document.createElement( "ul" );
+        next.className = "errors";
+
+        // and then insert into the correct place in the DOM
+        elem.paretNode.insertBefore( next, elem.nextSibling );
+    }
+
+    // Now that we have a reference to the error holder UL
+    // We then loop through all the error messages
+    for ( var i = 0; i < errors.length; i++ ) {
+        // Create a new li wrapper for each
+        var li = document.createElement( "li" );
+        li.innerHTML = errors[i];
+
+        // and insert it into the DOM
+        next.appendChild( li );
+    }
+}
+
+
+
+// A function for validating all fields within a form.
+// The form argument should be a reference to a form element
+// The load argument should be a boolean referring to the fact that
+// the validation function is being run on page load, versus dynamically
+function validateForm( form, load ) {
+    var valid = true;
+
+    // Go through all the field elements in form
+    // form.elements is an array of all fields in a form
+    for ( var i = 0; i < form.elements.length; i++ ) {
+
+        // Hide any error messages, if they're being shown
+        hideErrors( form.elements[i] );
+
+        // Check to see if the field contains valid contents, or not
+        if ( ! validateField( form.elements[i], load ) )
+            valid = false;
+
+    }
+
+    // Return false if a field does not have valid contents
+    // true if all fields are valid
+    return valid;
+}
+
+// Validate a single field's contents
+function validateField( elem, load ) {
+    var errors = [];
+
+    // Go through all the possible validation techniques
+    for ( var name in errMsg ) {
+        // See if the field has the class specified by the error type
+        var re = new RegExp("(^|\\s)" + name + "(\\s|$)");
+
+        // Check to see if  the element has the class and that it passes the
+        // validatino test
+        if ( re.test( elem.className ) && !errMsg[name].test( elem, load ) )
+            // If it fails the validation, add the error message to list
+            errors.push( errMsg[name].msg );
+    }
+
+    // Show the error messages, if they exist
+    if ( errors.length )
+        showErrors( elem, errors );
+
+    // Return false if the field fails any of the validation routines
+    return errors.length > 0;
+}
+
+function watchForm( form ) {
+    // Watch the form for submission
+    addEvent( form, 'submit',  function(){
+
+        // make sure that the form's contents validate correctly
+        return validateForm( form );
+
+    });
+}
+
+// Find the first form on the page
+var form = document.getElementsByTagName( "form" )[0];
+
+// and watch for when its submitted, to validate it
+watchForm( form );
+
+function watchFields( form ) {
+    // Go through all the field elements in form
+    for ( var i = 0; i < form.elements.length; i++ ) {
+
+        // and attach a 'blur' event handler (which watches for a user
+        // to lose focus of an input element)
+        addEvent( form.elements[i], 'blur',  function(){
+           // Once the focus has been lost, re-validate the field
+           return validateField( this );
+        });
+
+    }
+}
+
+// Locate the first form on the page
+var form = document.getElementsByTagName( "form" )[0];
+
+// Watch all the fields in the form for changes
+watchFields( form );
+
+addEvent( window, "load", function() {
+    // Find all the forms on the page
+    var forms = document.getElementsByTagName("form");
+
+    // Go through all the forms on the page
+    for ( var i = 0; i < forms.length; i++ ) {
+
+        // Validate each of the forms, being sure to set the 'load' argument to
+        // true, which stops certain, unnecessary, errors from appearing
+        //validateForm( forms[i], true );
+
+    }
+});
+
+/*
+克隆一个元素节点会拷贝它所有的属性以及属性值,当然也就包括了属性上绑定的事件(比如onclick="alert(1)"),但不会拷贝那些使用addEventListener()方法或者node.onclick = fn这种用JavaScript动态绑定的事件.
+
+在使用Node.appendChild()或其他类似的方法将拷贝的节点添加到文档中之前,那个拷贝节点并不属于当前文档树的一部分,也就是说,它没有父节点.
+
+如果deep参数设为false,则不克隆它的任何子节点.该节点所包含的所有文本也不会被克隆,因为文本本身也是一个或多个的Text节点.
+
+如果deep参数设为true,则会复制整棵DOM子树(包括那些可能存在的Text子节点).对于空结点(例如<img>和<input>元素),则deep参数无论设为true还是设为false,都没有关系,但是仍然需要为它指定一个值.
+
+注意:为了防止一个文档中出现两个ID重复的元素,使用cloneNode()方法克隆的节点在需要时应该指定另外一个与原ID值不同的ID
+如果原始节点设置了ID，并且克隆节点会被插入到相同的文档中，那么应该更新克隆节点的ID以保证唯一性。name属性可能也需要进行修改，取决于你是否希望有相同名称的节点存在于文档中。
+
+想要克隆一个节点来添加到另外一个文档中,请使用Document.importNode()代替本方法.
+*/
+
+// Reposition the gallery to be at the center of the page
+// even when the page has been scrolled
+function adjust(){
+    // Locate the gallery
+    var obj = id("gallery");
+		
+    // Make sure that the gallery exists
+    if ( !obj ) return;
+		
+    // Find its current height and width
+    var w = getWidth( obj );
+    var h = getHeight( obj );
+		
+    // Position the box, vertically, in the middle of the window
+    var t = scrollY() + ( windowHeight() / 2 ) - ( h / 2 );
+		
+    // But no heigher than the top of the page
+    if ( t < 0 ) t = 0;
+		
+    // Position the box, horizontally, in the middle of the window
+    var l = scrollX() + ( windowWidth() / 2 ) - ( w / 2 );
+		
+    // But no less than the left of the page
+    if ( l < 0 ) l = 0;
+		
+    // Set the adjusted position of the element
+    setY( obj, t );
+    setX( obj, l );
+};
+
+// Readjust the position of the gallery every time
+// the user scrolls the page or resizes the browser
+window.onresize = document.onscroll = adjust;
+
+//lightbox.js////////////////////////////////////////////////////////////////////////////////////
+/*
+Lightbox JS: Fullsize Image Overlays 
+by Lokesh Dhakar - http://www.huddletogether.com
+For more information on this script, visit:
+http://huddletogether.com/projects/lightbox/
+Licensed under the Creative Commons Attribution 2.5 License - http://creativecommons.org/licenses/by/2.5/
+(basically, do anything you want, just leave my name and link)
+
+Table of Contents
+-----------------
+Configuration
+
+Functions
+- getPageScroll()
+- getPageSize()
+- pause()
+- getKey()
+- listenKey()
+- showLightbox()
+- hideLightbox()
+- initLightbox()
+- addLoadEvent()
+
+Function Calls
+- addLoadEvent(initLightbox)
+*/
+ 
+//
+// Configuration
+//
+// If you would like to use a custom loading image or close button reference them in the next two lines.
+var loadingImage = 'loading.gif'; 
+var closeButton = 'close.gif';
+ 
+ 
+//
+// getPageScroll()
+// Returns array with x,y page scroll values.
+// Core code from - quirksmode.org
+//
+function getPageScroll(){
+var yScroll;
+if (self.pageYOffset) {
+yScroll = self.pageYOffset;
+} else if (document.documentElement && document.documentElement.scrollTop){ // Explorer 6 Strict
+yScroll = document.documentElement.scrollTop;
+} else if (document.body) {// all other Explorers
+yScroll = document.body.scrollTop;
+}
+arrayPageScroll = new Array('',yScroll) 
+return arrayPageScroll;
+}
+ 
+//
+// getPageSize()
+// Returns array with page width, height and window width, height
+// Core code from - quirksmode.org
+// Edit for Firefox by pHaez
+//
+function getPageSize(){
+
+var xScroll, yScroll;
+
+if (window.innerHeight && window.scrollMaxY) { 
+xScroll = document.body.scrollWidth;
+yScroll = window.innerHeight + window.scrollMaxY;
+} else if (document.body.scrollHeight > document.body.offsetHeight){ // all but Explorer Mac
+xScroll = document.body.scrollWidth;
+yScroll = document.body.scrollHeight;
+} else { // Explorer Mac...would also work in Explorer 6 Strict, Mozilla and Safari
+xScroll = document.body.offsetWidth;
+yScroll = document.body.offsetHeight;
+}
+
+var windowWidth, windowHeight;
+if (self.innerHeight) { // all except Explorer
+windowWidth = self.innerWidth;
+windowHeight = self.innerHeight;
+} else if (document.documentElement && document.documentElement.clientHeight) { // Explorer 6 Strict Mode
+windowWidth = document.documentElement.clientWidth;
+windowHeight = document.documentElement.clientHeight;
+} else if (document.body) { // other Explorers
+windowWidth = document.body.clientWidth;
+windowHeight = document.body.clientHeight;
+} 
+
+// for small pages with total height less then height of the viewport
+if(yScroll < windowHeight){
+pageHeight = windowHeight;
+} else { 
+pageHeight = yScroll;
+}
+// for small pages with total width less then width of the viewport
+if(xScroll < windowWidth){ 
+pageWidth = windowWidth;
+} else {
+pageWidth = xScroll;
+}
+arrayPageSize = new Array(pageWidth,pageHeight,windowWidth,windowHeight) 
+return arrayPageSize;
+}
+//
+// pause(numberMillis)
+// Pauses code execution for specified time. Uses busy code, not good.
+// Code from http://www.faqts.com/knowledge_base/view.phtml/aid/1602
+//
+function pause(numberMillis) {
+var now = new Date();
+var exitTime = now.getTime() + numberMillis;
+while (true) {
+now = new Date();
+if (now.getTime() > exitTime)
+return;
+}
+}
+//
+// getKey(key)
+// Gets keycode. If 'x' is pressed then it hides the lightbox.
+//
+function getKey(e){
+if (e == null) { // ie
+keycode = event.keyCode;
+} else { // mozilla
+keycode = e.which;
+}
+key = String.fromCharCode(keycode).toLowerCase();
+
+if(key == 'x'){ hideLightbox(); }
+}
+//
+// listenKey()
+//
+function listenKey () { document.onkeypress = getKey; }
+//
+// showLightbox()
+// Preloads images. Pleaces new image in lightbox then centers and displays.
+//
+function showLightbox(objLink)
+{
+// prep objects
+var objOverlay = document.getElementById('overlay');
+var objLightbox = document.getElementById('lightbox');
+var objCaption = document.getElementById('lightboxCaption');
+var objImage = document.getElementById('lightboxImage');
+var objLoadingImage = document.getElementById('loadingImage');
+var objLightboxDetails = document.getElementById('lightboxDetails');
+
+var arrayPageSize = getPageSize();
+var arrayPageScroll = getPageScroll();
+// center loadingImage if it exists
+if (objLoadingImage) {
+objLoadingImage.style.top = (arrayPageScroll[1] + ((arrayPageSize[3] - 35 - objLoadingImage.height) / 2) + 'px');
+objLoadingImage.style.left = (((arrayPageSize[0] - 20 - objLoadingImage.width) / 2) + 'px');
+objLoadingImage.style.display = 'block';
+}
+// set height of Overlay to take up whole page and show
+objOverlay.style.height = (arrayPageSize[1] + 'px');
+objOverlay.style.display = 'block';
+// preload image
+imgPreload = new Image();
+imgPreload.onload=function(){
+objImage.src = objLink.href;
+// center lightbox and make sure that the top and left values are not negative
+// and the image placed outside the viewport
+var lightboxTop = arrayPageScroll[1] + ((arrayPageSize[3] - 35 - imgPreload.height) / 2);
+var lightboxLeft = ((arrayPageSize[0] - 20 - imgPreload.width) / 2);
+
+objLightbox.style.top = (lightboxTop < 0) ? "0px" : lightboxTop + "px";
+objLightbox.style.left = (lightboxLeft < 0) ? "0px" : lightboxLeft + "px";
+objLightboxDetails.style.width = imgPreload.width + 'px';
+
+if(objLink.getAttribute('title')){
+objCaption.style.display = 'block';
+//objCaption.style.width = imgPreload.width + 'px';
+objCaption.innerHTML = objLink.getAttribute('title');
+} else {
+objCaption.style.display = 'none';
+}
+
+// A small pause between the image loading and displaying is required with IE,
+// this prevents the previous image displaying for a short burst causing flicker.
+if (navigator.appVersion.indexOf("MSIE")!=-1){
+pause(250);
+}
+if (objLoadingImage) { objLoadingImage.style.display = 'none'; }
+// Hide select boxes as they will 'peek' through the image in IE
+selects = document.getElementsByTagName("select");
+for (i = 0; i != selects.length; i++) {
+selects[i].style.visibility = "hidden";
+}
+
+objLightbox.style.display = 'block';
+// After image is loaded, update the overlay height as the new image might have
+// increased the overall page height.
+arrayPageSize = getPageSize();
+objOverlay.style.height = (arrayPageSize[1] + 'px');
+
+// Check for 'x' keypress
+listenKey();
+return false;
+}
+imgPreload.src = objLink.href;
+
+}
+ 
+ 
+//
+// hideLightbox()
+//
+function hideLightbox()
+{
+// get objects
+objOverlay = document.getElementById('overlay');
+objLightbox = document.getElementById('lightbox');
+// hide lightbox and overlay
+objOverlay.style.display = 'none';
+objLightbox.style.display = 'none';
+// make select boxes visible
+selects = document.getElementsByTagName("select");
+for (i = 0; i != selects.length; i++) {
+selects[i].style.visibility = "visible";
+}
+// disable keypress listener
+document.onkeypress = '';
+}
+ 
+//
+// initLightbox()
+// Function runs on window load, going through link tags looking for rel="lightbox".
+// These links receive onclick events that enable the lightbox display for their targets.
+// The function also inserts html markup at the top of the page which will be used as a
+// container for the overlay pattern and the inline image.
+//
+function initLightbox()
+{
+
+if (!document.getElementsByTagName){ return; }
+var anchors = document.getElementsByTagName("a");
+// loop through all anchor tags
+for (var i=0; i<anchors.length; i++){
+var anchor = anchors[i];
+if (anchor.getAttribute("href") && (anchor.getAttribute("rel") == "lightbox")){
+anchor.onclick = function () {showLightbox(this); return false;}
+}
+}
+// the rest of this code inserts html at the top of the page that looks like this:
+//
+// <div id="overlay">
+// <a href="#" onclick="hideLightbox(); return false;"><img id="loadingImage" /></a>
+// </div>
+// <div id="lightbox">
+// <a href="#" onclick="hideLightbox(); return false;" title="Click anywhere to close image">
+// <img id="closeButton" /> 
+// <img id="lightboxImage" />
+// </a>
+// <div id="lightboxDetails">
+// <div id="lightboxCaption"></div>
+// <div id="keyboardMsg"></div>
+// </div>
+// </div>
+
+var objBody = document.getElementsByTagName("body").item(0);
+
+// create overlay div and hardcode some functional styles (aesthetic styles are in CSS file)
+var objOverlay = document.createElement("div");
+objOverlay.setAttribute('id','overlay');
+objOverlay.onclick = function () {hideLightbox(); return false;}
+objOverlay.style.display = 'none';
+objOverlay.style.position = 'absolute';
+objOverlay.style.top = '0';
+objOverlay.style.left = '0';
+objOverlay.style.zIndex = '90';
+objOverlay.style.width = '100%';
+objBody.insertBefore(objOverlay, objBody.firstChild);
+
+var arrayPageSize = getPageSize();
+var arrayPageScroll = getPageScroll();
+// preload and create loader image
+var imgPreloader = new Image();
+
+// if loader image found, create link to hide lightbox and create loadingimage
+imgPreloader.onload=function(){
+var objLoadingImageLink = document.createElement("a");
+objLoadingImageLink.setAttribute('href','#');
+objLoadingImageLink.onclick = function () {hideLightbox(); return false;}
+objOverlay.appendChild(objLoadingImageLink);
+
+var objLoadingImage = document.createElement("img");
+objLoadingImage.src = loadingImage;
+objLoadingImage.setAttribute('id','loadingImage');
+objLoadingImage.style.position = 'absolute';
+objLoadingImage.style.zIndex = '150';
+objLoadingImageLink.appendChild(objLoadingImage);
+imgPreloader.onload=function(){}; // clear onLoad, as IE will flip out w/animated gifs
+return false;
+}
+imgPreloader.src = loadingImage;
+// create lightbox div, same note about styles as above
+var objLightbox = document.createElement("div");
+objLightbox.setAttribute('id','lightbox');
+objLightbox.style.display = 'none';
+objLightbox.style.position = 'absolute';
+objLightbox.style.zIndex = '100'; 
+objBody.insertBefore(objLightbox, objOverlay.nextSibling);
+
+// create link
+var objLink = document.createElement("a");
+objLink.setAttribute('href','#');
+objLink.setAttribute('title','Click to close');
+objLink.onclick = function () {hideLightbox(); return false;}
+objLightbox.appendChild(objLink);
+// preload and create close button image
+var imgPreloadCloseButton = new Image();
+// if close button image found, 
+imgPreloadCloseButton.onload=function(){
+var objCloseButton = document.createElement("img");
+objCloseButton.src = closeButton;
+objCloseButton.setAttribute('id','closeButton');
+objCloseButton.style.position = 'absolute';
+objCloseButton.style.zIndex = '200';
+objLink.appendChild(objCloseButton);
+return false;
+}
+imgPreloadCloseButton.src = closeButton;
+// create image
+var objImage = document.createElement("img");
+objImage.setAttribute('id','lightboxImage');
+objLink.appendChild(objImage);
+
+// create details div, a container for the caption and keyboard message
+var objLightboxDetails = document.createElement("div");
+objLightboxDetails.setAttribute('id','lightboxDetails');
+objLightbox.appendChild(objLightboxDetails);
+// create caption
+var objCaption = document.createElement("div");
+objCaption.setAttribute('id','lightboxCaption');
+objCaption.style.display = 'none';
+objLightboxDetails.appendChild(objCaption);
+// create keyboard message
+var objKeyboardMsg = document.createElement("div");
+objKeyboardMsg.setAttribute('id','keyboardMsg');
+objKeyboardMsg.innerHTML = 'press <a href="#" onclick="hideLightbox(); return false;"><kbd>x</kbd></a> to close';
+objLightboxDetails.appendChild(objKeyboardMsg);
+}
+ 
+//
+// addLoadEvent()
+// Adds event to window.onload without overwriting currently assigned onload functions.
+// Function found at Simon Willison's weblog - http://simon.incutio.com/
+//
+function addLoadEvent(func)
+{ 
+var oldonload = window.onload;
+if (typeof window.onload != 'function'){
+window.onload = func;
+} else {
+window.onload = function(){
+oldonload();
+func();
+}
+}
+}
+ 
+addLoadEvent(initLightbox); // run initLightbox onLoad
+
+//////////////////////////////////////////////////////lightbox end////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////loadi18n.js/////////////////////////////////////////////////
+/*
+ * Copyright (C) 2015 ZTE, Inc. and others. All rights reserved. (ZTE)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+﻿var lang = getLanguage();
+//lang = 'en-US';
+
+//加载主页面head部分国际化
+function loadProperties(lang){
+    jQuery.i18n.properties({
+        language:lang,
+        name:'web-framework-integration-i18n',
+        path:'i18n/', // 资源文件路径
+        mode:'map', // 用 Map 的方式使用资源文件中的值
+        callback: function() {// 加载成功后设置显示内容
+			var i18nItems = $('[name_i18n=com_zte_ums_ict_framework_ui_i18n]');
+			for(var i=0;i<i18nItems.length;i++){
+			    var $item = $(i18nItems.eq(i));
+			    var itemId = $item.attr('id');
+				if(typeof($item.attr("title"))!="undefined"){
+					$item.attr("title", $.i18n.prop(itemId));
+				}else{
+					$item.text($.i18n.prop(itemId));
+				}
+			}			
+        }
+    });
+}
+
+function loadi18n_WebFramework_1(){
+    $.getScript("js/tools.js", function(){
+        var lang = getLanguage();
+        loadProperties(lang);
+    });
+}
+
+function loadi18n_WebFramework(){
+    loadProperties(lang);
+}
+
+/*
+function loadPropertiesSideMenu(lang){
+    jQuery.i18n.properties({
+        language:lang,
+        name:'web-framework-i18n',
+        path:'i18n/', // 资源文件路径
+        mode:'map', // 用 Map 的方式使用资源文件中的值
+        callback: function() {// 加载成功后设置显示内容
+			var i18nItems = $('[name=com_zte_ums_ict_framework_ui_i18n]');
+			for(var i=0;i<i18nItems.length;i++){
+			    var $item = $(i18nItems.eq(i));
+			    var itemId = $item.attr('id');
+				if(typeof($item.attr("placeholder"))=="undefined"){
+					$item.text($.i18n.prop(itemId));
+				}else{
+					$item.attr("placeholder", $.i18n.prop(itemId));
+				}
+			}			
+        }
+    });
+}*/
+
+/**
+* 国际化资源文件加载函数；(更多操作专用)
+* 相应参数为当前语言（由框架从后端取得），国际化资源文件名前缀，资源文件所在路径。
+*/
+function loadPropertiesSideMenuMoreOperation(lang, propertiesFileNamePrefix, propertiesFilePath , name_I18n){
+	console.info('loadPropertiesSideMenu has been called  ' + propertiesFilePath);
+	if(!name_I18n) name_I18n='com_zte_ums_ict_framework_ui_i18n_sideMenu';
+    jQuery.i18n.properties({
+        language:lang,
+        name:propertiesFileNamePrefix,
+        path:propertiesFilePath, // 资源文件路径
+        mode:'map', // 用 Map 的方式使用资源文件中的值
+        callback: function() {// 加载成功后设置显示内容
+			var i18nItems = $('[name_i18n='+ name_I18n + ']');
+			for(var i=0;i<i18nItems.length;i++){
+			    var $item = $(i18nItems.eq(i));
+			    var itemId = $item.attr('id');
+				if(typeof($item.attr("placeholder"))=="undefined"){
+					$item.text($.i18n.prop(itemId));
+				}else{
+					$item.attr("placeholder", $.i18n.prop(itemId));
+				}
+			}					
+			//为更多操作按钮重新布局
+			//if(propertiesFileNamePrefix == "app-universal-i18n"){
+				var newData = computedTransformQueryViewData(moreOperationsData);
+				generateOperationItemsNew(newData);
+			//}
+        }
+    });
+}
+
+/**
+* 国际化资源文件加载函数；
+* 相应参数为当前语言（由框架从后端取得），国际化资源文件名前缀，资源文件所在路径。
+*/
+function loadPropertiesSideMenu(lang, propertiesFileNamePrefix, propertiesFilePath , name_I18n){
+	console.info('loadPropertiesSideMenu has been called  ' + propertiesFilePath);
+	if(!name_I18n) name_I18n='com_zte_ums_ict_framework_ui_i18n_sideMenu';
+    jQuery.i18n.properties({
+        language:lang,
+        name:propertiesFileNamePrefix,
+        path:propertiesFilePath, // 资源文件路径
+        mode:'map', // 用 Map 的方式使用资源文件中的值
+        callback: function() {// 加载成功后设置显示内容
+			var i18nItems = $('[name_i18n='+ name_I18n + ']');
+			for(var i=0;i<i18nItems.length;i++){
+			    var $item = $(i18nItems.eq(i));
+			    var itemId = $item.attr('id');
+				if(typeof($item.attr("placeholder"))=="undefined"){
+					$item.text($.i18n.prop(itemId));
+				}else{
+					$item.attr("placeholder", $.i18n.prop(itemId));
+				}
+			}	
+			//根据一级菜单宽度自动调整菜单项之间的间距
+			//adjustLevel1MenuWidth();
+        }
+    });
+}
+
+function loadPropertiesFHorMenu(lang, propertiesFileNamePrefix, propertiesFilePath , name_I18n){
+	console.info('loadPropertiesSideMenu has been called  ' + propertiesFilePath);
+	if(!name_I18n) name_I18n='com_zte_ums_ict_framework_ui_i18n_sideMenu';
+    jQuery.i18n.properties({
+        language:lang,
+        name:propertiesFileNamePrefix,
+        path:propertiesFilePath, // 资源文件路径
+        mode:'map', // 用 Map 的方式使用资源文件中的值
+        callback: function() {// 加载成功后设置显示内容
+			var i18nItems = $('[name_i18n='+ name_I18n + ']');
+			for(var i=0;i<i18nItems.length;i++){
+			    var $item = $(i18nItems.eq(i));
+			    var itemId = $item.attr('id');
+				if(typeof($item.attr("placeholder"))=="undefined"){
+					$item.text($.i18n.prop(itemId));
+				}else{
+					$item.attr("placeholder", $.i18n.prop(itemId));
+				}
+			}	
+			//根据一级菜单宽度自动调整菜单项之间的间距
+			adjustLevel1MenuWidth();
+        }
+    });
+}
+
+function loadi18n_WebFramework_sideMenu(){
+	//默认0场景菜单资源文件
+    //loadPropertiesSideMenu(lang, 'web-framework-i18n', 'i18n/');
+	//加载各应用菜单资源文件
+	var srcpath ="i18n/";
+	loadPropertiesSideMenu(lang , 'web-framework-integration-i18n', srcpath);}
+///////////////////////////////////////////////////////////////loadi18n.js end///////////////////////////////
+
+
+// Serialize a set of data. It can take two different types of objects:
+//  - An array of input elements.
+//  - A hash of key/value pairs
+// The function returns a serialized string
+function serialize(a) {
+    // The set of serialize results
+    var s = [];
+		
+    // If an array was passed in, assume that it is an array
+    // of form elements
+    if ( a.constructor == Array ) {
+
+        // Serialize the form elements
+        for ( var i = 0; i < a.length; i++ )
+            s.push( a[i].name + "=" + encodeURIComponent( a[i].value ) );
+			
+    // Otherwise, assume that it's an object of key/value pairs
+    } else {
+
+        // Serialize the key/values
+        for ( var j in a )
+            s.push( j + "=" + encodeURIComponent( a[j] ) );
+
+    }
+		
+    // Return the resulting serialization
+    return s.join("&");
+}
+
+// A function for extracting data from an HTTP reponse
+// It takes two arguments, the XMLHttpRequest object and
+// An optional argument – the type of data that you're expecting from the server
+// Correct values include: xml, script, text, or html – the default is "", which
+// determines what the data type is based upon the content-type header
+function httpData(r, type) {
+    // Get the content-type header
+    var ct = r.getResponseHeader("content-type");
+
+    // If no default type was provided, determine if some
+    // form of XML was returned from the server
+    var data = !type && ct && ct.indexOf("xml") >= 0;
+
+    // Get the XML Document object if XML was returned from
+    // the server, otherwise return the text contents returned by the server
+    data = type == "xml" || data ? r.responseXML : r.responseText;
+
+    // If the specified type is "script", execute the returned text
+    // response as if it was JavaScript
+    if ( type == "script" )
+        eval.call( window, data );
+
+    // Return the response data (either an XML Document or a text string)
+    return data;
+}
+
+// A generic function for performming AJAX requests
+// It takes one argument, which is an object that contains a set of options
+// All of which are outline in the comments, below
+function ajax( options ) {
+
+    // Load the options object with defaults, if no
+    // values were provided by the user
+    options = {
+        // The type of HTTP Request
+        type: options.type || "POST",
+
+        // The URL the request will be made to
+        url: options.url || "",
+
+        // How long to wait before considering the request to be a timeout
+        timeout: options.timeout || 5000,
+
+        // Functions to call when the request fails, succeeds,
+        // or completes (either fail or succeed)
+        onComplete: options.onComplete || function(){},
+        onError: options.onError || function(){},
+        onSuccess: options.onSuccess || function(){},
+
+        // The data type that'll be returned from the server
+        // the default is simply to determine what data was returned from the
+        // and act accordingly.
+        data: options.data || ""
+    };
+
+    // Create the request object
+    var xml = new XMLHttpRequest();
+
+    // Open the asynchronous POST request
+    xml.open("GET", "/some/url.cgi", true);
+
+    // We're going to wait for a request for 5 seconds, before giving up
+    var timeoutLength = 5000;
+
+    // Keep track of when the request has been succesfully completed
+    var requestDone = false;
+
+    // Initalize a callback which will fire 5 seconds from now, cancelling
+    // the request (if it has not already occurred).
+    setTimeout(function(){
+         requestDone = true;
+    }, timeoutLength);
+
+    // Watch for when the state of the document gets updated
+    xml.onreadystatechange = function(){
+        // Wait until the data is fully loaded,
+        // and make sure that the request hasn't already timed out
+        if ( xml.readyState == 4 && !requestDone ) {
+
+            // Check to see if the request was successful
+            if ( httpSuccess( xml ) ) {
+
+                // Execute the success callback with the data returned from the server
+                options.onSuccess( httpData( xml, options.type ) );
+
+            // Otherwise, an error occurred, so execute the error callback
+            } else {
+                options.onError();
+            }
+
+            // Call the completion callback
+            options.onComplete();
+
+            // Clean up after ourselves, to avoid memory leaks
+            xml = null;
+        }
+    };
+
+    // Establish the connection to the server
+    xml.send();
+
+    // Determine the success of the HTTP response
+    function httpSuccess(r) {
+        try {
+            // If no server status is provided, and we're actually 
+            // requesting a local file, then it was successful
+            return !r.status && location.protocol == "file:" ||
+
+                // Any status in the 200 range is good
+                ( r.status >= 200 && r.status < 300 ) ||
+
+                // Successful if the document has not been modified
+                r.status == 304 ||
+
+                // Safari returns an empty status if the file has not been modified
+                navigator.userAgent.indexOf("Safari") >= 0 && typeof r.status == "undefined";
+        } catch(e){}
+
+        // If checking the status failed, then assume that the request failed too
+        return false;
+    }
+
+    // Extract the correct data from the HTTP response
+    function httpData(r,type) {
+        // Get the content-type header
+        var ct = r.getResponseHeader("content-type");
+
+        // If no default type was provided, determine if some
+        // form of XML was returned from the server
+        var data = !type && ct && ct.indexOf("xml") >= 0;
+
+        // Get the XML Document object if XML was returned from
+        // the server, otherwise return the text contents returned by the server
+        data = type == "xml" || data ? r.responseXML : r.responseText;
+
+        // If the specified type is "script", execute the returned text
+        // response as if it was JavaScript
+        if ( type == "script" )
+            eval.call( window, data );
+
+        // Return the response data (either an XML Document or a text string)
+        return data;
+    }
+
+}
+
+function trim(s) {
+        return s.replace(/^\s+/,"").replace(/\s+$/, "");
+    }
+
+
+// Add a new method to all HTML DOM Elements
+// that can be used to see if an Element has a specific class, or not.
+HTMLElement.prototype.hasClass = function( class ) {
+    return new RegExp("(^|\\s)" + class + "(\\s|$)").test( this.className );
+};
 
