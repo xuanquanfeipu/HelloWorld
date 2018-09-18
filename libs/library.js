@@ -6299,3 +6299,86 @@ function empty( elem ) {
     while ( elem.firstChild )
         remove( elem.firstChild );
 }
+
+function stopBubble(e) {
+    // If an event object is provided, then this is a non-IE browser
+    if ( e )
+        // and therefore it supports the W3C stopPropagation() method
+        e.stopPropagation();
+    else
+        // Otherwise, we need to use the Internet Explorer way of cancelling event bubbling
+        window.event.cancelBubble = true;
+}
+
+function stopDefault( e ) {
+    // Prevent the default browser action (W3C)
+    if ( e ) e.preventDefault();
+
+    // A shortcut for stoping the browser action in IE
+    return false;
+}
+
+// addEvent/removeEvent written by Dean Edwards, 2005
+// with input from Tino Zijdel
+// http://dean.edwards.name/weblog/2005/10/add-event/
+
+function addEvent(element, type, handler) {
+	// assign each event handler a unique ID
+	if (!handler.$$guid) handler.$$guid = addEvent.guid++;
+	// create a hash table of event types for the element
+	if (!element.events) element.events = {};
+	// create a hash table of event handlers for each element/event pair
+	var handlers = element.events[type];
+	if (!handlers) {
+		handlers = element.events[type] = {};
+		// store the existing event handler (if there is one)
+		if (element["on" + type]) {
+			handlers[0] = element["on" + type];
+		}
+	}
+	// store the event handler in the hash table
+	handlers[handler.$$guid] = handler;
+	// assign a global event handler to do all the work
+	element["on" + type] = handleEvent;
+};
+// a counter used to create unique IDs
+addEvent.guid = 1;
+
+function removeEvent(element, type, handler) {
+	// delete the event handler from the hash table
+	if (element.events && element.events[type]) {
+		delete element.events[type][handler.$$guid];
+	}
+};
+
+function handleEvent(event) {
+	var returnValue = true;
+	// grab the event object (IE uses a global event object)
+	event = event || fixEvent(window.event);
+	// get a reference to the hash table of event handlers
+	var handlers = this.events[event.type];
+	// execute each event handler
+	for (var i in handlers) {
+		this.$$handleEvent = handlers[i];
+		if (this.$$handleEvent(event) === false) {
+			returnValue = false;
+		}
+	}
+	return returnValue;
+};
+
+function fixEvent(event) {
+	// add W3C standard event methods
+	event.preventDefault = fixEvent.preventDefault;
+	event.stopPropagation = fixEvent.stopPropagation;
+	return event;
+};
+fixEvent.preventDefault = function() {
+	this.returnValue = false;
+};
+fixEvent.stopPropagation = function() {
+	this.cancelBubble = true;
+};
+
+
+
