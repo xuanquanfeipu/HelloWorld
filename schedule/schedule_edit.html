@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>教师管理端</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">    
+    <link rel="stylesheet" href="assets/scripts/pages/iclass/css/schedule_edit.css">
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="page-wrapper" id="schedule-edit">
+       
+       <div id="panel-schedule-edit" class="panel panel-default">
+       		<div style="position: absolute;left: 36px;bottom: -50px;line-height: 34px;"> 
+       			<span>默认课间休息时长 :</span>
+       			<input class="schedule-config rest-duration" type="text" value="10">
+       			<span>分钟</span>
+       			<span style="margin-left: 10px;">默认课程时长：</span>
+       			<input class="schedule-config course-duration" type="text" value="45">
+       			<span>分钟</span>
+       			<span class="duration-tip" style="color:red;"></span>
+       		</div>
+             <div class="panel-body" >   
+             	 <div class="schedule-edit-header" >
+	             	<div style="float:left;height: 30px;line-height: 30px;">课表名称：</div>
+	             	<input style="width: 51%;border: 1px solid #e6eaed;padding-left:8px;margin-bottom: 10px;" type="text" placeholder="示例：电教室2018年度课表">
+	             	<span class="schedulename-validate-tip">课表名称最大长度为30个字符</span>
+	             </div>         	
+	             <div class="schedule-date">
+	             	  <div style="float:left;height: 30px;line-height: 30px;">时间周期：</div>
+                      <div class="input-append date form_date ">
+                          <input size="16" type="text" value="" class="start_date"  >
+                      </div>
+                      <span style="float:left;height: 30px;line-height: 30px;margin: 0 1%;">-</span>
+          			  <div class="input-append date form_date " >
+                          <input size="16" type="text" value="" class="end_date">
+                      </div> 
+                      <span class="date-validate-tip" style="">结束日期不能小于开始日期</span>
+	             	 <!--  <div style="float:left;height: 30px;line-height: 30px;">时间周期：</div>
+                      <div class="input-group">
+                        <input type="text" class="form-control start_date" placeholder="yyyy-MM-dd" >
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                      </div>
+                      <div style="float:left;height: 30px;line-height: 30px;margin: 0 1%;">-</div>
+                      <div class="input-group">
+                        <input type="text" class="form-control end_date" placeholder="yyyy-MM-dd" >
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                      </div> -->
+                      
+                       
+	             </div>
+	            
+             	<div class="schedule-edit" >
+             		<div class="schedule-edit-title">课表设置：</div>
+             		<div class="schedule-edit-header" >
+		             	
+		            </div>
+			        <!-- 课表抬头 -->
+			   		<ul class="kb_weeknav_ul ">
+			   		
+			   			<li class="kb_weeknav">
+			   				<p class="weeknav_tex">课节</p>
+			   			</li>
+		            	
+		            	
+		            	<li class="kb_weeknav">
+		            		<p class="weeknav_tex">时间</p>
+		            	</li>
+		            	
+		                
+	                	<li class="kb_weeknav">
+	                		<p class="weeknav_tex">周一</p>
+	                	</li>
+	                	
+	                
+	                	<li class="kb_weeknav">
+	                		<p class="weeknav_tex">周二</p>
+	                	</li>
+	                	
+	                
+	                	<li class="kb_weeknav">
+	                		<p class="weeknav_tex">周三</p>
+	                	</li>
+	                	
+	                
+	                	<li class="kb_weeknav">
+	                		<p class="weeknav_tex">周四</p>
+	                	</li>
+	                	
+	                
+	                	<li class="kb_weeknav">
+	                		<p class="weeknav_tex">周五</p>
+	                	</li>
+	                	
+	                
+	                	<li class="kb_weeknav">
+	                		<p class="weeknav_tex">周六</p>
+	                	</li>
+	                	
+	                
+	                	<li class="kb_weeknav">
+	                		<p class="weeknav_tex">周日</p>
+	                	</li>	                	
+		                
+		            </ul>
+		            <!-- 课表内容  -->
+		           <!--  <ul class="kb_content clear">
+			            <li class="kb_order">
+				           	<div name="schedule_cell">
+	               				<a  href="#" class="">
+		                       		<p class="kb_course_tex order" title="">一</p>
+		                       	</a>               			
+		               		</div>
+				        </li>
+				         <li class="kb_time">				           
+				           <div name="schedule_cell">
+	               				<a  href="#" class="">
+		                       		<p class="kb_course_tex" title="">
+			                       	
+				                        <div class="input-append date form_datetime " style="width: 50px; ">
+				                            <input size="16" type="text" value="" class="start_time" >
+				                        </div>
+				                        
+				                        <span style="float: left;     margin: 0px 1px 1px 2px;">-</span>
+				                        
+				                        <div class="input-append date form_datetime " style="width: 50px;">
+				                            <input size="16" type="text" value="" class="end_time">
+				                        </div>
+                        			</p>
+		                       	</a>               			
+		               		</div>
+				        </li>
+				        <li class="kb_course">  
+           					<div name="schedule_cell">
+	               				<a  href="#" class="">
+		                       		<p class="kb_course_tex" title="">
+		                       			<input class="course_name" type="text" value="语文" placeholder="输入课程名">
+		                       		</p>
+		                       	</a>               			
+		               		</div>
+            			</li>
+            			<li class="kb_course">  
+           					<div name="schedule_cell">
+	               				<a  href="#" class="">
+		                       		<p class="kb_course_tex" title="">
+		                       			<input class="course_name" type="text" value="英语" placeholder="输入课程名">
+									</p>
+		                       	</a>               			
+		               		</div>
+            			</li>
+            			<li class="kb_course">  
+           					<div name="schedule_cell">
+	               				<a  href="#" class="">
+		                       		<p class="kb_course_tex" title="">
+		                       			<input class="course_name" type="text" value="数学" placeholder="输入课程名">
+		                       		</p>
+		                       	</a>               			
+		               		</div>
+            			</li>	 
+            			<li class="kb_course">  
+           					<div name="schedule_cell">
+	               				<a  href="#" class="">
+		                       		<p class="kb_course_tex" title="">
+		                       			<input class="course_name" type="text" value="历史" placeholder="输入课程名">
+		                       		</p>
+		                       	</a>               			
+		               		</div>
+            			</li>	 
+            			<li class="kb_course">  
+           					<div name="schedule_cell">
+	               				<a  href="#" class="">
+		                       		<p class="kb_course_tex" title="">
+		                       			<input class="course_name" type="text" value="政治" placeholder="输入课程名">
+		                       		</p>
+		                       	</a>               			
+		               		</div>
+            			</li>	 
+            			<li class="kb_course">  
+           					<div name="schedule_cell">
+	               				<a  href="#" class="">
+		                       		<p class="kb_course_tex" title="">
+		                       			<input class="course_name" type="text" value="生物" placeholder="输入课程名">
+		                       		</p>
+		                       	</a>               			
+		               		</div>
+            			</li>	 
+            			<li class="kb_course">  
+           					<div name="schedule_cell">
+	               				<a  href="#" class="">
+		                       		<p class="kb_course_tex" title="">
+		                       			<input class="course_name" type="text" value="地理" placeholder="输入课程名">
+		                       		</p>
+		                       	</a>               			
+		               		</div>
+            			</li>	
+            			</ul> 	  -->	 
+		          </div>
+		          <!-- 添加课程按钮 -->
+		          <div class="course_add_btn clear">
+		          	<i class="fa  fa-plus"></i>
+		          </div>  
+		          <ul class="template-list">
+		          	<!-- <li class="template-item" data-id="template1">模板A</li>
+		          	<li class="template-item" data-id="template2">模板B</li>
+		          	<li class="template-item" data-id="template3">模板C</li> -->
+		          </ul>
+		          
+		           <ul class="course-list">
+		          	<!-- <li class="course-item" data-id="course1">语文</li>
+		          	<li class="course-item" data-id="course2">数学</li>
+		          	<li class="course-item" data-id="course3">英语</li> -->
+		          </ul>
+             </div>
+        	</div>
+
+
+        </div>
+        
+    <script src="assets/scripts/pages/iclass/js/schedule_edit.js"></script>
+</body>
+
+</html>
