@@ -1,0 +1,69 @@
+body{
+	font-family: "Microsoft YaHei", Verdana;
+}
+.clear{
+	clear:both;
+}
+
+#schedule-tpl-edit{
+	height:280px;
+}
+.modal-footer button{
+	background: #008FD5;
+    color: #fff;
+}
+#schedule-tpl-edit #template-select,#schedule-tpl-edit #course-select{
+	display:none;
+}
+ul.template-list,ul.course-list{
+	display:none;
+	list-style:none;
+	margin:0;
+	padding:10px;
+	width: 150px;
+    text-align: center;
+    border:1px solid #ddd;
+    background: #fff;	
+}
+ul.template-list li,ul.course-list li{
+	margin-bottom:10px;
+	padding:5px;
+	background:#ddd
+}
+
+#schedule-tpl-edit .select2-container--default .select2-selection--single{
+	border-radius:0;
+	height: 30px;
+	border: 1px solid rgb(230, 234, 237);
+}
+#schedule-tpl-edit .schedule-template-opt{
+	float:right;
+	margin-left:10px;
+	background: #3c8dbc;
+    color: #fff;
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+
+#schedule-tpl-edit .schedule-template ul{
+	padding-left:0;
+}
+#schedule-tpl-edit .schedule-template li {
+	list-style:none;
+    float: left;
+    width: calc( 25% - 10px );
+    height: 40px;
+    border-right:1px solid #6982B2;
+    border-bottom:1px solid  #6982B2;
+    position:relative;
+}
+
+
+/* .odd{
+	background:#254782;
+}
+.even{
+	background:#2E5292;
+} */
