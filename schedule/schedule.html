@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>教师管理端</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="assets/scripts/pages/iclass/css/schedule.css">
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="page-wrapper" id="schedule">
+    	<!--   -->
+       
+        <div id="panel-noschedule" class="panel panel-default" >
+        	<!-- <img alt="" src="assets/img/iclass/schedule/pic.png"> -->
+                 <div class="noschedule-tip">当前时间段没有课表！</div>               
+                 <div class="noschedule-tip">你可以：
+                 <a class="create-schedule" href="#">创建课程表</a>
+                 	或者
+                 <a class="" data-toggle="modal" data-target="#myModal">导入课程表</a>
+                    或者
+                 <a class="create-course-template" >配置课程模板</a>
+                 </div>  
+              
+                         
+        </div>
+        	<!--课程表 -->
+       <div id="panel-schedule" class="panel panel-default" >
+             <div class="panel-heading" style="margin-top: 10px;">
+                 <span class="schedule_title">课程表</span> 
+                 <span class="schedule_title" style="float: right;">
+                 	<i title="显示时间轴" class="fa fa-angle-down"></i>
+                 	<i  title="隐藏时间轴"  class="fa fa-angle-up" style="display: none;"></i>
+                 </span> 
+             </div>
+             <div class="panel-body" >
+             
+             	<!-- <div class="tippop now">6/27</div> -->
+             	
+             	<!-- <div class="tippop start" style="left: 45%;">2018/5/27</div>
+             	<div class="tippop schedulename current" style="left: 54%;">2018新生课表</div>
+             	<div class="tippop end" style="left: 58%;">2018/7/27</div>
+             	
+             	<div class="tippop schedulename time" style="left: 200px;">2018新生课表1.0<br>2018-2-2至2018-3-3</div>
+             	<div class="tippop schedulename time" style="left: 350px;">2018新生课表2.0<br>2018-3-20至2018-5-20</div>
+             	 -->
+             	<div class="timeline-wrapper" style="display: none;">
+	             	<div class="timeline">
+	             		<div class="tippop now"></div> 
+	             		<span class="starttime" ></span>
+	             		<div class="prev"></div>
+	             		<!-- <div class="timebefore"></div>
+	             		<div class="timeafter"></div> -->
+	             		
+	             		<!-- <div class="progress" style="left: 175px;" data-scheduleid=1 data-schedulename="2018新生课表1.0" data-startdate="2018-2-2" data-enddate="2018-3-3">
+	             			<div class="progress-bar" >
+	             			</div>
+	             		</div>
+	             		<div class="progress" style="left: 335px;" data-scheduleid=2>
+	             			<div class="progress-bar" >
+	             			</div>
+	             		</div>
+	             		<div class="progress now" style="left: 500px;" data-scheduleid=3>
+	             			<div class="progress-bar">
+	             			</div>
+	             		</div> -->
+	             		
+	             		<div class="next"></div>
+	             		<span class="endtime"></span>
+	             	</div>
+             	</div>
+             	<div id="schedule-opt-wrapper">
+             		<select id="schedule-select">
+                    	<option></option>
+                	</select>
+	             	<a class="schedule-opt schedule-opt-log"><img alt="" src="assets/img/iclass/schedule/btn/log.png">记录</a>
+	             	<a class="schedule-opt schedule-opt-course"><img alt="" src="assets/img/iclass/schedule/btn/mould.png">课程</a>
+	             	<a class="schedule-opt schedule-opt-export"><img alt="" src="assets/img/iclass/schedule/btn/export.png">导出</a>
+	             	<a class="schedule-opt schedule-opt-import" data-toggle="modal" data-target="#myModal" ><img alt="" src="assets/img/iclass/schedule/btn/lead-into.png">导入</a>
+	             	<a class="schedule-opt schedule-opt-copy"><img alt="" src="assets/img/iclass/schedule/btn/copy_timetable.png">复制</a>
+	             	<a class="schedule-opt schedule-opt-delete"><img alt="" src="assets/img/iclass/schedule/btn/delete_timetable.png">删除</a>
+	             	<a class="schedule-opt schedule-opt-modify"><img alt="" src="assets/img/iclass/schedule/btn/edit_timetable.png">修改</a>
+	             	<a class="schedule-opt schedule-opt-add"><img alt="" src="assets/img/iclass/schedule/btn/add_timetable.png">新增</a>
+             	</div>
+             	
+             	<div class="schedule" >
+		             <!-- <div class="schedule-header" >
+		             	2018年度新生班课表
+		             </div>
+		             <div class="schedule-title">2017年9月1日 - 2018年7月20日</div>
+			        课表抬头
+			   		<ul class="kb_weeknav_ul ">
+			   		
+			   			<li class="kb_weeknav">
+			   				<p class="weeknav_tex">课节</p>
+			   			</li>
+		            	
+		            	
+		            	<li class="kb_weeknav">
+		            		<p class="weeknav_tex">时间</p>
+		            	</li>
+		            	
+		                
+	                	<li class="kb_weeknav">
+	                		<p class="weeknav_tex">周一</p>
+	                	</li>
+	                	
+	                
+	                	<li class="kb_weeknav">
+	                		<p class="weeknav_tex">周二</p>
+	                	</li>
+	                	
+	                
+	                	<li class="kb_weeknav">
+	                		<p class="weeknav_tex">周三</p>
+	                	</li>
+	                	
+	                
+	                	<li class="kb_weeknav">
+	                		<p class="weeknav_tex">周四</p>
+	                	</li>
+	                	
+	                
+	                	<li class="kb_weeknav">
+	                		<p class="weeknav_tex">周五</p>
+	                	</li>
+	                	
+	                
+	                	<li class="kb_weeknav">
+	                		<p class="weeknav_tex">周六</p>
+	                	</li>
+	                	
+	                
+	                	<li class="kb_weeknav">
+	                		<p class="weeknav_tex">周日</p>
+	                	</li>	                	
+		                
+		            </ul> -->
+		            <!-- 课表内容  -->
+		           <!--  <ul class="kb_content clear">
+			            <li class="kb_order">
+				           	<div name="schedule_cell">
+	               				<a  href="#" class="">
+		                       		<p class="kb_course_tex" title="">一</p>
+		                       	</a>               			
+		               		</div>
+				        </li>
+				         <li class="kb_time">				           
+				           <div name="schedule_cell">
+	               				<a  href="#" class="">
+		                       		<p class="kb_course_tex" title="">08:00 - 08:45</p>
+		                       	</a>               			
+		               		</div>
+				        </li>
+				        <li class="kb_course">  
+           					<div name="schedule_cell">
+	               				<a  href="#" class="">
+		                       		<p class="kb_course_tex" title="">语文</p>
+		                       	</a>               			
+		               		</div>
+            			</li>
+            			<li class="kb_course">  
+           					<div name="schedule_cell">
+	               				<a  href="#" class="">
+		                       		<p class="kb_course_tex" title="">英语</p>
+		                       	</a>               			
+		               		</div>
+            			</li>
+            			<li class="kb_course">  
+           					<div name="schedule_cell">
+	               				<a  href="#" class="">
+		                       		<p class="kb_course_tex" title="">数学</p>
+		                       	</a>               			
+		               		</div>
+            			</li>	 
+            			<li class="kb_course">  
+           					<div name="schedule_cell">
+	               				<a  href="#" class="">
+		                       		<p class="kb_course_tex" title="">历史</p>
+		                       	</a>               			
+		               		</div>
+            			</li>	 
+            			<li class="kb_course">  
+           					<div name="schedule_cell">
+	               				<a  href="#" class="">
+		                       		<p class="kb_course_tex" title="">政治</p>
+		                       	</a>               			
+		               		</div>
+            			</li>	 
+            			<li class="kb_course">  
+           					<div name="schedule_cell">
+	               				<a  href="#" class="">
+		                       		<p class="kb_course_tex" title="">生物</p>
+		                       	</a>               			
+		               		</div>
+            			</li>	 
+            			<li class="kb_course">  
+           					<div name="schedule_cell">
+	               				<a  href="#" class="">
+		                       		<p class="kb_course_tex" title="">地理</p>
+		                       	</a>               			
+		               		</div>
+            			</li>	
+            		</ul> 	 	  -->
+		          </div>  <!-- schedule end -->
+             </div>
+        </div>
+
+        <div id="panel-schedule-head" class="panel panel-default">
+             <!-- <div class="panel-heading" style="margin-top: 10px;">
+                 <span class="net_title">课程表</span>
+             </div> -->
+             <div class="panel-body" style="position:relative;height:40px;">
+              	<span style="position: absolute;left: 20px;top: 10px;">
+		            <input id="template-switch" type="checkbox"  class=" status-switch"  >
+		            <label class="control-label" for="template-switch" style="margin-right: 10px;">启用按课程表自动切换模板</label>
+		       	</span>
+		       	
+		       	<span style="position: absolute;left: 220px;top: 10px;">
+		            <input id="auto-switch" type="checkbox"  class=" status-switch"  >
+		            <label class="control-label" for="auto-switch" style="margin-right: 10px;">启用根据课程表自动开关机</label>
+		       	</span>
+		       	
+		       	<!-- <span style="position: absolute;left: 274px;top: 20px;">
+		            <input id="schedule-restore" type="checkbox"  class=" status-switch"  >
+		            <label class="control-label" for="schedule-restore" style="margin-right: 10px;">启用课程表还原</label>
+		       	</span>
+		       	
+		       	<a class="schedule-template">课表</a> -->
+             </div>
+        </div>
+        
+        <div style="z-index:1111;" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog"   style="width:400px;top:100px;">
+				<div class="modal-content">
+				
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>
+				
+					<div class="modal-header">
+						<button type="button" class="close" id="closeTip" data-dismiss="modal" aria-hidden="true">
+							&times;
+						</button>
+						<h4 class="modal-title" id="myModalLabel">
+							请选择课表文件
+						</h4>
+					</div>
+					<div class="modal-body" style="height:60px;padding-top:19px;">
+					<form enctype="multipart/form-data" id="uploadForm" target="">
+						<input id="myFile" name="myFile" type="file" value="" accept="application/vnd.openxmlformat-officedocument.spreadsheetml.sheet,application/vnd.ms-excel"  style="border: 1px solid #ddd;margin-right: 10px;float: left;">
+						<a class="download-tpl" style="line-height: 24px;">下载模板</a> 
+						<a class="import-schedules" style="display:none;line-height: 24px;margin-left:10px;cursor: pointer;">导入</a> 
+					
+					</form>
+					</div>
+					<!-- /<div class="modal-footer">	</div> -->
+		              
+				</div><!-- /.modal-content -->
+	        
+	        </div>
+    </div><!-- /.modal -->
+    <div style="z-index:1112;" class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    </div>
+    <script src="assets/scripts/pages/iclass/js/schedule.js"></script>
+</body>
+
+</html>
