@@ -1,0 +1,143 @@
+body{
+	font-family: "Microsoft YaHei", Verdana;
+}
+.clear{
+	clear:both;
+}
+@media (min-height:901px) {
+    #schedule-template{
+    	height:900px;
+    }
+}
+@media (max-height:900px) {
+    #schedule-template{
+    	height:680px;
+    }
+}
+
+#panel-schedule-tpl{
+	height: 99%;
+	position:relative;
+	min-width: 900px;
+}
+#panel-schedule-tpl .panel-body{
+    overflow: hidden;
+    height: 100%;	
+}
+.modal-footer button{
+	background: #008FD5;
+    color: #fff;
+}
+
+.schedule-template,.schedule-template-header{
+	width:100%;
+	position: relative;
+	left: 0;
+}
+.schedule-template{
+	/* overflow-y: auto; */
+    height: calc( 100% - 100px );
+    clear: both;
+    margin-top: 20px;
+   /*  top: 40px; */
+    min-width: 880px;
+}
+.select2-container--default .select2-selection--single{
+	border-radius:0;
+	height: 30px;
+}
+.schedule-template-opt{
+	float:right;
+	margin-left:10px;
+	background: #4BC0F9;
+    color: #fff;
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+.schedule-template ul{
+	padding-left:0;
+}
+.schedule-template div.tab_header{
+	position: fixed;
+    width: 100%;
+}
+.schedule-template div.tab_body{
+	overflow-y:auto;
+	height:100%;
+	position:relative;
+	top:40px;
+}
+.schedule-template .kb_weeknav_ul {
+	/* position: fixed; */
+    width: calc( 100% - 242px );
+}
+.schedule-template ul.course-lst li.course-item{
+	width:100%;
+	border-left:0;
+	border-right:0;
+	line-height: 40px;
+	text-align:left;
+}
+.schedule-template ul.course-lst li.course-item:last-child{
+	border-bottom:0;
+}
+.schedule-template li {
+	list-style:none;
+    float: left;
+    width: calc( 25% - 10px );
+    height: initial;
+    line-height:20px;
+    border-right:1px solid #6982B2;
+    border-bottom:1px solid  #6982B2;
+    position:relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.schedule-template .kb_weeknav_ul li.kb_weeknav{
+	background: #4BC0F9;
+	color:#fff;
+	border-right:0;
+	height:40px;
+}
+.schedule-template .kb_weeknav_ul li.kb_weeknav:nth-child(1),.schedule-template .kb_content li:nth-child(5n+1){
+	border-left:1px solid  #6982B2;
+	width:40px;
+}
+.schedule-template .checkbox input[type=checkbox],.schedule-template .checkbox-inline input[type=checkbox]{
+	margin-left: 10px;
+    margin-top: -7px;
+}
+.schedule-template .weeknav_tex,.schedule-template .kb_content p{
+    text-align: left;
+    font-size: 12px;
+    margin: 10px;
+    word-break: break-word;
+}
+.schedule-template .tempate-color{
+	width: 14px;
+    height: 14px;
+   /*  background: green; */
+    margin: 0 auto;
+}
+.schedule-template-opt img{
+	margin-right:5px;
+	position: relative;
+    top: -2px;
+}
+.schedule-template-opt:hover{
+	color:#eee;
+}
+.course-lst{
+	width:100%;
+}
+/* .odd{
+	background:#254782;
+}
+.even{
+	background:#2E5292;
+} */
