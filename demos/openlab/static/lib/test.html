@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>主机质量详情</title>
+   <link rel="stylesheet" type="text/css" href="switchery.css">
+    <!-- <link rel="stylesheet" type="text/css" href="bootstrap-switch.min.css"> -->
+</head>
+
+<body>
+    <div class="content-wrapper host-quality-detail" style="height: 705px;padding-bottom: 20px;">
+        <div class="page-title"><i class="fa fa-reply back-to-overview" style="" title="返回"></i><span></span></div>
+        <span style="position: absolute;right: 520px;top: 34px;">
+            <input id="opt-excellent" type="checkbox"  class=" status-switch"  >
+            <label class="control-label" for="opt-excellent" style="margin-right: 10px;">良好</label>
+        </span>
+        <span style="position: absolute;right: 440px;top: 34px;">
+            <input id="opt-normal" type="checkbox"  class=" status-switch"  >
+            <label class="control-label" for="opt-normal" style="margin-right: 10px;">正常</label>
+        </span>
+        <span style="position: absolute;right: 350px;top: 34px;">
+            <input id="opt-subhealth" type="checkbox"  class=" status-switch" checked  >
+            <label class="control-label" for="opt-subhealth" style="margin-right: 10px;">亚健康</label>
+        </span>
+        <span style="position: absolute;right: 265px;top: 34px;">
+            <input id="opt-problem" type="checkbox"  class=" status-switch" checked >
+            <label class="control-label" for="opt-problem" style="margin-right: 10px;">恶劣</label>
+        </span>
+        
+    </div>
+<script src="jquery.min.js"></script>
+	<script src="switchery.js"></script>
+	  <!-- <script src="bootstrap-switch.min.js"></script> -->
+    <script >
+	var elems = $('.status-switch');
+    elems.each(function(i, elem) {
+        var switchery = new Switchery(elem, {
+            size: 'small',
+            disabled: false,
+            disabledOpacity: 1,
+            color: '#2ecc71',
+            secondaryColor: '#bbbfc7',
+            clickCallback: switchCallback
+        });
+    });
+	
+	function switchCallback(obj) {
+        obj.changeStatus();
+
+    }
+	
+	</script>
+</body>
+
+</html>
