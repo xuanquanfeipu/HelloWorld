@@ -23,6 +23,7 @@
   .el-container {
     margin: 0;
     padding: 0;
+    min-width: 1250px;
   }
 
   #app {
