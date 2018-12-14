@@ -1,0 +1,13 @@
+source/leaderDesktop_app/cordova
+source/leaderDesktop_app/CordovaLib
+source/leaderDesktop_app/.idea/
+source/leaderDesktop_app/.gradle/
+output/
+**/.idea/**
+**/.iml
+source/sparkTask/target/
+source/sparkTask/.idea/
+
+*.bak
+*.iml
+**/merger.xml
