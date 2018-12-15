@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>北京市政务大数据--领导决策</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/index3.css" rel="stylesheet">
+    <link href="css/indicator.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/echarts.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/changsha.js"></script>
+    <script src="js/sly.min.js"></script>
+    <script src="js/index3_nav.js"></script>
+</head>
+<style>
+.main-sidebar {
+    background-color: #e7eaf1;
+	 margin-top:-10px;
+	 position: fixed;
+	 min-height:1060px;
+	 over-flow:hidden;
+}
+.radio1 {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+</style>
+<body style="background-color:#f5f5f5;">
+<header class="main-header">
+    <div class="logobar logobar-static-top" style="background-color: #394aa9;">
+        <div class="container">
+            <img src="images/logo.png" class="fl logo"></img>
+            <div class="fl" style="padding: 15px;font-size: 17px;font-weight: bold;margin-top: 5px;color: #fff;">北京市政务大数据--领导决策</div>
+            <a href="javascript:;;" class="fr profile"></a>
+        </div>
+    </div>
+
+    <div class="main_tab">
+        <div class="container">
+            <a href="javascript:;" class="fl nav_btn prev_btn"><img src="images/btn_selected_l.png"></a>
+            <div class="frame fl" id="frame">
+                <ul id="navbar" class="main_tab_ul clearfix fl slidee">
+                </ul>
+            </div>
+            <a href="javascript:;" class="fl nav_btn next_btn"><img src="images/btn_selected_s.png"></a>
+        </div>
+    </div>
+</header>
+
+<div ui-view="" class="main-div" style="overflow-x:hidden;">
+    <div class="content-wrapper">
+        <div  style="min-height:768px;background-color:#eeeeee">
+            <aside class="main-sidebar" style="top:inherit;">
+                <ul class="sidebar-menu">
+                    <li class="treeview" onclick="javascript:window.location.href='indicator-ylfx-ylwsztfx.html'" role="button" tabindex="0">
+                        <a>
+                            <img src="images/icon_healthcare.png" width="30" height="30"> <span>医疗卫生总体分析</span>
+                        </a>
+                    </li>
+                    <li class="treeview" onclick="javascript:window.location.href='indicator-ylfx-ylwsjgfx.html'" role="button" tabindex="0">
+                        <a>
+                            <img src="images/icon_structure.png" width="30" height="30"> <span>医疗卫生结构分析</span>
+                        </a>
+                    </li>
+                    <li class="treeview" onclick="javascript:window.location.href='indicator-ylfx-crbqkfx.html'" role="button" tabindex="0">
+                        <a>
+                            <img src="images/icon_infection.png" width="30" height="30"> <span>传染病情况分析</span>
+                        </a>
+                    </li>
+                    <li class="treeview menu-active" role="button" tabindex="0">
+                        <a>
+                            <img src="images/icon_townsfolk_on.png" width="30" height="30"> <span>城市居民疾病分析</span>
+                        </a>
+						<div class="empxx"></div>
+                    </li>
+                </ul>
+            </aside>
+            <div ui-view="">
+                
+                <section class="content">
+                    <div class="indi-chart-p" id="upDiv1" style="width:57.6%; height:370px;margin-left:8px;margin-top:10px">
+                        <div class="title">
+                            城市死因构成占比
+                        </div>
+                        <div id="Chart1" style="height: 290px; position: relative; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; background: transparent;"></div>
+                    </div>
+                    <div class="indi-chart-p" id="upDiv2" style="width:37.8%; height:370px;margin-left:1.6%;margin-top:10px">
+                        <div class="title">
+                            城市主要疾病死亡率分析
+                        </div>
+                        <div style="text-align:center; margin:-12px 0 12px 0;width:306px;">
+                            <div style="float:left;margin-left:35px;margin-top:19px;font-size:14px; color: #8c94b3;">
+                                <span style="font-weight: bold;">请选择疾病种类&nbsp;&nbsp;</span>
+                                <select id="diseaseType" style="font-size:12px;" class="" aria-invalid="false">
+                                    <option value="0">恶性肿瘤</option>
+                                    <option value="1">心脏病</option>
+                                    <option value="2">脑血管病</option>
+                                    <option value="3">呼吸系统疾病</option>
+                                    <option value="4">内分泌代谢疾病</option>
+                                    <option value="5">消化系统疾病</option>
+                                    <option value="6">传染病</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="Chart2" style="height: 270px;clear:both; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; background: transparent;"></div>
+                    </div>
+                    <div class="indi-chart-p" id="belowDiv" style="width:97%;  margin-top:20px;margin-left:8px">
+                        <div class="title">
+                            城市死因构成分布一览
+                        </div>
+                        <div style="margin-top:15px;">
+                            <table class="c21-datatbl" id="c21-datatbl">
+                                <thead id="tableHead">
+                                <tr>
+                                    <th style="text-align:left; padding-left:10px;">
+                                        指标
+                                    </th>
+                                    <th>
+                                        <input name="yearRadio" style="" type="radio" style="" id="radio2016" class="radio1 " checked="checked" aria-invalid="false" value="2016">
+                                        <label for="radio2016"></label>2015年
+                                    </th>
+                                    <th>
+                                        <input name="yearRadio" type="radio" id="radio2015" class="radio1 " aria-invalid="false" value="2015">
+                                        <label for="radio2015"></label>2014年
+                                    </th>
+                                    <th>
+                                        <input name="yearRadio" type="radio" id="radio2014" class="radio1 " aria-invalid="false" value="2014">
+                                        <label for="radio2014"></label>2013年
+                                    </th>
+                                    <th>
+                                        <input name="yearRadio" type="radio" id="radio2013" class="radio1 " aria-invalid="false" value="2013">
+                                        <label for="radio2013"></label>2012年
+                                    </th>
+                                    <th>
+                                        <input name="yearRadio" type="radio" id="radio2012" class="radio1 " aria-invalid="false" value="2012">
+                                        <label for="radio2012"></label>2011年
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody id="tableBody">
+                                <tr>
+                                    <th>
+                                        <img style="width:12px;height:12px" role="button" tabindex="0" aria-invalid="false" src="images/btn_s.png">
+                                        <span>恶性肿瘤</span>(1/10万)
+                                    </th>
+                                    <td>124.23</td>
+									<td>123.50</td>
+                                    <td>109.17</td>
+                                    <td>99.41</td>
+                                    <td>87.02</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <img style="width:12px;height:12px" role="button" tabindex="0" aria-invalid="false" src="images/btn_s.png">
+                                        <span>心脏病</span>(1/10万)
+                                    </th>
+                                    <td>159.58</td>
+                                    <td>158.86</td>
+                                    <td>133.36</td>
+                                    <td>112.23</td>
+                                    <td>101.12</td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <img style="width:12px;height:12px" role="button" tabindex="0" aria-invalid="false" src="images/btn_s.png">
+                                        <span>脑血管病</span>(1/10万)
+                                    </th>
+                                    <td>120.48</td>
+                                    <td>108.08</td>
+                                    <td>86.5</td>
+                                    <td>71.26</td>
+                                    <td>62.12</td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <img style="width:12px;height:12px" role="button" tabindex="0" aria-invalid="false" src="images/btn_s.png">
+                                        <span>呼吸系统疾病</span>(1/10万)
+                                    </th>
+                                    <td>81.90</td>
+                                    <td>81.32</td>
+                                    <td>51.15</td>
+                                    <td>41.31</td>
+                                    <td>38.13</td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <img style="width:12px;height:12px" role="button" tabindex="0" aria-invalid="false" src="images/btn_s.png">
+                                        <span>内分泌代谢疾病</span>(1/10万)
+                                    </th> 
+                                    <td>17.25</td>
+                                    <td>15.94</td>
+                                    <td>10.08</td>
+                                    <td>8.15</td>
+                                    <td>7.42</td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <img style="width:12px;height:12px" role="button" tabindex="0" aria-invalid="false" src="images/btn_s.png">
+                                        <span>消化系统疾病</span>(1/10万)
+                                    </th>
+                                    <td>13.60</td>
+                                    <td>15.57</td>
+                                    <td>11.42</td>
+                                    <td>10.20</td>
+                                    <td>8.75</td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <img style="width:12px;height:12px" role="button" tabindex="0" aria-invalid="false" src="images/btn_s.png">
+                                        <span>传染病</span>(1/10万)
+                                    </th>
+                                    <td>10.63</td>
+                                    <td>10.09</td>
+                                    <td>9.64</td>
+                                    <td>8.53</td>
+                                    <td>7.62</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <section>
+                    </section>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/indicator.js"></script>
+<script src="js/indicator-ylfx-csjmjbfx.js"></script>
+
+</body>
+</html>
