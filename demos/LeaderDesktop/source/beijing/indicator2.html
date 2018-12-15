@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>北京市政务大数据--领导决策</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/index3.css" rel="stylesheet">
+    <link href="css/indicator.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/echarts.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/changsha.js"></script>
+    <script src="js/sly.min.js"></script>
+    <script src="js/index3_nav.js"></script>
+  </head>
+  <body>
+     <header class="main-header">
+        <div class="logobar logobar-static-top">
+          <div class="container">            
+            <img src="images/logo.png" class="fl logo"></img>
+            <div class="fl" style="padding:15px;font-size:17px;font-weight: bold;margin-top:5px;color:#fff">北京市政务大数据--领导决策</div>
+            <a href="javascript:;;" class="fr profile"></a>
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+
+         <!--main_tab begin-->
+         <div class="main_tab">
+             <div class="container" >
+                 <a href="javascript:;" class="fl nav_btn prev_btn"><img src="images/index3/btn_selected_l.png"></a>
+                 <div class="frame fl" id="frame">
+                     <ul id="navbar" class="main_tab_ul clearfix fl slidee">
+
+                     </ul>
+                 </div>
+
+                 <a href="javascript:;" class="fl nav_btn next_btn"><img src="images/index3/btn_selected_s.png"></a>
+             </div>
+         </div>
+         <!--main_tab end-->
+    </header>
+      
+
+
+    <div class="inde-content">
+    	<!--main_tab end-->
+        <div class="indi-sidebar">
+        	<ul class="indi-sidemenu">
+                <li url="indicator1.html" style="position:relative;">
+                    <i class="nav-img1"></i>
+                    <span>总体GDP分析</span>
+                    <div class="emp"></div>
+                </li>
+                <li class="target" url="indicator2.html">
+                    <i class="nav-img2"></i>
+                    <span>产业GDP分析</span>
+                    <div class="emp"></div>
+                </li>
+                <li url="indicator3.html">
+                    <i class="nav-img3"></i>
+                    <span>行业GDP分析</span>
+                    <div class="emp"></div>
+                    
+                </li>
+                <li class="last" url="indicator4.html">
+                    <i class="nav-img4"></i> 
+                    <span>地域GDP分析</span>
+                    <div class="emp"></div>
+                </li>
+            </ul>
+        </div>
+        <div class="indi-main cf">
+        	<div class="indi-chart-p indiW3" style="width:97%;">
+        		<div class="title">产业GDP发展情况</div>
+        		<div id="chart1" style="width:100%"></div>
+        	</div>
+            <div class="indi-chart-p" style="width:97%;">
+                <div class="title">产业GDP分布一览</div>
+                <div style="margin-top:15px;">
+                    <table class="c21-datatbl" id="c21-datatbl">
+                        <thead>
+                            <tr>
+                                <th style="text-align:left; padding-left:10px;">
+                                    <i class="uncheck-btn" id="cbxall"></i>&nbsp;&nbsp;指标
+                                </th>
+                                <th>
+                                    <i class="checked-btn" year="2015"></i>&nbsp;&nbsp;2015年
+                                </th>
+                                <th>
+                                    <i class="checked-btn" year="2014"></i>&nbsp;&nbsp;2014年
+                                </th>
+                                <th>
+                                    <i class="checked-btn" year="2013"></i>&nbsp;&nbsp;2013年
+                                </th>
+                                <th>
+                                    <i class="checked-btn" year="2012"></i>&nbsp;&nbsp;2012年
+                                </th>
+                                <th>
+                                    <i class="checked-btn" year="2011"></i>&nbsp;&nbsp;2011年
+                                </th>
+                                <th>
+                                    <i class="checked-btn" year="2010"></i>&nbsp;&nbsp;2010年
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>
+                                     <i class="checked-btn" legender="第一产业"></i>&nbsp;&nbsp;第一产业（亿元）
+                                </th>
+                                <td>3287.26</td>
+                                <td>3148.75</td>
+                                <td>2990.31</td>
+                                <td>3004.21</td>
+                                <td>2768.03</td>
+                                <td>2325.50</td>
+                            </tr>
+                            <tr>
+                                <th>
+                                     <i class="checked-btn" legender="第二产业"></i>&nbsp;&nbsp;第二产业（亿元）
+                                </th>
+                                <td>14589.5</td>
+                                <td>12482.06</td>
+                                <td>11553.97</td>
+                                <td>10506.42</td>
+                                <td>9361.99</td>
+                                <td>7343.19</td>
+                            </tr>
+                            <tr>
+                                <th>
+                                     <i class="checked-btn" legender="第三产业"></i>&nbsp;&nbsp;第三产业（亿元）
+                                </th>
+                                <td>12550.16</td>
+                                <td>11406.51</td>
+                                <td>10077.39</td>
+                                <td>8643.60</td>
+                                <td>7539.54</td>
+                                <td>6369.27</td>
+                            </tr>
+                            <tr>
+                                <th>
+                                     <i class="uncheck-btn" legender="第一产业增长率"></i>&nbsp;&nbsp;第一产业增长率
+                                </th>
+                                <td>5.81</td>
+                                <td>5.30</td>
+                                <td>-0.46</td>
+                                <td>8.53</td>
+                                <td>19.03</td>
+                                <td>18.04</td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <i class="uncheck-btn" legender="第二产业增长率"></i>&nbsp;&nbsp;第二产业增长率
+                                </th>
+                                <td>2.63</td>
+                                <td>8.03</td>
+                                <td>9.97</td>
+                                <td>12.22</td>
+                                <td>27.49</td>
+                                <td>29.12</td>
+                            </tr>
+                            <tr>
+                                <th>
+                                     <i class="uncheck-btn" legender="第三产业增长率"></i>&nbsp;&nbsp;第三产业增长率
+                                </th>
+                                <td>11.86</td>
+                                <td>13.19</td>
+                                <td>16.29</td>
+                                <td>14.64</td>
+                                <td>18.37</td>
+                                <td>17.89</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        	<div style="clear:both"></div>
+        </div>
+    </div>
+	
+    <script src="js/indicator.js"></script>
+  	<script src="js/indicator2.js"></script>
+</body>
+</html>
