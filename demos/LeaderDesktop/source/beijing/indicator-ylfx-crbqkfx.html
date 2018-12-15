@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>北京市政务大数据--领导决策</title>
+
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/index3.css" rel="stylesheet">
+    <link href="css/indicator.css" rel="stylesheet">
+
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="js/jquery.min.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/echarts.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/changsha.js"></script>
+    <script src="js/sly.min.js"></script>
+    <script src="js/index3_nav.js"></script>
+</head>
+<style>
+.main-sidebar {
+    background-color: #e7eaf1;
+	 margin-top:-10px;
+	 position: fixed;
+	 min-height:1060px;
+	 over-flow:hidden;		    
+}
+</style>
+<body style="background-color:#f5f5f5">
+<header class="main-header">
+    <div class="logobar logobar-static-top" style="background-color: #394aa9;">
+        <div class="container">
+            <img src="images/logo.png" class="fl logo"></img>
+            <div class="fl" style="padding: 15px;font-size: 17px;font-weight: bold;margin-top: 5px;color: #fff;">北京市政务大数据--领导决策</div>
+            <a href="javascript:;;" class="fr profile"></a>
+        </div>
+    </div>
+
+    <div class="main_tab">
+        <div class="container" >
+            <a href="javascript:;" class="fl nav_btn prev_btn"><img src="images/index3/btn_selected_l.png"></a>
+            <div class="frame fl" id="frame">
+                <ul id="navbar" class="main_tab_ul clearfix fl slidee">
+                </ul>
+            </div>
+            <a href="javascript:;" class="fl nav_btn next_btn"><img src="images/index3/btn_selected_s.png"></a>
+        </div>
+    </div>
+</header>
+
+<div ui-view="" class="main-div" style="overflow-x:hidden;">
+<div class="content-wrapper" style="background-color:#e0e0e0">
+<div class="" >
+
+    <aside class="main-sidebar" style="top:inherit;">
+        <ul class="sidebar-menu" >
+        <li class="treeview " onclick="javascript:window.location.href='indicator-ylfx-ylwsztfx.html'"   role="button" tabindex="0">
+
+        <a >
+        <img src="images/icon_healthcare.png" width="30" height="30"> <span>医疗卫生总体分析</span>
+    </a>
+    </li><li class="treeview " onclick="javascript:window.location.href='indicator-ylfx-ylwsjgfx.html'"   role="button" tabindex="0">
+
+        <a >
+        <img src="images/icon_structure.png" width="30" height="30"> <span>医疗卫生结构分析</span>
+    </a>
+    </li><li class="treeview  menu-active"    role="button" tabindex="0">
+        <a >
+        <img src="images/icon_infection_on.png" width="30" height="30"> <span>传染病情况分析</span>
+    </a>
+     <div class="empxx"></div>
+    </li><li class="treeview " onclick="javascript:window.location.href='indicator-ylfx-csjmjbfx.html'"   role="button" tabindex="0">
+
+        <a >
+        <img src="images/icon_townsfolk.png" width="30" height="30"> <span>城市居民疾病分析</span>
+    </a>
+    </li>
+    </ul>
+    </aside>
+    <div ui-view="">
+        
+        <section class="content" >
+
+            <div class="indi-chart-p" style="width:97%; height:500px;margin-left:8px;margin-top:10px">
+                <div class="title">
+                    北京市传染病情况分析
+                </div>
+                <div id="Chart1" style="height: 435px; position: relative; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; background: transparent;   "></div>
+
+            </div>
+
+
+            <div class="indi-chart-p" style="width:97%;padding-bottom:0px; margin-top:20px;margin-left:8px">
+                <div class="title">
+                    北京市传染病情况分布一览
+                </div>
+
+                <div style="margin-top:15px;">
+                    <table class="c21-datatbl" id="c21-datatbl">
+                        <thead id="tableHead">
+                        <tr>
+                            <th style="text-align:left; padding-left:10px;">
+                                指标
+                            </th>
+                            <th >
+                                <img  style="width:12px;height:12px" role="button" tabindex="0" aria-invalid="false" src="images/btn_s.png">
+                                <span>2015</span>年
+                            </th>
+                            <th >
+                                <img  style="width:12px;height:12px" role="button" tabindex="0" aria-invalid="false" src="images/btn_s.png">
+                                <span>2014</span>年
+                            </th>
+                            <th >
+                                <img  style="width:12px;height:12px" role="button" tabindex="0" aria-invalid="false" src="images/btn_s.png">
+                                <span>2013</span>年
+                            </th>
+                            <th >
+                                <img  style="width:12px;height:12px" role="button" tabindex="0" aria-invalid="false" src="images/btn_s.png">
+                                <span>2012</span>年
+                            </th>
+                            <th >
+                                <img   style="width:12px;height:12px" role="button" tabindex="0" aria-invalid="false" src="images/btn_s.png">
+                                <span>2011</span>年
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                        <tr>
+                            <th>
+                                <img style="width:12px;height:12px" role="button" tabindex="0" aria-invalid="false" src="images/btn_s.png">
+                                <span>发病人数</span>（万人）
+                            </th>
+                            <td>36.90</td>
+                            <td>40.215</td>
+                            <td>45.321</td>
+                            <td>55.121</td>
+                            <td>50.632</td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <img style="width:12px;height:12px" role="button" tabindex="0" aria-invalid="false" src="images/btn_s.png">
+                                <span>发病率</span>（%）
+                            </th>
+                            <td>0.544</td>
+                            <td>0.558</td>
+                            <td>0.634</td>
+                            <td>0.768</td>
+                            <td>0.71</td>
+							
+                        </tr>
+                        <tr>
+                            <th>
+                                <img style="width:12px;height:12px" role="button" tabindex="0" aria-invalid="false" src="images/btn_s.png">
+                                <span>死亡人数</span>（人）
+                            </th>
+                            <td>775</td>
+                            <td>1021</td>
+                            <td>857</td>
+                            <td>1052</td>
+                            <td>1230</td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <img style="width:12px;height:12px" role="button" tabindex="0" aria-invalid="false" src="images/btn_s.png">
+                                <span>死亡率</span>（%）
+                            </th>
+                            <td>0.196</td>
+                            <td>0.253</td>
+                            <td>0.189</td>
+                            <td>0.191</td>
+                            <td>0.243</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <section>
+            </section></section></div>
+</div>
+</div>
+</div>
+<script src="js/indicator.js"></script>
+<script src="js/indicator-ylfx-crbqkfx.js"></script>
+</body>
+</html>
