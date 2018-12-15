@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>北京市政务 — 领导桌面 - 方案1</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <link href="css/style1.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="box_bg">
+    <div class="top clearfix">
+        <div class="logo fl clearfix">
+            <div class="logo_img fl"><img src="img/logo.png" alt=""/></div>
+            <div class="logo_tit fl"><p>北京市政务 — 领导桌面</p></div>
+        </div>
+        <div class="login fr">
+            <ul class="clearfix">
+                <li><img src="img/u837.png" alt=""/> </li>
+                <li><p><i class="icon"></i>刘自强</p></li>
+            </ul>
+        </div>
+    </div>
+    <div class="contentBox">
+        <div class="content clearfix">
+            <div class="type_box" >
+                <div class="notice fl" >
+                    <ul id="scroll" style="overflow:hidden;">
+                        <li><a href="javascript:;">2016年，大陆总人口138271万人，比上年末增加809万人，其中城镇常住人口79298万人。</a> </li>
+                        <li><a href="javascript:;">2016年，大陆总人口138271万人，比上年末增加809万人，其中城镇常住人口79298万人。</a> </li>
+                        <li><a href="javascript:;">2017年，大陆总人口98271万人，比上年末增加209万人，其中城镇常住人口29298万人。</a> </li>
+                        <li><a href="javascript:;">2017年，大陆总人口138271万人，比上年末增加809万人，其中城镇常住人口79298万人。</a> </li>
+                    </ul>
+                </div>
+                <div class="ztjj fl">
+                    <a href="indicator1-1.html" class="comm">
+                        <div class="box"><img src="img/icon_economic.png" alt=""/></div>
+                        <p>总体经济分析</p>
+                    </a>
+                    <div class="detail hidden">
+                        <p>总体经济专题包含北京市GDP总量及构成分析、各市州、区县经济情况分析、第一二三产业和支柱产业分析。</p>
+                    </div>
+                    <a href="javascript:;" onclick="del(2)" class="close hidden"><img src="img/icon_cancel.png"></a>
+                    <a href="javascript:;" onclick="add(2)" class="check hidden"><img src="img/icon_check.png"></a>
+                </div>
+
+                <div class="eduqk fl">
+                    <a href="indicator1.html" class="comm">
+                        <div class="box"><img src="img/icon_education.png" alt=""/></div>
+                        <p>教育情况分析</p>
+                    </a>
+					<div class="detail hidden">
+                        <p>教育情况分析专题包含北京市人口义务教育高等教育分析、各市州与区县的教育情况分析，包含学生人数、教师人数、入学率、升学率、贫困生人数等指标</p>
+                    </div>
+					<a href="javascript:;" onclick="del(1)" class="close hidden"><img src="img/icon_cancel.png"></a>
+					<a href="javascript:;" onclick="add(1)" class="check hidden"><img src="img/icon_check.png"></a>
+                </div>
+                <div class="custom fl">
+                    <a href="javascript:;" onclick="customClick()" class="customWrap">
+                        <img src="img/u82.png" alt=""/>
+                        <p>自定义</p>
+                    </a>
+					<div class="detail hidden">
+                        <p>点击自定义可以增添删除主题</p>
+                    </div>
+                    <div class="btn_box hidden">
+                        <a href="javascript:;" onclick="ok()" class="yes">确定</a>
+                        <a href="javascript:;" onclick="cancel()" class="no">取消</a>
+                    </div>
+                </div>
+            </div>
+            <div class="type_box1" >
+                <div class="gdzc fl">
+                    <a href="indicator1.html" class="comm">
+                        <div class="box"><img src="img/icon_fixed.png" alt=""/></div>
+                        <p>固定资产投资分析</p>
+                    </a>
+                    <div class="detail hidden">
+                        <p>固定资产投资专题包含北京市人口总体情况介绍各市州与区县的固定资产投资情况、产业、行业及资金来源情况分析</p>
+                    </div>
+                    <a href="javascript:;" onclick="del(0)" class="close hidden"><img src="img/icon_cancel.png"></a>
+                    <a href="javascript:;" onclick="add(0)" class="check hidden"><img src="img/icon_check.png"></a>
+                </div>
+                <div class="rkzh fl">
+                    <a href="indicator1.html" class="comm">
+                        <div class="box"><img src="img/icon_population.png" alt=""/></div>
+                        <p>人口综合分析</p>
+                    </a>
+					<div class="detail hidden">
+                        <p>人口综合专题包含北京市人口总体情况介绍、迁入与迁出分析、各市州与区县的人口情况及贫困人口情况、文化教育与就业情况分析。</p>
+                    </div>
+					<a href="javascript:;" onclick="del(3)" class="close hidden"><img src="img/icon_cancel.png"></a>
+					<a href="javascript:;" onclick="add(3)" class="check hidden"><img src="img/icon_check.png"></a>
+                </div>
+                <div class="jmsr fl">
+                    <a href="indicator1.html" class="comm">
+                        <div class="box"><img src="img/icon_income.png" alt=""/></div>
+                        <p>居民收入分析</p>
+                    </a>
+					<div class="detail hidden">
+                        <p>居民收入分析专题包含北京市人口义务教育、高等教育分析、各州市与区县的教育情况分析，包含学生人数、教师人数、入学率、升学率、贫困生人数等指标。</p>
+                    </div>
+					<a href="javascript:;" onclick="del(4)" class="close hidden"><img src="img/icon_cancel.png"></a>
+					<a href="javascript:;" onclick="add(4)" class="check hidden"><img src="img/icon_check.png"></a>
+                </div>
+                <div class="ylws fl">
+                    <a href="indicator1.html" class="comm">
+                        <div class="box"><img src="img/icon_medical.png" alt=""/></div>
+                        <p>医疗卫生分析</p>
+                    </a>
+					<div class="detail hidden">
+                        <p>医疗卫生专题包含北京市人口总体情况介绍就医人数、疾病情况、市州与区县医疗卫生情况等分析，包含卫生机构数、床位数、人员数等指标。</p>
+                    </div>
+					<a href="javascript:;" onclick="del(5)" class="close hidden"><img src="img/icon_cancel.png"></a>
+					<a href="javascript:;" onclick="add(5)" class="check hidden"><img src="img/icon_check.png"></a>
+                </div>
+                <div class="czsr fl">
+                    <a href="indicator1.html" class="comm">
+                        <div class="box"><img src="img/icon_financial.png" alt=""/></div>
+                        <p>财政收入分析</p>
+                    </a>
+					<div class="detail hidden">
+                        <p>财政收入专题包含北京市人口财政收入整体情况、市州与去向情况、收入与构成、支出与构成情况分析。</p>
+                    </div>
+					<a href="javascript:;" onclick="del(6)" class="close hidden"><img src="img/icon_cancel.png"></a>
+					<a href="javascript:;" onclick="add(6)" class="check hidden"><img src="img/icon_check.png"></a>
+                </div>
+                <div class="shbz fl">
+                    <a href="indicator1.html" class="comm">
+                        <div class="box"><img src="img/icon_social.png" alt=""/></div>
+                        <p>社会保障分析</p>
+                    </a>
+					<div class="detail hidden" style="z-index:10000">
+                        <p>社会保障专题包含北京市城镇企业、机关事业单位、城乡居民养老保险情况分析。</p>
+                    </div>
+					<a href="javascript:;" onclick="del(7)" class="close hidden"><img src="img/icon_cancel.png"></a>
+					<a href="javascript:;" onclick="add(7)" class="check hidden"><img src="img/icon_check.png"></a>
+                </div>
+            </div>
+            <div class="type_box2" >
+                <div class="ybqk fl">
+                    <a href="indicator1.html" class="comm">
+                        <div class="box"><img src="img/icon_healthcare.png" alt=""/></div>
+                        <p>医保情况分析</p>
+                    </a>
+					<div class="detail hidden">
+                        <p>医保情况专题包含北京市人口总体情况介绍就医人数、疾病情况、市州与区县医保情况等分析，包含参保机构数、人员数等指标。</p>
+                    </div>
+					<a href="javascript:;" onclick="del(8)" class="close hidden"><img src="img/icon_cancel.png"></a>
+					<a href="javascript:;" onclick="add(8)" class="check hidden"><img src="img/icon_check.png"></a>
+                </div>
+                <div class="gsqk fl">
+                    <a href="indicator1.html" class="comm">
+                        <div class="box"><img src="img/icon_injury.png" alt=""/></div>
+                        <p>工伤情况分析</p>
+                    </a>
+					<div class="detail hidden">
+                        <p>工伤情况专题包含北京市历年企业与行业的工伤情况分析。</p>
+                    </div>
+					<a href="javascript:;" onclick="del(9)" class="close hidden"><img src="img/icon_cancel.png"></a>
+					<a href="javascript:;" onclick="add(9)" class="check hidden"><img src="img/icon_check.png"></a>
+                </div>
+                <div class="rcgx fl">
+                    <a href="indicator1.html" class="comm">
+                        <div class="box"><img src="img/icon_talent.png" alt=""/></div>
+                        <p>人才供需分析</p>
+                    </a>
+					<div class="detail hidden">
+                        <p>人才供需专题包含北京市历年就业、失业与人才构成情况分析，包括供需分析、市州与区县的情况。</p>
+                    </div>
+					<a href="javascript:;" onclick="del(10)" class="close hidden"><img src="img/icon_cancel.png"></a>
+					<a href="javascript:;" onclick="add(10)" class="check hidden"><img src="img/icon_check.png"></a>
+                </div>
+                <div class="jyqk fl">
+                    <a href="indicator1.html" class="comm">
+                        <div class="box"><img src="img/icon_employment.png" alt=""/></div>
+                        <p>就业情况分析</p>
+                    </a>
+					<div class="detail hidden" style="z-index:10000">
+                        <p>就业情况专题包含北京市历年就业、失业与人才构成情况分析，包括供需分析、市州与区县的情况。</p>
+                    </div>
+					<a href="javascript:;" onclick="del(11)" class="close hidden"><img src="img/icon_cancel.png"></a>
+					<a href="javascript:;" onclick="add(11)" class="check hidden"><img src="img/icon_check.png"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/index1.js"></script>
+<script type="text/javascript">
+var elementStatusArray = new Array();
+var elementStatusTmpArray = new Array();
+var c,_=Function;
+    with(o=document.getElementById("scroll")){ innerHTML+=innerHTML; onmouseover=_("c=1"); onmouseout=_("c=0");}
+    (F=_("if(#%28||!c)#++,#%=o.scrollHeight>>1;setTimeout(F,#%78?10:1500);".replace(/#/g,"o.scrollTop")))();
+$(document).ready(function () {
+	addAllHoverEvents();
+	elementStatusArray.push({name:'gdzc',ischoosed:true});
+	elementStatusArray.push({name:'eduqk',ischoosed:true});
+	elementStatusArray.push({name:'ztjj',ischoosed:true});
+	elementStatusArray.push({name:'rkzh',ischoosed:true});
+	elementStatusArray.push({name:'jmsr',ischoosed:true});
+	elementStatusArray.push({name:'ylws',ischoosed:true});
+	elementStatusArray.push({name:'czsr',ischoosed:true});
+	elementStatusArray.push({name:'shbz',ischoosed:true});
+	elementStatusArray.push({name:'ybqk',ischoosed:true});
+	elementStatusArray.push({name:'gsqk',ischoosed:true});
+	elementStatusArray.push({name:'rcgx',ischoosed:true});
+	elementStatusArray.push({name:'jyqk',ischoosed:true});
+	
+	elementStatusTmpArray.push({name:'gdzc',ischoosed:true});
+	elementStatusTmpArray.push({name:'eduqk',ischoosed:true});
+	elementStatusTmpArray.push({name:'ztjj',ischoosed:true});
+	elementStatusTmpArray.push({name:'rkzh',ischoosed:true});
+	elementStatusTmpArray.push({name:'jmsr',ischoosed:true});
+	elementStatusTmpArray.push({name:'ylws',ischoosed:true});
+	elementStatusTmpArray.push({name:'czsr',ischoosed:true});
+	elementStatusTmpArray.push({name:'shbz',ischoosed:true});
+	elementStatusTmpArray.push({name:'ybqk',ischoosed:true});
+	elementStatusTmpArray.push({name:'gsqk',ischoosed:true});
+	elementStatusTmpArray.push({name:'rcgx',ischoosed:true});
+	elementStatusTmpArray.push({name:'jyqk',ischoosed:true});
+	
+	
+	
+});
+
+</script>
+</html>
