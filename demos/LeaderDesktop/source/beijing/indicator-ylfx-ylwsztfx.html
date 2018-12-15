@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>北京市政务大数据--领导决策</title>
+
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/index3.css" rel="stylesheet">
+    <link href="css/indicator.css" rel="stylesheet">
+    
+    
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="js/jquery.min.js"></script>
+    
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/echarts.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/changsha.js"></script>
+    <script src="js/sly.min.js"></script>
+    <script src="js/index3_nav.js"></script>
+</head>
+<style>
+
+</style>
+<body>
+<header class="main-header">
+    <div class="logobar logobar-static-top" style="background-color: #394aa9;">
+        <div class="container">
+            <img src="images/logo.png" class="fl logo"></img>
+            <div class="fl" style="padding: 15px;font-size: 17px;font-weight: bold;margin-top: 5px;color: #fff;">北京市政务大数据--领导决策</div>
+            <a href="javascript:;;" class="fr profile"></a>
+        </div>
+        
+    </div>
+
+    <div class="main_tab">
+        <div class="container" >
+            <a href="javascript:;" class="fl nav_btn prev_btn"><img src="images/index3/btn_selected_l.png"></a>
+            <div class="frame fl" id="frame">
+                <ul id="navbar" class="main_tab_ul clearfix fl slidee">
+
+                </ul>
+            </div>
+
+            <a href="javascript:;" class="fl nav_btn next_btn"><img src="images/index3/btn_selected_s.png"></a>
+        </div>
+    </div>
+</header>
+
+
+
+
+<div ui-view="" class="main-div ng-scope" style="overflow-x:hidden;">
+<div class="content-wrapper ng-scope">
+<div class="" >
+    
+    <aside class="main-sidebar" style="top:inherit;">
+        <ul class="sidebar-menu ng-scope" ng-if="vm.indicators">
+        <li class="treeview  ng-scope menu-active" ng-click="vm.indicator_click(indicator.indicatorsKey)" ng-class="{'menu-active':indicator.isActive}" ng-repeat="indicator in vm.indicators" role="button" tabindex="0">
+        
+        <a ng-if="!indicator.isActive" class="ng-scope">
+        <img src="images/icon_healthcare_on.png" width="30" height="30"> <span class="ng-binding">医疗卫生总体分析</span>
+    </a>
+	<div class="empxx"></div>
+    </li><li class="treeview  ng-scope" onclick="javascript:window.location.href='indicator-ylfx-ylwsjgfx.html'" ng-class="{'menu-active':indicator.isActive}" ng-repeat="indicator in vm.indicators" role="button" tabindex="0">
+        
+        <a ng-if="!indicator.isActive" class="ng-scope">
+        <img src="images/icon_structure.png" width="30" height="30"> <span class="ng-binding">医疗卫生结构分析</span>
+    </a>
+    </li><li class="treeview  ng-scope" onclick="javascript:window.location.href='indicator-ylfx-crbqkfx.html'" ng-class="{'menu-active':indicator.isActive}" ng-repeat="indicator in vm.indicators" role="button" tabindex="0">
+        <a ng-if="indicator.isActive" class="ng-scope">
+        <img src="images/icon_infection.png" width="30" height="30"> <span class="ng-binding">传染病情况分析</span>
+    </a>
+    </li><li class="treeview  ng-scope" onclick="javascript:window.location.href='indicator-ylfx-csjmjbfx.html'" ng-class="{'menu-active':indicator.isActive}" ng-repeat="indicator in vm.indicators" role="button" tabindex="0">
+        <a ng-if="!indicator.isActive" class="ng-scope">
+        <img src="images/icon_townsfolk.png" width="30" height="30"> <span class="ng-binding">城市居民疾病分析</span>
+    </a>
+    </li>
+    </ul>
+    </aside>
+    <div ui-view="" class="ng-scope"><style class="ng-scope">
+        .cf:after{content:'';display:block;width:0;height:0;clear:both;}
+        *{margin:0;padding:0;}
+        ul li{list-style:none;}
+        /*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+        select::-ms-expand { display: none; }
+        .ylws{padding:20px;min-height:650px}
+        .row_child,.lie_three *{padding:0;}
+        .row_child{border: 1px solid #d5daeb;}
+        .ranking_echart{margin-top:-15px;}
+        .row_one,.row_two{padding:10px 20px;}
+        .row_one{height:325px;}
+        .row_one ng-echarts{height:210px;width:100%; position:static;}
+        .row_one .row_child,.row_two .row_child{margin-right:20px;background-color:#fff;margin-bottom: 20px;}
+        .row_one .row_child:last-of-child{background-color:transparent;}
+        .row_one .row_child{height:325px;}
+        .row_child h3{width:98%;height:35px;margin:5px auto 15px;background-color:#eef1f8;border-radius: 0 0 10px 10px;color:#555;font-size:16px;line-height:35px;text-align:center;font-weight: bold}
+        /*全市医疗卫生区县排行*/
+        .lie_ranking .ranking_tab{width:240px;height:35px;margin:0 auto;}
+        .lie_ranking .ranking_tab li{width:78px;height:35px;margin:0 1px;background-color:#eef1f8;float:left;font-size:14px;text-align:center;color:#263382;line-height:35px;}
+        .lie_ranking .ranking_tab li.choose{background-color:#263382;color:#fff;}
+        .lie_ranking .ranking_echart{padding:15px;}
+        /*医疗卫生基本情况*/
+        .basic_top div{height:35px;line-height:35px;color:#b7bedb;font-size:12px;}
+        .basic_top .basic_choose{position:relative;text-align:left;color:#555;padding-left:20px;}
+        .basic_top .basic_choose:before{content:'';display:inline-block;width:15px;height:15px;background-color:#31c7c6;border-radius:3px;position:absolute;top:10px;left:0;}
+        .basic_top .basic_select{height:35px;line-height:35px;color:#b7bedb;font-size:12px;border-color:#b7bedb;margin-top:0;border-radius:3px;}
+        .basic_echart{margin-top:-20px;}
+        /*第三列 色块*/
+        .lie_three ul{margin-bottom:5px;}
+        .lie_three p{color:#fff;text-align:center;font-size:12px;margin:0;}
+        .lie_three p span{font-size:16px;font-weight:bold;}
+        .lie_three .ul_one_top p{text-align: left;}
+        .lie_three .ul_one_top p{font-size: 14px;}
+        .lie_three .ul_one_top p span{font-size: 20px;}
+        .lie_three .ul_one{background-color:#5cb626;height:85px;width:100%;padding:8px 0;}
+        .lie_three .ul_one li{height:69px;padding:10px 0;text-align:center;}
+        .lie_three .ul_one p{line-height:25px;}
+        .lie_three .ul_two{background-color:#f88d0f;height:45px;}
+        .lie_three .ul_two li{height:45px;line-height:45px;}
+        .lie_three .ul_two li:nth-child(1){border-right:2.5px solid #fff;}
+        .lie_three .ul_two li:nth-child(2){border-left:2.5px solid #fff;}
+        .lie_three .ul_three{margin-top:5px;}
+        .lie_three .ul_three li{height:85px;}
+        .lie_three .ul_three li:nth-child(odd) p{border-right:2.5px solid #fff;}
+        .lie_three .ul_three li:nth-child(even) p{border-left:2.5px solid #fff;}
+        .lie_three .ul_three .p_title{background-color:#443da5;height:35px;font-size:12px;line-height:35px;}
+        .lie_three .ul_three .count{color:#555;line-height:45px;font-size:14px;}
+        .row_two{height:280px;}
+        .row_two .row_child{height:280px;}
+        @media screen and (min-width: 1200px) {
+            .row_two .row_child_bg:before{content:'';position: absolute;right: -15px;top:5px;width:50px;height:35px;background-color:#eef1f8;border-radius: 0 0 10px 0;z-index: 5;}
+            .row_two .row_child_bg:after{content:'';background-color:#fff;width:20px;height:280px;position: absolute;right: -20px;top:-1px;border:1px solid #D2D6DE;border-left: 0;
+            }
+            select {
+                border:1px solid #4e99ff;
+                appearance:none;
+                -moz-appearance:none;
+                -webkit-appearance:none;
+                background: url("images/icon_select_l.png") no-repeat scroll right center transparent;
+                height: 35px;line-height: 35px;border-radius: 5px;
+                padding: 0 33px 0 6px;
+            }
+            select::-ms-expand { display: none; }
+			.main-sidebar {
+               background-color: #e7eaf1;
+			   margin-top:-10px;
+			   position: fixed;
+			   min-height:1060px;
+			   over-flow:hidden;
+            }
+			.ylws {
+               padding: 10px 0px 0px 2px;
+	        }
+    </style>
+        <div class="ylws ng-scope" style="background-color:#eeeeee">
+            <div class="row_one row lie_ranking" style="padding-right:0px;padding-top:0px;">
+                <div class="row_child col-lg-5" style="width:37%" id="oneDiv">
+                    <h3>全市卫生机构数区县排行TOP5</h3>
+                    <div class="ranking_echart">
+                        <div class="echarts ng-isolate-scope" id="Chart1" style="display: block; height: 230px; position: static; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; background: transparent;"></div>
+                         <div class="rangking-font-blue1" style="top: 75px;">  6003个</div>
+                        <div class="rangking-font-blue2"style="top: 118px;">5869个</div>
+						 <div class="rangking-font-blue2"style="top: 161px;">5210个</div>
+						  <div class="rangking-font-blue2"style="top: 204px;">5106个</div>
+						   <div class="rangking-font-blue2"style="top: 247px;">4820个</div>
+                    </div>
+                </div>
+                <div class="row_child col-lg-5" style="width:36.8%" id="twoDiv">
+                    <h3>医疗卫生基本情况</h3>
+                    <div class="basic_top cf">
+                        <div class="col-lg-4 text-center">数量：
+                            <span ng-if="vm.basicVal == '卫生机构数'" class="ng-scope">万</span>
+                            
+                            
+                        </div>
+                        <div class="col-lg-3 basic_choose ng-binding" id="type2Div">卫生机构数</div>
+                        <select id="select" class="basic_select ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="vm.basicVal" ng-click="vm.basicTabClick(vm.basicVal)" aria-invalid="false">
+                            <option value="1" selected="">卫生机构数</option>
+                            <option value="2">床位数</option>
+                            <option value="3">人员数</option>
+                        </select>
+                    </div>
+                    <div class="basic_echart" style="clear:both;">
+                        <div id="Chart2" style="display: block;  height: 230px; position: relative; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; background: transparent;"></div>
+                        
+                    </div>
+                </div>
+                <div class="row_child col-lg-2 lie_three" style="width:18%;font-weight: bold;" id="threeDiv">
+                    <ul class="ul_one">
+                        <li class="col-lg-5">
+                            <img src="images/icon_hospital.png">
+                        </li>
+                        <li class="col-lg-7 ul_one_top">
+                            <p><span class="ng-binding">62646</span>个</p>
+                            <p>北京市卫生机构数</p>
+                        </li>
+                    </ul>
+                    <ul class="ul_two">
+                        <li class="col-lg-6">
+                            <p>床位数<span class="ng-binding">39.65</span>万床</p>
+                        </li>
+                        <li class="col-lg-6">
+                            <p>人员数<span class="ng-binding">49.41</span>万人</p>
+                        </li>
+                    </ul>
+                    <ul class="ul_three col-lg-12 ng-scope" ng-repeat="always in vm.alwaysData1">
+                    <li class="col-lg-6">
+                        <p class="p_title">传染病发病人数</p>
+                        <p class="count ng-binding">36.9万人</p>
+                    </li>
+                    <li class="col-lg-6">
+                        <p class="p_title">传染病死亡人数</p>
+                        <p class="count ng-binding">775人</p>
+                    </li>
+                </ul>
+                    <ul class="ul_three col-lg-12 ng-scope" ng-repeat="always in vm.alwaysData">
+                    <li class="col-lg-6">
+                        <p class="p_title">诊疗人次</p>
+                        <p class="count ng-binding">25695.50万次</p>
+                    </li>
+                    <li class="col-lg-6">
+                        <p class="p_title">病床使用率</p>
+                        <p class="count ng-binding">81.5%</p>
+                    </li>
+                </ul>
+
+                </div>
+            </div>
+            <div class="row_two row" style="margin-right:0px;">
+                <div class="row_child col-lg-4" style="width:48.0%;height: 420px" id="belowDiv1">
+                    <h3>全市主要疾病发病情况分析</h3>
+                    <div class="ranking_echart">
+                        <div id="Chart3" style="display: block; height: 375px; position: relative; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; background: transparent;"></div>
+
+                    </div>
+                </div>
+                <div class="row_child col-lg-4" style="width:48.0%;height: 420px" id="belowDiv2">
+                    <h3>全市主要疾病死因构成</h3>
+                    <div class="ranking_echart">
+                        <div id="Chart4" style="display: block; height: 375px; position: relative; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; background: transparent;"></div>
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<script src="js/indicator.js"></script>
+<script src="js/indicator-ylfx-ylwsztfx.js"></script>
+<script>
+    var totalW = $('#belowDiv1').width() + $('#belowDiv2').width();
+    var oneW = $('#oneDiv').width();
+    var twoW = $('#twoDiv').width();
+    var threeW = totalW - oneW - twoW - 20;
+    $('#threeDiv').css('width',threeW+'px');
+</script>
+</body>
+</html>
