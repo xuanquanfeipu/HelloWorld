@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>北京市政务大数据--领导决策</title>
+
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/index3.css" rel="stylesheet">
+    <link href="css/indicator.css" rel="stylesheet">
+    
+    
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="js/jquery.min.js"></script>
+    
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/echarts.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/changsha.js"></script>
+    <script src="js/sly.min.js"></script>
+    <script src="js/index3_nav.js"></script>
+</head>
+<body>
+<header class="main-header">
+    <div class="logobar logobar-static-top" style="background-color: #394aa9;">
+        <div class="container">
+            <img src="images/logo.png" class="fl logo"></img>
+            <div class="fl" style="padding: 15px;font-size: 17px;font-weight: bold;margin-top: 5px;color: #fff;">北京市政务大数据--领导决策</div>
+            <a href="javascript:;;" class="fr profile"></a>
+        </div>
+        
+    </div>
+
+
+    <div class="main_tab">
+        <div class="container" >
+            <a href="javascript:;" class="fl nav_btn prev_btn"><img src="images/index3/btn_selected_l.png"></a>
+            <div class="frame fl" id="frame">
+                <ul id="navbar" class="main_tab_ul clearfix fl slidee">
+
+                </ul>
+            </div>
+
+            <a href="javascript:;" class="fl nav_btn next_btn"><img src="images/index3/btn_selected_s.png"></a>
+        </div>
+    </div>
+</header>
+
+
+
+<div ui-view="" class="ng-scope main-div" style="overflow-x:hidden;">
+<div class="content-wrapper ng-scope">
+<div class="" style="overflow:hidden;background-color:#eeeeee">
+    <aside class="main-sidebar" style="top:inherit;">
+        <ul class="sidebar-menu ng-scope" ng-if="vm.indicators">
+        <li class="treeview  ng-scope" onclick="javascript:window.location.href='indicator-ylfx-ylwsztfx.html'" ng-class="{'menu-active':indicator.isActive}" ng-repeat="indicator in vm.indicators" role="button" tabindex="0">
+        <a ng-if="!indicator.isActive" class="ng-scope">
+        <img src="images/icon_healthcare.png" width="30" height="30"> <span class="ng-binding">医疗卫生总体分析</span>
+    </a>
+    </li><li class="treeview  ng-scope menu-active" ng-class="{'menu-active':indicator.isActive}" ng-repeat="indicator in vm.indicators" role="button" tabindex="0">
+        <a ng-if="!indicator.isActive" class="ng-scope">
+        <img src="images/icon_structure_on.png" width="30" height="30"> <span class="ng-binding">医疗卫生结构分析</span>
+    </a>
+	<div class="empxx"></div>
+    </li><li class="treeview  ng-scope" onclick="javascript:window.location.href='indicator-ylfx-crbqkfx.html'" ng-class="{'menu-active':indicator.isActive}" ng-repeat="indicator in vm.indicators" role="button" tabindex="0">
+        <a ng-if="indicator.isActive" class="ng-scope">
+        <img src="images/icon_infection.png" width="30" height="30"> <span class="ng-binding">传染病情况分析</span>
+    </a>
+    </li><li class="treeview  ng-scope" onclick="javascript:window.location.href='indicator-ylfx-csjmjbfx.html'" ng-class="{'menu-active':indicator.isActive}" ng-repeat="indicator in vm.indicators" role="button" tabindex="0">
+        <a ng-if="!indicator.isActive" class="ng-scope">
+        <img src="images/icon_townsfolk.png" width="30" height="30"> <span class="ng-binding">城市居民疾病分析</span>
+    </a>
+    </li>
+    </ul>
+    </aside>
+    <div ui-view="" class="ng-scope">
+        <style class="ng-scope">
+        .cf:after{content:'';display:block;width:0;height:0;clear:both;}
+        *{margin:0;padding:0;}
+        ul li{list-style:none;}
+        /*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+        select::-ms-expand { display: none; }
+        .ylws{padding:20px;min-height:750px}
+        .row_child,.lie_three *{padding:0;}
+        .row_child{border: 1px solid #d5daeb}
+        .ranking_echart{margin-top:-15px;}
+        .row_one,.row_two{padding:10px 20px;}
+        .row_one{height:325px;}
+        .row_one ng-echarts{height:230px;width:100%; position:static;}
+        .row_one .row_child,.row_two .row_child{margin-right:20px;background-color:#fff;margin-bottom: 20px;}
+        .row_one .row_child:last-of-child{background-color:transparent;}
+        .row_one .row_child{height:325px;}
+        .row_child h3{width:98%;height:35px;margin:5px auto 15px;background-color:#eef1f8;border-radius: 0 0 10px 10px;color:#555;font-size:16px;line-height:35px;text-align:center;font-weight: bold}
+        .row_two{height:300px;}
+        .row_two .row_child{height:280px;}
+        @media screen and (min-width: 1200px) {
+            .row_two .row_child_bg:before{content:'';position: absolute;right: -15px;top:5px;width:50px;height:35px;background-color:#eef1f8;border-radius: 0 0 10px 0;z-index: 5;}
+            .row_two .row_child_bg:after{content:'';width:20px;height:280px;position: absolute;right: -20px;top:-1px;border:1px solid #D2D6DE;border-left: 0;
+            }
+        .main-sidebar {
+               background-color: #e7eaf1;
+			    margin-top:-10px;
+				position: fixed;
+				min-height:1060px;
+			    over-flow:hidden;
+        }
+		.ylws {
+               padding: 10px 0px 0px 2px;
+	        }
+    </style>
+        <section class="content" >
+                <div class="indi-chart-p" style="width:47.4%;height: 360px;" id="upDiv1">
+                    <div class="title">诊疗人次情况分析</div>
+                    <div class="echart">
+                        <div id="Chart1" style="display: block; height: 260px; position: relative; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; background: transparent;"></div>
+                        
+                    </div>
+                </div>
+                <div class="indi-chart-p" style="width:47.4%;height: 360px;" id="upDiv2" style="margin-left:1%">
+                    <div class="title">病床周转情况分析</div>
+                    <div class="echart">
+                        <div id="Chart2" style="display: block; height: 260px; position: relative; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; background: transparent;"></div>
+                        
+                    </div>
+                </div>
+                <div class="indi-chart-p" style="width:96.2%;height: 380px;" id="belowDiv">
+                    <div class="title">病床使用情况分析</div>
+                    <div class="echart">
+                        <div id="Chart3" style="display: block; height: 345px; position: relative; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; background: transparent;"></div>
+                        
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<script src="js/indicator.js"></script>
+<script src="js/indicator-ylfx-ylwsjgfx.js"></script>
+
+</body>
+</html>
