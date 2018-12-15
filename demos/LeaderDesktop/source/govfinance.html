@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>北京市政务数据平台-财政收支分析</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/index3.css" rel="stylesheet">
+    <link href="css/indicator.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/echarts.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/changsha.js"></script>
+    <script src="js/sly.min.js"></script>
+    <script src="js/index3_nav.js"></script>
+    <script type="text/javascript">
+        var curNav = "nav_1";
+    </script>
+  </head>
+  <body style="background-color:#f5f5f5">
+     <header class="main-header">
+        <div class="logobar logobar-static-top">
+          <div class="container">
+            
+            <img src="images/logo.png" class="fl logo"></img>
+            <div class="fl" style="padding:15px;font-size:17px;font-weight: bold;margin-top:5px;color:#fff">北京市政务大数据--领导决策</div>
+            <a href="javascript:;;" class="fr profile"></a>
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+
+       <!--main_tab begin-->
+       <div class="main_tab">
+         <div class="container" >
+           <a href="javascript:;" class="fl nav_btn prev_btn"><img src="images/index3/btn_selected_l.png"></a>
+           <div class="frame fl" id="frame">
+             <ul id="navbar" class="main_tab_ul clearfix fl slidee">
+
+
+             </ul>
+           </div>
+
+           <a href="javascript:;" class="fl nav_btn next_btn"><img src="images/index3/btn_selected_s.png"></a>
+         </div>
+       </div>
+       <!--main_tab end-->
+    </header>
+      
+
+    
+    <div class="inde-content">
+        <div class="container-main maincon" style="margin-left:10px;margin-right:10px;"><!--主体部分-->
+            <div class="container-fluidcz" style="padding:10px; margin:0px 0px 0 0px; position:relative;">
+                <div class="row" style="margin:0 410px 0 0; padding:10px;">
+                  <div class=" box czs1" style=" width:99%; margin-bottom:0; padding:0">
+                    <div class="box-title">
+                      总体财政收支分析
+                    </div>
+                    <ng-echarts id="echart-1" class="echarts css2" ec-config="vm.ecConfig1" ec-option="vm.ecOption1"
+                                style="display:block; "></ng-echarts>
+                  </div>
+                </div>
+                <div style="width:420px; position:absolute; top:20px; right:0px; background-color:#ecf0f5">
+                  <div class="czsz1">
+                    <div  class="czsz1"style="float:left; background-color:#5cb626; width:210px; ">
+                      <img class="czsz2"src="images/icon_sr_home.png" style="float:left; "/>
+                      <div class="czsz3"style="float:left; color:#FFFFFF;font-weight:bold; font-size:16px; margin-left:10px; ">
+                        <div>北京市财政收入</div>
+                        <div><span id="czsrze-text" style="font-size:18px; font-weight:bold">4011.04</span>亿元</div>
+                      </div>
+                    </div>
+                    <div  class="czsz1"style="float:left; background-color:#f88d0f; width:210px; ">
+                      <img class="czsz2"src="images/icon_zc_home.png" style="float:left; "/>
+                      <div class="czsz3"style="float:left; color:#FFFFFF; font-weight:bold;font-size:16px; margin-left:10px; ">
+                        <div>北京市财政支出</div>
+                        <div><span id="czzcze-text" style="font-size:18px; font-weight:bold">5728.72</span>亿元</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div  class="box" style="height:230px; padding:0; margin:10px 0 0 0">
+                    <div id="echart23-tabs" style="margin-top:10px; padding:0 32px">
+                      <div pane-id="echart-2-pane" idx="2" class="box-tab-title active" style="font-weight:bold;">全市财政收入TOP5</div>
+                      <div pane-id="echart-3-pane" idx="3" class="box-tab-title" style="margin-left:6px;font-weight:bold;">全市财政支出TOP5</div>
+                      <div style="clear:both"></div>
+                    </div>
+                    <div id="echart-2-pane" style="position:relative;">
+                      <ng-echarts id="echart-2" class="echarts" ec-config="vm.ecConfig2" ec-option="vm.ecOption2"
+                                  style="display:block; height:180px;"></ng-echarts>
+                      <div id="czsr-top5-ze-list" style="position:absolute; left: 274px; top: 19px; font-size:12px; width:100px; color:#1D77DA;">
+                        <div style="position:absolute; top:0;" ></div>
+                        <div style="position:absolute; top:32px;"></div>
+                        <div style="position:absolute; top:64px;"></div>
+                        <div style="position:absolute; top:96px;"></div>
+                        <div style="position:absolute; top:128px;"></div>
+                      </div>
+
+                      <div id="czsr-top5-growth-list" style="position:absolute; left: 363px; top: 19px; font-size:12px; width:100px; color:#F54E5D;">
+                        <div style="position:absolute; top:0;" ></div>
+                        <div style="position:absolute; top:32px;"></div>
+                        <div style="position:absolute; top:64px;"></div>
+                        <div style="position:absolute; top:96px;"></div>
+                        <div style="position:absolute; top:128px;"></div>
+                      </div>
+
+                      <div id="czzc-top5-ze-list" style="display:none;position:absolute; left: 274px; top: 19px; font-size:12px; width:100px; color:#1D77DA;">
+                        <div style="position:absolute; top:0;" ></div>
+                        <div style="position:absolute; top:32px;"></div>
+                        <div style="position:absolute; top:64px;"></div>
+                        <div style="position:absolute; top:96px;"></div>
+                        <div style="position:absolute; top:128px;"></div>
+                      </div>
+
+                      <div id="czzc-top5-growth-list" style="display:none;position:absolute; left: 363px; top: 19px; font-size:12px; width:100px; color:#F54E5D;">
+                        <div style="position:absolute; top:0;" ></div>
+                        <div style="position:absolute; top:32px;"></div>
+                        <div style="position:absolute; top:64px;"></div>
+                        <div style="position:absolute; top:96px;"></div>
+                        <div style="position:absolute; top:128px;"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="container-fluidcz2" style="padding:0; margin-top:5px;margin-left:20px;margin-right:0px;">
+                <div class="row" style="margin:0;">
+                  <div class="col-xs-6 czd1" style=" padding:0 5px 0 0">
+                    <div class="box czd2" style="width:98%; padding:0;">
+                      <div class="box-title">
+                        财政收入构成
+                      </div>
+                      <ng-echarts id="echart-4" class="echarts czd3" ec-config="vm.ecConfig4" ec-option="vm.ecOption4"
+                                  style="display:block; "></ng-echarts>
+                    </div>
+                  </div>
+                  <div class="col-xs-6 czd1" style="padding:0 0 0 5px;">
+                    <div class="box czd2" style="width:100%; padding:0;">
+                      <div class="box-title">
+                        财政支出构成
+                      </div>
+                      <ng-echarts id="echart-5" class="echarts czd3" ec-config="vm.ecConfig5" ec-option="vm.ecOption5"
+                                  style="display:block; "></ng-echarts>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/govfinance.js"></script>
+</body>
+</html>
