@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>方案3首页</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/index3.css" rel="stylesheet">
+    <link href="css/indicator.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/echarts.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/changsha.js"></script>
+    <script src="js/sly.min.js"></script>
+    <script src="js/index3_nav.js"></script>
+    <script type="text/javascript">
+        window.theme = 1;
+    </script>
+  </head>
+  <body id="theme1">
+     <header class="main-header">
+        <div class="logobar logobar-static-top">
+          <div class="container">
+            
+            <img src="images/logo.png" class="fl logo"></img>
+            <div class="fl" style="padding:15px;font-size:17px;font-weight: bold;margin-top:5px;color:#fff">北京市政务数据平台</div>
+            <a href="javascript:;;" class="fr profile"></a>
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+    </header>
+      
+      <!--main_tab begin-->
+      <div class="main_tab">
+        <div class="container" >
+          <a href="javascript:;" class="fl nav_btn prev_btn"><img src="images/index3/btn_selected_l.png"></a>
+          <div class="frame fl" id="frame">
+            <ul id="navbar" class="main_tab_ul clearfix fl slidee">
+                <li><a href="index1.html"><img src="images/index3/icon_home.png"></img><p>首页</p></a></li>
+            
+                <li id="nav_0"><a href="indicator1-1.html"  class="cur_nav"><img src="images/index3/icon_economic.png"></img><p>总体经济分析</p></a></li>
+      
+                <li id="nav_1"><a href="javascript:;" ><img src="images/index3/icon_fixed.png"></img><p>固定资产投资</p></a></li>
+                
+                <li id="nav_2"><a href="javascript:;" ><img src="images/index3/icon_financial.png"></img><p>财政收支分析</p></a></li>
+                
+                <li id="nav_3"><a href="javascript:;" ><img src="images/index3/icon_talent.png"></img><p>综合人口分析</p></a></li>
+                
+                <li id="nav_4"><a href="javascript:;"><img src="images/index3/icon_income.png"></img><p>居民收入分析</p></a></li>
+                <li id="nav_5"><a href="javascript:;"><img src="images/index3/icon_education.png"></img><p>教育情况分析</p></a></li>
+                <li id="nav_6"><a href="javascript:;"><img src="images/index3/icon_medical.png"></img><p>医疗卫生分析</p></a></li>
+                <li id="nav_7"><a href="javascript:;"><img src="images/index3/icon_social.png"></img><p>社会保障分析</p></a></li>
+                <li id="nav_8" style="display:none;"><a href="javascript:;" ><img src="images/index3/icon_healthcare.png"></img><p>医保情况分析</p></a></li>
+                <li id="nav_9" style="display:none;"><a href="javascript:;" ><img src="images/index3/icon_injury.png"></img><p>工伤情况分析</p></a></li>
+                <li id="nav_10" style="display:none;"><a href="javascript:;" ><img src="images/index3/icon_talent.png"></img><p>人才供需分析</p></a></li>
+                <li id="nav_11" style="display:none;"><a href="javascript:;" ><img src="images/index3/icon_employment.png"></img><p>就业情况分析</p></a></li>
+              </ul>
+          </div>
+           
+            <a href="javascript:;" class="fl nav_btn next_btn"><img src="images/index3/btn_selected_s.png"></a>   
+        </div>
+      </div>
+      <!--main_tab end-->
+    
+    <div class="inde-content">
+        <!--main_tab end-->
+        <div class="indi-sidebar">
+            <ul class="indi-sidemenu">
+                <li url="indicator1-1.html" style="position:relative;">
+                    <i class="nav-img1"></i>
+                    <span>总体GDP分析</span>
+                    <div class="emp"></div>
+                </li>
+                <li url="indicator1-2.html">
+                    <i class="nav-img2"></i>
+                    <span>产业GDP分析</span>
+                    <div class="emp"></div>
+                </li>
+                <li url="indicator1-3.html">
+                    <i class="nav-img3"></i>
+                    <span>行业GDP分析</span>
+                    <div class="emp"></div>
+                    
+                </li>
+                <li class="target" class="last" url="indicator1-4.html">
+                    <i class="nav-img4"></i> 
+                    <span>地域GDP分析</span>
+                    <div class="emp"></div>
+                </li>
+            </ul>
+        </div>
+        <div class="indi-main">
+            <div class="indi-chart-p" style="width:360px; height:638px;">
+                <div class="title">
+                    北京市GDP地域分布情况
+                </div>
+                <div id="chart1" style="width:340px; height:500px; margin:30px auto 0;">
+                    
+                </div>
+            </div>
+            <div class="indi-chart-p" style="width:290px; height:290px;" id="chart2-pane">
+                <div class="title">
+                    北京市GDP产业分布情况
+                </div>
+                <div id="chart2" style="width:280px; height:250px;">
+                    
+                </div>
+            </div>
+            <div class="indi-chart-p" style="width:290px; height:290px; position:relative;" id="chart3-pane">
+                <div class="title">
+                    北京市GDP市州排行
+                </div>
+                <div id="chart3" style="width:200px; height:340px; margin-top:-45px; margin-left:15px">
+                    
+                </div>
+                <div style="position:absolute; left:65%; top:27%; display:none;" id="order1-1">
+                    <div style="color:#0C6BDB; font-size:12px; text-align:center;  padding:0px 0">
+                        8510.1亿元
+                    </div>
+                    <div style="color:#0C6BDB; font-size:12px; text-align:center; padding:25px 0">
+                        2886.2亿元
+                    </div>
+                    <div style="color:#0C6BDB; font-size:12px; text-align:center; padding:2px 0">
+                        2709.0亿元
+                    </div>
+                    <div style="color:#0C6BDB; font-size:12px; text-align:center; padding:23px 0">
+                        2601.5亿元
+                    </div>
+                    <div style="color:#0C6BDB; font-size:12px; text-align:center; padding:7px 0">
+                        2335.1亿元
+                    </div>
+
+                </div>
+                <div style="position:absolute; left:87%; top:27%; display:none;" id="order1-2">
+                    <div style="color:red; font-size:12px; text-align:center;  padding:0px 0">
+                        27.9%
+                    </div>
+                    <div style="color:red; font-size:12px; text-align:center; padding:25px 0">
+                        9.4%
+                    </div>
+                    <div style="color:red; font-size:12px; text-align:center; padding:2px 0">
+                        8.9%
+                    </div>
+                    <div style="color:red; font-size:12px; text-align:center; padding:23px 0">
+                        8.5%
+                    </div>
+                    <div style="color:red; font-size:12px; text-align:center; padding:7px 0">
+                        7.6%
+                    </div>
+                </div>
+                <div style="position:absolute; left:65%; top:27%; display:none;" id="order2-1">
+                    <div style="color:#0C6BDB; font-size:12px; text-align:center;  padding:0px 0">
+                        1935.1亿元
+                    </div>
+                    <div style="color:#0C6BDB; font-size:12px; text-align:center; padding:25px 0">
+                        1791.5亿元
+                    </div>
+                    <div style="color:#0C6BDB; font-size:12px; text-align:center; padding:2px 0">
+                        1709.0亿元
+                    </div>
+                    <div style="color:#0C6BDB; font-size:12px; text-align:center; padding:23px 0">
+                        1586.2亿元
+                    </div>
+                    <div style="color:#0C6BDB; font-size:12px; text-align:center; padding:7px 0">
+                        1510.1亿元
+                    </div>
+
+                </div>
+                <div style="position:absolute; left:87%; top:27%; display:none;" id="order2-2">
+                    <div style="color:red; font-size:12px; text-align:center;  padding:0px 0">
+                        25.2%
+                    </div>
+                    <div style="color:red; font-size:12px; text-align:center; padding:25px 0">
+                        9.9%
+                    </div>
+                    <div style="color:red; font-size:12px; text-align:center; padding:2px 0">
+                        9.2%
+                    </div>
+                    <div style="color:red; font-size:12px; text-align:center; padding:23px 0">
+                        8.5%
+                    </div>
+                    <div style="color:red; font-size:12px; text-align:center; padding:7px 0">
+                        6.9%
+                    </div>
+                </div>
+                <div style="position:absolute; left:65%; top:27%; display:none;" id="order3-1">
+                    <div style="color:#0C6BDB; font-size:12px; text-align:center;  padding:0px 0">
+                        6.43亿元
+                    </div>
+                    <div style="color:#0C6BDB; font-size:12px; text-align:center; padding:25px 0">
+                        5.32亿元
+                    </div>
+                    <div style="color:#0C6BDB; font-size:12px; text-align:center; padding:2px 0">
+                        5.10亿元
+                    </div>
+                    <div style="color:#0C6BDB; font-size:12px; text-align:center; padding:23px 0">
+                        4.32亿元
+                    </div>
+                    <div style="color:#0C6BDB; font-size:12px; text-align:center; padding:7px 0">
+                        1.27亿元
+                    </div>
+                </div>
+                <div style="position:absolute; left:87%; top:27%; display:none;" id="order3-2">
+                    <div style="color:red; font-size:12px; text-align:center;  padding:0px 0">
+                        10.2%
+                    </div>
+                    <div style="color:red; font-size:12px; text-align:center; padding:25px 0">
+                        8.9%
+                    </div>
+                    <div style="color:red; font-size:12px; text-align:center; padding:2px 0">
+                        8.2%
+                    </div>
+                    <div style="color:red; font-size:12px; text-align:center; padding:23px 0">
+                        6.5%
+                    </div>
+                    <div style="color:red; font-size:12px; text-align:center; padding:7px 0">
+                        5.9%
+                    </div>
+                </div>
+            </div>
+            <div class="indi-chart-p" style="width:600px; height:330px;" id="chart4-pane">
+                <div class="title">
+                    北京市GDP行业分布情况
+                </div>
+                <div id="chart4" style="height:310px; margin-top:-40px">
+                    
+                </div>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+    </div>
+    
+    <script src="js/indicator.js"></script>
+    <script src="js/indicator4.js"></script>
+</body>
+</html>
