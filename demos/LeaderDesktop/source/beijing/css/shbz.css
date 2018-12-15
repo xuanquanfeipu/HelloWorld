@@ -1,0 +1,56 @@
+/**/
+.indi1{ height: 385px;}
+.indi2{ height: 305px;}
+.cbrs{ height: 385px;}
+.zt_chart1{ height: 330px;}
+.sb_srze,.sb_zcze{ height: 188px;}
+.cbsr,.cbzc{ height: 300px;}
+.zt_chart2,.zt_chart3{ height: 90px;}
+.zt_chart4,.zt_chart5{ height: 240px;}
+/**/
+.zgylbx{ height: 385px;}
+.zgylBox{height: 385px;}
+.zgyl_chart1{ height: 330px;}
+.zgyl_chart2{ height: 220px;}
+.ylbx_top{ height: 108px;}
+.ylbx_bottom{ height: 268px;}
+.ylbx_fzqk,.ylbx_cbrs{ height: 300px;}
+.zgyl_chart3,.zgyl_chart4{ height: 240px;}
+
+.czqyBox{  left:330px;}
+	#czqy-sr{position:absolute; top:40px; left:-20px;}
+	#czqy-zc{position:absolute; top:60px;  left:-20px;}
+	#jgsydw-sr{position:absolute; top:104px;  left:-20px;}
+	#jgsydw-zc{position:absolute; top:124px;  left:-20px;}
+	#cxjm-sr{position:absolute; top:167px;  left:-20px;}
+	#cxjm-zc{position:absolute; top:187px;  left:-20px;}
+
+/**/
+@media (min-width: 1900px){
+    .indi1{ height: 385px;}
+    .indi2{ height: 385px;}
+    .box .box-title{ height: 36px;}
+    .cbrs{ height:385px; }
+    .zt_chart1{ height: 330px;}
+    .sb_srze,.sb_zcze{ height: 188px;}
+    .cbsr,.cbzc{ height: 360px;}
+    .zt_chart2,.zt_chart3{ height: 90px;}
+    .zt_chart4,.zt_chart5{ height: 300px;}
+
+    .zgylbx{ height: 385px;}
+    .zgylBox{height: 385px;}
+    .zgyl_chart1{ height: 330px;}
+    .zgyl_chart2{ height: 220px;}
+    .ylbx_top{ height: 108px;}
+    .ylbx_bottom{ height: 268px;}
+    .ylbx_fzqk,.ylbx_cbrs{ height: 360px;}
+    .zgyl_chart3,.zgyl_chart4{ height: 310px;}
+	
+	.czqyBox{  left:410px;}
+	#czqy-sr{position:absolute; top:40px; right:20px;}
+	#czqy-zc{position:absolute; top:60px; right:20px;}
+	#jgsydw-sr{position:absolute; top:104px; right:20px;}
+	#jgsydw-zc{position:absolute; top:124px; right:20px;}
+	#cxjm-sr{position:absolute; top:167px; right:20px;}
+	#cxjm-zc{position:absolute; top:187px; right:20px;}
+}
