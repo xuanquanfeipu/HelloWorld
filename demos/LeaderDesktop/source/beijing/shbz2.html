@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>北京市政务大数据--领导决策</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/index3.css" rel="stylesheet">
+    <link href="css/indicator.css" rel="stylesheet">
+      <link href="css/shbz.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/echarts.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/changsha.js"></script>
+    <script src="js/sly.min.js"></script>
+    <script src="js/index3_nav.js"></script>
+      <style>
+          .sbtitle {
+              height: 35px;
+              background-color: #dadde5;
+              text-align: center;
+              line-height: 20px;
+              padding: 8px 0;
+              margin: 6px;
+              border-radius: 12px;
+              color: #515A64;
+              font-size: 16px;
+          }
+          .box-title {
+              height: 35px;
+              background-color: #EFF1F9;
+              text-align: center;
+              line-height: 20px;
+              padding: 8px 0;
+              margin: 6px;
+              border-radius: 12px;
+              color: #515A64;
+              font-size: 16px;
+          }
+          .box{
+              position: relative;
+              background: #fff;
+              border: 1px solid #D2D6DE;
+              margin: 10px 0 0 10px;
+              padding: 0px;
+          }
+		  .indi-sidebar .indi-sidemenu li {
+            padding: 0 30px;
+            text-align: left;
+          }
+      </style>
+  </head>
+  <body style=" background:#f5f5f5;">
+     <header class="main-header">
+        <div class="logobar logobar-static-top">
+          <div class="container">
+            
+            <img src="images/logo.png" class="fl logo"></img>
+            <div class="fl" style="padding:15px;font-size:17px;font-weight: bold;margin-top:5px;color:#fff">北京市政务大数据--领导决策</div>
+            <a href="javascript:;;" class="fr profile"></a>
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+
+         <!--main_tab begin-->
+         <div class="main_tab">
+             <div class="container" >
+                 <a href="javascript:;" class="fl nav_btn prev_btn"><img src="images/index3/btn_selected_l.png"></a>
+                 <div class="frame fl" id="frame">
+                     <ul id="navbar" class="main_tab_ul clearfix fl slidee">
+
+                     </ul>
+                 </div>
+
+                 <a href="javascript:;" class="fl nav_btn next_btn"><img src="images/index3/btn_selected_s.png"></a>
+             </div>
+         </div>
+         <!--main_tab end-->
+    </header>
+      
+
+    
+    <div class="inde-content">
+        <!--main_tab end-->
+        <div class="indi-sidebar" style="margin-bottom:-3000px; padding-bottom:3000px;">
+            <ul class="indi-sidemenu">
+                <li  url="shbz1.html" style="position:relative;">
+                    <i class="nav-img1"></i>
+                    <span>总体分析</span>
+                    <div class="emp"></div>
+                </li>
+                <li class="target" url="shbz2.html">
+                    <i class="nav-img2"></i>
+                    <span>养老保险分析</span>
+                    <div class="emp"></div>
+                </li>
+                <li url="shbz3.html">
+                    <i class="nav-img3"></i>
+                    <span>医疗保险分析</span>
+                    <div class="emp"></div>
+                    
+                </li>
+                <li class="last" url="shbz4.html">
+                    <i class="nav-img4"></i> 
+                    <span>工伤保险</span>
+                    <div class="emp"></div>
+                </li>
+                <li class="last" url="shbz5.html">
+                    <i class="nav-img4"></i>
+                    <span>生育保险</span>
+                    <div class="emp"></div>
+                </li>
+                <li class="last" url="shbz6.html">
+                    <i class="nav-img4"></i>
+                    <span>失业保险</span>
+                    <div class="emp"></div>
+                </li>
+            </ul>
+        </div>
+        <div class="indi-main" style=" height: auto;">
+            <div class="zgylbx" style="width:97%; padding:0; margin:20px 0px 0px 20px; position:relative;">
+                <div class="row" style="margin:0 0 0 -10px; padding:0;">
+                    <div class="col-sx-8 box zgylBox" style="width:66.5%;position: relative;border: 1px solid #D2D6DE;margin: 10px 0 0 10px;padding: 0px;">
+                        <div class="box-title">
+                            全市城镇企业职工基本养老保险发展情况
+                        </div>
+                        <div id="chart1" class=" zgyl_chart1" style="display:block;"></div>
+                    </div>
+                    <div class="col-sx-4" style="width: 32%; position:absolute; top:10px; right:0;">
+                        <div class="ylbx_top" style=" background-color: #5cb626;">
+                            <img src="images/icon_unit.png" style="float:left; margin-left:15px; margin-top:30px;"/>
+                            <div style="float:left;margin-left:10px;">
+                                <div style="font-weight:bold;font-size:14px; color:#FEFEFE; padding-top:16px;">
+                                    全市城镇企业职工基本养老保险参保单位数
+                                </div>
+                                <div style="font-size:36px; color:#FFFFFF;  padding-top:8px;">
+                                    <span id="shbz-cbrs" style="font-weight:bold;">137.4</span><!--暂时无法获取此数据-->
+                                    <span style="font-size:16px">万</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ylbx_bottom" style="margin-top:7px; text-align:center;">
+                            <div class="box" style="width:auto; margin:0;">
+                                <div class="box-title">
+                                    全市养老保险收支情况
+                                </div>
+                                <div id="chart2" class="zgyl_chart2" style="display:block;"></div>
+                                <div style="position:absolute; left:35px; width:300px; top:51px; font-size:12px; color:#333333;">
+                                    <div style="position:absolute; top:22px;">城镇企业职工基本养老保险</div>
+                                    <div style="position:absolute; top:86px;">机关事业单位养老保险</div>
+                                    <div style="position:absolute; top:150px;">城乡居民社会养老保险</div>
+                                </div>
+
+                                <div class="czqyBox" style="position:absolute; width:100px; top:51px; font-size:12px; color:#333333;">
+                                    <div id="czqy-sr" >779亿</div>
+                                    <div id="czqy-zc" >717.2亿</div>
+                                    <div id="jgsydw-sr" >112亿</div>
+                                    <div id="jgsydw-zc" >132.2亿</div>
+                                    <div id="cxjm-sr" >33.4亿</div>
+                                    <div id="cxjm-zc" >95.9亿</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="container-fluid" style="width:97%; padding:0;  margin:0px 0px 20px 20px;">
+                <div class="row" style="margin:10px 0 0 0px;">
+                    <div class="col-xs-6 ylbx_fzqk" style=" padding:0;width: 50%;">
+                        <div class="box" style="width:auto;margin-left:-0px;">
+                            <div class="box-title">
+                                全市机关事业单位养老保险发展情况
+                            </div>
+                            <div id="chart4" class="zgyl_chart3" style="display:block;"></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 ylbx_cbrs" style=" padding:0;width: 50%; margin:0px 0px 0px 0px;">
+                        <div class="box" style="width:auto;">
+                            <div class="box-title">
+                                全市城乡居民社会养老保险参保人数发展情况
+                            </div>
+                            <div id="chart5" class="zgyl_chart4" style="display:block;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    	</div>
+    </div>
+    <script src="js/indicator.js"></script>
+     <script src="js/shbz2.js"></script>
+</body>
+</html>
