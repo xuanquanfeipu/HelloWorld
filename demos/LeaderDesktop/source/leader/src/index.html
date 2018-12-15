@@ -1,0 +1,67 @@
+<!doctype html>
+<html ng-app="smartCore">
+  <head>
+    <meta charset="utf-8">
+    <title>湖南省政务大数据--典型示范应用</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- run `gulp inject` to automatically populate bower styles dependencies -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css({.tmp/serve,src}) styles/app.css -->
+    <!-- inject:css -->
+    <!-- css files will be automatically insert here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+  </head>
+  <body id="body">
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div ui-view></div>
+
+    <!-- build:js(src) scripts/vendor.js -->
+    <!-- bower:js -->
+    <!-- run `gulp inject` to automatically populate bower script dependencies -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
+    <!-- inject:js -->
+    <!-- js files will be automatically insert here -->
+    <!-- endinject -->
+
+    <!-- inject:partials -->
+    <!-- angular templates will be automatically converted in js and inserted here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+
+  </body>
+  <script>
+    function resizeBody() {
+
+      var s = document.body.offsetWidth;  //(带浏览器边框的宽度)
+      //var s = document.body.clientWidth; //(不带浏览器边框的宽度)
+      if (isFirefox = navigator.userAgent.indexOf("Firefox") > 0)
+        s = window.innerWidth;
+
+      var a = 1440;  //要变换的临界点
+      var w = "1438px"; //DIV宽度（像素）
+      var w1 = "100%";  //DIV宽度（百分比）
+      var d = document.getElementById("body");
+      if (s > a) {
+        d.style.width = w;
+      }
+      else {
+        d.style.width = w1;
+      }
+    }
+  </script>
+</html>
