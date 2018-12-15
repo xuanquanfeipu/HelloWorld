@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>方案3首页</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/index3.css" rel="stylesheet">
+    <link href="css/indicator.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/echarts.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/changsha.js"></script>
+    <script src="js/sly.min.js"></script>
+    <script src="js/index3_nav.js"></script>
+  </head>
+  <body id="theme1">
+     <header class="main-header">
+        <div class="logobar logobar-static-top">
+          <div class="container">
+            
+            <img src="images/logo.png" class="fl logo"></img>
+            <div class="fl" style="padding:15px;font-size:17px;font-weight: bold;margin-top:5px;color:#fff">北京市政务数据平台</div>
+            <a href="javascript:;;" class="fr profile"></a>
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+    </header>
+      
+      <!--main_tab begin-->
+      <div class="main_tab">
+        <div class="container" >
+          <a href="javascript:;" class="fl nav_btn prev_btn"><img src="images/index3/btn_selected_l.png"></a>
+          <div class="frame fl" id="frame">
+            <ul id="navbar" class="main_tab_ul clearfix fl slidee">
+                <li><a href="index1.html"><img src="images/index3/icon_home.png"></img><p>首页</p></a></li>
+            
+                <li id="nav_0"><a href="indicator1-1.html"  class="cur_nav"><img src="images/index3/icon_economic.png"></img><p>总体经济分析</p></a></li>
+      
+                <li id="nav_1"><a href="javascript:;" ><img src="images/index3/icon_fixed.png"></img><p>固定资产投资</p></a></li>
+                
+                <li id="nav_2"><a href="javascript:;" ><img src="images/index3/icon_financial.png"></img><p>财政收支分析</p></a></li>
+                
+                <li id="nav_3"><a href="javascript:;" ><img src="images/index3/icon_talent.png"></img><p>综合人口分析</p></a></li>
+                
+                <li id="nav_4"><a href="javascript:;"><img src="images/index3/icon_income.png"></img><p>居民收入分析</p></a></li>
+                <li id="nav_5"><a href="javascript:;"><img src="images/index3/icon_education.png"></img><p>教育情况分析</p></a></li>
+                <li id="nav_6"><a href="javascript:;"><img src="images/index3/icon_medical.png"></img><p>医疗卫生分析</p></a></li>
+                <li id="nav_7"><a href="javascript:;"><img src="images/index3/icon_social.png"></img><p>社会保障分析</p></a></li>
+                <li id="nav_8" style="display:none;"><a href="javascript:;" ><img src="images/index3/icon_healthcare.png"></img><p>医保情况分析</p></a></li>
+                <li id="nav_9" style="display:none;"><a href="javascript:;" ><img src="images/index3/icon_injury.png"></img><p>工伤情况分析</p></a></li>
+                <li id="nav_10" style="display:none;"><a href="javascript:;" ><img src="images/index3/icon_talent.png"></img><p>人才供需分析</p></a></li>
+                <li id="nav_11" style="display:none;"><a href="javascript:;" ><img src="images/index3/icon_employment.png"></img><p>就业情况分析</p></a></li>
+              </ul>
+          </div>
+           
+            <a href="javascript:;" class="fl nav_btn next_btn"><img src="images/index3/btn_selected_s.png"></a>   
+        </div>
+      </div>
+      <!--main_tab end-->
+    
+    <div class="inde-content">
+        <!--main_tab end-->
+        <div class="indi-sidebar" style="margin-bottom:-3000px; padding-bottom:3000px;">
+            <ul class="indi-sidemenu">
+                <li class="target" url="indicator1-1.html" style="position:relative;">
+                    <i class="nav-img1"></i>
+                    <span>总体GDP分析</span>
+                    <div class="emp"></div>
+                </li>
+                <li url="indicator1-2.html">
+                    <i class="nav-img2"></i>
+                    <span>产业GDP分析</span>
+                    <div class="emp"></div>
+                </li>
+                <li url="indicator1-3.html">
+                    <i class="nav-img3"></i>
+                    <span>行业GDP分析</span>
+                    <div class="emp"></div>
+                    
+                </li>
+                <li class="last" url="indicator1-4.html">
+                    <i class="nav-img4"></i> 
+                    <span>地域GDP分析</span>
+                    <div class="emp"></div>
+                </li>
+            </ul>
+        </div>
+        <div class="indi-main">
+            <div class="indi-chart-p" style="width:350px; height:324px; position:relative;">
+                <div class="title">
+                    全市GDP及产业分布
+                </div>
+                <div id="chart1" style="height:285px;">
+                    
+                </div>
+                <div style="position:absolute; left:36%; top:42%;">
+                    <div style="color:B0B8C2; font-size:16px; text-align:center;">
+                        全市GDP
+                    </div>
+                    <div style="color:#3A53A0; font-size:24px; text-align:center; padding:4px 0">
+                        30426.88亿
+                    </div>
+                    <div style="color:#FF466F; text-align:center; font-size:14px;">
+                        7.9%
+                    </div>
+                </div>
+            </div>
+            <div class="indi-chart-p" style="width:350px; height:324px;" id="chart-pane-2">
+                <div class="title">
+                    全市GDP发展情况
+                </div>
+                <div style="text-align:center; margin:8px 0 12px 0">
+                    <span class="toggle-btn">
+                        <a href="javascript:void(0)" class="target" tp='year'>按年</a>
+                        <a href="javascript:void(0)" tp='quarter'>按季</a>
+                    </span>
+                </div>
+                <div id="chart2" style="height:240px;"></div>
+            </div>
+            <div class="indi-chart-p" style="width:234px; height:324px;">
+                <div style="width:100%; height:80px; color:#FFF; background-color:#81C755; padding-top:10px">
+                    <div style="width:75px; height:100%; float:left; padding-left:20px; padding-top:8px;">
+                        <img src="images/icon_gdp.png">
+                    </div>
+                    <div style="margin-left:75px; height:100px; padding-top:6px;">
+                        <div style="font-size:14px;">全市地区生产总值</div>
+                        <div style="font-size:26px; font-weight:bold;">
+                            30426.88<font style="font-size:18px; font-weight:normal;">亿元</font>
+                        </div>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>          
+                <div style="margin-top:10px;">
+                    <div class="c13-area">
+                        <div class="area-name" >
+                            长株潭地区
+                        </div>
+                        <div style="padding:10px 0 0 0; text-align:center;">
+                            <div>
+                                12548.33亿元
+                            </div>
+                            <div style="color:red">
+                                8.58%
+                            </div>
+                        </div>
+                    </div>
+                    <div class="c13-area" style="margin-left:1px">
+                        <div class="area-name">
+                            湘南地区
+                        </div>
+                        <div style="padding:10px 0 0 0; text-align:center;">
+                            <div>
+                                8710.46亿元
+                            </div>
+                            <div style="color:red">
+                                8.98%
+                            </div>
+                        </div>
+                    </div>       
+                    <div style="clear:both"></div>
+                </div>
+                <div style="margin-top:10px;">
+                    <div class="c13-area">
+                        <div class="area-name">
+                            大湘西地区
+                        </div>
+                        <div style="padding:10px 0 0 0; text-align:center;">
+                            <div>
+                                2218.38亿元
+                            </div>
+                            <div style="color:red">
+                                8.58%
+                            </div>
+                        </div>
+                    </div>
+                    <div class="c13-area" style="margin-left:1px">
+                        <div class="area-name">
+                            洞庭湖地区
+                        </div>
+                        <div style="padding:10px 0 0 0; text-align:center;">
+                            <div>
+                                12500.33亿元
+                            </div>
+                            <div style="color:red">
+                                8.98%
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+
+                <div style="height:40px; border:solid 1px #564FBE; margin-top:10px;">
+                    <div style="float:left; text-align:center; width:38px; padding:3px 0; font-size: 11px; color: #66666;">
+                        人均GDP
+                    </div>
+                    <div style="float: left; text-align: center; font-size:20px; width:154px; color:#4F5DB0; line-height:40px;">
+                        45931元
+                    </div>
+                    <div style="float:left; text-align:center; width:38px; border-radius:2px; background-color:#564FBE; color:#FFFFFF; font-size:9px; padding:2px 0;">
+                        ↑<br/>7.3%
+                    </div>
+                    <div style="clear:both"></div>
+                </div>         
+            </div>
+            <div class="indi-chart-p" style="margin: 20px 0 0 15px;width:353px; height:277px; position:relative;">
+                <div class="title">
+                    全市GDP市州排行
+                </div>
+                <div id="chart3" style="height:322px;width:280px;margin-left: 14px;margin-top:-45px;">
+                    
+                </div>
+                <div style="position:absolute; left:70%; top:27%;">
+                    <div style="color:#0C6BDB; font-size:12px; text-align:center;  padding:0px 0">
+                        8510.1亿元
+                    </div>
+                    <div style="color:#0C6BDB; font-size:12px; text-align:center; padding:25px 0">
+                        2886.2亿元
+                    </div>
+                    <div style="color:#0C6BDB; font-size:12px; text-align:center; padding:2px 0">
+                        2709.0亿元
+                    </div>
+                    <div style="color:#0C6BDB; font-size:12px; text-align:center; padding:17px 0">
+                        2601.5亿元
+                    </div>
+                    <div style="color:#0C6BDB; font-size:12px; text-align:center; padding:7px 0">
+                        2335.1亿元
+                    </div>
+
+                </div>
+                <div style="position:absolute; left:88%; top:27%;">
+                    <div style="color:red; font-size:12px; text-align:center;  padding:0px 0">
+                        27.9%
+                    </div>
+                    <div style="color:red; font-size:12px; text-align:center; padding:25px 0">
+                        9.4%
+                    </div>
+                    <div style="color:red; font-size:12px; text-align:center; padding:2px 0">
+                        8.9%
+                    </div>
+                    <div style="color:red; font-size:12px; text-align:center; padding:17px 0">
+                        8.5%
+                    </div>
+                    <div style="color:red; font-size:12px; text-align:center; padding:7px 0">
+                        7.6%
+                    </div>
+                </div>
+            </div>
+            
+            <div class="indi-chart-p" style="margin: 20px 0 0 18px;width:605px; height:277px;">
+                <div class="title" style="z: 9999;">
+                    全市GDP行业分布
+                </div>
+                <div id="chart4" style="height:236px;width:600px;margin-top:-7px;">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="js/indicator.js"></script>
+    <script src="js/indicator1.js"></script>
+</body>
+</html>
