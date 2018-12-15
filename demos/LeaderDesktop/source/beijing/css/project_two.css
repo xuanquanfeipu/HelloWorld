@@ -1,0 +1,124 @@
+*{font-family:"微软雅黑"}
+ul li{list-style: none;}
+a:hover{text-decoration:none;}
+.project_two{padding:32px 50px;background:url(../images/bg_two.png) no-repeat;background-size:100% 100%;position:relative;}
+.project_two .user{height: 50px;}
+.project_two .user_name{display:inline-block;padding-right: 30px;color:#1c1d1e;position:relative;}
+.project_two .user_name:hover{cursor:pointer;}
+.project_two .user_name:after{content:'';display:block;height:10px;width:10px;border-width:1.5px;border-style:solid;border-color:transparent #999 #999 transparent;
+position:absolute;top:3px;right:8px;transform: rotate(45deg);}
+.project_two h1{height: 50px;line-height: 50px;font-size:36px;color:#1f2529;margin-bottom: 5px;}
+.project_two .piece{margin: 0 auto;float: none;}
+.project_two .entrance{height:70px;margin:40px auto 50px;float: none;background-color: #fff;
+                       box-shadow:4px 4px 20px #acacac;border-radius: 5px;padding:20px 0;color:#6c6c6c;}
+.project_two .entrance .h30{height: 30px;line-height:30px;}
+.project_two .entrance .etr:nth-child(1){border-right: 1px solid #c9c9c9;}
+.project_two .entrance .etr_bottom:after{content:'';display:block;height:12px;width:12px;border-width:2px;border-style:solid;border-color:transparent #2bb5e3 #2bb5e3 transparent;
+position:absolute;bottom:14px;right:10px;transform: rotate(45deg);}
+.project_two .entrance .etr_top:after{content:'';display:block;height:12px;width:12px;border-width:2px;border-style:solid;border-color:#2bb5e3 transparent transparent #2bb5e3;
+position:absolute;top:14px;right:10px;transform: rotate(45deg);}
+.project_two .piece{margin: 0 auto;padding-bottom:60px;overflow-x: hidden;padding: 0px;}
+.project_two .ul_piece{height: 290px;margin: 0 auto;padding: 0;width:50%;}
+.project_two .ul_piece::after{content:'';display: block;width: 0;height: 0;clear:both;}
+.project_two .li_piece{height: 240px;transition:height .5s;position:relative;}
+.project_two .li_piece .li_piece_circle{position:absolute;bottom:120px;left:50%;margin-left:-50px; height:100px;width:100px;}
+.project_two .li_piece p{position:absolute;bottom:30px;left:0;color:#fff;width:100%;text-align:center;font-size:18px;}
+.project_two .li_piece.gdzctz{ background-color: #2383f1;}
+.project_two .li_piece.ztjjfx{ background-color: #f44e37;}
+.project_two .li_piece.rkzhfx{ background-color: #ffa619;}
+.project_two .li_piece.jmsrfx{ background-color: #15a68a;}
+.project_two .li_piece.jyqkfx{ background-color: #3e49af;}
+.project_two .li_piece.ylwsfx{ background-color: #5d3796;}
+.project_two .li_piece:hover{height: 280px;cursor:pointer;}
+.project_two .li_piece.gdzctz .li_piece_circle{ background:url(../images/icon_fixed-on.png) no-repeat center center;background-size:90% 90%;}
+.project_two .li_piece.ztjjfx .li_piece_circle{ background:url(../images/icon_economic-on.png) no-repeat center center;background-size:90% 90%;}
+.project_two .li_piece.rkzhfx .li_piece_circle{ background:url(../images/icon_population-on.png) no-repeat center center;background-size:90% 90%;}
+.project_two .li_piece.jmsrfx .li_piece_circle{ background:url(../images/icon_income-on.png) no-repeat center center;background-size:90% 90%;}
+.project_two .li_piece.jyqkfx .li_piece_circle{ background:url(../images/icon_education-on.png) no-repeat center center;background-size:90% 90%;}
+.project_two .li_piece.ylwsfx .li_piece_circle{ background:url(../images/icon_medical-on.png) no-repeat center center;background-size:90% 90%;}
+.project_two .li_piece:hover::after{content:'';display:block;height:5px;width:100%;background-color:rgba(65,65,65,.5);
+                                      position:absolute;bottom:0;left:0;}
+.project_two .tab_page{float:none;height:55px;margin:20px auto 0;}
+.project_two .tab_page .tab_left{background:url(../images/u632.png) no-repeat;height:55px;cursor:pointer;}
+.project_two .tab_page .tab_left_grey{background:url(../images/u630.png) no-repeat;height:55px;}
+.project_two .tab_page .tab_right{background:url(../images/u628.png) no-repeat;height:55px;cursor:pointer;}
+.project_two .tab_page .tab_right_grey{background:url(../images/u634.png) no-repeat;height:55px;}
+.project_two .tab_page .tab_btn:hover{cursor:pointer;}
+
+.project_two .li_piece.czsrfx{ background-color: #0097a7;}
+.project_two .li_piece.shbzfx{ background-color: #5e35b1;}
+.project_two .li_piece.ylbxfx{ background-color: #065ec2;}
+.project_two .li_piece.gsqkfx{ background-color: #c2185b;}
+.project_two .li_piece.rcgxfx{ background-color: #ffc107;}
+.project_two .li_piece.zdy{ background-color: #eeeeee;}
+.project_two .li_piece.zdy p{ color: #616161;}
+.project_two .li_piece:hover{height: 280px;cursor:pointer;}
+.project_two .li_piece.czsrfx .li_piece_circle{ background:url(../images/icon_financial-on.png) no-repeat center center;background-size:90% 90%;}
+.project_two .li_piece.shbzfx .li_piece_circle{ background:url(../images/icon_social-on.png) no-repeat center center;background-size:90% 90%;}
+.project_two .li_piece.ylbxfx .li_piece_circle{ background:url(../images/icon_healthcare-on.png) no-repeat center center;background-size:90% 90%;}
+.project_two .li_piece.gsqkfx .li_piece_circle{ background:url(../images/icon_injury-on.png) no-repeat center center;background-size:90% 90%;}
+.project_two .li_piece.rcgxfx .li_piece_circle{ background:url(../images/icon_talent-on.png) no-repeat center center;background-size:90% 90%;}
+.project_two .li_piece.zdy .li_piece_circle{ background:url(../images/icon_custom-on.png) no-repeat center center;background-size:90% 90%;}
+.project_two .li_piece:hover::after{content:'';display:block;height:5px;width:100%;background-color:rgba(65,65,65,.5);
+    position:absolute;bottom:0;left:0;}
+/*删除块*/
+.project_two .chunk_zdy{position:relative;}
+.project_two .chunk_zdy:hover:before{content:'';display:block;height:100%;width:100%;background:url(../images/icon_cancel.png) no-repeat center center;
+    position:absolute;top:0;left:0;z-index:99;}
+.project_two .gdzctz.chunk_zdy:hover:before{background-color: #2383f1;opacity:.7;}
+.project_two .ztjjfx.chunk_zdy:hover:before{background-color: #f44e37;opacity:.7;}
+.project_two .rkzhfx.chunk_zdy:hover:before{background-color: #ffa619;opacity:.7;}
+.project_two .jmsrfx.chunk_zdy:hover:before{background-color: #15a68a;opacity:.7;}
+.project_two .jyqkfx.chunk_zdy:hover:before{background-color: #3e49af;opacity:.7;}
+.project_two .ylwsfx.chunk_zdy:hover:before{background-color: #5d3796;opacity:.7;}
+.project_two .czsrfx.chunk_zdy:hover:before{background-color: #0097a7;opacity:.7;}
+.project_two .shbzfx.chunk_zdy:hover:before{background-color: #5e35b1;opacity:.7;}
+.project_two .ylbxfx.chunk_zdy:hover:before{background-color: #065ec2;opacity:.7;}
+.project_two .gsqkfx.chunk_zdy:hover:before{background-color: #c2185b;opacity:.7;}
+.project_two .rcgxfx.chunk_zdy:hover:before{background-color: #ffc107;opacity:.7;}
+/*浮窗*/
+.project_two .floating_window{position:absolute;left:0;top:0;width:100%;background-color:#fff;box-shadow:5px 5px 15px #acacac;padding-bottom:25px;display:none;}
+.project_two .analyze_list{display:table;margin:30px auto;height:120px;}
+.project_two .analyze_list:after{content:'';display:inline-block;width:0;height:0;clear:both;}
+.project_two .analyze_list .analyze_li{float: left;width:140px;height:120px;transition:background .5s;position:relative;}
+.project_two .analyze_list .analyze_li:hover{cursor:pointer;}
+.project_two .analyze_list .analyze_li:hover{cursor:pointer;}
+.project_two .analyze_list .gdzctz{background:url(../images/icon_fixed2.png) no-repeat top center;}
+.project_two .analyze_list .ztjjfx{background:url(../images/icon_economic2.png) no-repeat top center;}
+.project_two .analyze_list .rkzhfx{background:url(../images/icon_population2.png) no-repeat top center;}
+.project_two .analyze_list .jmsrfx{background:url(../images/icon_income2.png) no-repeat top center;}
+.project_two .analyze_list .jyqkfx{background:url(../images/icon_education2.png) no-repeat top center;}
+.project_two .analyze_list .ylwsfx{background:url(../images/icon_medical2.png) no-repeat top center;}
+.project_two .analyze_list .czsrfx{background:url(../images/icon_financial2.png) no-repeat top center;}
+.project_two .analyze_list .shbzfx{background:url(../images/icon_social2.png) no-repeat top center;}
+.project_two .analyze_list .ylbxfx{background:url(../images/icon_healthcare2.png) no-repeat top center;}
+.project_two .analyze_list .gsqkfx{background:url(../images/icon_injury2.png) no-repeat top center;}
+.project_two .analyze_list .rcgxfx{background:url(../images/icon_talent2.png) no-repeat top center;}
+.project_two .analyze_list .gdzctz:hover{background:url(../images/icon_fixed-on2.png) no-repeat top center;}
+.project_two .analyze_list .ztjjfx:hover{background:url(../images/icon_economic-on2.png) no-repeat top center;}
+.project_two .analyze_list .rkzhfx:hover{background:url(../images/icon_population-on2.png) no-repeat top center;}
+.project_two .analyze_list .jmsrfx:hover{background:url(../images/icon_income-on2.png) no-repeat top center;}
+.project_two .analyze_list .jyqkfx:hover{background:url(../images/icon_education-on2.png) no-repeat top center;}
+.project_two .analyze_list .ylwsfx:hover{background:url(../images/icon_medical-on2.png) no-repeat top center;}
+.project_two .analyze_list .czsrfx:hover{background:url(../images/icon_financial-on2.png) no-repeat top center;}
+.project_two .analyze_list .shbzfx:hover{background:url(../images/icon_social-on2.png) no-repeat top center;}
+.project_two .analyze_list .ylbxfx:hover{background:url(../images/icon_healthcare-on2.png) no-repeat top center;}
+.project_two .analyze_list .gsqkfx:hover{background:url(../images/icon_injury-on2.png) no-repeat top center;}
+.project_two .analyze_list .rcgxfx:hover{background:url(../images/icon_talent-on2.png) no-repeat top center;}
+.project_two .analyze_li span{display:inline-block;width:140px;height:90px;}
+.project_two .analyze_li p{text-align:center;line-height:30px;font-size:16px;}
+.project_two .analyze_list .gdzctz p{color:#2283f1;}
+.project_two .analyze_list .ztjjfx p{color:#f44e37;}
+.project_two .analyze_list .rkzhfx p{color:#ffa619;}
+.project_two .analyze_list .jmsrfx p{color:#15a68a;}
+.project_two .analyze_list .jyqkfx p{color:#3e49af;}
+.project_two .analyze_list .ylwsfx p{color:#5d3796;}
+.project_two .analyze_list .czsrfx p{color:#0097a7;}
+.project_two .analyze_list .shbzfx p{color:#5e35b1;}
+.project_two .analyze_list .ylbxfx p{color:#065ec2;}
+.project_two .analyze_list .gsqkfx p{color:#c2185b;}
+.project_two .analyze_list .rcgxfx p{color:#ffc107;}
+.project_two .zdy_btn{width:320px;margin:0 auto;display:table;}
+.project_two .zdy_btn a{display:inline-block;width:120px;height:45px;border:1px solid #00b8ac;color:#00b8ac;border-radius:45px;margin:0 18px;font-size:20px;line-height: 45px;}
+.project_two .zdy_btn a:hover{background-color:#00b8ac;color:#fff;}
+.dropdown{cursor:pointer;}
