@@ -1,0 +1,91 @@
+/**/
+*{margin: 0; padding: 0;}
+body{font-size: 12px; font-family: "微软雅黑"!important; color: #333;}
+.clearfix:after{display:block;clear:both;content:"";visibility:hidden;height:0}
+.clearfix{zoom:1}
+.fl{ float: left;}
+.fr{ float: right;}
+ul{ margin-bottom: 0;}
+ul li{ list-style: none;}
+img{ border: none;}
+a,a:hover{ text-decoration: none;}
+.hidden{ display: none;}
+
+/*top*/
+.box_bg{background: url("../img/bg.png"); background-size: cover;}
+.top{ height: 80px;background: url("../img/bg_tm.png") repeat; padding: 0 2%;}
+.top .logo{ display: block; padding: 7px 0;}
+.logo_img{ margin-right: 20px;}
+.logo_tit{ height: 66px; line-height: 66px; font-size: 26px; color: #fff;}
+.login ul li{ float: left; margin-left: 15px;}
+.login ul li>img{ margin: 12px 0;}
+.login ul li>p{ font-size: 14px; color: #fff; line-height: 40px; margin: 20px 0;}
+.icon{ cursor: pointer; background: url("../img/btn_arrow_pulldown.png") no-repeat; width: 20px; height: 20px; display:block; float: right; margin-top: 10px;}
+/*content*/
+.contentBox{ width: 100%; height: 100%; padding: 50px 0;}
+.content{ background: url("../img/bg_white.png") repeat; height: auto; margin: 0 1.5%; position: relative; }
+.notice{ display: block; height: 200px; width: 28.57%!important; background: #fff url("../img/u132.png") 0 30px no-repeat; z-index: 9;}
+.notice ul{margin: 30px 10px 30px 25px; height: 140px; overflow: hidden; }
+.notice ul li{ margin-bottom: 20px;}
+.notice ul li a{ font-size: 14px; line-height: 28px; color: #333333;}
+.notice ul li a:hover{ color:#339966; }
+.type_box>div,.type_box1>div,.type_box2>div{ width: 14.285%; height: 200px; position: relative; }
+.gdzc{ background: #a21dd3;margin-left: 14.285%;}
+.gdzc a:hover p,.ztjj a:hover p,.jmsr a:hover p,.eduqk a:hover p,.ylws a:hover p,.rkzh a:hover p,.czsr a:hover p
+,.shbz a:hover p,.ybqk a:hover p,.gsqk a:hover p,.rcgx a:hover p,.jyqk a:hover p{
+    font-weight: bold;
+}
+.ztjj{ background:#0acd81;}
+.custom{ background: url("../img/bg_zdy.png") repeat; height: 200px; margin-left: 14.285%;display: inline; position: relative;}
+.customWrap{ display: block; width: 100%; height: 200px; cursor: pointer; }
+.customWrap img{ width: 80px; height: 80px; display: block; margin:40px auto 0;}
+.customWrap p{font-size: 16px; font-weight: 400; color: #fff; text-align: center; line-height: 30px;}
+.jmsr{ background: #5e53e6;}
+.eduqk{ background: #2076ce;  margin-left: 14.285%; display: inline;}
+.ylws{ background: #283593;}
+.rkzh{ background: #08a293;}
+.czsr{ background: #8cc946;}
+.shbz{ background: #f2bc11;}
+.ybqk{ background: #5135be;}
+.gsqk{ background: #de2a58; margin-left: 28.57%;display: inline;}
+.rcgx{ background: #4caf50; margin-left: 14.285%;display: inline;}
+.jyqk{ background: #e87208}
+.noCheck{ background: #909090;}
+.noCheck .box{ background: none;}
+.comm{ border: 4px solid transparent; display: block; width:96%;  height: 92px; cursor: pointer; padding: 50px 0; position: relative;}
+.comm img{ width: 44px; height: 44px; margin: 0 auto; display: block;}
+.comm p{ font-size: 16px; font-weight: 400; color: #fff; text-align: center; line-height: 30px; margin-top: 25px;}
+a.comm:hover{ border: 4px solid rgba(0,0,0,0.3);}
+/*.box{ background: rgba(255,255,255,0.4); width: 50px; height: 50px; position: absolute; top: 48px; left: 50%; margin-left: -25px;}*/
+.detail{ position: absolute; background: url("../img/bg_tm.png") repeat;  width: 100%; height:200px; }
+.detail p{ position:relative; font-size: 12px; color: #fff; line-height: 24px; margin: 24px 10px; height: 150px; overflow: hidden;}
+.close,.check{ width: 36px; height: 36px; position: absolute; top: 0; right: 0; z-index: 10;}
+a.close:hover{ border: none;}
+.btn_box{ position: absolute; top: 0; left: 0; width: 200px;}
+.btn_box a{ display:block;font-size: 20px; color: #fff; text-align: center; line-height: 100px;}
+.btn_box a.yes{ height: 100px; width: 100%; background: #e50150;}
+.btn_box a.no{ height: 100px; width: 100%; background: #546e7a;}
+.gdzcXq,.eduqkXq,.ybqkXq,.gsqkXq{ top: 0; left:100%;}
+.ztjjXq,.rkzhXq,.ylwsXq{ top: 100%; left: 0;}
+.jmsrXq,.czsrXq,.jyqkXq{ top: -100%; left:0;}
+.rcgxXq,.shbzXq{ top: 0; left: -100%;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
