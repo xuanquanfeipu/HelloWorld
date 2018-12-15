@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>北京市政务大数据--领导决策</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/index3.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	<script src="js/echarts.js"></script>
+	<script src="js/map.js"></script>
+	<script src="js/beijing.js"></script>
+	<script src="js/sly.min.js"></script>
+	<script src="js/index3_nav.js"></script>
+  </head>
+  <body>
+	 <header class="main-header">
+		<div class="logobar logobar-static-top">
+		  <div class="container">
+
+			<img src="images/logo.png" class="fl logo"></img>
+			<div class="fl" style="padding:15px;font-size:17px;font-weight: bold;margin-top:5px;color:#fff">北京市政务大数据--领导决策</div>
+			<a href="javascript:;;" class="fr profile"></a>
+		  </div>
+		  <!-- /.container-fluid -->
+		</div>
+
+
+		 <!--main_tab begin-->
+		 <div class="main_tab">
+			 <div class="container-main" style="height:auto;">
+				 <a href="javascript:;" class="fl nav_btn prev_btn"><img src="images/index3/btn_selected_l.png"></a>
+				 <div class="frame fl" id="frame">
+					 <ul id="navbar" class="main_tab_ul clearfix fl slidee">
+						 <li id="nav_custom" style="display:none;">
+							 <a href="javascript:;" class="custom_btn" data-toggle="modal" data-target="#myModal" style="opacity: 1;filter: ~"alpha(opacity=100)";">
+								 <img src="images/index3/icon_custom.png"></img><p style="color:#1DE9B5">自定义</p></a>
+						 </li>
+					 </ul>
+				 </div>
+
+				 <a href="javascript:;" class="fl nav_btn next_btn"><img src="images/index3/btn_selected_s.png"></a>
+			 </div>
+		 </div>
+		 <!--main_tab end-->
+	</header>
+
+
+	<div class="container-main maincon main-div">
+	<div class="row">
+		<div class="col-md-8 col-left-main">
+			<div class="box" style="padding-bottom: 0">
+				<div class="row">
+					<div class="col-md-5" style="padding-right:0px">
+						<div class="qyqkfx">区域总体情况分析</div>
+						<div id="mapchart" class="map-chart-main" style="width: 120%;margin-left: -40px"></div>
+					</div>
+					<div class="col-md-7" style="padding-left:20px">
+						<div class="row" style="height: 301px;">
+						  <div class="col-md-6 left-pie" style="padding:0">
+							<div style="height: 240px;">
+								<div id="piechart" style="width: 100%;height:280px;"></div>
+								<div id="pieTitle" class="left-pie-font" style="position:absolute; top:35%;">
+									<div style="color:B0B8C2; font-size:16px; text-align:center;">
+										全市GDP
+									</div>
+									<div style="color:#3A53A0; font-size:24px; text-align:center; padding:4px 0">
+										30426.92亿
+									</div>
+									<div style="color:#FF466F; text-align:center; font-size:14px;">
+										8.6%↑
+									</div>
+								</div>
+							</div>
+						  </div>
+						  <div class="col-md-6 right-font" style="padding:10">
+							<div class="row" style="">
+							  <div class="col-md-12" style="height: 135px;padding-left:5px;padding-right: 5px;">
+							  	<div class="rks">
+							  		<div style="overflow: hidden;">
+							  			<img style="margin-top: 18px;margin-left: 15px;float: left;" src="images/icon_person.png">
+							  			<div class="rkzs">
+							  				<p style="margin-left: 3px;">全市人口总数</p>
+							  				<p style="margin-top: -6px;width:100%">6783.03<span style="font-size: 24px;font-weight: 100;">万</span></p>
+							  			</div>
+							  		</div>
+							  		<div class="ncczrk">
+							  			<p>
+							  				<span>城镇</span>
+							  				<span class="jdt czrk"></span>
+							  				<span style="font-size: 12px;">3451.88万</span>
+							  			</p>
+							  			<p>
+							  				<span>农村</span>
+							  				<span class="jdt"></span>
+							  				<span style="font-size: 12px;">3331.15万</span>
+							  			</p>
+							  		</div>
+							  	</div>
+							  </div>
+							</div>
+							<div class="row">
+							  <div class="col-md-12 fl" style="height: 120px;padding-left:5px;padding-right: 5px;">
+							  <div class="sr_div">
+							  		<p>
+							  			<img src="images/icon_financia.png">
+							  			<span style="font-size: 16px;vertical-align: sub;">全市财政收支情况</span>
+							  		</p>
+							  		<div>
+							  			<P class="czsr_p">4011.04亿元</P>
+							  			<p class="czsr_p color_p">10.3%↑</p>
+							  			<p class="czsr_p">财政收入</p>
+							  		</div>
+							  		<div>
+							  			<P class="czsr_p">5728.72亿元</P>
+							  			<p class="czsr_p color_p">14.2%↑</p>
+							  			<p class="czsr_p">财政支出</p>
+							  		</div>
+							  </div>
+							  </div>
+							</div>
+						  </div>
+						</div>
+						<div class="row">
+						  <div class="col-md-12" style="padding-left: 0;padding-right: 5px ">
+							<div style="height: 280px;">
+								<div class="tzhy_div">
+									<a href="#"></a>
+									<span>全市固定投资行业TOP10</span>
+									<div class="int_zzl" style="line-height: 40px;">
+				                        18%↑
+				                    </div>
+									<div style="font-weight: normal;" class="int_tz" type="text" value="25954.27亿元" name="">25954.27亿元</div>
+									
+								</div>
+								<div id="barchart1" class="bar-chart-main" style="width: 110%;margin-top: 10px;"></div>
+							</div>
+						  </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4 col-right-main" style="padding-right:0px">
+			<div class="row">
+			  <div class="col-md-12">
+				<div class="box" style="height: px;">
+					<p class="jbqk">北京市民生基本情况</p>
+					<p class="Basic_situation">
+						<span>教育经费</span>
+						<span>928.5亿元</span>
+						<span>11.4%↑</span>
+					</p>
+					<p class="Basic_situation">
+						<span>每万人口拥有医院床位数</span>
+						<span>58.45张</span>
+						<span>18.4%↑</span>
+					</p>
+					<p class="Basic_situation">
+						<span>居民人均可支配收入</span>
+						<span>19317元</span>
+						<span>9.6%↑</span>
+					</p>
+					<p class="Basic_situation">
+						<span>城镇失业率</span>
+						<span>4.19%</span>
+						<!--<span>14%↑</span>-->
+						<span style="color: #339900">12.9%↓</span>
+					</p>
+					<p class="Basic_situation" style="margin: 0 0 5px;">
+						<span>空气质量达标天数比例</span>
+						<span>77.9%</span>
+						<span>5.5%↑</span>
+					</p>
+				</div>
+			  </div>
+			</div>
+			<div class="row">
+			  <div class="col-md-12">
+				<div id="banner" class="box box-main">
+					<ul id="tab" class="list-inline switch_ul">
+						<li class="fli">GDP</li>
+						<li>规模工业</li>
+						<li>固定资产</li>
+						<li>居民消费</li>
+						<li>进出口额</li>
+					</ul>
+					<div id="tab_con">
+						<aside id="" class="fdiv hide_div">
+							<p class="text-left left_p">2015年GDP<span>30426.92亿元</span></p>
+							<p class="text-right right_p">8.6%↑</p>
+							<div id="main" class="tab_con_chart_main"></div>
+						</aside>
+						<aside id="" class="hide_div">
+							<p class="text-left left_p">2015年规模工业<span>11090.8亿元</span></p>
+							<p class="text-right right_p">7.5%↑</p>
+							<div id="main1" class="tab_con_chart_main"></div>
+						</aside>
+						<aside id="" class="hide_div">
+							<p class="text-left left_p">2015年固定资产<span>25954.27亿元</span></p>
+							<p class="text-right right_p">18%↑</p>
+							<div id="main2" class="tab_con_chart_main"></div>
+						</aside>
+						<aside id="" class="hide_div">
+							<p class="text-left left_p">2015年居民消费<span style="margin-left:24px;">19501元</span></p>
+							<p class="text-right right_p">1.4%↑</p>
+							<div id="main3" class="tab_con_chart_main"></div>
+						</aside>
+						<aside id="" class="hide_div">
+							<p class="text-left left_p">2015年进出口额<span>293.67(亿美元)</span></p>
+							<p class="text-right right_p" style="color: #80C755;">4.8%↓</p>
+							<div id="main4" class="tab_con_chart_main"></div>
+						</aside>
+					</div>
+				</div>
+			  </div>
+			</div>
+		</div>
+	<div>
+   </div>
+    <!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document" style="width:900px">
+    <div class="modal-content">
+      <div class="modal-header" style="min-height: 84px;padding-top: 30px;background:#e2e6f5;border-bottom: 1px solid #b0badc;">
+        <h4 class="modal-title" id="myModalLabel" style="text-align:center;color:#3b53a2">请选择您感兴趣的主题</h4>
+      </div>
+      <div class="modal-body" style="height:315px;padding:32px 32px 32px 72px;">
+        <ul class="custom_item_ul">
+			
+		</ul>
+      </div>
+      <div class="modal-footer" style="text-align: center;border-top: 0;margin-bottom:20px">
+        <button type="button" class="btn btn-warning btn-lg confirm-btn" style="background-color: #ffab00;border-color: #ffab00;margin-right:50px">确定</button>
+		<button type="button" class="btn btn-warning btn-lg" style="background-color: #606f77;border-color: #606f77;" data-dismiss="modal">取消</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+	</div>
+	</div>
+  </body>
+  <script src="js/index3.js"></script>
+  <script type="text/javascript" src="js/echarts.js"></script>
+  <script type="text/javascript" src="js/tabDiv.js"></script>
+</html>
