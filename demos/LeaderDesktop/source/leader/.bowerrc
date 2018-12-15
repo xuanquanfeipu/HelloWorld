@@ -1,0 +1,5 @@
+{
+  "directory": "bower_components",
+  "proxy": "http://proxynj.zte.com.cn:80",
+  "https-proxy": "http://proxynj.zte.com.cn:80"
+}
