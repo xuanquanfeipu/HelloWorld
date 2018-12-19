@@ -1,17 +1,25 @@
-angular1 vs angular2/4
+#angular1 vs angular2/4
+
 架构：基于MVC vs 基于组件、引入了 NativeScript 技术
+
 性能：后者更快（精简了核心模块）
+
 对 Mobile app 的支持：响应式网页、双向数据绑定的Web应用  vs 很好地支持 mobile app、解决了 mobile app 跨平台的问题
+
 语言：JavaScript vs TypeScript
+
 代码重用方法：$scope vs directive 和 controller, 通过对 component 组件的split（分割）
 
 HTML5 允许扩展的（自制的）属性，以 data- 开头。
+
 AngularJS 属性以 ng- 开头，但是您可以使用 data-ng- 来让网页对 HTML5 有效。
+
 ng-for vs *ngFor
+
 app.directive('myPane', function () {
 	return {
 		// 指定必须有myTabs对象，若对象不存在则会报错，见下面的图1
-		require: '^myTabs',  // ^ 表示将在父级的范围内查找该对象， 没有 ^ 表示在Directive内查找该对象， 若范围指定错误无法找到myTabs，js则会报错
+		require: '^myTabs',  // ^ 表示将在父级的范围内查找该对象， 没有 ^ 表示在Directive内查找该对象， 若范围指定错误无法找到myTabs，js则会报错，使用？可以在myTabs指令不存在的情况下不报错
 		restrict: 'ACEM',//attr,class,element,comment
 		transclude: true,
 		scope: {
