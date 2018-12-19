@@ -15,7 +15,7 @@ HTML5 允许扩展的（自制的）属性，以 data- 开头。
 AngularJS 属性以 ng- 开头，但是您可以使用 data-ng- 来让网页对 HTML5 有效。
 
 ng-for vs *ngFor
-
+```
 app.directive('myPane', function () {
 	return {
 		// 指定必须有myTabs对象，若对象不存在则会报错，见下面的图1
@@ -41,7 +41,7 @@ scope: {
  }
  
  <div class="my-directive" my-directive my-name="{{name}}" age="age" change-my-age="changeAge()"></div>
- 
+ ```
  @ 当指令编译到模板的name时，就会到scope中寻找是否含有name的键值对，如果存在，就像上面那样，看到@就知道这是一个单向的数据绑定，然后寻找原来的那个使用指令的元素上（或者是指令元素本身）含有这个值的属性即my-name={{name}}，然后在父作用域查找{{name}}的值，得到之后传递给模板中的name。
 =和&与@差不多，只不过=进行的是双向的数据绑定，不论模板还是父作用域上的属性的值发生改变都会使另一个值发生改变，而&是绑定函数而已。
 
@@ -64,7 +64,7 @@ $compile 遍历DOM节点，匹配指令。
 
 下面是使用 $compile 服务的相关代码。它应该能帮你理解 Angular 内部在做些什么（译注：下面代码中的注释就不翻译了，因为有一些如 compile 和 link 翻译效果反而不好）：
 
-'''
+```
 
 var $compile = ...; // injected into your code
   var scope = ...;
@@ -84,7 +84,7 @@ var $compile = ...; // injected into your code
   // Step 4: Append to DOM (optional)
   parent.appendChild(element);
   
-  '''
+```
   
 ##  compile 和 link 的区别
 
@@ -97,7 +97,7 @@ var $compile = ...; // injected into your code
 
 注意： 连接 意味着在DOM上设置监听器以及在相关的作用域中设置 $watch 以保证二者（译注：DOM和作用域）的同步。
 
-'''
+```
 
 transclude: true,
 scope: {
@@ -109,4 +109,4 @@ scope: {
 restrict: 'E',
 replace: true
 
-'''
+```
