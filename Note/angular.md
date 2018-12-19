@@ -65,6 +65,7 @@ $compile 遍历DOM节点，匹配指令。
 下面是使用 $compile 服务的相关代码。它应该能帮你理解 Angular 内部在做些什么（译注：下面代码中的注释就不翻译了，因为有一些如 compile 和 link 翻译效果反而不好）：
 
 '''
+
 var $compile = ...; // injected into your code
   var scope = ...;
   var parent = ...; // DOM element where the compiled template can be appended
@@ -82,6 +83,7 @@ var $compile = ...; // injected into your code
   
   // Step 4: Append to DOM (optional)
   parent.appendChild(element);
+  
   '''
   
 ##  compile 和 link 的区别
@@ -96,6 +98,7 @@ var $compile = ...; // injected into your code
 注意： 连接 意味着在DOM上设置监听器以及在相关的作用域中设置 $watch 以保证二者（译注：DOM和作用域）的同步。
 
 '''
+
 transclude: true,
 scope: {
     title: '@',             // the title uses the data-binding from the parent scope
@@ -105,4 +108,5 @@ scope: {
 },
 restrict: 'E',
 replace: true
+
 '''
