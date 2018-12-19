@@ -1,4 +1,4 @@
-## angular1 vs angular2/4
+# angular1 vs angular2/4
 
 架构：基于MVC vs 基于组件、引入了 NativeScript 技术
 
