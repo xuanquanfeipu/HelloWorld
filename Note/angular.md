@@ -148,7 +148,8 @@ Webpack的优点是：
 
 Webpack的缺点是只能用于采用模块化开发的项目。
 
-https://www.cnblogs.com/zs-note/p/7093339.html
+https://www.cnblogs.com/zs-note/p/7093339.html  
+http://www.siguoya.name/pc/home/article/271
 
 ## bower 和 npm 的区别
 npm是进行后端开发中，使用的模块安装工具，而bower，是前端的模块安装工具。
