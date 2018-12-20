@@ -160,6 +160,10 @@ Grunt 与Gulp 最大的不同就在于 Grunt 使用配置对象来声明任务�
 
 https://www.cnblogs.com/zs-note/p/7093339.html  
 http://www.siguoya.name/pc/home/article/271
+### 几个种子项目
+Node项目模板/前端自动构建： https://github.com/MT-Libraries/MT-Project-Seed
+gulp and webpack： https://github.com/funkyLover/funky-seed
+gulp VS grunt：  https://github.com/wteam-xq/threeKingdoms
 
 ## bower 和 npm 的区别
 npm是进行后端开发中，使用的模块安装工具，而bower，是前端的模块安装工具。
