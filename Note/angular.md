@@ -121,6 +121,7 @@ replace: true
 ```
 
 ## 构建工具：webpack与grunt/gulp 
+官方对webpack的定位是模块打包器，而gulp/grunt属于构建工具。  
 https://www.cnblogs.com/zs-note/p/7093339.html
 
 ## bower 和 npm 的区别
