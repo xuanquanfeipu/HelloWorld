@@ -176,3 +176,8 @@ npm update --save	|	yarn upgrade  	|bower update --save
 + git 依赖支持优化：这个特性在需要安装大量内部项目（例如在没有自建源的内网开发），或需要使用某些依赖的未发布版本时很有用。在这之前可能需要使用指定 commit_id 的方式来控制版本。
 
 * 文件依赖优化：在之前的版本，如果将本地目录作为依赖来安装，将会把文件目录作为副本拷贝到 node_modules 中。而在 npm5 中，将改为使用创建 symlinks 的方式来实现（使用本地 tarball 包除外），而不再执行文件拷贝。这将会提升安装速度。目前yarn还不支持。
+
+## Markdown语法
+https://blog.csdn.net/u014061630/article/details/81359144#27-列表
+## Emoji表情
+https://www.webpagefx.com/tools/emoji-cheat-sheet/
