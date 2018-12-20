@@ -155,6 +155,18 @@ npm uninstall react --save|	yarn remove react  | bower uninstall react
 npm install react --save-dev|	yarn add react --dev  | bower install --save-dev
 npm update --save	|	yarn upgrade  	|bower update --save
 ***
+表头|表头|表头
+---|:--:|---:
+内容|内容|内容
+内容|内容|内容
+
+第二行分割表头和内容。
+- 有一个就行，为了对齐，多加了几个
+文字默认居左
+-两边加：表示文字居中
+-右边加：表示文字居右
+注：原生的语法两边都要用 | 包起来。此处省略
+
 ## npm的未来：npm5.0
 有了yarn的压力之后，npm做了一些类似的改进。
 
