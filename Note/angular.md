@@ -120,8 +120,16 @@ replace: true
 
 ```
 
-## 构建工具：webpack与grunt/gulp 
-官方对webpack的定位是模块打包器，而gulp/grunt属于构建工具。 
+## 构建工具：webpack/Browserify与grunt/gulp 
+官方对webpack/Browserify的定位是模块打包器，而gulp/grunt属于构建工具。 
+
+Browserify 可以使得 Node packages 获得浏览器的支持。当然，它也可以帮助我们将 Web 应用打包成一个 Node Packages。
+
+尽管 Browserify 是一款能够优雅地将 Node Packages 打包成浏览器支持形式的工具，但是如果你写的是一个单页应用，那么你最好选择一款专门用于打包、并且能够打包所有资源文件的模块打包器。
+
+Webpack 是一款能够将许多的 JavaScript 模块以及它的相关依赖打包进一个单独文件的工具。它并不需要你给出这些模块的依赖具体是哪些，只要它能够打包成 JavaScript 模块即可。
+
+如果非要说 Webpack 有什么缺点的话，那就是许多流行的案例项目都包含了令开发人员感到害怕的 Webpack 复杂的配置文件。
 
 Grunt是一个任务执行者，有大量现成的插件封装了常见的任务，也能管理任务之间的依赖关系，自动化执行依赖的任务，每个任务的具体执行代码和依赖关系写在配置文件 Gruntfile.js 里。  
 Grunt的优点是：
@@ -147,6 +155,8 @@ Webpack的优点是：
 - 良好的开发体验。  
 
 Webpack的缺点是只能用于采用模块化开发的项目。
+
+Grunt 与Gulp 最大的不同就在于 Grunt 使用配置对象来声明任务的运行方式，而 Gulp 则使用 JavaScript 的函数来定义任务。
 
 https://www.cnblogs.com/zs-note/p/7093339.html  
 http://www.siguoya.name/pc/home/article/271
