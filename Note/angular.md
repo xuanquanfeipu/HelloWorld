@@ -147,12 +147,12 @@ Yarn的优点？
 **更好的语义化：** yarn改变了一些npm命令的名称，比如 yarn add/remove，感觉上比 npm 原本的 install/uninstall 要更清晰。
 
 	Yarn和npm命令对比
-npm				yarn
-npm install			yarn
-npm install react --save	yarn add react
-npm uninstall react --save	yarn remove react
-npm install react --save-dev	yarn add react --dev
-npm update --save		yarn upgrade
+npm				yarn  
+npm install			yarn  
+npm install react --save	yarn add react  
+npm uninstall react --save	yarn remove react  
+npm install react --save-dev	yarn add react --dev  
+npm update --save		yarn upgrade  
 
 ## npm的未来：npm5.0
 有了yarn的压力之后，npm做了一些类似的改进。
