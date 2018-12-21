@@ -160,7 +160,7 @@ Grunt 与Gulp 最大的不同就在于 Grunt 使用配置对象来声明任务�
 
 https://www.cnblogs.com/zs-note/p/7093339.html  
 http://www.siguoya.name/pc/home/article/271  
-一天掌握前端三大构建化工具Grunt、Gulp、Webpack（上）  https://my.oschina.net/mdxlcj/blog/1626534
+一天掌握前端三大构建化工具Grunt、Gulp、Webpack（上）  https://my.oschina.net/mdxlcj/blog/1626534  
 一天掌握构建化工具Grunt、gulp、webpack（下）  https://my.oschina.net/mdxlcj/blog/1802438
 
 ### 几个种子项目
