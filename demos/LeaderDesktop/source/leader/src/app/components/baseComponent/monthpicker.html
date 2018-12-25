@@ -1,0 +1,20 @@
+<div class="sc-monthpicker btn-group" ng-click="vm.expandDropdown($event)" style="background: #fff">
+  <button style="z-index: 15;width: 118px;height: 34px;padding: 3px 12px;outline:none;color:#676d85" class="btn btn-default">{{vm.model.year}}-{{vm.model.month}}</button>
+  <button style="z-index: 15;width: 33px;height: 34px;padding: 3px 12px;border-left-color: #D9DCEC;background:url('assets/images/down_small.png') no-repeat 9px 11px;"
+          class="btn btn-default dropdown-toggle">
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li style="color: #000;">
+      <div class="row month-title" style="margin: 0">
+        <div class="col-xs-3"><i class="fa fa-fw fa-chevron-left" ng-class="{'clickable':vm.minYear!=vm.curYear}" ng-click="vm.preYear()"></i> </div>
+        <div class="col-xs-6">{{vm.curYear}}年</div>
+        <div class="col-xs-3"><i class="fa fa-fw fa-chevron-right" ng-class="{'clickable':vm.maxYear!=vm.curYear}" ng-click="vm.nextYear()"></i></div>
+      </div>
+    </li>
+    <li>
+      <ul style="float: left;color: #000;" class="month-list">
+        <li ng-repeat="item in vm.monthList" ng-class="{'select':item.select,'clickable':item.clickable}" ng-click="vm.changeMonth($event,item)">{{item.name}}</li>
+      </ul>
+    </li>
+  </ul>
+</div>
