@@ -1,0 +1,109 @@
+.main-sidebar {
+  background-color:#21286a;
+  padding: 0;
+  width: 260px
+}
+@media (min-width: 1920px){
+  .main-sidebar{
+    width:347px;
+  }
+}
+.main-sidebar a:hover, .main-sidebar a:focus{
+  text-decoration: none;
+}
+
+.main-sidebar .sidebar-menu>li {
+  //height: 90px;
+  line-height: 66px;
+  cursor: pointer;
+  color: #656D96;
+  font-size: 14px;
+  //padding: 0 0 0 40px;
+}
+
+.main-sidebar .sidebar-menu>li>a {
+  padding: 0;
+  padding-left:40px;
+  opacity: 0.5;
+}
+
+.main-sidebar .sidebar-menu>li a span {
+  line-height: 66px;
+
+  margin-left:10px;
+  font-size:14px;
+  font-weight: bold;
+}
+
+.main-sidebar .sidebar-menu>li:hover a span {
+  color: #FFF;
+}
+
+.main-sidebar .sidebar-menu>li.active,.main-sidebar .sidebar-menu>li:hover {
+  background-color: #2863db;
+  color: #FFF;
+}
+.main-sidebar .sidebar-menu>li.active>a{
+  border-left:0px solid #2ec8ca;
+}
+.main-sidebar .sidebar-menu>li.active>a,.main-sidebar .sidebar-menu>li:hover>a{
+  opacity: 1;
+
+}
+.main-sidebar .sidebar-menu>li>a:hover{
+  text-decoration: none;
+}
+.main-sidebar .treeview-menu{
+  padding-left:0;
+  //list-style-type:circle;
+  //list-style-position:outside;
+  //list-style:circle;
+}
+.main-sidebar .treeview-menu li{
+  background-color:#1C225A;
+  padding-left:40px;
+  line-height: 40px;
+  //list-style-type:circle;
+}
+.main-sidebar .treeview-menu>li>a{
+  color: #FFF;
+  margin-left: 20px;
+  opacity: 0.5;
+}
+.main-sidebar .treeview-menu>li>a img{
+  background: url("../assets/images/circle01.png");
+  margin-right: 10px;
+}
+.main-sidebar .treeview-menu>li>a:hover{
+  text-decoration: none;
+}
+.main-sidebar .treeview-menu>li:hover{
+  background-color: #171C4A;
+}
+.main-sidebar .treeview-menu>li.active,.main-sidebar .treeview-menu>li.active:hover{
+  background-color: #2ec8ca;
+}
+.main-sidebar .treeview-menu>li.active a,.main-sidebar .treeview-menu>li:hover a{
+  opacity: 1;
+  text-decoration: none;
+}
+.main-sidebar .treeview-menu>li.active a img,.main-sidebar .treeview-menu>li:hover a img{
+  background: url("../assets/images/circle.png");
+}
+.sidebar-angle-left{
+  background: url("../assets/images/icon_button_01.png");
+  width: 10px !important;
+  height: 10px !important;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  margin-top: -8px;
+}
+.active .sidebar-angle-left{
+  background: url("../assets/images/icon_button.png");
+  width: 10px !important;
+  height: 10px !important;
+}
+.breadcrumb{
+  font-weight: bold;
+}
