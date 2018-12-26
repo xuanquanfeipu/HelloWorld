@@ -1,0 +1,5 @@
+<ol class="breadcrumb" ng-if="vm.breadcrumbs">
+  <li ng-repeat="item in vm.breadcrumbs">
+    <a ng-href="{{item.link}}"><i ng-if="item.icon" class="fa fa-{{item.icon}}"></i> {{item.title}}</a>
+  </li>
+</ol>
