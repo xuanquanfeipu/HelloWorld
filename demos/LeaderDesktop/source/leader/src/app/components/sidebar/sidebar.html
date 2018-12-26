@@ -1,0 +1,43 @@
+
+<aside class="main-sidebar" style="top:85px;background-color:#21286a;">
+  <section class="sidebar" style="height: auto;">
+
+    <div class="sidebar-box">
+      <ul class="sidebar-menu" ng-if="vm.menus" style="border-top:1px solid #304193">
+       <!-- <li class="treeview" style="border-bottom: 1px solid #313880;" ng-class="{'active':vm.isHomeActive}" id="topicHome" ng-click="vm.goHome()">
+          <a href="javascript:;">
+            <img src="assets/images/icon_sy.png"/>
+            <span>首页</span>
+          </a>
+        </li>-->
+        <li class="treeview" ng-repeat="menu in vm.menus" style="border-bottom: 1px solid #313880;" ng-class="{'active':menu.active}" ng-click="vm.indicator_click($event,menu.topicKey)">
+          <a href="javascript:;">
+            <!--<i class="fa fa-{{menu.icon}}"></i> -->
+
+            <img ng-if="!menu.active" src="{{menu.img}}"/>
+            <img ng-if="menu.active" src="{{menu.imgon}}"/>
+            <span style="color:#fff">{{menu.title}}</span>
+            <span ng-if="menu.indicators" class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+          </a>
+          <ul ng-if="menu.indicators" class="treeview-menu">
+            <li ng-repeat="child in menu.indicators" ng-click="vm.indicator_click($event,menu.topicKey,child.indicatorsKey)"
+                ng-class="{'active':child.active}"
+                style="padding-left:40px;line-height: 54px">
+              <a href="javascript:;">{{child.name}}</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="tip">
+      推荐使用浏览器：Chrome、IE10.0或以上<br/>推荐分辨率：1440*900以上
+    </div>
+  </section>
+</aside>
+
+<style>
+  .main-sidebar .sidebar-menu>li:hover {
+    background-color: #2863db;
+    color: #656D96;
+    border-color: #E8EAF1
+  }
+</style>
