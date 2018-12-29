@@ -1,0 +1,326 @@
+<style type="text/css">
+  #tab_con {
+    /* width: 335px; */
+    height: 200px;
+    margin-left: -8px;
+  }
+  .left_p {
+    width: 86.8%;
+    float: left;
+    font-family: 微软雅黑;
+    color: #333333 !important;
+  }
+  .int_zzl {
+    float: right;
+    margin-top: 5px;
+    text-align: center;
+    width: 38px;
+    height: 40px;
+    background-color: #564FBE;
+    color: #FFFFFF;
+    font-size: 9px;
+    padding: 2px 0;
+  }
+  .int_tz {
+    width: 190px;
+    height: 40px;
+    outline: initial;
+    border: 1px solid #564FBE;
+    color: #4f5db0;
+    font-weight: bold;
+    font-size: 20px;
+    padding-left: 50px;
+    float: right;
+    line-height: 40px;
+    margin-top: 5px;
+    font-family: "微软雅黑";
+  }
+  .int_tz:before {
+    content: '全年 投资';
+    position: absolute;
+    width: 36px;
+    height: 38px;
+    color: #666666;
+    /* background: #A5E87C; */
+    /* border-radius: 5px; */
+    font-size: 11px;
+    line-height: 38px;
+    line-height: 16px;
+    text-align: center;
+    margin-left: -50px;
+    padding-top: 3px;
+    font-family: "微软雅黑";
+  }
+
+
+
+</style>
+<div class="container maincon">
+  <div class="row">
+    <div class="col-xs-8">
+      <div class="box map00" style="margin:0 0 10px 0;padding:16px 24px;">
+        <div class="row">
+          <div class="col-xs-5" style="padding-right:0px">
+            <!--<div class="qyqkfx" style="color: #343b43;font-size: 16px;font-weight: bold">区域总体情况分析</div>-->
+            <p class="jbqk" style="color: #343b43;font-size: 16px;font-weight: bold">区域总体情况分析</p>
+            <ng-echarts class="echarts col-xs-12 map01" ec-config="vm.mapConfig" ec-option="vm.mapOption" ng-style="vm.mapHeight" style="position: static;margin-top:20px;"></ng-echarts>
+          </div>
+          <div class="col-xs-7" style="padding-left:20px">
+            <div class="row pie00">
+              <div class="col-xs-12" style="padding:0 8px 0 8px">
+                <div class="col-xs-4" style="border-top: 1px solid #c9ccdf;margin-top:15px;width:30%">
+                </div>
+                <div class="col-xs-4" style="color: #343b43;font-size: 16px;font-weight: bold;padding-top:5px;width:40%;text-align:center">
+                  <span style="color:#3366cc">{{vm.curAreaName}}</span>总体情况
+                </div>
+                <div class="col-xs-4" style="border-top: 1px solid #c9ccdf;margin-top:15px;width:30%">
+                </div>
+              </div>
+              <div class="col-xs-6" style="padding:0;width:53%">
+                <div >
+                  <ng-echarts class="echarts col-xs-12 pie01" ec-config="vm.pieConfig" ec-option="vm.pieOption" style="position:static;"></ng-echarts>
+                  <div id="pieTitle" class="pie_title" style="position:absolute;">
+                    <div style="color:#333; font-size:14px; text-align:center;">
+                      {{vm.showCurrentSeason1}}<span style="font-size:16px;">&nbsp;&nbsp;GDP</span>
+                    </div>
+                    <div style="color:#3A53A0; font-size:24px; text-align:center; padding:4px 0">
+                      {{vm.economicTotal}}亿
+                    </div>
+                    <div style="color:#FF466F; text-align:center; font-size:14px;">
+                      {{vm.economicIncreasePercent}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6 padd" style="width:47%">
+                <div class="row p_b" style="">
+                  <div class="col-xs-12 margin_top" style="height: 115px;padding-left:5px;padding-right: 5px;">
+                    <div class="rks">
+                      <div style="overflow: hidden;">
+                        <img style="margin-top: 14px;margin-left: 15px;float: left;" src="../assets/../assets/images/icon_person.png">
+                        <div class="rkzs">
+                          <p style="margin-left: -5px;">{{vm.latestYear}}年{{vm.curAreaName}}人口数</p>
+                          <p style="font-size: 24px;margin-top: -2px;margin-left: -5px;">{{vm.populationTotal}}<span style="font-size: 24px;font-weight: 100;"></span></p>
+                        </div>
+                      </div>
+                      <div class="ncczrk">
+                        <div class="col-xs-2" style="padding:3px 0 0 0">
+                          <p><span>城镇</span></p>
+                        </div>
+                        <div class="col-xs-5" style="padding:3px 0 0 5px">
+                          <div class="line-bar-f" style="margin-top:6px"></div>
+                          <div class="line-bar-rk"  style="width:{{vm.urbanPopulation1*100/vm.populationTotal1}}%"></div>
+                        </div>
+                        <div class="col-xs-5" style="padding:3px 0 0 10px">
+                          <p> <span style="font-size: 12px;">{{vm.urbanPopulation}}</span></p>
+                        </div>
+
+                        <div class="col-xs-2" style="padding:0">
+                          <p><span>农村</span></p>
+                        </div>
+                        <div class="col-xs-5" style="padding:0 0 0 5px">
+                          <div class="line-bar-f" style="margin-top:6px"></div>
+                          <div class="line-bar-rk"  style="width:{{vm.ruralPopulation1*100/vm.populationTotal1}}%"></div>
+                        </div>
+                        <div class="col-xs-5" style="padding:0 10px">
+                          <p> <span style="font-size: 12px;">{{vm.ruralPopulation}}</span></p>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 fl" style="height: 100px;padding-left:5px;padding-right: 5px;padding-top:0px;">
+                    <div class="sr_div mar_1">
+                      <p>
+                        <!--<img src="../assets/../assets/images/icon_financial.png">-->
+                        <span style="font-size: 16px;vertical-align: sub;">{{vm.latestYear}}年<!--{{vm.showCurrentMonth1}}-->财政收支情况</span>
+                      </p>
+                      <div>
+                        <P class="czsr_p">{{vm.revenue}}</P>
+                        <p class="czsr_p color_p">{{vm.revenueInt/(vm.revenueInt+vm.expenditureInt)*100|number:2}}%</p>
+                        <p class="czsr_p">地方财政收入</p>
+                      </div>
+                      <div>
+                        <P class="czsr_p">{{vm.expenditure}}</P>
+                        <p class="czsr_p color_p">{{vm.expenditureInt/(vm.revenueInt+vm.expenditureInt)*100|number:2}}%</p>
+                        <p class="czsr_p">公共财政支出</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12" style="padding-right:6px">
+                <div id="banner" class=" middle_02" style="margin: 18px 0 0 0;padding: 0px;text-align:center;border:0">
+                  <ul id="hometab" class="list-inline switch_ul" style="text-align: center">
+                    <li class="fli" style="width:12.2%">GDP</li>
+                    <li style="width:19%">规模工业</li>
+                    <li style="width:19%">固定资产</li>
+                    <li style="width:27%">社会消费品零售</li>
+                    <li style="width:19%;margin-right:0">房地产投资</li>
+                  </ul>
+                  <div id="tab_con" style="margin-top: 10px;">
+                    <aside class="fdiv hide_div">
+                      <div class="col-xs-12" style="text-align:center;margin-left:100px">
+                        <div class="col-xs-5" style="font-size: 12px;color: #515a64;font-weight: bold;padding:5px 0 0 0">
+                          {{vm.showCurrentSeason1}}GDP总额
+                        </div>
+                        <div class="col-xs-5" style="font-size: 18px;color: #5a67a8;font-weight: 200;padding:0">
+                          {{vm.showGDP}}亿元
+                        </div>
+                        <div class="col-xs-2 home-plus" ng-if="vm.showGDPZL >= 0" style="font-size: 12px;padding:5px 0 0 0">
+                          ↑{{vm.showGDPZL}}%
+                        </div>
+                        <div class="col-xs-2 home-minus" ng-if="vm.showGDPZL < 0" style="font-size: 12px;padding:5px 0 0 0">
+                          ↓{{vm.showGDPZL*-1}}%
+                        </div>
+                      </div>
+                      <ng-echarts class="echarts col-xs-12 line01" ec-config="vm.GDPConfig" ec-option="vm.GDPOption"></ng-echarts>
+                    </aside>
+                    <aside class="hide_div">
+                      <div class="col-xs-12" style="text-align:center;margin-left:100px">
+                        <div class="col-xs-6" style="font-size: 12px;color: #515a64;font-weight: bold;padding:5px 0 0 0">
+                          {{vm.showCurrentMonth}}规模工业增加值
+                        </div>
+                        <div class="col-xs-6 home-plus" ng-if="vm.scaleIndustry >= 0"   style="font-size: 12px;padding:5px 0 0 0" >
+                          ↑{{vm.scaleIndustry}}%
+                        </div>
+                        <div class="col-xs-6 home-minus" ng-if="vm.scaleIndustry < 0"   style="font-size: 12px;padding:5px 0 0 0" >
+                          ↓{{vm.scaleIndustry*-1}}%
+                        </div>
+                      </div>
+                      <ng-echarts class="echarts col-xs-12 line01" ec-config="vm.scaleIndustryConfig" ec-option="vm.scaleIndustryOption" ></ng-echarts>
+                    </aside>
+                    <aside class="hide_div">
+                      <div class="col-xs-12" style="text-align:center;margin-left:100px">
+                        <div class="col-xs-5" style="font-size: 12px;color: #515a64;font-weight: bold;padding:5px 0 0 0;width:50%">
+                          {{vm.GDZCQY_DATE}}年固定资产
+                        </div>
+                        <div class="col-xs-5" style="font-size: 18px;color: #5a67a8;font-weight: 200;padding:0;width:38%">
+                          {{vm.hunanInvestment_1}}亿元
+                        </div>
+                        <div class="col-xs-2 home-plus" ng-if="vm.hunanInvestmentRate_1 >= 0" style="font-size: 12px;padding:5px 0 0 0;width:12%">
+                          ↑{{vm.hunanInvestmentRate_1}}%
+                        </div>
+                        <div class="col-xs-2 home-minus" ng-if="vm.hunanInvestmentRate_1  < 0" style="font-size: 12px;padding:5px 0 0 0;width:12%">
+                          ↓{{vm.hunanInvestmentRate_1*-1}}%
+                        </div>
+                      </div>
+                      <ng-echarts class="echarts col-xs-12 line01" ec-config="vm.investmentConfig" ec-option="vm.investmentOption"></ng-echarts>
+                    </aside>
+                    <aside class="hide_div">
+                      <div class="col-xs-12" style="text-align:center;margin-left:100px">
+                        <div class="col-xs-5" style="font-size: 12px;color: #515a64;font-weight: bold;padding:5px 0 0 0;width:55%">
+                          {{vm.showCurrentSeason1}}社会消费品零售额
+                        </div>
+                        <div class="col-xs-5" style="font-size: 18px;color: #5a67a8;font-weight: 200;padding:0;width:34%">
+                          {{vm.society}}亿元
+                        </div>
+                        <div class="col-xs-2 home-plus" ng-if="vm.societyRate >= 0" style="font-size: 12px;padding:5px 0 0 0;width:11%">
+                          ↑{{vm.societyRate}}%
+                        </div>
+                        <div class="col-xs-2 home-minus" ng-if="vm.societyRate  < 0" style="font-size: 12px;padding:5px 0 0 0;width:11%">
+                          ↓{{vm.societyRate*-1}}%
+                        </div>
+                      </div>
+                      <ng-echarts class="echarts col-xs-12 line01" ec-config="vm.residentConsumptionConfig" ec-option="vm.residentConsumptionOption"></ng-echarts>
+                    </aside>
+                    <aside class="hide_div">
+                      <div class="col-xs-12" style="text-align:center;margin-left:100px">
+                        <div class="col-xs-5" style="font-size: 12px;color: #515a64;font-weight: bold;padding:5px 0 0 0;width:52%">
+                          {{vm.showCurrentMonth1}}房地产投资
+                        </div>
+                        <div class="col-xs-5" style="font-size: 18px;color: #5a67a8;font-weight: 200;padding:0;width:34%">
+                          {{vm.ImportAndExport}}亿元
+                        </div>
+                        <div class="col-xs-2 home-plus" ng-if="vm.ImportAndExportRate >= 0" style="font-size: 12px;padding:5px 0 0 0;width:14%">
+                          ↑{{vm.ImportAndExportRate}}%
+                        </div>
+                        <div class="col-xs-2 home-minus" ng-if="vm.ImportAndExportRate  < 0" style="font-size: 12px;padding:5px 0 0 0;width:14%">
+                          ↓{{vm.ImportAndExportRate*-1}}%
+                        </div>
+                      </div>
+                      <ng-echarts class="echarts col-xs-12 line01" ec-config="vm.ImportAndExportConfig" ec-option="vm.ImportAndExportOption"></ng-echarts>
+                    </aside>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-4" style="padding-right:0px">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box right_01" style="margin: 0; padding: 16px;">
+            <p class="jbqk" style="color: #343b43;font-size: 16px;font-weight: bold">湖南省民生基本情况</p>
+            <p class="Basic_situation">
+              <span>2016年本专科毕业生人数</span>
+              <span>31.7万人<!--2015本专科毕业生30.1--></span>
+              <span style="color:#ff3b67">↑5.32%</span>
+            </p>
+            <p class="Basic_situation">
+              <span>2016年卫生机构数</span>
+              <span><!--16716个--><!--61055个--><!--2015全省共有卫生机构数62646 17824-->{{vm.bedNum}}</span>
+              <span ng-if="vm.bedNumRate >= 0" style="color:#ff3b67">↑{{vm.bedNumRate}}%</span>
+              <span ng-if="vm.bedNumRate < 0" style="color:#339900">↓{{vm.bedNumRate*-1}}%</span>
+            </p>
+            <p class="Basic_situation">
+              <span>{{vm.showCurrentSeason1}}居民人均可支配收入</span>
+              <span>{{vm.disposablIncome}}</span>
+              <span ng-if="vm.disposablIncomeIncreasePercent >= 0" style="color:#ff3b67">↑{{vm.disposablIncomeIncreasePercent}}%</span>
+              <span ng-if="vm.disposablIncomeIncreasePercent < 0" style="color:#339900">↓{{vm.disposablIncomeIncreasePercent*-1}}%</span>
+            </p>
+            <p class="Basic_situation">
+              <span>{{vm.showCurrentSeason1}}社会消费品零售额</span>
+              <span>{{vm.society_r}}亿元</span>
+              <span ng-if="vm.societyRate_r >= 0" style="color:#ff3b67">↑{{vm.societyRate_r}}%</span>
+              <span ng-if="vm.societyRate_r < 0" style="color:#339900">↓{{vm.societyRate_r*-1}}%</span>
+            </p>
+            <!--<p class="Basic_situation" style="margin: 0 0 5px;">
+              <span>&lt;!&ndash;{{vm.showCurrentMonth}}&ndash;&gt;{{ vm.tmpWeatherShowMonth}}空气质量达标天数</span>
+              <span>{{vm.hjbh}}</span>
+              <span ng-if="vm.hjbhRate >= 0" style="color:#ff3b67">↑{{vm.hjbhRate}}%</span>
+              <span ng-if="vm.hjbhRate < 0" style="color:#339900">↓{{vm.hjbhRate*-1}}%</span>
+            </p>-->
+            <p class="Basic_situation" style="margin: 0 0 5px;">
+              <span>2017年9月空气优良天数比例</span>
+              <span>83.6%</span>
+              <span ng-if="vm.hjbhRate >= 0" style="color:#ff3b67">↑10.7%</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-top:20px">
+        <div class="col-xs-12" style="height: 280px;padding-left: 15px;padding-right: 15px; ">
+          <div class="box right_02" style="margin: 0; padding: 16px;">
+            <p class="jbqk" style="color: #343b43;font-size: 16px;font-weight: bold">全省{{vm.GDZCHY_DATE}}年固定资产投资行业TOP10</p>
+            <div class="col-xs-12" style="text-align:center">
+                <div class="col-xs-5" style="font-size: 12px;color: #515a64;font-weight: bold;padding:5px 0 0 0;width:50%">
+                  {{vm.GDZCHY_DATE}}年全省投资总额
+                </div>
+                <div class="col-xs-5" style="font-size: 18px;color: #5a67a8;font-weight: 200;padding:0;width:35%">
+                  {{vm.investmentTotal}}亿元
+                </div>
+                <div class="col-xs-2" style="font-size: 12px;color: #ff3b67;padding:5px 0 0 0;width:15%">
+                  ↑{{vm.investmentRate}}%
+                </div>
+            </div>
+            <ng-echarts class="echarts col-xs-12 bar01" ec-config="vm.barConfig" ec-option="vm.barOption" style="margin-top: 10px;"></ng-echarts>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12" style="text-align: right;font-size: 12px;line-height: 36px;color: #333;margin-top: -25px;padding-right:0px">数据来源：湖南省统计局</div>
+  </div>
+</div>
