@@ -1,0 +1,65 @@
+<div class="content-wrapper" style="margin-left: 0px;">
+  <section id="banner">
+    <div id="myCarousel" class="carousel slide">
+      <!-- 轮播（Carousel）指标 -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <!-- 轮播（Carousel）项目 -->
+      <div class="carousel-inner">
+        <div class="item active">
+          <ng-echarts class="echarts" ec-config="vm.ecConfig" ec-option="vm.ecOption" style="width: 650px; height: 240px; left:25%; position:static;"></ng-echarts>
+          <div class="carousel-caption">标题 1</div>
+        </div>
+        <div class="item">
+          <img src="/assets/images/angular.png" alt="Second slide">
+          <div class="carousel-caption">标题 2</div>
+        </div>
+        <div class="item">
+          <img src="/assets/images/angular.png" alt="Third slide">
+          <div class="carousel-caption">标题 3</div>
+        </div>
+      </div>
+      <!-- 轮播（Carousel）导航 -->
+      <a class="carousel-control left" href="#myCarousel"
+         data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#myCarousel"
+         data-slide="next">&rsaquo;</a>
+    </div>
+  </section>
+
+  <section id="recommend">
+    <div  style="width: 1238px;height:80px;margin-top: 20px; margin-left: 30px;border-style:solid; border-color:#f39c12;">
+      <h2>Here is Recommend</h2>
+    </div>
+  </section>
+
+  <section id="appsubscribe" style="margin-top: 20px; margin-left: 30px;border-style:solid; border-color:#f39c12;">
+      <div class="row">
+        <div class="col-sm-6 col-md-3" ng-repeat="topic in vm.topics">
+          <div class="thumbnail">
+            <img src="{{topic.TOPICIMG}}" alt="专题缩略图">
+            <div class="caption">
+              <h4>{{topic.TOPICNAME}}</h4>
+              <!--<p>{{topic.TOPICDESC}} &nbsp;</p>-->
+              <p>
+                <a ng-if="topic.USERID"  ng-click="vm.delTopic(topic.TOPICID)" class="btn btn-primary" role="button">
+                  退订
+                </a>
+                <a ng-if="topic.USERID"  ng-click="vm.goTopic(topic.TOPICURL)" class="btn btn-default" role="button">
+                  查看
+                </a>
+                <a ng-if="!topic.USERID"  ng-click="vm.addTopic(topic.TOPICID)" class="btn btn-primary" role="button">
+                  +关注
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+</div>
+
