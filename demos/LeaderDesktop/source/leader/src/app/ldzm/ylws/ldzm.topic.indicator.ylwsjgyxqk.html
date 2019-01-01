@@ -1,0 +1,52 @@
+<style>
+  .cf:after{content:'';display:block;width:0;height:0;clear:both;}
+  *{margin:0;padding:0;}
+  ul li{list-style:none;}
+/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+select::-ms-expand { display: none; }
+  .ylws{padding:10px 20px;}
+  .row_child,.lie_three *{padding:0;}
+  .row_child{border: 1px solid #D2D6DE;}
+  .ranking_echart{margin-top:-15px;}
+  .row_one,.row_two{padding:0 5px;}
+  .row_one{height:325px;}
+  .row_one ng-echarts{height:230px;width:100%; position:static;}
+  .row_one .row_child,.row_two .row_child{margin-right:10px;background-color:#fff;margin-bottom: 10px;}
+  .row_one .row_child:last-of-child{background-color:transparent;}
+  .row_child h3{width:98%;height:35px;margin:5px auto 15px;background-color:#eef1f8;border-radius: 0 0 10px 10px;color:#555;font-size:16px;line-height:35px;text-align:center;}
+  .row_two{height:300px;}
+  /*@media screen and (min-width: 1200px) {*/
+  /*.row_two .row_child_bg:before{content:'';position: absolute;right: -15px;top:5px;width:50px;height:35px;background-color:#eef1f8;border-radius: 0 0 10px 0;z-index: 5;}*/
+  /*.row_two .row_child_bg:after{content:'';background-color:#fff;width:20px;height:280px;position: absolute;right: -20px;top:-1px;border: 1px solid #D2D6DE;border-left:0;*/
+  /*}}*/
+
+</style>
+ <div class="ylws">
+    <div class="row_one row">
+       <div class="row_child col-md-5 yl_wsjg_times">
+          <h3>诊疗人次情况分析</h3>
+          <div class="echart">
+            <ng-echarts id="yl_wsjg_chart1" class="col-md-12 echarts" ec-config="vm.ecConfig0" ec-option="vm.ecOption0" ></ng-echarts>
+         </div>
+       </div>
+       <div class="row_child col-md-5 yl_wsjg_turnover">
+          <h3>病床周转情况分析</h3>
+          <div class="echart">
+              <ng-echarts id="yl_wsjg_chart2" class="col-md-12 echarts" ec-config="vm.ecConfig1" ec-option="vm.ecOption1"></ng-echarts>
+           </div>
+       </div>
+    </div>
+    <div class="row_two row">
+       <div class="row_child col-md-10 row_child_bg yl_wsjg_use">
+            <h3>病床使用情况分析</h3>
+            <div class="echart">
+              <ng-echarts id="yl_wsjg_chart3" class="col-md-12 echarts" ec-config="vm.ecConfig2" ec-option="vm.ecOption2"></ng-echarts>
+           </div>
+       </div>
+    </div>
+  </div>
+<div class="row">
+  <div class="col-xs-12" style="width:97%;text-align: right;font-size: 12px;line-height: 36px;color: #333;margin-top: -15px;">数据来源：湖南省统计局</div>
+</div>
+
+
