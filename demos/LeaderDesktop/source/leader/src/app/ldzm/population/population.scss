@@ -1,0 +1,73 @@
+
+/*人口总体分析*/
+.po_ztfx_box{width:63%;height:324px}
+.po_ztfx_box1{width:385px;height:324px;margin-left:12px;padding-left:0px;float:left;background-color:transparent;border:none;box-shadow:none;}
+.po_ztfx_fbqk{width:32%;height:286px;}
+.po_ztfx_szph{width:423px;height:286px;margin-left:12px}
+.po_ztfx_whsz{width:27%;height:286px;margin-left:12px}
+#po_ztfx_chart1{ width:100%;height: 280px; position:static;}
+#po_ztfx_chart2{ width:100%;height:230px; position:static;}
+#po_ztfx_chart3{ width:100%;height: 230px; position:static;}
+#po_ztfx_chart4{ width:100%;height: 230px; position:static;}
+@media screen and (min-width: 1900px){
+  .po_ztfx_box{width:72%;}
+  .po_ztfx_fbqk{width:600px;height:486px;}
+  .po_ztfx_whsz{ width: 30.7%;height:486px;}
+  .po_ztfx_szph{ height: 486px;}
+  #po_ztfx_chart2,#po_ztfx_chart3,#po_ztfx_chart4{ height: 430px;}
+}
+/*人口分布分析*/
+.po_distribute{padding: 0; margin: 0 20px;}
+.po_distr_fbqs{width:98%;height:370px;margin-right:10px;}
+.po_distr_ylfn{width:48.7%;height:252px;}
+.po_distr_rote{width:48.5%;height:252px;margin-right:10px;}
+#po_distr_chart1{width:100%;height: 320px; position:static;}
+#po_distr_chart2{width:100%;height: 180px; position:static;}
+#po_distr_chart3{ padding-left: 0px;height: 40px; position:static;}
+#po_distr_chart4{ padding-left: 0px;height: 40px; position:static;}
+@media screen and (min-width: 1900px){
+  .po_distr_fbqs{ height: 470px;}
+  .po_distr_ylfn{width:49%; height: 352px;}
+  .po_distr_rote{width:48.5%;height: 352px;}
+  #po_distr_chart1{ height: 420px;}
+  #po_distr_chart2{ height:280px;}
+  #po_distr_chart3,#po_distr_chart4{ height: 90px;}
+}
+
+/*人口文化分析*/
+.po_edu_box1{width: 56%;height:404px}
+.po_edu_box2{width: 39.7%;text-align:center;height:404px}
+.po_edu_box3{ width: 96.6%;}
+#po_edu_chart1{height: 340px; position:static;}
+#po_edu_chart2{height: 320px; position:static;}
+@media screen and (min-width: 1900px){
+  .po_edu_box1{width: 56%;height:504px}
+  .po_edu_box2{width: 40%;height:504px}
+  .po_edu_box3{ width: 96.6%;}
+  #po_edu_chart1{height: 440px;}
+  #po_edu_chart2{height: 420px;}
+}
+
+/*地域分析*/
+.po_dy_map{width:41%;height:620px}
+.po_dy_rkfz{width: 71.3%;height:324px;}
+.po_dy_box{width: 165px;margin-left:12px;padding-left:0px;float:left}
+.po_dy_czh{width: 98%;height:286px}
+li{list-style:none;}
+#populationDistribute{ width: 100%; height: 570px; position:static}
+#po_dy_chart1{width: 100%; height: 275px; position:static}
+#po_dy_chart2{width: 100%; height: 240px; position:static}
+@media screen and (min-width: 1900px){
+  .po_dy_map{ height: 770px;}
+  .po_dy_czh{ width: 97.5%; height: 436px;}
+  .po_dy_rkfz{ width: 77.7%;}
+  #populationDistribute{ height: 720px;}
+  #po_dy_chart2{ height: 390px;}
+}
+
+
+
+
+
+
+
