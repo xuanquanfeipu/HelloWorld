@@ -1,0 +1,144 @@
+<header class="main-header">
+  <div class="logobar logobar-static-top">
+    <div class="container">
+
+      <img src="../assets/images/logo.png" class="fl logo1">
+      <div class="fl" style="padding:15px;font-size:17px;font-weight: bold;margin-top:5px;color:#fff">湖南省政务大数据--领导决策</div>
+
+      <nav class="navbar navbar-static-top">
+
+        <div class="navbar-custom-menu" style="line-height: 54px;">
+          <div style="float:left; font-size:16px;color:#fff; margin-right:20px;">{{vm.user.username}}</div>
+          <a ng-click="vm.logout()" style="font-size:14px;color:#fff;cursor:pointer;">注销</a>
+
+        </div>
+      </nav>
+
+    </div>
+    <!-- /.container-fluid -->
+  </div>
+</header>
+<div class="main_tab">
+  <div class="container">
+    <a href="javascript:;" class="fl nav_btn prev_btn disabled"><img src="../assets/images/btn_selected_l.png"></a>
+    <div class="frame fl" id="frame" style="overflow: hidden;">
+      <ul id="navbar" class="main_tab_ul clearfix fl slidee" style="transform: translateZ(0px); width: 2000px;">
+        <li><a id="homePage" href="#/ldzm/topic/home" ng-click="vm.goHome()" class="cur_nav"><img src="../assets/images/icon_home.png"><p>首页</p></a></li>
+        <li ng-repeat="topic in vm.topics" ng-if="topic.unlock" ng-click="vm.topic_click(topic.topicKey)" ng-class="{'active':topic.isActive}">
+          <a href="javascript:;" ng-class="{'cur_nav':topic.isActive}"><img src="{{topic.img}}"><p>{{topic.title}}</p></a>
+        </li>
+        <li>
+          <a ng-click="vm.open('lg')" href="javascript:;" class="custom_btn" style='opacity: 1;filter: ~"alpha(opacity=100)";'>
+            <img src="../assets/images/icon_custom.png"><p style="color:#1DE9B5">自定义</p></a>
+        </li>
+      </ul>
+    </div>
+    <a href="javascript:;" class="fl nav_btn next_btn"><img src="../assets/images/btn_selected_s.png"></a>
+  </div>
+</div>
+
+
+<!--顶部专题导航end-->
+
+<!--专题内容展示视图begin-->
+<div ui-view ></div>
+<!--专题内容展示视图end-->
+
+
+<div class="modal fade"  id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" index="-104">
+  <script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header" style="min-height: 84px;padding-top: 30px;background:#e2e6f5;border-bottom: 1px solid #b0badc;">
+      <h4 class="modal-title" id="myModalLabel" style="text-align:center;color:#3b53a2">请选择您感兴趣的专题</h4>
+    </div>
+    <div class="modal-body" style="height:315px;padding:32px 32px 32px 72px;">
+      <ul id="customMenu" class="custom_item_ul">
+        <li ng-repeat="topic in vm.allTopics">
+          <a   id="{{topic.TOPICID}}" style="text-align: left" href="javascript:void(0);"    ng-class="topic.tbselect?false:'unselect'" topicId="{{topic.TOPICID}}">
+            <img src="{{topic.TOPICIMG}}"/>
+
+            <span>{{topic.TOPICNAME}}</span>
+            <img ng-if="!topic.unlock" style="position: relative;top:-76px;left:114px;" src="../assets/images/lock_define.png"/>
+          </a>
+
+        </li>
+        <!--<li><a href="javascript:;" ><img src="../assets/images/icon_economic.png"></img>总体经济分析</a></li>-->
+        <!--<li><a href="javascript:;" ><img src="../assets/images/icon_fixed.png"></img>固定资产投资</a></li>-->
+        <!--<li><a href="javascript:;" ><img src="../assets/images/icon_financial.png"></img>财政收支分析</a></li>-->
+        <!--<li style="margin-right:0"><a href="javascript:;" ><img src="../assets/images/icon_talent.png"></img>综合人口分析</a></li>-->
+        <!--<li><a href="javascript:;" ><img src="../assets/images/icon_income.png"></img>居民收入分析</a></li>-->
+        <!--<li><a href="javascript:;" ><img src="../assets/images/icon_education.png"></img>教育情况分析</a></li>-->
+        <!--<li><a href="javascript:;" ><img src="../assets/images/icon_medical.png"></img>医疗卫生分析</a></li>-->
+        <!--<li style="margin-right:0"><a href="javascript:;" ><img src="../assets/images/icon_social.png"></img>社会保障分析</a></li>-->
+        <!--<li><a href="javascript:;" class="unselect" ><img src="../assets/images/icon_healthcare.png"></img>医保情况分析</a></li>-->
+        <!--<li><a href="javascript:;" class="unselect"><img src="../assets/images/icon_injury.png"></img>工伤情况分析</a></li>-->
+        <!--<li><a href="javascript:;" class="unselect"><img src="../assets/images/icon_talent.png"></img>人才供需分析</a></li>-->
+        <!--<li><a href="javascript:;" style="margin-right:0" class="unselect"><img src="../assets/images/icon_employment.png"></img>就业情况分析</a></li>-->
+      </ul>
+    </div>
+    <div class="modal-footer" style="text-align: center;border-top: 0;margin-bottom:20px">
+      <button type="button" ng-click="vm.submit()" class="btn btn-warning btn-lg confirm-btn" style="background-color: #ffab00;border-color: #ffab00;margin-right:50px">确定</button>
+      <button type="button" ng-click="vm.close()" class="btn btn-warning btn-lg" style="background-color: #606f77;border-color: #606f77;" data-dismiss="modal">取消</button>
+    </div>
+  </script>
+</div>
+<div ng-if="vm.screenSizeType=='L'">
+  <style>
+    body{
+      min-width: 1900px;
+    }
+  </style>
+</div>
+<div ng-if="vm.screenSizeType=='M'">
+  <style>
+    body{
+      min-width: 1400px;
+    }
+  </style>
+</div>
+
+
+<!--<div ng-controller="ModalDemoController as $ctrl" class="modal-demo">-->
+  <!--<script type="text/ng-template" id="myModalContent.html">-->
+    <!--<div class="modal-header">-->
+      <!--<h3 class="modal-title" id="modal-title">I'm a modal!</h3>-->
+    <!--</div>-->
+    <!--<div class="modal-body" id="modal-body">-->
+      <!--<ul>-->
+        <!--<li ng-repeat="item in $ctrl.items">-->
+          <!--<a href="#" ng-click="$event.preventDefault(); $ctrl.selected.item = item">{{ item }}</a>-->
+        <!--</li>-->
+      <!--</ul>-->
+      <!--Selected: <b>{{ $ctrl.selected.item }}</b>-->
+    <!--</div>-->
+    <!--<div class="modal-footer">-->
+      <!--<button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>-->
+      <!--<button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>-->
+    <!--</div>-->
+  <!--</script>-->
+  <!--<script type="text/ng-template" id="stackedModal.html">-->
+    <!--<div class="modal-header">-->
+      <!--<h3 class="modal-title" id="modal-title-{{name}}">The {{name}} modal!</h3>-->
+    <!--</div>-->
+    <!--<div class="modal-body" id="modal-body-{{name}}">-->
+      <!--Having multiple modals open at once is probably bad UX but it's technically possible.-->
+    <!--</div>-->
+  <!--</script>-->
+
+  <!--<button type="button" class="btn btn-default" ng-click="$ctrl.open()">Open me!</button>-->
+  <!--<button type="button" class="btn btn-default" ng-click="$ctrl.open('lg')">Large modal</button>-->
+  <!--<button type="button" class="btn btn-default" ng-click="$ctrl.open('sm')">Small modal</button>-->
+  <!--<button type="button"-->
+          <!--class="btn btn-default"-->
+          <!--ng-click="$ctrl.open('sm', '.modal-parent')">-->
+    <!--Modal appended to a custom parent-->
+  <!--</button>-->
+  <!--<button type="button" class="btn btn-default" ng-click="$ctrl.toggleAnimation()">Toggle Animation ({{ $ctrl.animationsEnabled }})</button>-->
+  <!--<button type="button" class="btn btn-default" ng-click="$ctrl.openComponentModal()">Open a component modal!</button>-->
+  <!--<button type="button" class="btn btn-default" ng-click="$ctrl.openMultipleModals()">-->
+    <!--Open multiple modals at once-->
+  <!--</button>-->
+  <!--<div ng-show="$ctrl.selected">Selection from a modal: {{ $ctrl.selected }}</div>-->
+  <!--<div class="modal-parent">-->
+  <!--</div>-->
+<!--</div>-->
+<!--<script src="../bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>-->
