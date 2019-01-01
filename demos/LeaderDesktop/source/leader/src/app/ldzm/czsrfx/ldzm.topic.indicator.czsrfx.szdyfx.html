@@ -1,0 +1,28 @@
+<style type="text/css">
+.czsrfxsz .echartsBox{height:600px;}
+.czsrfxsz .echartsBox .echarts{height:560px;}
+@media (min-width: 1900px){
+  .czsrfxsz .echartsBox{height:800px;}
+  .czsrfxsz .echartsBox .echarts{height:760px;}
+}
+</style>
+<section class="content czsrfxsz">
+  <div class="row" ng-if="!vm.ecOption1">
+    <div class='col-lg-7' style="margin:5% 0 0 20%;">
+      <h2>没有数据显示！</h2>
+    </div>
+  </div>
+  <div class="container-fluid" style="width:99%;padding:0;margin:0;position:relative;">
+    <div class="col-lg-6 box echartsBox" style="width:395px;position:absolute;top:0px;left:0;margin:0;">
+      <div class="box-title">{{vm.lastYear}}湖南省财政收入地域分布情况</div>
+      <ng-echarts id="echart-1" class="echarts" ec-config="vm.ecConfig1" ec-option="vm.ecOption1" style="display:block;"></ng-echarts>
+    </div>
+    <div class="col-lg-6 box echartsBox" style="width:-moz-calc(100% - 395px);width:-webkit-calc(100% - 395px);width:calc(100% - 395px);margin:0 1px 0 1px;padding:0;margin-left:405px;">
+      <div class="box-title">{{vm.curAreaName}}财政收支分析</div>
+      <ng-echarts id="echart-2" class="echarts" ec-config="vm.ecConfig2" ec-option="vm.ecOption2" style="display:block;"></ng-echarts>
+    </div>
+  </div>
+  <div class="row" style='margin-top: 10px'>
+    <div class="col-xs-12" style="width:97%;text-align: right;font-size: 12px;line-height: 36px;color: #333;margin-top: -15px;">数据来源：湖南省统计局</div>
+  </div>
+</section>
