@@ -1,0 +1,99 @@
+<style>
+  li{list-style:none;}
+  #totalPopulationOverview{border-right:1px solid #6db045}
+ </style>
+
+<section class="content">
+  <!--
+  <div class="row" ng-if="!vm.ecOption">
+    <div class='col-md-7' style="margin:5% 0 0 20%;">
+      <h2>没有数据显示！</h2>
+    </div>
+  </div>
+  -->
+
+  <div class='row'>
+    <div class='col-md-9 box po_ztfx_box'>
+      <div class="box-title">全省人口发展趋势</div>
+      <ng-echarts id="po_ztfx_chart1" class="echarts col-md-12" ec-config="vm.urbanRuralConfig" ec-option="vm.urbanRuralOption">
+      </ng-echarts>
+    </div>
+
+    <div class='col-md-3 box po_ztfx_box1'>
+      <div style="width:100%; height:115px; color:#FFF;background-color:#6cb964;padding-top:0px;padding-left:0px;margin-left:0px;float:left;">
+          <li id="totalPopulationOverview" class="col-md-6" style="height:96px;text-align:center;margin-top:15px;">
+            <p><img src="/assets/images/icon_people.png"></p>
+            <span style="font-size: 20px">{{totalPopulationStr}}</span>
+            <p style="font-size: 14px">全省总人数</p>
+          </li>
+          <li class="col-md-6" style="height:115px;text-align: center;padding-top:15px">
+            <p><img src="/assets/images/icon_number.png"></p>
+            <span style="font-size: 20px">{{totalHouseholdStr}}</span>
+            <p style="font-size: 14px">全省总户数</p>
+          </li>
+
+      </div>
+      <div style="clear:both;"></div>
+      <div style="width:100%; height:70px; color:#FFF;margin-top:10px;padding-left:0px">
+          <li class="col-md-4" style="height:70px;background-color:#2e40a4;text-align: center;padding-top:10px">
+            <span style="font-size: 20px">{{birthRate}}</span>
+            <p style="font-size: 14px">出生率</p>
+          </li>
+          <li class="col-md-4" style="height:70px;background-color:#394aa9;text-align: center;padding-top:10px">
+            <span style="font-size: 20px">{{deathRate}}</span>
+            <p>死亡率</p>
+          </li>
+          <li class="col-md-4" style="height:70px;background-color:#4f61c6;text-align: center;padding-top:10px">
+            <span style="font-size: 20px">{{growthRate}}</span>
+            <p style="font-size: 14px">自然增长率</p>
+          </li>
+      </div>
+
+      <div style="width:100%; height:95px; color:#FFF;margin-top:10px;padding-left:0px;background-color: #fff">
+        <li class="col-md-5" style="height:95px;background-color:#408bb7;padding-top:18px;text-align: center">
+          <p style="font-size: 14px">全省城镇化率</p>
+          <p style="font-size: 26px">{{urbanRatio}}</p>
+        </li>
+        <li class="col-md-7" style="height:95px;padding-top:10px">
+          <span style="color: #000000;padding-left:0px" class="col-md-12">城镇人口</span>
+          <ng-echarts class="echarts col-md-12" ec-config="vm.urbanPopulationConfig" ec-option="vm.urbanPopulationOption" style="padding-left:0px; height: 29px; width:200px;position:static">
+          </ng-echarts>
+
+          <span style="color: #000000;padding-left:0px" class="col-md-12">农村人口</span>
+          <ng-echarts class="echarts col-md-12" ec-config="vm.ruralPopulationConfig" ec-option="vm.ruralPopulationOption" style="padding-left:0px; height: 29px; width:200px;position:static">
+          </ng-echarts>
+
+        </li>
+      </div>
+      <div class="col-xs-12 li-year" style="text-align:center;color:#333333;font-size:12px;background-color:#fff">
+        <div style="float:right;border-top: 1px solid #ccc;width:30%;margin-top:13px"></div>
+        <div style="float:right;padding-right:10px;padding-left:10px;width:40%;margin-top:5px">以上为{{vm.latestYear}}年数据</div>
+        <div style="float:right;border-top: 1px solid #ccc;width:30%;margin-top:13px"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class='col-md-5 box po_ztfx_fbqk'>
+      <div class="box-title">{{vm.latestYear}}年全省人口分布情况</div>
+      <ng-echarts id="po_ztfx_chart2" class="echarts col-md-12" ec-config="vm.ageConfig" ec-option="vm.ageOption" >
+      </ng-echarts>
+    </div>
+
+    <div class='col-md-4 box po_ztfx_szph'>
+      <div class="box-title">{{vm.latestYear}}年市州人口排行</div>
+      <ng-echarts id="po_ztfx_chart3" class="echarts col-md-12" ec-config="vm.populationTopNConfig" ec-option="vm.populationTopNOption" >
+      </ng-echarts>
+    </div>
+
+    <div class='col-md-3 box po_ztfx_whsz'>
+      <div class="box-title">{{vm.latestYear}}年人口文化素质分析</div>
+      <ng-echarts id="po_ztfx_chart4" class="echarts col-md-12" ec-config="vm.eduConfig" ec-option="vm.eduOption" >
+      </ng-echarts>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-xs-12" style="width:97%;text-align: right;font-size: 12px;line-height: 36px;color: #333;margin-top: -15px;">数据来源：湖南省统计局</div>
+  </div>
+</section>
