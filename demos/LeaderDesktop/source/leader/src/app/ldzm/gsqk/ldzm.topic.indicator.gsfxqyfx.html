@@ -1,0 +1,49 @@
+<section class="content-header" ng-if="vm.breadcrumbs">
+  <h1>
+    {{vm.title}}
+  </h1>
+  <sc-breadcrumb breadcrumbs="vm.breadcrumbs"></sc-breadcrumb>
+</section>
+
+<section class="content">
+  <div class="row" ng-if="!vm.ecOption">
+    <div class='col-lg-7' style="margin:5% 0 0 20%;">
+      <h2>没有数据显示！</h2>
+    </div>
+  </div>
+  <div class='row' ng-if="vm.ecOption" style="margin-left:10px">
+    <div class='col-lg-12' style="background: #fff;border-top:2px solid #008000;">
+      选择年份
+      <select ng-model="selectedSite" ng-init="selectedSite = '2016'"   ng-change="vm.selectChange1(selectedSite);">
+        <option ng-repeat="year in vm.yearList" value="{{year}}" >{{year}}</option>
+      </select>
+      <ng-echarts class="echarts" ec-config="vm.ecConfig" ec-option="vm.ecOption" style="width: 1100px; height: 550px; position:static;"></ng-echarts>
+    </div>
+  </div>
+  <div class='row' ng-if="vm.ecOption" style="margin-top:20px;margin-left:10px;background: #fff;">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>指标</th>
+          <th ng-repeat="company in vm.companys">
+            {{company.name}}
+            <input style="margin-left: 5px;" type="checkbox" ng-checked="company.checked" ng-model="company.checked" ng-click="vm.legendCheckboxClick('x',company)">
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="deathCause in vm.deathCauses">
+          <td>
+            {{deathCause.name}}
+            <input style="margin-left: 5px;" type="checkbox" ng-checked="deathCause.checked" ng-model="deathCause.checked" ng-click="vm.legendCheckboxClick('y',deathCause)">
+          </td>
+          <th ng-repeat="company in vm.companys">
+            <span ng-repeat="item in vm.list">
+              <span ng-if="deathCause.name==item.deathCauseName && company.name==item.companyName">{{item.data}}</span>
+            </span>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
