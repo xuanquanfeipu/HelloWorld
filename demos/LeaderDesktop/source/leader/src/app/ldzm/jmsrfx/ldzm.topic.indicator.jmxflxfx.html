@@ -1,0 +1,85 @@
+<style type="text/css">
+ .jmsrLxfx .echartsBox1{width:-moz-calc(65% - 10px);width:-webkit-calc(65% - 10px);width:calc(65% - 10px);height:350px;position:relative;}
+ .jmsrLxfx .txtTitle{position:absolute;top:50%;color:#3A53A0;font-size:24px;margin-left:-27px;}
+ .jmsrLxfx .txtTitle1{left:25.8%;}
+ .jmsrLxfx .txtTitle2{left:64.3%;}
+ .jmsrLxfx .echartsBox1 #echarts1{height:290px;}
+ .jmsrLxfx .echartsBox2{width:33%;height:350px;}
+ .jmsrLxfx .echartsBox2 #echarts2{height:250px;}
+ @media (min-width: 1900px){
+   .jmsrLxfx .echartsBox1{height:550px;}
+   .jmsrLxfx .echartsBox1 #echarts1{height:490px;}
+   .jmsrLxfx .echartsBox2{height:550px;}
+   .jmsrLxfx .echartsBox2 #echarts2{height:450px;}
+}
+</style>
+<section class="content jmsrLxfx">
+  <div class="row" ng-if="!vm.ecOption">
+    <div class='col-lg-7' style="margin:5% 0 0 20%;">
+      <h2>没有数据显示！</h2>
+    </div>
+  </div>
+  <div class='row echartsTwo' ng-if="vm.ecOption">
+    <div class='col-lg-8 box echartsBox1'>
+      <div class="box-title">{{vm.lastYear}}居民消费类型分析</div>
+      <div class="txtTitle txtTitle1">城 市</div>
+      <div class="txtTitle txtTitle2">农 村</div>
+      <ng-echarts class="echarts col-sm-12" id='echarts1' ec-config="vm.ecConfig1" ec-option="vm.ecOption1" style="margin-right:5px;"></ng-echarts>
+    </div>
+    <div class='col-lg-4 box echartsBox2'>
+      <div class="box-title">单项消费类型情况</div>
+      <div style="float:left;margin-left:35px;font-size:16px;color:#8c94b3;">
+        请选择类型
+      </div>
+      <select ng-init="selectedIndex = '食品烟酒'" style="margin-left:10px;border:solid 1px #dde1f0;" ng-model="selectedIndex" ng-change="vm.selectChange1(selectedIndex);">
+        <option value="食品烟酒">食品烟酒</option>
+        <option value="衣着">衣着</option>
+        <option value="居住">居住</option>
+        <option value="生活用品及服务">生活用品及服务</option>
+        <option value="交通通信">交通通信</option>
+        <option value="教育文化娱乐">教育文化娱乐</option>
+        <option value="医疗保健">医疗保健</option>
+        <option value="其他">其他</option>
+      </select>
+      <ng-echarts class="echarts col-sm-12" id='echarts2' ec-config="vm.ecConfig" ec-option="vm.ecOption" style="padding: 0;position:static;"></ng-echarts>
+    </div>
+  </div>
+  <div class='row echartsTwo' ng-if="vm.ecOption">
+    <div class='col-sm-12 box' style="width:98%">
+      <div class="box-title">居民消费类型一览</div>
+      <table class="c21-datatbl" style="margin:10px;width:-moz-calc(100% - 20px);width:-webkit-calc(100% - 20px);width:calc(100% - 20px);">
+        <thead><tr>
+          <th>指标  农村/城镇</th>
+          <th ng-repeat="year in vm.datePeriodList">
+            <input style="margin-left: 5px;" type="radio" name="selectYear" id="radio{{year}}" class="radio" value="{{year}}" ng-checked="year==vm.curYear" ng-click="vm.yearRadioClick(year)"/>
+            <label for="radio{{year}}"></label>{{year}}年
+          </th>
+        </tr></thead>
+        <tbody>
+        <tr ng-repeat="type in vm.chTypeList" style='height: 40px'>
+          <th>
+            <img ng-if="type.checked"  ng-model="item.checked" style="width:12px;height:12px" ng-click="vm.legendCheckboxClick(22,type)"  ng-src="../assets/images/btn_s.png"/>
+            <img ng-if="!type.checked" ng-model="item.checked" style="width:12px;height:12px" ng-click="vm.legendCheckboxClick(22,type)"  ng-src="../assets/images/btn_us.png"/>
+            {{type.name }}
+          </th>
+          <th ng-repeat="year in vm.datePeriodList" style="text-align:center;">
+            <span ng-repeat="data in vm.dataList">
+              <span ng-if="type.name==data.CONSUME_NAME && year==data.DATE_PERIOD && data.RESIDENT_TYPE==2" >
+                  {{data.CONSUME_AMOUNT}}元 :
+              </span>
+            </span>
+            <span ng-repeat="data in vm.dataList">
+              <span ng-if="type.name==data.CONSUME_NAME && year==data.DATE_PERIOD && data.RESIDENT_TYPE==1" >
+                  {{data.CONSUME_AMOUNT}}元
+              </span>
+            </span>
+          </th>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12" style="width:97%;text-align: right;font-size: 12px;line-height: 36px;color: #333;margin-top: -15px;">数据来源：湖南省统计局</div>
+  </div>
+</section>
