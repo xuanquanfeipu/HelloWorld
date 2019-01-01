@@ -1,0 +1,134 @@
+<style>
+  .title{ background: #eef1f8; width:100%; height: 36px; margin-top: 10px; border-radius:0 0 10px 10px;}
+  .title p{ text-align: center; line-height: 36px; color: #333; font-size: 20px;}
+  #tabNav{ position: absolute;}
+  .tabTop5{padding:0; position: absolute; top: 10px; left: 0;}
+  .tabTop5 li{ cursor: pointer; list-style:none;font-size:12px;height:35px;line-height:35px;float:left; padding:0 5px;margin-right:12px;background-color: #eef1f8;color: #243482;}
+  .tabTop5 li:last-of-type{margin-right:0;}
+  .tabTop5 li.on{background-color:#243482;color:#fff;}
+
+</style>
+
+<section class="content">
+  <!--<div class="row" ng-if="!vm.ecOption">-->
+    <!--<div class='col-lg-7' style="margin:5% 0 0 20%;">-->
+      <!--<h2>没有数据显示！</h2>-->
+    <!--</div>-->
+  <!--</div>-->
+  <div class='row' style="margin-left:1px">
+    <div class='col-md-4' style=" background: #fff;border: 1px solid #D2D6DE;height:705px;">
+      <div class="title"><p>{{vm.cyear}}年湖南省就业人数分布情况</p></div>
+      <ng-echarts class="echarts col-md-12" ec-config="vm.mapConfig" ec-option="vm.mapOption" style=" height: 550px; position:static;"></ng-echarts>
+    </div>
+
+	 <div class="col-md-4" style="padding-left:0px;padding-right:0px;">
+	 <div class="box" style="width:auto;height: 334px;">
+	   <div class="box-title"><p>{{vm.curAreaName}}就业人数分布情况</p></div>
+      <ng-echarts class="echarts col-md-12" ec-config="vm.ecConfig11" ec-option="vm.ecOption11" style=" height: 286px; position:static;"></ng-echarts>
+
+	 </div>
+
+    </div>
+    <div class="col-md-3" id="tabs" style="padding-left:0px;padding-right:0px;width:29%;  position: relative;">
+	 <div class="box" style="width:auto;height:334px;">
+	<div id="tabNav" style="width:100%;">
+
+        <ul class="tabTop5" style="left:4%;width:96%">
+          <li class="fli" style="width:30%;text-align:center">就业人数Top5</li>
+          <li style="width:30%;text-align:center">总体工资Top5</li>
+          <li style="width:30%;text-align:center">平均工资Top5</li>
+        </ul>
+        <div id="tab_con" class="tabCon " style="margin:50% auto;width:100%;margin-top:60px;!important; height: 325px!important;" >
+          <aside class="fdiv hide_div" style="width:100%">
+            <ng-echarts class="echarts col-md-12" ec-config="vm.barConfig1" ec-option="vm.barOption1" style=" height: 326px; position:static;"></ng-echarts>
+          </aside>
+          <aside class="hide_div"  style="width:100%">
+            <ng-echarts class="echarts col-md-12" ec-config="vm.barConfig2" ec-option="vm.barOption2" style=" height: 326px; position:static;"></ng-echarts>
+          </aside>
+          <aside class="hide_div"  style="width:100%">
+            <ng-echarts class="echarts col-md-12" ec-config="vm.barConfig3" ec-option="vm.barOption3" style=" height: 326px; position:static;"></ng-echarts>
+          </aside>
+		  <div id="czsr-top5-ze-list" style="position:absolute;left:64%;top:30px;font-size:12px;width:110px;color:#1D77DA;">
+                <div style="position:absolute;" ></div>
+                <div style="position:absolute; "></div>
+                <div style="position:absolute; "></div>
+                <div style="position:absolute; "></div>
+                <div id=""style="position:absolute; "></div>
+              </div>
+              <div id="czsr-top5-growth-list" style="position:absolute;left:84%;top:30px; font-size:12px; width:100px; color:#F54E5D;">
+                 <div style="position:absolute; " ></div>
+                <div style="position:absolute; "></div>
+                <div style="position:absolute; "></div>
+                <div style="position:absolute; "></div>
+                <div style="position:absolute; "></div>
+              </div>
+              <div id="czzc-top5-ze-list" style="display:none;position:absolute;left:56%;top: 30px; font-size:12px; width:110px; color:#1D77DA;">
+                <div style="position:absolute; " ></div>
+                <div style="position:absolute; "></div>
+                <div style="position:absolute;"></div>
+                <div style="position:absolute; "></div>
+                <div style="position:absolute; "></div>
+              </div>
+              <div id="czzc-top5-growth-list" style="display:none;position:absolute;left:84%; top:30px;font-size:12px;width:100px;color:#F54E5D;">
+                 <div style="position:absolute; " ></div>
+                <div style="position:absolute; "></div>
+                <div style="position:absolute; "></div>
+                <div style="position:absolute; "></div>
+                <div style="position:absolute;"></div>
+              </div>
+			   <div id="pjgz-top5-ze-list" style="display:none;position:absolute;left:60%;top: 30px; font-size:12px; width:110px; color:#1D77DA;">
+                <div style="position:absolute;" ></div>
+                <div style="position:absolute; "></div>
+                <div style="position:absolute; "></div>
+                <div style="position:absolute; "></div>
+                <div style="position:absolute; "></div>
+              </div>
+              <div id="pjgz-top5-growth-list" style="display:none;position:absolute;left:85%; top:30px;font-size:12px;width:100px;color:#F54E5D;">
+                 <div style="position:absolute; " ></div>
+                <div style="position:absolute; "></div>
+                <div style="position:absolute; "></div>
+                <div style="position:absolute; "></div>
+                <div style="position:absolute; "></div>
+              </div>
+        </div>
+      </div>
+	</div>
+
+    </div>
+
+
+
+    <div class="col-md-7" style=" width:62.5%; margin-top:0;padding-left:0px;padding-right:0px;">
+	 <div class="box" style="width:auto;height:360px;">
+	   <div class="box-title"><p>{{vm.curAreaName}}就业工资分析</p></div>
+      <ng-echarts class="echarts col-md-12" ec-config="vm.ecConfig22" ec-option="vm.ecOption22" style="height:300px; position:static;"></ng-echarts>
+	 </div>
+
+    </div>
+  </div>
+
+<div class="row" style="margin-right: 10px; height:36px;">
+<div style="color:#333333;font-size:12px;line-height:36px;text-align: right;position:absolute;right:10px;">数据来源：湖南省统计局</div>
+</div>
+
+</section>
+<script type="text/javascript">
+//  $(document).ready(function () {
+//    $('#tabNav ul li').click(function () {
+//      var index = $(this).index();
+//      $(this).addClass('active').sibling().removeClass('active');
+//      $(this).parents('#tab').find('.tabCon').eq(index).show().sibling().hide();
+//    })
+//  });
+
+//  function tab(pid){
+//    var tabs=["tab1","tab2","tab3"];
+//    for(var i=0;i<3;i++){
+//      if(tabs[i]==pid){
+//        document.getElementById(tabs[i]).style.display="block";
+//      }else{
+//        document.getElementById(tabs[i]).style.display="none";
+//      }
+//    }
+//  }
+</script>
