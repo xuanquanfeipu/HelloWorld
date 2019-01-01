@@ -1,0 +1,30 @@
+<section>
+  <div class="jjyc_content">
+    <div class="jjyc_row1 clearfix">
+      <div class="yczFx col-md-8">
+        <div class="box-title">四大机构对中国的预测值的分析</div>
+        <ng-echarts class="echarts col-md-12" id='echarts1' ec-config="vm.lineConfig" ec-option="vm.lineOption" style="position:static;"></ng-echarts>
+      </div>
+      <div class="yczFx_r fl">
+        <div class="sjz_tit">
+          <ul class="titCon clearfix">
+            <li><img src="../assets/images/icon_sjz.png" alt="icon"></li>
+            <li><p style="margin-bottom:0;">2015年<br/>中国实际值</p></li>
+            <li><span>6.9%</span></li>
+          </ul>
+        </div>
+        <div>
+          <div class="dataTit"><span>机构</span><span>实际值(%)</span><span>预测值(%)</span><span>差值(%)</span></div>
+          <ng-echarts class="echarts col-md-12" id='echarts2' ec-config="vm.sjzConfig" ec-option="vm.sjzOption" style="position:static;"></ng-echarts>
+        </div>
+      </div>
+    </div>
+    <div class="jjyc_row2 clearfix">
+      <div class="Imf col-md-12">
+        <div class="box-title">IMF对主要经济体当年的预测值分析</div>
+        <ng-echarts class="echarts col-md-12" id='echarts3' ec-config="vm.barConfig" ec-option="vm.barOption" style="position:static;"></ng-echarts>
+      </div>
+    </div>
+  </div>
+  <div style="width:99%;height:26px;font-size:12px;color:#333;text-align:right;">数据来源：国际货币基金组织、OECD和IBRD.IDA</div>
+</section>
