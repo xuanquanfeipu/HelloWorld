@@ -1,0 +1,29 @@
+.jjyc_content{ padding: 15px; width:100%;}
+.jjyc_content li{ list-style: none;}
+.jjyc_content .yczFx{ height:305px;width:-moz-calc(70% - 10px);width:-webkit-calc(70% - 10px);width:calc(70% - 10px);background: #fff;border: 1px solid #D2D6DE;}
+.jjyc_content .yczFx #echarts1{width:100%;height:245px;}
+.jjyc_content .yczFx_r{width:-moz-calc(30% - 10px);width:-webkit-calc(30% - 10px);width:calc(30% - 10px); height:305px;background: #fff; margin-left: 10px;}
+.jjyc_content .yczFx_r #echarts2{width:100%;height:170px;}
+.jjyc_content .Imf{width:-moz-calc(100% - 10px);width:-webkit-calc(100% - 10px);width:calc(100% - 10px);;height:280px;background: #fff;border: 1px solid #D2D6DE; margin-top: 10px;}
+.jjyc_content .Imf #echarts3{width:100%;height:210px;}
+.jjyc_content .sjz_tit{height:70px;width:100%;background:#6cb964;margin-bottom:10px;position:relative;}
+.jjyc_content .sjz_tit:after{content:'';width:100%;height:10px;background-color:#ecf0f5;position:absolute;bottom:-10px;left:0;}
+.jjyc_content .titCon{ padding: 17px 20px 0 24px; position: relative;}
+.jjyc_content .titCon li{ float: left;}
+.jjyc_content .titCon li:nth-of-type(3){ float: right;}
+.jjyc_content .titCon li>img{ top: 0; left: 0; width: 40px; height: 40px; }
+.jjyc_content .titCon li>p{ color: #fff; font-size: 14px; padding-left: 14px; }
+.jjyc_content .titCon li>span{ font-size: 32px; color: #fff;}
+.jjyc_content .dataTit{ height: 48px; line-height: 48px; padding: 0 18px; border-bottom: 1px solid #eeedff;}
+.jjyc_content .dataTit span:nth-of-type(1){ display: inline-block; width: 38%;}
+.jjyc_content .dataTit span:nth-of-type(2){ display: inline-block; width: 22%;}
+.jjyc_content .dataTit span:nth-of-type(3){ display: inline-block; width: 22%;}
+.jjyc_content .dataTit span:nth-of-type(4){ display: inline-block; width: 18%;}
+@media (min-width: 1900px){
+  .jjyc_content .yczFx{height:420px;}
+  .jjyc_content .yczFx #echarts1{height:360px;}
+  .jjyc_content .yczFx_r{height:420px;}
+  .jjyc_content .yczFx_r #echarts2{height:280px;}
+  .jjyc_content .Imf{height:420px;}
+  .jjyc_content .Imf #echarts3{height:350px;}
+}
