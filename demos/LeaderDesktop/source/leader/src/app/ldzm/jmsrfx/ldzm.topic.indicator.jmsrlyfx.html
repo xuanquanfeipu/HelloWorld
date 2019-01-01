@@ -1,0 +1,82 @@
+<style type="text/css">
+ .jmsrfxLyfx .echartsBox1{width:-moz-calc(65% - 10px);width:-webkit-calc(65% - 10px);width:calc(65% - 10px);height:350px;position:relative;}
+ .jmsrfxLyfx .echartsBox1 #echarts1{height:290px;}
+ .jmsrfxLyfx .txtTitle{position:absolute;top:50%;color:#3A53A0;font-size:24px;margin-left:-27px;}
+ .jmsrfxLyfx .txtTitle1{left:25.8%;}
+ .jmsrfxLyfx .txtTitle2{left:64.5%;}
+ .jmsrfxLyfx .echartsBox2{width:33%;height:350px;}
+ .jmsrfxLyfx .echartsBox2 #echarts2{height:250px;}
+ @media (min-width: 1900px){
+   .jmsrfxLyfx .echartsBox1{height:550px;}
+   .jmsrfxLyfx .echartsBox1 #echarts1{height:490px;}
+   .jmsrfxLyfx .echartsBox2{height:550px;}
+   .jmsrfxLyfx .echartsBox2 #echarts2{height:450px;}
+}
+</style>
+<section class="content jmsrfxLyfx">
+  <div class="row" ng-if="!vm.ecOption">
+    <div class='col-lg-7' style="margin:5% 0 0 20%;">
+      <h2>没有数据显示！</h2>
+    </div>
+  </div>
+  <div class='row' ng-if="vm.ecOption">
+    <div class='col-sm-8 box echartsBox1'>
+      <div class="box-title">{{vm.lastYear}}居民收入来源</div>
+      <div class="txtTitle txtTitle1">城 市</div>
+      <div class="txtTitle txtTitle2">农 村</div>
+      <ng-echarts class="echarts col-sm-12" ec-config="vm.ecConfig1" id="echarts1" ec-option="vm.ecOption1" style="top:0px;margin-right:5px;"></ng-echarts>
+    </div>
+    <div class='col-sm-4 box echartsBox2'>
+      <div class="box-title">单类型收入来源情况</div>
+      <div style="float:left;margin-left:35px;font-size:16px;color:#8c94b3;line-height:35px;">
+        请选择类型
+      </div>
+      <select ng-init="selectedIndex = '0'" style="margin-left:10px;border:solid 1px #dde1f0;" ng-model="selectedIndex" ng-change="vm.selectChange1(selectedIndex);">
+        <option value="0">工资性收入</option>
+        <option value="1">经营净收入</option>
+        <option value="3">转移净收入</option>
+        <option value="2">财产净收入</option>
+      </select>
+      <ng-echarts class="echarts col-sm-12" id='echarts2' ec-config="vm.ecConfig" ec-option="vm.ecOption" style="margin-left:10px;position:static;padding: 0"></ng-echarts>
+    </div>
+  </div>
+  <div class='row' ng-if="vm.ecOption">
+    <div class='col-sm-12 box' style="width:98%">
+      <div class="box-title">居民收入来源一览</div>
+      <table class="c21-datatbl" style="margin:10px;width:-moz-calc(100% - 20px);width:-webkit-calc(100% - 20px);width:calc(100% - 20px);">
+        <thead><tr>
+          <th>指标  农村/城镇</th>
+          <th ng-repeat="year in vm.yearList">
+            <input style="margin-left: 5px;" type="radio" name="selectYear" id="radio{{year}}" class="radio" value="{{year}}" ng-checked="year==vm.curYear" ng-click="vm.yearRadioClick(year)"/>
+            <label for="radio{{year}}"></label>{{year}}年
+          </th>
+        </tr></thead>
+        <tbody>
+        <tr  ng-repeat="type in vm.eduTypeList" style='height: 90px'>
+          <th>
+            <img ng-if="type.checked"  ng-model="type.checked" style="width:12px;height:12px" ng-click="vm.legendCheckboxClick('y',type)"  ng-src="../assets/images/btn_s.png"/>
+            <img ng-if="!type.checked" ng-model="type.checked" style="width:12px;height:12px" ng-click="vm.legendCheckboxClick('y',type)"  ng-src="../assets/images/btn_us.png"/>
+            <!--<input style="margin-left: 5px;" type="checkbox" ng-checked="type.checked" ng-model="type.checked" ng-click="vm.legendCheckboxClick('y',type)">-->
+            <span > {{type.name}}</span>
+          </th>
+          <td ng-repeat="year in vm.yearList">
+            <span ng-repeat="data in vm.dataList">
+              <span ng-if="type.type==data.type && year==data.year && data.lb == 2">
+                  {{data.num}}元 :
+              </span>
+            </span>
+            <span ng-repeat="data in vm.dataList">
+              <span ng-if="type.type==data.type && year==data.year && data.lb == 1">
+                  {{data.num}}元
+              </span>
+            </span>
+        </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12" style="width:97%;text-align: right;font-size: 12px;line-height: 36px;color: #333;margin-top: -15px;">数据来源：湖南省统计局</div>
+  </div>
+</section>
