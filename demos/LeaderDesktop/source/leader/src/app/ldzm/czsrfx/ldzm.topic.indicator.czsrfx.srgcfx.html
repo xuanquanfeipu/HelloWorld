@@ -1,0 +1,24 @@
+<section class="content-header" ng-if="vm.breadcrumbs">
+  <h1>
+    {{vm.title}}
+  </h1>
+  <sc-breadcrumb breadcrumbs="vm.breadcrumbs"></sc-breadcrumb>
+</section>
+<section class="content">
+  <div class="row" ng-if="!vm.ecOption">
+    <div class='col-lg-7' style="margin:5% 0 0 20%;">
+      <h2>没有数据显示！</h2>
+    </div>
+  </div>
+  <div class='row' ng-if="vm.ecOption" style="margin-left:10px; height:430px; background-color:#fff">
+    <div class='col-lg-8' style="background: #fff;border-top:2px solid #008000;">
+      <ng-echarts class="echarts" ec-config="vm.ecConfig" ec-option="vm.ecOption" style="width: 750px; height: 400px; position:static;"></ng-echarts>
+    </div>
+    <div class='col-lg-4' style="background: #fff;border-top:2px solid #008000; height:430px; background-color:#fff">
+      <div style="text-align:center; padding-top:20px;">
+        <select ng-model="vm.selectedYear" ng-options="year for year in vm.years track by year" ng-change="vm.loadEc1Data(vm.selectedYear)" style="width:120px;"></select>
+      </div>
+      <ng-echarts class="echarts" ec-config="vm.ec1Config" ec-option="vm.ec1Option" style="width: 350px; height: 300px; position:static;"></ng-echarts>
+    </div>
+  </div>
+</section>
