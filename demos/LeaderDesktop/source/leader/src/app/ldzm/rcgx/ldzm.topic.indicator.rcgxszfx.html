@@ -1,0 +1,65 @@
+<section class="content-header" ng-if="vm.breadcrumbs">
+  <h1>
+    {{vm.title}}
+  </h1>
+  <sc-breadcrumb breadcrumbs="vm.breadcrumbs"></sc-breadcrumb>
+</section>
+
+<section class="content">
+  <div class="row" ng-if="!vm.ecOption">
+    <div class='col-lg-7' style="margin:5% 0 0 20%;">
+      <h2>没有数据显示！</h2>
+    </div>
+  </div>
+
+  <div class='row' ng-if="vm.ecOption" style="margin-left:10px">
+
+
+    <div class='col-lg-8' style="background: #fff;border-top:2px solid #008000;">
+      年份<select ng-model="selectedSite" ng-init="selectedSite = '2016'"   ng-change="vm.selectChange1(selectedSite);">
+        <option ng-repeat="year in vm.yearList" value="{{year}}" >{{year}}</option>
+      </select>
+
+      <!--<select ng-model="selectedSite1" ng-init="selectedSite1 = '年龄'"   ng-change="vm.selectChange2(selectedSite1);">
+        <option ng-repeat="wd in vm.wdList" value="{{wd}}" >{{wd}}</option>
+      </select>-->
+
+      &nbsp;&nbsp;年龄段<select ng-model="selectedSite2" ng-init="selectedSite2 = '20-22'"   ng-change="vm.selectChange3(selectedSite2);">
+        <option ng-repeat="nnd in vm.nnList" value="{{nnd}}" >{{nnd}}</option>
+      </select>
+
+      <ng-echarts class="echarts" ec-config="vm.ecConfig" ec-option="vm.ecOption" style="width: 600px; height: 530px; position:static;"></ng-echarts>
+    </div>
+    <div class='col-lg-4' style="background: #fff;border-top:2px solid #008000;">
+      <div  style="margin-left:120px">
+      市州<select ng-model="selectedSite4" ng-init="selectedSite4 = '100'"   ng-change="vm.selectChange4(selectedSite4);">
+        <option ng-repeat="item in vm.list1" value="{{item.DISTRICT_NO}}" >{{item.DISTRICT_NAME}}</option>
+      </select>
+      </div>
+      <ng-echarts class="echarts" ec-config="vm.ecConfig1" ec-option="vm.ecOption1" style="width: 350px; height: 530px; position:static;"></ng-echarts>
+    </div>
+
+  </div>
+
+  <div class='row' ng-if="vm.ecOption" style="margin-top:20px;background: #fff;margin-left:10px">
+    <table class="table table-bordered table-hover">
+      <thead><tr>
+        <th>市州/年龄 <br>单位：万</th>
+        <th ng-repeat="nnd in vm.nnList">年龄：{{nnd}}
+      </th></thead>
+      <tbody>
+
+      <tr ng-repeat="item in vm.list1">
+        <td>{{item.DISTRICT_NAME}}</td>
+        <td>{{item.rs_group_1}}</td>
+        <td>{{item.rs_group_2}}</td>
+        <td>{{item.rs_group_3}}</td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+  <div style="float:right">
+    来自湖南统计局
+  </div>
+</section>
