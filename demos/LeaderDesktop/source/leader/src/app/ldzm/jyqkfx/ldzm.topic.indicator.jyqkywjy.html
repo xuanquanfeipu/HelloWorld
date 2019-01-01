@@ -1,0 +1,107 @@
+<style>
+  /* .active1{color:darkred;background-color:greenYellow;} */
+  .jyqkfxywjy .indi-chart-p{float:left;background-color:white;border:1px solid #D2D6DE;}
+  .jyqkfxywjy .indi-chart-p .c21-datatbl{width:100%;font-size:14px;color:#515A64;}
+  .jyqkfxywjy .indi-chart-p .c21-datatbl thead tr{background-color:#F6F7FB;}
+  .jyqkfxywjy .indi-chart-p .c21-datatbl tbody tr:nth-child(even){background-color:#F6F7FB;}
+  .jyqkfxywjy .indi-chart-p .c21-datatbl tbody tr:nth-child(odd){background-color:#FFF;}
+  .jyqkfxywjy .indi-chart-p .c21-datatbl th{font-weight:normal;}
+  .jyqkfxywjy .indi-chart-p .c21-datatbl tbody th{text-align:left;padding-left:10px;width:235px;}
+  .jyqkfxywjy .indi-chart-p .c21-datatbl th, .indi-chart-p .c21-datatbl td{text-align:center;line-height:35px;border:solid 1px #EFF1F9;}
+  .jyqkfxywjy .indi-chart-p .c21-datatbl th:hover, .indi-chart-p .c21-datatbl td:hover{border-color:#E9F9F9;background-color:#D4EDED;}
+    .jyqkfxywjy .echartsBox1{width:-moz-calc(99% - 250px);width:-webkit-calc(99% - 250px);width:calc(99% - 250px);height:424px;}
+    .jyqkfxywjy .echartsBox1 #echarts1{height:380px;}    
+    .jyqkfxywjy .echartsBox2{height:424px;}
+    .jyqkfxywjy .echartsBox2 .colorTxt{overflow:hidden;}
+  @media (min-width:1900px){    
+    .jyqkfxywjy .echartsBox1{height:594px;}
+    .jyqkfxywjy .echartsBox1 #echarts1{height:550px;}    
+    .jyqkfxywjy .echartsBox2{height:594px;}
+    .jyqkfxywjy .echartsBox2 .colorTxt{height:130px;}
+  } 
+</style>
+<section class="content jyqkfxywjy">
+  <div class="indi-chart-p echartsBox1">
+    <div class="box-title">全省义务教育情况</div>
+    <ng-echarts class="echarts col-md-12" id='echarts1' ec-config="vm.ecConfig" ec-option="vm.ecOption" style="position:static;"></ng-echarts>
+  </div>
+  <div class="indi-chart-p echartsBox2" style="width:240px;margin-left:10px;padding:10px;">
+    <div class="colorTxt">
+      <div style="width:80px;height:78px;float:left;background:#4e72ce;margin-top:10px;margin-left:15px">
+      <img style="width:48px;height:48px;margin-top:16px;margin-left:14px;float:left;background:#4e72ce;" src="../assets/images/icon_child.png">
+      </div>
+      <div >
+        <p style="margin-top:18px;margin-left:5px;font-size:14px;color:#4e72ce">&nbsp;&nbsp;适龄儿童入学率</p>
+        <p style="margin-left:5px;font-size:26px;color:#4e72ce;">&nbsp;&nbsp;{{vm.dataList2016[0].num1}}%</p>
+      </div>
+    </div>
+    <div class="colorTxt">
+      <div style="width:80px;height:78px;float:left;background:#56c1ac;margin-top:10px;margin-left:15px">
+        <img style="width:48px;height:48px;margin-top:16px;margin-left:14px;float:left;background:#56c1ac;"  src="../assets/images/icon_pupil.png">
+      </div>
+      <div >
+        <p style="margin-top:18px;margin-left:5px;font-size:14px;color:#56c1ac;">&nbsp;&nbsp;小学升学率</p>
+        <p style="margin-left:5px;font-size:26px;color:#56c1ac;">&nbsp;&nbsp;{{vm.dataList2016[0].num2}}%</p>
+      </div>
+    </div>
+    <div class="colorTxt">
+      <div style="width:80px;height:78px;float:left;background:#4e72ce;margin-top:10px;margin-left:15px">
+        <img style="width:48px;height:48px;margin-top:16px;margin-left:14px;float:left;background:#4e72ce;" src="../assets/images/icon_middle.png">
+      </div>
+      <div >
+        <p style="margin-top:18px;margin-left:5px;font-size:14px;color:#4e72ce;">&nbsp;&nbsp;初中升学率</p>
+        <p style="margin-left:5px;font-size:26px;color:#4e72ce;">&nbsp;&nbsp;{{vm.dataList2016[0].num3}}%</p>
+      </div>
+    </div>
+    <div class="colorTxt">
+      <div style="width:80px;height:78px;float:left;background:#56c1ac;margin-top:10px;margin-left:15px">
+        <img style="width:48px;height:48px;margin-top:16px;margin-left:14px;float:left;background:#56c1ac;"  src="../assets/images/icon_high.png">
+      </div>
+      <div >
+        <p style="margin-top:18px;margin-left:5px;font-size:14px;color:#56c1ac;">&nbsp;&nbsp;高中升学率</p>
+        <p style="margin-left:5px;font-size:26px;color:#56c1ac;">&nbsp;&nbsp;{{vm.dataList2016[0].num4}}%</p>
+      </div>
+    </div>
+    <div class="col-xs-12 liyear" style="height:40px;text-align:center;color:#333333;font-size:12px">
+              <div style="float:right;border-top: 1px solid #ccc;width:18%;margin-top:13px"></div>
+              <div style="float:right;padding-right:10px;padding-left:10px;width:64%;margin-top:5px">以上为{{vm.lastYear}}数据</div>
+              <div style="float:right;border-top: 1px solid #ccc;width:18%;margin-top:13px"></div>
+       </div>
+  </div>
+  <div class="indi-chart-p" style="width:99%;margin-top:10px;">
+    <div class="box-title">全省义务教育情况一览</div>
+    <div style="margin-top:15px;">
+      <table class="c21-datatbl" id="c21-datatbl">
+        <thead>
+        <tr>
+          <th style="text-align:left;padding-left:10px;">指标</th>
+          <th ng-repeat="year in vm.yearList">
+            <img ng-if="year.checked"  ng-model="year.checked" style="width:12px;height:12px" ng-click="vm.legendCheckboxClick('x',year)"  ng-src="../assets/images/btn_s.png"/>
+            <img ng-if="!year.checked" ng-model="year.checked" style="width:12px;height:12px" ng-click="vm.legendCheckboxClick('x',year)"  ng-src="../assets/images/btn_us.png"/>
+            <!--<input style="margin-left: 5px;" type="checkbox" ng-checked="year.checked" ng-model="year.checked" ng-click="vm.legendCheckboxClick('x',year)">-->
+            {{year.value}}年
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="type in vm.eduTypeList">
+          <th>
+            <img ng-if="type.checked" ng-model="type.checked" style="width:12px;height:12px" ng-click="vm.legendCheckboxClick('y',type)" ng-src="../assets/images/btn_s.png"/>
+            <img ng-if="!type.checked" ng-model="type.checked" style="width:12px;height:12px" ng-click="vm.legendCheckboxClick('y',type)" ng-src="../assets/images/btn_us.png"/>
+            <!--<input style="margin-left: 5px;" type="checkbox" ng-checked="type.checked" ng-model="type.checked" ng-click="vm.legendCheckboxClick('y',type)">-->
+            <span > {{type.name}}</span>
+          </th>
+          <td ng-repeat="year in vm.yearList">
+                <span ng-repeat="data in vm.dataList">
+                  <span ng-if="type.type==data.type && year.value==data.year">
+                      {{data.num}}
+                  </span>
+                </span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div style="clear:both;padding-top:10px;width:99%;height:26px;font-size:12px;color:#333;text-align:right;">数据来源：湖南省统计局</div>
+  <section>
