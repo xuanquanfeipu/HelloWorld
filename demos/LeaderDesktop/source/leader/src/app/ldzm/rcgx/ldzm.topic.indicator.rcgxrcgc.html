@@ -1,0 +1,94 @@
+<section class="content-header" ng-if="vm.breadcrumbs">
+  <h1>
+    {{vm.title}}
+  </h1>
+  <sc-breadcrumb breadcrumbs="vm.breadcrumbs"></sc-breadcrumb>
+</section>
+<ul class="nav nav-tabs" ng-init="vm.activeTab=1" style="margin-left:13px">
+  <li ng-class="{active: vm.activeTab == 1}"><a href="javascript:;" ng-click="vm.tabClick(1)">年龄</a></li>
+  <li ng-class="{active: vm.activeTab == 2}"><a href="javascript:;" ng-click="vm.tabClick(2)">教育程度</a></li>
+  <li ng-class="{active: vm.activeTab == 3}"><a href="javascript:;" ng-click="vm.tabClick(3)">人才来源</a></li>
+</ul>
+<section class="content">
+  <div class="row" ng-if="!vm.ecOption">
+    <div class='col-lg-7' style="margin:5% 0 0 20%;">
+      <h2>没有数据显示！</h2>
+    </div>
+  </div>
+  <div class='row' ng-if="vm.ecOption" style="margin-left:0px">
+
+    <div class='col-lg-12' style="background: #fff;border-top:2px solid #008000;">
+        选择年份
+        <select ng-model="selectedSite" ng-init="selectedSite = '2016'"   ng-change="vm.selectYear(selectedSite);">
+          <option ng-repeat="year in vm.yearList" value="{{year}}" >{{year}}</option>
+        </select>
+
+      <ng-echarts class="echarts" ec-config="vm.ecConfig" ec-option="vm.ecOption" style="width:1050px; height: 325px; position:static;"></ng-echarts>
+    </div>
+
+
+  </div>
+  <div class='row' ng-if="vm.ecOption" style="margin-top:20px;margin-left:0px;background: #fff;">
+
+    <table ng-if="vm.activeTab == 1" class="table table-bordered table-hover">
+      <thead><tr>
+        <th>指标</th>
+        <th ng-repeat="year in vm.yearList">{{year}}</th>
+      </tr></thead>
+      <tbody>
+        <tr  ng-repeat="ageGroup in vm.ageGroupList">
+          <td>
+            {{ageGroup}}
+          </td>
+          <th ng-repeat="year in vm.yearList">
+              <span ng-repeat="item in vm.list0">
+                <span ng-if="ageGroup==item.ageGroup && year==item.year">{{item.data1}}</span>
+              </span>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+
+    <table ng-if="vm.activeTab == 2" class="table table-bordered table-hover">
+      <thead><tr>
+        <th>指标</th>
+        <th ng-repeat="year in vm.yearList">{{year}}</th>
+      </tr></thead>
+      <tbody>
+      <tr ng-repeat="eduLevel in vm.eduList">
+        <td>
+          {{eduLevel}}
+        </td>
+        <th ng-repeat="year in vm.yearList">
+              <span ng-repeat="item in vm.list1">
+                <span ng-if="eduLevel==item.educationLevel && year==item.year">{{item.data1}}</span>
+              </span>
+        </th>
+      </tr>
+
+      </tbody>
+    </table>
+
+
+    <table ng-if="vm.activeTab == 3" class="table table-bordered table-hover">
+      <thead><tr>
+        <th>指标</th>
+        <th ng-repeat="year in vm.yearList">{{year}}</th>
+      </tr></thead>
+      <tbody>
+      <tr ng-repeat="come in vm.comeList">
+        <td>
+          {{come}}
+        </td>
+        <th ng-repeat="year in vm.yearList">
+              <span ng-repeat="item in vm.list2">
+                <span ng-if="come==item.district && year==item.year">{{item.data1}}</span>
+              </span>
+        </th>
+      </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+</section>
