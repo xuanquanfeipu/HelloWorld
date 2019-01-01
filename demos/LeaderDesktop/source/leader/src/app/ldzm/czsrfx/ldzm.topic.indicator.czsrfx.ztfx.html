@@ -1,0 +1,114 @@
+<style>
+  .czsrZtfx.content{
+    padding-right:15px;
+  }
+  .czsrZtfx .row{
+    margin-right:-10px;
+  }
+  .czsrZtfx .box{
+    margin-left:0;
+    padding-bottom: 10px;
+  }
+  .czsrZtfx .echartsBox1,.czsrZtfx .echartsBox2{height:325px;}
+  .czsrZtfx .echartsBox1 #echart-4{height:260px;}
+  .czsrZtfx .echartsBox2 #echart-5{height:260px;}
+  @media (min-width: 1900px){
+  .czsrZtfx .echartsBox1{height:510px;}
+  .czsrZtfx .echartsBox1 #echart-4{height:460px;}
+  .czsrZtfx .echartsBox2{height:510px;}
+  .czsrZtfx .echartsBox2 #echart-5{height:460px;}
+}
+</style>
+<section class="content czsrZtfx">
+    <div class="row">
+      <div class="col-md-7" style="width:-moz-calc(100% - 495px);width:-webkit-calc(100% - 495px);width:calc(100% - 495px);">
+        <div class="box" style="height:310px;">
+          <div class="box-title">总体财政收支分析</div>
+          <ng-echarts id="echart-1" class="echarts col-sm-12" ec-config="vm.ecConfig1" ec-option="vm.ecOption1" style="display:block; height:270px;"></ng-echarts>
+        </div>
+      </div>
+      <div class="col-md-5" style="width:495px;">
+        <div class="row">
+          <div class="col-md-6" style="background-color:#6cb964; height:70px">
+            <img src="/assets/images/icon_sr_home.png" style="float:left; margin:12px 0 0 15px;"/>
+            <div style="float:left; color:#FFFFFF; font-size:14px; margin-left:10px; margin-top:14px;">
+              <div>湖南省财政收入</div>
+              <div><span id="czsrze-text" style="font-size:16px; font-weight:bold"></span>万元</div>
+            </div>
+          </div>
+          <div class="col-md-6" style="background-color:#FFB310; height:70px">
+            <img src="/assets/images/icon_zc_home.png" style="float:left; margin:12px 0 0 15px;"/>
+            <div style="float:left; color:#FFFFFF; font-size:14px; margin-left:10px; margin-top:14px;">
+              <div>湖南省财政支出</div>
+              <div><span id="czzcze-text" style="font-size:16px; font-weight:bold"></span>万元</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="box" style="height:230px;margin:10px 0 0 0;">
+            <div id="echart23-tabs" style="margin-top:10px;padding:0 32px;">
+              <div pane-id="echart-2-pane" idx="2" class="box-tab-title active">全省地方财政收入TOP5</div>
+              <div pane-id="echart-3-pane" idx="3" class="box-tab-title" style="margin-left:6px;">全省公共财政支出TOP5</div>
+              <div style="clear:both"></div>
+            </div>
+            <div id="echart-2-pane" style="position:relative;">
+              <ng-echarts id="echart-2" class="echarts" ec-config="vm.ecConfig2" ec-option="vm.ecOption2" style="display:block; height:160px;"></ng-echarts>
+              <div id="czsr-top5-ze-list" style="position:absolute;left:320px;top:15px;font-size:12px;width:110px;color:#1D77DA;">
+                <div style="position:absolute; top:0;" ></div>
+                <div style="position:absolute; top:30px;"></div>
+                <div style="position:absolute; top:60px;"></div>
+                <div style="position:absolute; top:88px;"></div>
+                <div style="position:absolute; top:117px;"></div>
+              </div>
+              <div id="czsr-top5-growth-list" style="position:absolute;left:425px;top:15px; font-size:12px; width:100px; color:#F54E5D;">
+                <div style="position:absolute; top:0;" ></div>
+                <div style="position:absolute; top:30px;"></div>
+                <div style="position:absolute; top:60px;"></div>
+                <div style="position:absolute; top:88px;"></div>
+                <div style="position:absolute; top:117px;"></div>
+              </div>
+              <div id="czzc-top5-ze-list" style="display:none;position:absolute;left:320px;top: 15px; font-size:12px; width:110px; color:#1D77DA;">
+                <div style="position:absolute; top:0;" ></div>
+                <div style="position:absolute; top:30px;"></div>
+                <div style="position:absolute; top:60px;"></div>
+                <div style="position:absolute; top:88px;"></div>
+                <div style="position:absolute; top:117px;"></div>
+              </div>
+              <div id="czzc-top5-growth-list" style="display:none;position:absolute;left:425px; top:15px;font-size:12px;width:100px;color:#F54E5D;">
+                <div style="position:absolute; top:0;" ></div>
+                <div style="position:absolute; top:30px;"></div>
+                <div style="position:absolute; top:60px;"></div>
+                <div style="position:absolute; top:88px;"></div>
+                <div style="position:absolute; top:117px;"></div>
+              </div>
+              <div class="col-xs-12 liyear" style="height:40px;text-align:center;color:#333333;font-size:12px">
+              <div style="float:right;border-top: 1px solid #ccc;width:28%;margin-top:13px"></div>
+              <div style="float:right;padding-right:10px;padding-left:10px;width:44%;margin-top:5px">以上为{{vm.lastYear}}数据</div>
+              <div style="float:right;border-top: 1px solid #ccc;width:28%;margin-top:13px"></div>
+       </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="box echartsBox1">
+        <div class="box-title">{{vm.lastYear}}地方财政收入构成</div>
+        <ng-echarts id="echart-4" class="echarts col-sm-12" ec-config="vm.ecConfig4" ec-option="vm.ecOption4" style="display:block;"></ng-echarts>
+      </div>
+    </div>
+    <div class="col-md-6" style="padding: 0 5px 0 0">
+      <div class="box echartsBox2">
+        <div class="box-title">{{vm.lastYear}}公共财政支出构成</div>
+        <ng-echarts id="echart-5" class="echarts col-sm-12" ec-config="vm.ecConfig5" ec-option="vm.ecOption5" style="display:block;"></ng-echarts>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12" style="width:97%;text-align: right;font-size: 12px;line-height: 36px;color: #333;margin-top: -15px;">数据来源：湖南省统计局</div>
+  </div>
+</section>
+
