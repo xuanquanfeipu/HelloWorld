@@ -1,0 +1,70 @@
+<style>
+  .c21-datatbl {  width: 100%;  font-size: 14px;  color: #515A64;  }
+  .c21-datatbl thead tr {  background-color: #F6F7FB  }
+  .c21-datatbl tbody tr:nth-child(even) {  background-color: #F6F7FB  }
+  .c21-datatbl tbody tr:nth-child(odd) {  background-color: #FFF  }
+  .c21-datatbl th {  font-weight: normal;  }
+  .c21-datatbl tbody th {  text-align:left;  padding-left: 10px;  width: 235px;  }
+  .c21-datatbl th, .c21-datatbl td {  text-align: center;  line-height:45px;  border: solid 1px #EFF1F9;  }
+  .c21-datatbl th:hover, .c21-datatbl td:hover {  border-color: #E9F9F9;  background-color: #D4EDED  }
+  select {  border:1px solid #eee;  appearance:none;  -moz-appearance:none;  -webkit-appearance:none;  background: url("../../../assets/images/icon_select_z.png") no-repeat scroll right center transparent;
+    height: 35px;line-height: 35px;border-radius: 5px;  padding: 0 35px 0 6px;  }
+  select::-ms-expand { display: none; }
+  /*改变单选框样式*/
+  .radio{display:none;}
+  .radio +label{  position: relative;  display: inline-block;  z-index: 999;  width: 12px;  height: 25px;  padding: 3px 15px;  vertical-align: middle;  }
+  .radio+label:before{  content:"";  color:#fff;  width: 15px;  height: 15px;  background: #777980;  border-radius: 15px;  position: absolute;
+    top: 4px;  left: 4px;  display:block;  box-shadow: 0px 0px 3px #A19797;  }
+  .radio:checked+label:before{  content:"";  background: #1caf9a;  }
+  .radio+label:after{  content: attr(title);  width: 5px;  height: 5px;  display:block;  border: 3px solid #F7F9F9;  position: absolute;  top: 8.5px;
+    left: 8.5px;  border-radius: 7px;  box-shadow: 0px 0px 3px #F2EBEB;  }
+  .radio:checked+label:after{  background: #1caf9a;  }
+</style>
+
+<section class="content">
+  <div class='row'>
+    <div class='col-md-5 box po_edu_box1'>
+      <div class="box-title">第{{vm.curYear}}次人口普查教育程度占比</div>
+      <div style="margin-left:10px">
+        <ng-echarts id="po_edu_chart1" class="echarts col-md-12" ec-config="vm.pieConfig" ec-option="vm.pieOption"></ng-echarts>
+      </div>
+    </div>
+    <div class='col-md-5 box po_edu_box2'>
+      <div class="box-title">单教育程度发展情况</div>
+      请选择教育程度
+      <select ng-init="selectedIndex = '1'" ng-model="selectedIndex" ng-change="vm.switchBarChart(selectedIndex);">
+        <option ng-repeat="category in vm.dataList" value="{{$index+1}}">{{category.name}}</option>
+      </select>
+      <ng-echarts id="po_edu_chart2" class="echarts col-md-12" ec-config="vm.ecConfig" ec-option="vm.ecOption" ></ng-echarts>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-12 box po_edu_box3'>
+    <div class="box-title">教育程度分布一览</div>
+    <table class="c21-datatbl" style="width:98%;margin:8px 1%">
+      <thead><tr>
+        <th style="width:230px">指标</th>
+        <th ng-repeat="year in vm.years">
+          <input style="margin-left: 5px;" type="radio" name="selectYear" id="radio{{year}}" class="radio" value="{{year}}" ng-checked="year" ng-click="vm.yearRadioClick(year)"/>
+          <label for="radio{{year}}"></label>第{{year}}次人口普查
+        </th>
+      </tr></thead>
+      <tbody>
+      <tr ng-repeat="item in vm.dataList">
+        <th>
+          <img ng-if="item.checked"  ng-model="item.checked" style="width:12px;height:12px" ng-click="vm.legendCheckboxClick(item)"  ng-src="../assets/images/btn_s.png"/>
+          <img ng-if="!item.checked" ng-model="item.checked" style="width:12px;height:12px" ng-click="vm.legendCheckboxClick(item)"  ng-src="../assets/images/btn_us.png"/>
+          {{item.name}}(人)
+        </th>
+        <td>{{item.eduData[0]}}</td>
+        <td>{{item.eduData[1]}}</td>
+      </tr>
+
+      </tbody>
+    </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12" style="width:97%;text-align: right;font-size: 12px;line-height: 36px;color: #333;margin-top: -15px;">数据来源：湖南省统计局</div>
+  </div>
+</section>
