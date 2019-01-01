@@ -1,0 +1,43 @@
+<style type="text/css">
+  .ztjjdyfx{width:99%;}
+  .ztjjdyfx .echartsMap{width:443px;height:630px}
+  .ztjjdyfx .echartsMap #echart{width:430px;height:550px;}
+  .ztjjdyfx .echartsBoxTwo{width:-moz-calc(99% - 453px);width:-webkit-calc(99% - 453px);width:calc(99% - 453px);height:290px;}
+  .ztjjdyfx .echartsBox1{width:-moz-calc(100% - 350px);width:-webkit-calc(100% - 350px);width:calc(100% - 350px);height:290px;}
+  .ztjjdyfx .echartsBox1 #echart1{width:95%;height:230px;}
+  .ztjjdyfx .echartsBox2{width:320px;height:290px;}
+  .ztjjdyfx .echartsBox2 #echart2{width:100%;height:230px;}
+  .ztjjdyfx .echartsBox3{width:-moz-calc(100% - 20px);width:-webkit-calc(100% - 20px);width:calc(100% - 20px);height:330px;}
+  .ztjjdyfx .echartsBox3 #echart3{width:100%;height:270px;}
+@media (min-width: 1900px){
+  .ztjjdyfx .echartsMap{height:850px;}
+  .ztjjdyfx .echartsMap #echart{height:800px;}
+  .ztjjdyfx .echartsBox3{height:550px;}
+  .ztjjdyfx .echartsBox3 #echart3{height:490px;}
+}
+</style>
+<section class="content ztjjdyfx">
+  <div class='row'>
+  <div class='box fl echartsMap'>
+    <div class="box-title">{{vm.lastYear}}湖南省GDP地域分布情况</div>
+    <ng-echarts class="col-md-12 echarts" id="echart" ec-config="vm.mapConfig" ec-option="vm.mapOption" style="position:static;"></ng-echarts>
+  </div>
+  <div class="fl echartsBoxTwo">
+    <div class='box fl echartsBox1'>
+      <div class="box-title">{{vm.lastYear}}{{vm.curAreaName}}GDP产业分布情况</div>
+      <ng-echarts class="col-md-12 echarts" id="echart1" ec-config="vm.pieConfig" ec-option="vm.pieOption" style="position:static;"></ng-echarts>
+    </div>
+    <div class='box fl echartsBox2'>
+      <div class="box-title">{{vm.lastYear}}{{vm.curAreaName}}GDP{{vm.areaName}}排行</div>
+      <ng-echarts class="col-md-12 echarts" id="echart2" ec-config="vm.barConfig" ec-option="vm.barOption" style="position:static;"></ng-echarts>
+    </div>
+    <div class='box fl echartsBox3'>
+      <div class="box-title">
+        {{vm.lastYear}}{{vm.curAreaName}}GDP行业分布情况
+      </div>
+      <ng-echarts class="col-md-12 echarts" id="echart3" ec-config="vm.barConfig1" ec-option="vm.barOption1" style="position:static;"></ng-echarts>
+    </div>
+  </div>
+  </div>
+  <div style="width:99%;height:26px;font-size:12px;color:#333;text-align:right;">数据来源：湖南省统计局</div>
+</section>
