@@ -1,0 +1,71 @@
+<style>
+  .title{ background: #eef1f8; width:100%; height: 36px; margin-top: 10px;  border-radius:0 0 10px 10px;}
+  .title p{ text-align: center; line-height: 36px; color: #333; font-size: 20px;}
+  .jyrs_icon,.jyrs_text{ display: block; float: left; overflow: hidden;}
+  .jyrs_icon{ width: 25%;}
+  .jyrs_text{ width: 75%;}
+  .jyrs_icon img{ width: 64px; height: 64px; margin: 20px 5% 0;}
+  .jyrs_text{ margin-top: 20px;}
+  .jyrs_text p{ font-size: 16px; color: #fff;}
+  .jyrs_text p strong{ font-size: 22px; color: #fff; font-weight: bold;}
+  .syl_icon{ display: block; float: left; margin:28px 10px 10px 24px;}
+  .syl p{ font-size: 15px; color: #fff; line-height: 82px; padding-left: 76px;}
+  .syl span{ font-size: 16px; margin-left: 35px;}
+  .syl span strong{ font-size: 26px;}
+</style>
+<section class="content ">
+  <div class="row" style="margin-left: 1px;">
+    <div class='col-md-8' style=" width:68%;background: #fff;border: 1px solid #D2D6DE;">
+      <div class="title"><p>全省就业人员发展情况</p></div>
+      <ng-echarts class="echarts col-sm-12" ec-config="vm.ecConfig" ec-option="vm.ecOption" style=" height: 370px; position:static;"></ng-echarts>
+    </div>
+    <div class='col-md-3' style="width:29%;background: #fff; margin-left: 15px;border: 1px solid #D2D6DE;">
+      <div style=" background: #80c755; height: 100px; margin-top: 10px;">
+        <div class="jyrs_icon"><img src="../assets/images/icon_jobnum.png"/></div>
+        <div class="jyrs_text" ng-repeat="jydata in vm.jyData">
+          <p>全省年末就业人数</p>
+          <p ng-if="jydata.XZRS<0">
+          <strong>{{jydata.JYRS}}</strong>万，减少{{jydata.XZRS*-1}}万
+          </p>
+          <p ng-if="jydata.XZRS>0">
+            <strong>{{jydata.JYRS}}</strong>万，新增{{jydata.XZRS}}万
+          </p>
+        </div>
+      </div>
+      <div class="syl" ng-repeat="jydata in vm.jyData" style="background: #408bb7; height: 82px; margin: 10px 0;">
+        <div class="syl_icon"><img src="../assets/images/icon_out.png"/></div>
+        <p>城镇登记失业率<span><strong>{{jydata.SYL}}</strong>%</span></p>
+      </div>
+      <div style=" background: #fff;">
+        <ng-echarts class="echarts col-sm-12" ec-config="vm.ecConfig3" ec-option="vm.ecOption3" style="padding-left: 0px; height: 164px; position:static;"></ng-echarts>      
+        <li class="col-xs-12 liyear" style="height:40px;text-align:center;color:#333333;font-size:12px">
+          <div style="float:right;border-top: 1px solid #ccc;width:28%;margin-top:13px"></div>
+          <div style="float:right;padding-right:10px;padding-left:10px;width:44%;margin-top:5px">以上为{{vm.cyear}}年数据</div>
+          <div style="float:right;border-top: 1px solid #ccc;width:28%;margin-top:13px"></div>
+        </li>
+        </div>		
+    </div>
+  </div>
+  <div class="row" style="margin-left: 1px; margin-top: 15px;">
+    <div class="col-md-8" style=" width:68%;background: #fff;border: 1px solid #D2D6DE;">
+      <div class="title"><p>{{vm.cyear}}年全省就业人员行业分布</p></div>
+      <ng-echarts class="echarts col-sm-12" ec-config="vm.ecConfig1" ec-option="vm.ecOption1" style="height:280px; position:static;"></ng-echarts>
+    </div>
+    <div class='col-md-3' style="width:29%;background: #fff; margin-left: 15px;border: 1px solid #D2D6DE;">
+      <div class="title"><p>{{vm.cyear}}年全省就业人数市州排行</p></div>
+      <ng-echarts class="echarts col-sm-12" ec-config="vm.ecConfig2" ec-option="vm.ecOption2" style="width:100%;height:280px; position:static;"></ng-echarts>
+	   <div id="czsr-top5-ze-list" style="position:absolute;left:81%;top:70px;font-size:12px;width:110px;color:#1D77DA;">
+                <div style="position:absolute; top:0;" ></div>
+                <div style="position:absolute; top:48px;"></div>
+                <div style="position:absolute; top:98px;"></div>
+                <div style="position:absolute; top:145px;"></div>
+                <div style="position:absolute; top:194px;"></div>
+              </div>
+    </div>
+  </div>
+<div class="row" style="margin-right: 10px; height:36px;">
+<div style="color:#333333;font-size:12px;line-height:36px;text-align: right;position:absolute;right:10px;">数据来源：湖南省统计局</div>
+</div>
+</section>
+
+
