@@ -1,0 +1,275 @@
+<div ng-if="vm.screenSizeType=='L'">
+  <style>
+
+  </style>
+</div>
+<div ng-if="vm.screenSizeType=='M'">
+  <style>
+
+  </style>
+</div>
+<style type="text/css">
+  .shjzl{width:99%;}
+  .shjzl .boxTop{height:500px;padding: 16px 24px;}
+  .shjzl .boxTop>div:first-child{width:40%;height:100%;float: left;}
+  .shjzl .boxTop>div:last-child{width:60%;height:100%;float:right;}
+  .shjzl .boxTop .top-title{color: #646a88;text-align: center;font-family: 微软雅黑;font-size: 16px;background: #eff1f9;  padding: 5px 0px;  border-radius: 0px 0px 15px 15px;  }
+  .mainmap {
+    position: relative;
+    width: 435px;
+    height:420px;
+    background: no-repeat url('../../../assets/images/map.png');
+    background-size: 95% auto;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+  }
+  #thead th{height:26px;line-height:26px;}
+  #thead td{height:26px;line-height:26px;}
+  #table th{height:26px;line-height:26px;}
+  #table td{height:26px;line-height:26px;}
+  .activea a, .activea img {width: 25px; height: 25px;}
+  .activea{z-index:100;}
+  .nomala a, .nomala img {width: 15px;height: 15px;z-index:99;}
+  .activea label,.nomala label{display:none;}
+  .activea div,.nomala div{display:none;}
+  .nomala, .activea {
+    position: absolute;
+    cursor: pointer;
+  }
+  .label.arrowed:before {
+    left: -10px;
+    border-width: 10px 5px;
+  }
+  .c21-datatbl tbody th{text-align:center;}
+  .shjzl .echartsBox1{width:62%;height:624px;}
+  .shjzl .echartsBox2{width:-moz-calc(38% - 20px);width:-webkit-calc(38% - 20px);width:calc(38% - 20px);height:624px;position:relative;}
+  .shjzl .echartsBox2 .prompt{position:absolute;left:50%;top:435px;width:300px;margin-left:-150px;}
+  .shjzl .echartsBox2 .prompt p{text-align:center;color:#666;font-size:14px;}
+  .shjzl .echartsBox2 .prompt span{color:#333;}
+  .shjzl .echartsBox2 .prompt .txtRed{color:red;font-size:18px;}
+  .shjzl #echarts1,.shjzl #echarts2{width:100%;height:555px;}
+  @media (min-width: 1900px){
+    .shjzl .echartsBox1,.shjzl .echartsBox2{height:824px;}
+    .shjzl .echartsBox2 .prompt{top:585px;}
+    .shjzl #echarts1,.shjzl #echarts2{height:755px;}
+  }
+</style>
+<section class="content shjzl">
+
+  <div class="row">
+    <div class='col-md-12 box boxTop'>
+      <div>
+        <p class="top-title" style="color: #343b43;font-size: 16px;font-weight: bold">区域总体情况分析</p>
+        <div>
+          <!--<img src="../../../assets/images/map.png" width="95%"/>-->
+          <div class="mainmap pull-left" style="display:block;">
+
+            <div class="nomala" style="top: 167px;left: 243px;" outletid="6" top="20">
+              <img src="../../../assets/images/p.png" alt="">
+              <label>湖南湘潭西阳渡口地表水自动监测站</label>
+              <div>娄底湘潭交界断面</div>
+              <span class="label arrowed  visible label-primary" style="opacity: 0.3;">西阳渡口</span>
+            </div>
+
+            <div class="nomala" style="top: 252px;left: 244px;" outletid="7">
+              <img src="../../../assets/images/p.png" alt="">
+              <label>湖南衡阳归阳镇地表水自动监测站</label>
+              <div>永州衡阳交界断面</div>
+              <span class="label arrowed  visible label-primary" style="opacity: 0.3;">归阳镇</span>
+            </div>
+
+            <div class="nomala" style="top: 202px;left: 235px;" outletid="8">
+              <img src="../../../assets/images/p.png" alt="">
+              <label>湖南衡阳联江村地表水自动监测站</label>
+              <div>邵阳衡阳交界断面</div>
+              <span class="label arrowed  visible label-primary" style="opacity: 0.3;">联江村</span>
+            </div>
+
+            <div class="nomala" style="top: 219px;left: 322px;" outletid="9">
+              <img src="../../../assets/images/p.png" alt="">
+              <label>湖南衡阳草市镇地表水自动监测站</label>
+              <div>株洲衡阳交界断面</div>
+              <span class="label label-primary arrowed  visible" style="opacity: 0.3;">草市镇</span>
+            </div>
+
+            <div class="nomala" style="top: 278px;left: 280px;" outletid="10">
+              <img src="../../../assets/images/p.png" alt="">
+              <label>湖南衡阳白沙镇地表水自动监测站</label>
+              <div>郴州衡阳交界断面</div>
+              <span class="label label-primary arrowed  visible" style="opacity: 0.3;">白沙镇</span>
+            </div>
+
+            <div class="nomala" style="top: 278px;left: 311px;" outletid="11">
+              <img src="../../../assets/images/p.png" alt="">
+              <label>湖南衡阳大河滩地表水自动监测站</label>
+              <div>郴州衡阳交界断面</div>
+              <span class="label label-primary arrowed  visible" style="opacity: 0.3;">大河滩</span>
+            </div>
+
+            <div class="nomala" style="top: 193px;left: 365px;" outletid="12">
+              <img src="../../../assets/images/p.png" alt="">
+              <label>湖南株洲王坊镇地表水自动监测站</label>
+              <div>江西湖南交界断面</div>
+              <span class="label label-primary arrowed  visible" style="opacity: 0.3;">王坊镇</span>
+            </div>
+
+            <div class="nomala" style="top: 266px;left: 181px;" outletid="13">
+              <img src="../../../assets/images/p.png" alt="">
+              <label>湖南永州绿埠头地表水自动监测站</label>
+              <div>广西湖南交界断面</div>
+              <span class="label arrowed  visible label-primary" style="opacity: 0.3;">绿埠头</span>
+            </div>
+
+            <div class="nomala" style="top: 78px;l;left: 298px;" outletid="14">
+              <img src="../../../assets/images/p.png" alt="">
+              <label>湖南岳阳屈原地表水自动监测站</label>
+              <div>入洞庭湖口交界断面</div>
+              <span class="label label-primary arrowed  visible" style="opacity: 0.3;">屈原</span>
+            </div>
+
+            <div class="nomala" style="top: 97px;left: 290px;" outletid="15">
+              <img src="../../../assets/images/p.png" alt="">
+              <label>湖南岳阳樟树港地表水自动监测站</label>
+              <div>长沙岳阳交界断面</div>
+              <span class="label arrowed  visible label-primary" style="opacity: 0.3;">樟树港</span>
+            </div>
+
+            <div class="nomala" style="top: 207px;left: 49px;" outletid="16">
+              <img src="../../../assets/images/p.png" alt="">
+              <label>湖南怀化洪江托口地表水自动监测站</label>
+              <div>贵州湖南交界断面</div>
+              <span class="label arrowed  visible label-primary" style="opacity: 0.3;">洪江托口</span>
+            </div>
+
+            <div class="nomala" style="top:191px; left: 19px;" outletid="17">
+              <img src="../../../assets/images/p.png" alt="">
+              <label>湖南怀化新晃鱼市地表水自动监测站</label>
+              <div>贵州湖南交界断面</div>
+              <span class="label label-primary arrowed  visible" style="opacity: 0.3;">新晃鱼市</span>
+            </div>
+
+            <div class="nomala" style="top: 84px;left: 30px;" outletid="18">
+              <img src="../../../assets/images/p.png" alt="">
+              <label>湖南湘西保靖清水坪地表水自动监测站</label>
+              <div>重庆湖南交界断面</div>
+              <span class="label label-primary arrowed  visible" style="opacity: 0.3;">保靖清水坪</span>
+            </div>
+
+            <div class="nomala" style="top: 82px;left: 162px;" outletid="19">
+              <img src="../../../assets/images/p.png" alt="">
+              <label>湖南常德桃源观音寺地表水自动监测站</label>
+              <div>怀化常德交界断面</div>
+              <span class="label arrowed  visible label-primary" style="opacity: 0.3;">桃源观音寺</span>
+            </div>
+
+            <div class="nomala" style="top: 159px;left: 173px;" outletid="20" top="20">
+              <img src="../../../assets/images/p.png" alt="">
+              <label>湖南娄底冷水江球溪地表水自动监测站</label>
+              <div>	邵阳娄底交界断面</div>
+              <span class="label arrowed  visible label-primary" style="opacity: 0.3;">冷水江球溪</span>
+            </div>
+
+            <div class="nomala" style="top: 137px;left: 160px;" outletid="21">
+              <img src="../../../assets/images/p.png" alt="">
+              <label>湖南益阳安化坪口地表水自动监测站</label>
+              <div>娄底益阳交界断面</div>
+              <span class="label label-primary arrowed  visible" style="opacity: 0.3;">安化坪口</span>
+            </div>
+
+            <div class="nomala" style="top: 24px;left: 179px;" outletid="22">
+              <img src="../../../assets/images/p.png" alt="">
+              <label>湖南常德石门城关地表水自动监测站</label>
+              <div>张家界常德交界断面</div>
+              <span class="label label-primary arrowed  visible" style="opacity: 0.3;">石门城关</span>
+            </div>
+
+            <div class="activea" style="top: 139px;left: 300px;" outletid="23" top="20">
+              <img src="../../../assets/images/a.gif" alt="">
+              <label>湖南长沙坪塘地表水自动监测站</label>
+              <div>湘潭长沙交界断面</div>
+              <span class="label label-danger arrowed  visible" style="opacity: 1;">坪塘</span>
+            </div>
+
+            <div class="nomala" style="top: 183px;left: 310px;" outletid="24">
+              <img src="../../../assets/images/p.png" alt="">
+              <label>湖南株洲朱亭镇地表水自动监测站</label>
+              <div>衡阳株洲交界断面</div>
+              <span class="label label-primary arrowed  visible" style="opacity: 0.3;">朱亭镇</span>
+            </div>
+
+            <div class="nomala" style="top: 154px;left: 306px;" outletid="25">
+              <img src="../../../assets/images/p.png" alt="">
+              <label>湖南湘潭马家河地表水自动监测站</label>
+              <div>株洲湘潭交界断面</div>
+              <span class="label label-primary arrowed  visible" style="opacity: 0.3;">马家河</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="padding:0 8px 0 8px;width:70%;margin-left:15%;">
+          <div class="col-xs-4" style="border-top: 1px solid #c9ccdf;margin-top:15px;width:15%">
+          </div>
+          <div class="col-xs-4" style="color: #343b43;font-size: 16px;padding-top:5px;width:70%;text-align:center">
+            <span id="areaName">湖南长沙坪塘地表水自动监测站</span>
+            <!--<span id="stationName">坪塘</span>-->
+          </div>
+          <div class="col-xs-4" style="border-top: 1px solid #c9ccdf;margin-top:15px;width:15%">
+          </div>
+        </div>
+        <div style="height:60px;width:100%;margin-top:45px;font-size:16px;">
+          <div style="float: left;width:75%;">
+            <p style="height:30px;">
+              断面属性：<span id="dmName">湘潭长沙交界断面</span>
+            </p>
+            <p style="height:30px;">
+              测量时间：<span id="clsj"></span>
+            </p>
+          </div>
+          <div style="float:right;width:25%;">
+            <div style="background-color:green;width:80%;height:80px; margin-top: -10px;text-align:center;color:#fff;">
+              <div id="dengji" style="height:40px;line-height:40px;font-size:28px;">
+
+              </div>
+              <div style="height:40px;line-height:40px;">
+                站点情况：<span id="zdqk"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="height:300px;">
+          <table class="c21-datatbl" style="width:94%;margin:8px">
+            <thead id="thead">
+              <tr>
+                <th>项目</th>
+                <th>测量值</th>
+                <th>水质类别</th>
+                <th>Ⅲ类标准</th>
+              </tr>
+            </thead>
+            <tbody id="table">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class='col-md-4 box echartsBox1'>
+        <div class="box-title">地表水环境质量状况</div>
+        <ng-echarts class="echarts col-md-12" id='echarts1' ec-config="vm.barConfig" ec-option="vm.barOption" style="position:static;">
+        </ng-echarts>
+    </div>
+    <div class='col-md-6 box echartsBox2'>
+        <div class="box-title">饮用水水源地水质状况</div>
+        <ng-echarts class="echarts col-md-12" id='echarts2' ec-config="vm.pieConfig" ec-option="vm.pieOption" style="position:static;">
+        </ng-echarts>
+        <div class="prompt">
+            <p>全省14个地级以上城市检测结果</p>
+            <p id='cityShow'>其中<span id='city' class="txtRed">“{{vm.city}}”</span>超标，超标指标<span id='cityNorm'>“{{vm.cityNorm}}”</span></p>
+            <p id='cityHide'>全部达标</p>
+        </div>
+    </div>
+  </div>
+  <div style="clear:both;width:99%;height:26px;font-size:12px;color:#333;text-align:right;">数据来源：湖南省环境保护厅</div>
+</section>
