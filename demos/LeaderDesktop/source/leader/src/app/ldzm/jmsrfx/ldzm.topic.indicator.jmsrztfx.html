@@ -1,0 +1,190 @@
+<style type="text/css">
+ .jmsrZtfx .container-fluid{width:99%;padding:0;margin:0;position:relative;}
+ .jmsrZtfx .echartsBox1{height:335px;}
+ .jmsrZtfx .echartsBox1 #echart-1{height:285px;}
+ .jmsrZtfx .colorBox{height:215px;}
+ .jmsrZtfx .echartsBox2,.jmsrZtfx .echartsBox3{height:290px;}
+  .jmsrZtfx .echartsBox2 #echart-2{height:220px;}
+  .jmsrZtfx .echartsBox3 #echart-4{height:250px;}
+ #jmsr-top5-ze-list>div:nth-of-type(1),#jmxf-top5-ze-list>div:nth-of-type(1){position:absolute; top:0;}
+ #jmsr-top5-ze-list>div:nth-of-type(2),#jmxf-top5-ze-list>div:nth-of-type(2){position:absolute; top:37px;}
+ #jmsr-top5-ze-list>div:nth-of-type(3),#jmxf-top5-ze-list>div:nth-of-type(3){position:absolute; top:74px;}
+ #jmsr-top5-ze-list>div:nth-of-type(4),#jmxf-top5-ze-list>div:nth-of-type(4){position:absolute; top:108px;}
+ #jmsr-top5-ze-list>div:nth-of-type(5),#jmxf-top5-ze-list>div:nth-of-type(5){position:absolute; top:146px;}
+ #jmsr-top5-growth-list>div:nth-of-type(1),#jmxf-top5-growth-list>div:nth-of-type(1){position:absolute; top:0;}
+ #jmsr-top5-growth-list>div:nth-of-type(2),#jmxf-top5-growth-list>div:nth-of-type(2){position:absolute; top:37px;}
+ #jmsr-top5-growth-list>div:nth-of-type(3),#jmxf-top5-growth-list>div:nth-of-type(3){position:absolute; top:74px;}
+ #jmsr-top5-growth-list>div:nth-of-type(4),#jmxf-top5-growth-list>div:nth-of-type(4){position:absolute; top:108px;}
+ #jmsr-top5-growth-list>div:nth-of-type(5),#jmxf-top5-growth-list>div:nth-of-type(5){position:absolute; top:146px;}
+ @media (min-width: 1900px){
+  .jmsrZtfx .echartsBox1{height:435px;}
+  .jmsrZtfx .echartsBox1 #echart-1{height:385px;}
+  .jmsrZtfx .colorBox{height:315px;}
+  .jmsrZtfx .colorBox .jmsrztfx-areabox{height:160px;}
+  .jmsrZtfx .colorBox .jmsrztfx-areacon{height:120px;padding:40px 0;}
+  .jmsrZtfx .echartsBox2,.jmsrZtfx .echartsBox3{height:400px;}
+  .jmsrZtfx .echartsBox2 #echart-2{height:320px;}
+  .jmsrZtfx .echartsBox3 #echart-4{height:350px;}
+   #jmsr-top5-ze-list>div:nth-of-type(1),#jmxf-top5-ze-list>div:nth-of-type(1){position:absolute; top:5px;}
+   #jmsr-top5-ze-list>div:nth-of-type(2),#jmxf-top5-ze-list>div:nth-of-type(2){position:absolute; top:64px;}
+   #jmsr-top5-ze-list>div:nth-of-type(3),#jmxf-top5-ze-list>div:nth-of-type(3){position:absolute; top:126px;}
+   #jmsr-top5-ze-list>div:nth-of-type(4),#jmxf-top5-ze-list>div:nth-of-type(4){position:absolute; top:187px;}
+   #jmsr-top5-ze-list>div:nth-of-type(5),#jmxf-top5-ze-list>div:nth-of-type(5){position:absolute; top:248px;}
+   #jmsr-top5-growth-list>div:nth-of-type(1),#jmxf-top5-growth-list>div:nth-of-type(1){position:absolute; top:5px;}
+   #jmsr-top5-growth-list>div:nth-of-type(2),#jmxf-top5-growth-list>div:nth-of-type(2){position:absolute; top:64px;}
+   #jmsr-top5-growth-list>div:nth-of-type(3),#jmxf-top5-growth-list>div:nth-of-type(3){position:absolute; top:126px;}
+   #jmsr-top5-growth-list>div:nth-of-type(4),#jmxf-top5-growth-list>div:nth-of-type(4){position:absolute; top:187px;}
+   #jmsr-top5-growth-list>div:nth-of-type(5),#jmxf-top5-growth-list>div:nth-of-type(5){position:absolute; top:248px;}
+ }
+</style>
+<section class="content jmsrZtfx">
+  <div class="row" ng-if="!vm.ecOption1">
+    <div class='col-lg-7' style="margin:5% 0 0 20%;">
+      <h2>没有数据显示！</h2>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="col-sx-12 box row echartsBox1" style="margin:0 325px 10px 0;width:auto;">
+      <div class="box-title">总体居民收入支出分析</div>
+      <ng-echarts id="echart-1" class="echarts" ec-config="vm.ecConfig1" ec-option="vm.ecOption1" style="display:block;"></ng-echarts>
+    </div>
+    <div style="width:310px;position:absolute;top:0px;right:0;background-color:#ecf0f5">
+      <div style="height:110px">
+        <div style="float:left;background-color:#6cb964;width:155px;height:110px;color:#FFF;padding-top:4px;">
+          <div style="text-align:center;">
+            <img src="/assets/images/icon_jmsr_home.png"/>
+          </div>
+          <div style="text-align:center;">居民人均可支配收入</div>
+          <div style="text-align:center;font-size:14px;font-weight:bold;">
+            <span id="rjsr" style="font-size:20px;"></span>元
+          </div>
+        </div>
+        <div style="float:left; background-color:#FFB310; width:155px; height:110px; color:#FFF">
+          <div style="text-align:center;">
+            <img src="/assets/images/icon_jmxf_home.png"/>
+          </div>
+          <div style="text-align:center;">居民人均消费支出</div>
+          <div style="text-align:center; font-size:14px; font-weight:bold;">
+            <span id="rjxf" style="font-size:20px;"></span>元
+          </div>
+        </div>
+      </div>
+      <div class="box colorBox" style="padding:0;margin:10px 0 0 0;">
+        <div class="jmsrztfx-areabox">
+          <div class="jmsrztfx-areatitle">
+            长株潭地区
+          </div>
+          <div class="jmsrztfx-areacon">
+            <div>
+              <span id="jmsr-czt"></span>元
+            </div>
+            <div style="color:red">
+              ↑<span id="jmsrzs-czt"></span>
+            </div>
+          </div>
+        </div>
+        <div class="jmsrztfx-areabox" style="margin-left:4px">
+          <div class="jmsrztfx-areatitle">
+            湘南地区
+          </div>
+          <div class="jmsrztfx-areacon">
+            <div>
+              <span id="jmsr-xn"></span>元
+            </div>
+            <div style="color:red">
+              ↑<span id="jmsrzs-xn"></span>
+            </div>
+          </div>
+        </div>
+        <div class="jmsrztfx-areabox">
+          <div class="jmsrztfx-areatitle">
+            大湘西地区
+          </div>
+          <div class="jmsrztfx-areacon">
+            <div>
+              <span id="jmsr-dxx"></span>元
+            </div>
+            <div style="color:red">
+              ↑<span id="jmsrzs-dxx"></span>
+            </div>
+          </div>
+        </div>
+        <div class="jmsrztfx-areabox" style="margin-left:4px">
+          <div class="jmsrztfx-areatitle">
+            洞庭湖地区
+          </div>
+          <div class="jmsrztfx-areacon">
+            <div>
+              <span id="jmsr-dth"></span>元
+            </div>
+            <div style="color:red">
+              ↑<span id="jmsrzs-dth"></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 liyear" style="height:40px;text-align:center;color:#333333;font-size:12px">
+              <div style="float:right;border-top: 1px solid #ccc;width:18%;margin-top:13px"></div>
+              <div style="float:right;padding-right:10px;padding-left:10px;width:64%;margin-top:5px">以上为{{vm.lastYear}}数据</div>
+              <div style="float:right;border-top: 1px solid #ccc;width:18%;margin-top:13px"></div>
+       </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid ">
+      <div class="box echartsBox2" style="width:420px;float:left;margin:0;padding:0;">
+        <div id="echart23-tabs" style="margin-top:10px; padding:0 15px">
+          <div pane-id="echart-2-pane" idx="2" class="box-tab-title active" style="width:49%;">城镇人均可支配收入TOP5</div>
+          <div pane-id="echart-3-pane" idx="3" class="box-tab-title" style="margin-left:6px; width:49%;">农村人均消费支出TOP5</div>
+          <div style="clear:both"></div>
+        </div>
+        <div id="echart-2-pane" style="position:relative;">
+          <ng-echarts id="echart-2" class="echarts" ec-config="vm.ecConfig2" ec-option="vm.ecOption2" style="display:block; "></ng-echarts>
+          <div id="jmsr-top5-ze-list" style="position:absolute; left: 70%; top: 9%; font-size:12px; width:100px; color:#1D77DA;">
+            <div ></div>
+            <div ></div>
+            <div ></div>
+            <div ></div>
+            <div ></div>
+          </div>
+
+          <div id="jmsr-top5-growth-list" style="position:absolute; left: 87%; top: 9%; font-size:12px; width:100px; color:#F54E5D;">
+            <div ></div>
+            <div ></div>
+            <div ></div>
+            <div ></div>
+            <div ></div>
+          </div>
+
+          <div id="jmxf-top5-ze-list" style="display:none;position:absolute; left: 70%; top: 9%; font-size:12px; width:100px; color:#1D77DA;">
+            <div  ></div>
+            <div ></div>
+            <div ></div>
+            <div ></div>
+            <div ></div>
+          </div>
+
+          <div id="jmxf-top5-growth-list" style="display:none;position:absolute; left: 87%; top: 9%; font-size:12px; width:100px; color:#F54E5D;">
+            <div ></div>
+            <div ></div>
+            <div></div>
+            <div ></div>
+            <div ></div>
+          </div>
+        </div>
+        <div class="col-xs-12 liyear" style="height:40px;text-align:center;color:#333333;font-size:12px">
+              <div style="float:right;border-top: 1px solid #ccc;width:18%;margin-top:13px"></div>
+              <div style="float:right;padding-right:10px;padding-left:10px;width:64%;margin-top:5px">以上为{{vm.lastYear}}数据</div>
+              <div style="float:right;border-top: 1px solid #ccc;width:18%;margin-top:13px"></div>
+       </div>
+      </div>
+      <div class="row" style="margin:0 0 0 430px;padding:0;">
+        <div class="col-sx-12 box echartsBox3" style="width:100%;margin:0;">
+          <div class="box-title">{{vm.lastYear}}城乡居民收入分析</div>
+          <ng-echarts id="echart-4" class="echarts" ec-config="vm.ecConfig4" ec-option="vm.ecOption4" style="display:block;"></ng-echarts>
+        </div>
+      </div>
+  </div>
+  <div class="row" style='margin-top: 10px'>
+    <div class="col-xs-12" style="width:97%;text-align: right;font-size: 12px;line-height: 36px;color: #333;margin-top: -15px;">数据来源：湖南省统计局</div>
+  </div>
+</section>
