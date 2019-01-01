@@ -1,0 +1,112 @@
+<style>
+/* .active1{color:darkred;background-color:greenYellow;} */
+.jyqkfxztfx .indi-chart-p {float:left;background-color:white;border:1px solid #D2D6DE;}
+.jyqkfxztfx .indi-chart-p .c21-datatbl{width:100%;font-size:14px;color:#515A64;}
+.jyqkfxztfx .indi-chart-p .c21-datatbl thead tr{background-color:#F6F7FB;}
+.jyqkfxztfx .indi-chart-p .c21-datatbl tbody tr:nth-child(even){background-color:#F6F7FB;}
+.jyqkfxztfx .indi-chart-p .c21-datatbl tbody tr:nth-child(odd){background-color:#FFF;}
+.jyqkfxztfx .indi-chart-p .c21-datatbl th{font-weight:normal;}
+.jyqkfxztfx .indi-chart-p .c21-datatbl tbody th{text-align:left;padding-left:10px;width:235px;}
+.jyqkfxztfx .indi-chart-p .c21-datatbl th, .indi-chart-p .c21-datatbl td{text-align:center;line-height:35px;border:solid 1px #EFF1F9;}
+.jyqkfxztfx .indi-chart-p .c21-datatbl th:hover, .indi-chart-p .c21-datatbl td:hover{border-color:#E9F9F9;background-color: #D4EDED;}
+.jyqkfxztfx .indi-chart-p .c13-area{float:left;width:115px;}
+.jyqkfxztfx .indi-chart-p .c13-area .area-name{padding:8px 0;text-align:center;color:#FFF;background-color:#FFA312;}
+.jyqkfxztfx .echartsBox1{width:-moz-calc(60.7% - 10px);width:-webkit-calc(60.7% - 10px);width:calc(60.7% - 10px);height:258px;}
+.jyqkfxztfx .echartsBox1 #echarts1{height:255px;width:100%;}
+.jyqkfxztfx .echartsBox2{width:-moz-calc(39.3% - 10px);width:-webkit-calc(39.3% - 10px);width:calc(39.3% - 10px);height:258px;position:relative;}
+.jyqkfxztfx .echartsBox2 #echarts2{height:322px;width:80%;}
+.jyqkfxztfx .echartsBox3{width:-moz-calc(60.7% - 10px);width:-webkit-calc(60.7% - 10px);width:calc(60.7% - 10px);height:330px;}
+.jyqkfxztfx .echartsBox3 #echarts3{height:270px;width:100%;}
+.jyqkfxztfx .echartsBox4{width:-moz-calc(39.3% - 10px);width:-webkit-calc(39.3% - 10px);width:calc(39.3% - 10px);height:330px;}
+.jyqkfxztfx .echartsBox4 #echarts4{height:290px;width:100%;}
+.jyqkfxztfx .txtGdjy_F{position:absolute;top:55px;}
+.jyqkfxztfx .txtGdjy_L{left:2%;}
+.jyqkfxztfx .txtGdjy_Z{left:74%;}
+.jyqkfxztfx .txtGdjy_R{left:88%;}
+.jyqkfxztfx .txtGdjy_L .txtGdjy{font-size:12px;text-align:right;}
+.jyqkfxztfx .txtGdjy_Z .txtGdjy{color:#0C6BDB;font-size:12px;text-align:center;}
+.jyqkfxztfx .txtGdjy_R .txtGdjy{font-size:12px;text-align:center;}
+.jyqkfxztfx .txtGdjy1{padding:7px 2px;}
+.jyqkfxztfx .txtGdjy2{padding:27px 2px;}
+.jyqkfxztfx .txtGdjy3{padding:6px 2px;}
+.jyqkfxztfx .txtGdjy4{padding:28px 2px;}
+@media (min-width:1900px){    
+  .jyqkfxztfx .echartsBox1,.jyqkfxztfx .echartsBox2{height:358px;}
+  .jyqkfxztfx .echartsBox1 #echarts1{height:355px;}
+  .jyqkfxztfx .echartsBox2 #echarts2{height:422px;}
+  .jyqkfxztfx .echartsBox3,.jyqkfxztfx .echartsBox4{height:480px;}
+  .jyqkfxztfx .echartsBox3 #echarts3{height:400px;}
+  .jyqkfxztfx .echartsBox4 #echarts4{height:420px;}
+  .jyqkfxztfx .txtGdjy1{padding:19px 2px;}
+  .jyqkfxztfx .txtGdjy2{padding:38px 2px;}
+  .jyqkfxztfx .txtGdjy3{padding:25px 2px;}
+  .jyqkfxztfx .txtGdjy4{padding:28px 2px;}
+}  
+</style>
+<section class="content jyqkfxztfx">
+  <div class="indi-chart-p echartsBox1">
+    <div class="box-title">{{vm.lastYear}}全省教育基本情况</div>
+    <ng-echarts class="echarts col-md-12" id='echarts1' ec-config="vm.ecConfig" ec-option="vm.ecOption" style="position:static;margin-top:-20px;"></ng-echarts>
+  </div>
+  <div class="indi-chart-p echartsBox2" style="margin-left:10px">
+    <div class="box-title">{{vm.lastYear}}全省高等教育基本情况</div>
+    <div  style="margin-left:60px;margin-top:-62px;">
+      <ng-echarts class="echarts col-md-9" id='echarts2' ec-config="vm.ecConfig4" ec-option="vm.ecOption4" style="position:static;"></ng-echarts>
+    </div>
+    <div class="txtGdjy_L txtGdjy_F">
+      <div class="txtGdjy txtGdjy1">招生数</div>
+      <div class="txtGdjy txtGdjy2">在校数</div>
+      <div class="txtGdjy txtGdjy3">毕业人数</div>
+      <div class="txtGdjy txtGdjy4">预计毕业人数</div>
+    </div>
+    <div class="txtGdjy_Z txtGdjy_F">
+      <div class="txtGdjy txtGdjy1">
+        &nbsp;{{(vm.hignDataList[0].ADMISSIONS_NUM/10000).toFixed(2)}}万人
+      </div>
+      <div class="txtGdjy txtGdjy2">
+        &nbsp;{{(vm.hignDataList[0].UNDERGRAD_NUM/10000).toFixed(2)}}万人
+      </div>
+      <div class="txtGdjy txtGdjy3">
+        &nbsp;{{(vm.hignDataList[0].GRADUATES_NUM/10000).toFixed(2)}}万人
+      </div>
+      <div class="txtGdjy txtGdjy4">
+        &nbsp;{{(vm.hignDataList[0].PRE_GRADUATES_NUM/10000).toFixed(2)}}万人
+      </div>
+    </div>
+    <div class="txtGdjy_R txtGdjy_F">
+      <div class="txtGdjy txtGdjy1" ng-if="vm.hignDataList[0].ADMISSIONS_ZZL>=0" style="color:red;">
+        ↑{{vm.hignDataList[0].ADMISSIONS_ZZL}}%
+      </div>
+      <div class="txtGdjy txtGdjy1" ng-if="vm.hignDataList[0].ADMISSIONS_ZZL<0" style="color:green;">
+        ↓{{vm.hignDataList[0].ADMISSIONS_ZZL*(-1)}}%
+      </div>
+      <div class="txtGdjy txtGdjy2" ng-if="vm.hignDataList[0].UNDERGRAD_ZZL>=0" style="color:red;">
+        ↑{{vm.hignDataList[0].UNDERGRAD_ZZL}}%
+      </div>
+      <div class="txtGdjy txtGdjy2" ng-if="vm.hignDataList[0].UNDERGRAD_ZZL<0" style="color:green;">
+        ↓{{vm.hignDataList[0].UNDERGRAD_ZZL*(-1)}}%
+      </div>
+      <div class="txtGdjy txtGdjy3" ng-if="vm.hignDataList[0].GRADUATES_ZZL>=0" style="color:red;">
+        ↑{{vm.hignDataList[0].GRADUATES_ZZL}}%
+      </div>
+      <div class="txtGdjy txtGdjy3" ng-if="vm.hignDataList[0].GRADUATES_ZZL<0" style="color:green;">
+        ↓{{vm.hignDataList[0].GRADUATES_ZZL*(-1)}}%
+      </div>
+      <div class="txtGdjy txtGdjy4" ng-if="vm.hignDataList[0].PRE_GRADUATES_ZZL>=0" style="color:red;">
+        ↑{{vm.hignDataList[0].PRE_GRADUATES_ZZL}}%
+      </div>
+      <div class="txtGdjy txtGdjy5" ng-if="vm.hignDataList[0].PRE_GRADUATES_ZZL<0" style="color:green;">
+        ↓{{vm.hignDataList[0].PRE_GRADUATES_ZZL*(-1)}}%
+      </div>
+    </div>
+  </div>
+  <div class="indi-chart-p echartsBox3" style="margin-top:10px;">
+    <div class="box-title">{{vm.lastYear}}全省教育经费构成及占比</div>
+    <ng-echarts class="echarts col-md-12" id='echarts3' ec-config="vm.ecConfig2" ec-option="vm.ecOption2" style="position:static;"></ng-echarts>
+  </div>
+  <div class="indi-chart-p echartsBox4" style="margin-top:10px;margin-left:10px">
+    <div class="box-title">全省义务教育情况</div>
+    <ng-echarts class="echarts col-md-12" id='echarts4' ec-config="vm.ecConfig3" ec-option="vm.ecOption3" style="position:static;"></ng-echarts>
+  </div>
+  <div style="clear:both;padding-top:10px;width:99%;height:26px;font-size:12px;color:#333;text-align:right;">数据来源：湖南省统计局</div>
+<section>
