@@ -1,0 +1,94 @@
+<style>
+  .w001{
+    width:456px;height:610px;
+  }
+  .w001_1{
+    width: 430px; height: 550px;
+  }
+  .w000{
+    width:700px;height:290px
+  }
+  .w002{
+    width:325px;height:290px
+  }
+  .w002_1{
+    width: 320px; height: 230px;
+  }
+  .w003{
+    width:345px;height:290px
+  }
+  .w003_1{
+    width: 355px; height: 230px;
+  }
+  .w004{
+    width:680px;height:310px
+  }
+  .w004_1{
+    width: 680px; height: 260px;
+  }
+  .cfd{
+    margin-right:2.18%;
+  }
+  @media (min-width: 1900px){
+    .w001{
+      width:31%;height:810px;
+    }
+    .w001_1{
+      width: 530px; height: 700px;
+    }
+    .w000{
+      width:1050px;
+    }
+    .w002{
+      width:500px;height:400px
+    }
+    .w002_1{
+      width: 500px; height: 350px;
+    }
+    .w003{
+      width:520px;height:400px
+    }
+    .w003_1{
+      width: 525px; height: 360px;
+    }
+    .w004{
+      width:1030px;height:400px
+    }
+    .w004_1{
+      width: 1020px; height: 350px;
+    }
+    .cfd{
+      margin-right:4%;
+    }
+  }
+
+</style>
+
+<section class="content">
+  <div class="row">
+    <div class='box fl w001' style="">
+      <div class="box-title">{{vm.curYear}}湖南省固定资产投资地域分布情况</div>
+      <ng-echarts class="col-md-12 echarts w001_1" ec-config="vm.mapConfig" ec-option="vm.mapOption" style="position:static;"></ng-echarts>
+    </div>
+    <div class="fl w000">
+      <div class='box fl w002'>
+        <div class="box-title">{{vm.curYear}}{{vm.curAreaName}}固定资产投资经济类型分布情况</div>
+        <ng-echarts class="col-md-12 echarts w002_1" ec-config="vm.pieConfig" ec-option="vm.pieOption" style=" position:static;"></ng-echarts>
+      </div>
+      <div class='box fl w003'>
+        <div class="box-title">{{vm.curYear}}{{vm.curAreaName}}固定资产投资市州排行TOP5</div>
+        <ng-echarts class="col-md-12 echarts w003_1" ec-config="vm.barConfig" ec-option="vm.barOption" style="position:static;margin-left:-10px"></ng-echarts>
+      </div>
+      <div class='box fl w004'>
+        <div class="box-title">
+          {{vm.curYear}}{{vm.curAreaName}}固定资产投资行业分布情况
+        </div>
+        <ng-echarts class="col-md-12 echarts w004_1" ec-config="vm.barConfig1" ec-option="vm.barOption1" style="position:static;"></ng-echarts>
+      </div>
+    </div>
+  </div>
+  <div class='row cfd' style="text-align:right;padding-top:0;color:#333333;font-size:12px">
+    数据来源：{{vm.dataComeFrom}}
+  </div>
+
+</section>
