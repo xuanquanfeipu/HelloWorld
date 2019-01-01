@@ -1,0 +1,166 @@
+.ldzm .container.maincon{
+  min-width:1300px;
+}
+.map00{
+  height:615px
+}
+.map01{
+  height:560px;
+}
+.bar01{
+  height:200px;
+  //width:540px;
+}
+.line01{
+  width: 500px;
+  height: 254px;
+  margin-top:-20px;
+}
+.pie00{
+  height: 311px;
+  //width:520px
+}
+.pie01{
+  height: 280px;
+}
+.pie_title{
+  left:23%; top:34%; width:130px;
+}
+.rks {
+  width: 217px;
+  height: 126px;
+  background: #6cb964;
+}
+.margin_top{
+  margin-top:0px
+}
+.p_b{
+  padding-bottom:0px
+}
+.right_01{
+  height:285px
+}
+.right_02{
+  height:312px
+}
+.middle_02{
+  height:260px
+}
+
+#hometab .on{
+  background: #2E40A4;
+  color: #ffffff;
+}
+.Basic_situation {
+  padding-top: 14px;
+  margin: 0 0 7px;
+  font-family: 微软雅黑;
+  // font-weight: bold;
+}
+.Basic_situation span:nth-child(1) {
+  width: 50%;
+  display: inline-block;
+  text-align: right;
+  font-size: 12px;
+  color:#515a64;
+  font-weight: bold;
+}
+.Basic_situation span:nth-child(2) {
+  display: inline-block;
+  width: 20%;
+  margin-left: 35px;
+  font-size: 12px;
+  color: #003399;
+}
+.Basic_situation span:nth-child(3) {
+  display: inline-block;
+  width: 18%;
+  text-align: left;
+  font-size: 12px;
+  color: rgb(242, 58, 112);
+}
+.line-bar-f{
+  background-color: #5c9d55;
+  border-radius: 5px;
+  height: 8px;
+  //opacity: 0.2;
+}
+.line-bar-rk{
+  background-color: #A5E87C;
+  border-radius: 5px;
+  height: 8px;
+  width: 44.3696%;
+  margin-top:-8px;
+}
+.padd{
+  padding:18px 10px;
+}
+@media (min-width: 1900px){
+  .ldzm .container.maincon{
+    min-width:1768px;
+  }
+  .map00{
+    height:815px
+  }
+  .map01{
+    height:705px;
+  }
+  .bar01{
+    height:280px;
+    //width:720px;
+  }
+  .line01{
+    width: 680px;
+    height: 354px;
+  }
+  .pie00{
+    height: 401px;
+    //width:900px
+  }
+  .pie01{
+    height: 330px;
+    margin-top:25px;
+  }
+  .pie_title{
+    left:17%; top:36%; width:220px;
+  }
+  .rks {
+    width: 267px;
+    height: 235px;
+    background: #6cb964;
+  }
+  .margin_top{
+    margin-top:30px;
+    padding-bottom:50px
+  }
+  .p_b{
+    padding-bottom:0px
+  }
+  .right_01{
+    height:388px;
+  }
+  .right_02{
+    height:406px
+  }
+  .middle_02{
+    height:360px
+  }
+  .padd{
+    padding:5px 70px;
+  }
+  .mar_1{
+    margin-top:38px
+  }
+  .Basic_situation span:nth-child(1) {
+    font-size: 14px;
+  }
+  .Basic_situation span:nth-child(2) {
+    font-size: 14px;
+  }
+  .Basic_situation span:nth-child(3) {
+    font-size: 14px;
+  }
+  .Basic_situation {
+    padding-top: 0px;
+  }
+}
