@@ -1,0 +1,185 @@
+<style>
+  .active1{
+    color:darkred;
+    background-color: greenYellow;
+  }
+  .indi-chart-p {
+    float: left;
+    background-color:white;
+    border: 1px solid #D2D6DE
+  }
+  .indi-chart-p .title {
+    height: 35px;
+    background-color: #EFF1F9;
+    text-align: center;
+    line-height: 20px;
+    padding: 8px 0;
+    margin: 6px;
+    border-radius: 12px;
+    color: #515A64;
+    font-size: 16px;
+  }
+  .indi-chart-p .c21-datatbl {
+    width: 100%;
+    font-size: 14px;
+    color: #515A64;
+  }
+
+  .indi-chart-p .c21-datatbl thead tr {
+    background-color: #F6F7FB
+  }
+
+  .indi-chart-p .c21-datatbl tbody tr:nth-child(even) {
+    background-color: #F6F7FB
+  }
+
+  .indi-chart-p .c21-datatbl tbody tr:nth-child(odd) {
+    background-color: #FFF
+  }
+
+  .indi-chart-p .c21-datatbl th {
+    font-weight: normal;
+  }
+
+  .indi-chart-p .c21-datatbl tbody th {
+    text-align:left;
+    padding-left: 10px;
+    width: 235px;
+  }
+  .indi-chart-p .c21-datatbl th, .indi-chart-p .c21-datatbl td {
+    text-align: center;
+    line-height:35px;
+    border: solid 1px #EFF1F9;
+  }
+
+  .indi-chart-p .c21-datatbl th:hover, .indi-chart-p .c21-datatbl td:hover {
+    border-color: #E9F9F9;
+    background-color: #D4EDED
+  }
+
+  select {
+    border:1px solid #eee;
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    background: url("../../../assets/images/icon_select_z.png") no-repeat scroll right center transparent;
+    height: 35px;line-height: 35px;border-radius: 5px;
+    padding: 0 35px 0 6px;
+  }
+  select::-ms-expand { display: none; }
+  /*改变单选框样式*/
+  .radio{display:none;}
+  .radio +label{
+    position: relative;
+    display: inline-block;
+    z-index: 999;
+    width: 12px;
+    height: 25px;
+    padding: 3px 15px;
+    vertical-align: middle;
+  }
+  .radio+label:before{
+    content:"";
+    color:#fff;
+    width: 15px;
+    height: 15px;
+    background: #777980;
+    border-radius: 15px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    display:block;
+    box-shadow: 0px 0px 3px #A19797;
+  }
+  .radio:checked+label:before{
+    content:"";
+    background: #1caf9a;
+  }
+  .radio+label:after{
+    content: attr(title);
+    width: 5px;
+    height: 5px;
+    display:block;
+    border: 3px solid #F7F9F9;
+    position: absolute;
+    top: 8.5px;
+    left: 8.5px;
+    border-radius: 7px;
+    box-shadow: 0px 0px 3px #F2EBEB;
+  }
+  .radio:checked+label:after{
+    background: #1caf9a;
+  }
+  .crop{overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-wrap: normal}
+</style>
+
+<section class="content" style="padding-right: 25px;">
+<div class="row">
+  <div class="box col-md-5" style=" width:60%;height:470px;margin-left:15px;">
+    <div class="box-title" >
+      {{vm.hyyear}}年行业年末就业人数占比
+    </div>
+    <ng-echarts class="echarts col-sm-12" ec-config="vm.ecConfig1" ec-option="vm.ecOption1" style="height: 410px; position:static;"></ng-echarts>
+  </div>
+
+  <div class="box col-md-5" style="width:37%;height:470px;margin-left:15px;">
+    <div class="box-title">
+      单行业年末就业人数发展情况
+    </div>
+    <div style="text-align:center; margin:-12px 0 12px 0;">
+      <div style="float:left;margin-left:35px;margin-top:19px;font-size: 16px; color: #8c94b3;">
+        请选择行业
+        <select ng-model="selectedSite"  ng-init="selectedSite = vm.selectDease"   ng-change="vm.selectDeaseChange(selectedSite);">
+          <option ng-repeat="jb in vm.jbList" value="{{jb.INDUSTRY_CATEGORY_NO}}" >{{jb.INDUSTRY_CATEGORY_NAME}}</option>
+        </select>
+      </div>
+
+    </div>
+    <ng-echarts class="echarts col-sm-12" ec-config="vm.ecConfig" ec-option="vm.ecOption" style="height: 410px; position:static;"></ng-echarts>
+  </div>
+</div>
+
+  <div class="row">
+    <div class="box col-sm-12" style=" width:98.1%;margin-top:10px;margin-left:15px;">
+      <div class="box-title">
+        行业年末就业人数历年数据
+      </div>
+
+      <div style="margin-top:15px;">
+        <table class="c21-datatbl" id="c21-datatbl">
+          <thead>
+          <tr>
+            <th style="text-align:left; padding-left:10px;">
+              指标
+            </th>
+            <th ng-repeat="year in vm.yearDescList">
+              <input name="yearRadio" type="radio" id="radio{{year.value}}" class="radio" ng-checked="year.value=='2015'" ng-model="year.checked" ng-click="vm.clickRadio(year.value)">
+              <label for="radio{{year.value}}"></label>{{year.value}}年
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr ng-repeat="jb in vm.jbList">
+            <th class="crop">
+              <img ng-if="jb.checked"  ng-model="jb.checked" style="width:12px;height:12px" ng-click="vm.legendCheckboxClick('y',jb)"  ng-src="../assets/images/btn_s.png"/>
+              <img ng-if="!jb.checked" ng-model="jb.checked" style="width:12px;height:12px" ng-click="vm.legendCheckboxClick('y',jb)"  ng-src="../assets/images/btn_us.png"/>
+              {{jb.INDUSTRY_CATEGORY_NAME}}（万人）
+            </th>
+            <td ng-repeat="year in vm.yearDescList">
+              <span ng-repeat="item in vm.dataList">
+                <span ng-if="jb.INDUSTRY_CATEGORY_NO==item.INDUSTRY_CATEGORY_NO && year.value==item.DATE_PERIOD">{{item.JYRS}}</span>
+              </span>
+            </td>
+          </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<div class="row" style="margin-right: 10px;height:36px; ">
+<div style="color:#333333;font-size:12px;line-height:36px;text-align: right;position:absolute;right:10px;">数据来源：湖南省统计局</div>
+</div>
+  <section>
+
