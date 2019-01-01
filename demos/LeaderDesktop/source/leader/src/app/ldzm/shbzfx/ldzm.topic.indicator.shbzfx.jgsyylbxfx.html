@@ -1,0 +1,90 @@
+<section class="content-header" ng-if="vm.breadcrumbs">
+  <h1>
+    {{vm.title}}
+  </h1>
+  <sc-breadcrumb breadcrumbs="vm.breadcrumbs"></sc-breadcrumb>
+</section>
+
+<section class="content">
+  <div class="row" ng-if="!vm.ecOption">
+    <div class='col-lg-7' style="margin:5% 0 0 20%;">
+      <h2>没有数据显示！</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12" style="padding:10px 0 10px 40px">
+      <select ng-model="vm.selectedItem" ng-options="item.name for item in vm.statItems track by item.value"
+              ng-click="vm.updateChart(vm.selectedItem)" style="width:120px;"></select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12" style="padding:10px 0 10px 40px">
+      <div ng-if="vm.ecOption" style="margin-left:10px; height:430px; background-color:#fff">
+        <div style="width:98%; background: #fff;border-top:2px solid #008000;">
+          <ng-echarts id="echart-1" class="echarts" ec-config="vm.ecConfig" ec-option="vm.ecOption" style="display:block; height: 400px; position:static;"></ng-echarts>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" ng-if="vm.yearArrRV" style="margin-left:10px; height:430px; background-color:#fff">
+    <div class='col-lg-12' style="background: #fff;border-top:2px solid #008000; padding:30px 10px 0">
+      <table style="width:100%" border="1px" id="shbzfxTable" class="shbzfx-table">
+        <thead>
+        <tr>
+          <th>指标</th>
+          <th ng-repeat="year in vm.yearArrRV">{{year}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th></th>
+          <td ng-repeat="year in vm.yearArrRV" style="text-align:center">
+            <input type="checkbox" class="cbx-year" ng-click="vm.changeYears()" value="{{year}}" checked/>
+          </td>
+        </tr>
+        <tr>
+          <th>参保人数（万人）</th>
+          <td ng-repeat="repeatVal in vm.cbrsArrRV track by $index">{{repeatVal}}</td>
+        </tr>
+        <tr>
+          <th>在职职工人数（万人）</th>
+          <td ng-repeat="repeatVal in vm.zzzgArrRV track by $index">{{repeatVal}}</td>
+        </tr>
+        <tr>
+          <th>离退休人员人数（万人）</th>
+          <td ng-repeat="repeatVal in vm.ltxrsArrRV track by $index">{{repeatVal}}</td>
+        </tr>
+        <tr>
+          <th>收入（亿元）</th>
+          <td ng-repeat="repeatVal in vm.srArrRV track by $index">{{repeatVal}}</td>
+        </tr>
+        <tr>
+          <th>支出（亿元）</th>
+          <td ng-repeat="repeatVal in vm.zcArrRV track by $index">{{repeatVal}}</td>
+        </tr>
+        <tr>
+          <th>参保人数增率（%）</th>
+          <td ng-repeat="repeatVal in vm.cbrsGrowthRV track by $index">{{repeatVal}}</td>
+        </tr>
+        <tr>
+          <th>在职职工人数增率（%）</th>
+          <td ng-repeat="repeatVal in vm.zzzgGrowthRV track by $index">{{repeatVal}}</td>
+        </tr>
+        <tr>
+          <th>离退休人员人数增率（%）</th>
+          <td ng-repeat="repeatVal in vm.ltxrsGrowthRV track by $index">{{repeatVal}}</td>
+        </tr>
+        <tr>
+          <th>收入增率（%）</th>
+          <td ng-repeat="repeatVal in vm.srGrowthRV track by $index">{{repeatVal}}</td>
+        </tr>
+        <tr>
+          <th>支出增率（%）</th>
+          <td ng-repeat="repeatVal in vm.zcGrowthRV track by $index">{{repeatVal}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
