@@ -1,0 +1,52 @@
+
+<section class="content po_distribute">
+  <!--
+  <div class="row" ng-if="!vm.ecOption">
+    <div class='col-md-7' style="margin:5% 0 0 20%;">
+      <h2>没有数据显示！</h2>
+    </div>
+  </div>
+  -->
+
+  <div class='row'>
+    <div class='col-md-12 box po_distr_fbqs'>
+      <div class="box-title">全省人口年龄分布趋势</div>
+      <ng-echarts id="po_distr_chart1" class="echarts col-md-12" ec-config="vm.ageConfig" ec-option="vm.ageOption">
+      </ng-echarts>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class='col-md-6 box po_distr_ylfn'>
+      <div class="box-title">{{vm.latestYear}}年全省育龄妇女人数占比</div>
+      <ng-echarts id="po_distr_chart2" class="echarts col-md-12" ec-config="vm.fertileWomanConfig" ec-option="vm.fertileWomanOption" >
+      </ng-echarts>
+    </div>
+
+    <div class='col-md-6 box po_distr_rote'>
+      <div class="box-title">{{vm.latestYear}}年全省男女人数比例</div>
+      <!--<ng-echarts class="echarts col-md-12" ec-config="vm.genderConfig" ec-option="vm.genderOption" style=" height: 180px; position:static">-->
+      <!--</ng-echarts>-->
+
+      <div class="col-md-12" style="padding-top:15px;padding-left:40px;">
+        <img src="/assets/images/icon_male.png"/>
+        <span style="padding-left:10px;font-size: 16px">男</span>
+
+        <ng-echarts id="po_distr_chart3" class="echarts col-md-12" ec-config="vm.maleConfig" ec-option="vm.maleOption">
+        </ng-echarts>
+      </div>
+
+      <div class="col-md-12" style="padding-top:15px;padding-left:40px;">
+        <img src="/assets/images/icon_women.png"/>
+        <span style="padding-left:17px;font-size: 16px">女</span>
+
+        <ng-echarts id="po_distr_chart4" class="echarts col-md-12" ec-config="vm.femaleConfig" ec-option="vm.femaleOption" >
+        </ng-echarts>
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12" style="width:99%;text-align: right;font-size: 12px;line-height: 36px;color: #333;margin-top: -15px;">数据来源：湖南省统计局</div>
+  </div>
+</section>
