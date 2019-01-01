@@ -1,0 +1,44 @@
+
+<section class="content ztjjhyfx">
+  <div class='row'>
+    <div class='col-md-5 box echartsBox1'>
+      <div class="box-title">{{vm.lastYear}}行业GDP占比</div>
+      <div style="margin-left:10px">
+        <ng-echarts class="col-md-12 echarts" id='echart1' ec-config="vm.pieConfig" ec-option="vm.pieOption"></ng-echarts>
+      </div>
+    </div>
+    <div class='col-md-5 box echartsBox2'>
+      <div class="box-title">单行业GDP发展情况</div>
+      请选择行业
+      <select ng-init="selectedIndex = '0'" ng-model="selectedIndex" ng-change="vm.switchBarChart(selectedIndex);">
+        <option ng-repeat="category in vm.dataList" value="{{$index}}">{{category.name}}</option>
+      </select>
+      <ng-echarts class="col-md-12 echarts" id="echart2" ec-config="vm.ecConfig" ec-option="vm.ecOption"></ng-echarts>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-12 box' style="width:98%">
+    <div class="box-title">行业GDP分布一览</div>
+    <table class="c21-datatbl" style="width:99%;margin:8px">
+      <thead><tr>
+        <th style="width:230px">指标</th>
+        <th ng-repeat="year in vm.years">
+          <input style="margin-left:5px;" type="radio" name="selectYear" id="radio{{year}}" class="radio" value="{{year}}" ng-checked="year==vm.curYear" ng-click="vm.yearRadioClick(year)"/>
+          <label for="radio{{year}}"></label>{{year}}年
+        </th>
+      </tr></thead>
+      <tbody>
+      <tr ng-repeat="item in vm.dataList track by $index">
+        <th>
+          <img ng-if="item.checked"  ng-model="item.checked" style="width:12px;height:12px" ng-click="vm.legendCheckboxClick(item)"  ng-src="../assets/images/btn_s.png"/>
+          <img ng-if="!item.checked" ng-model="item.checked" style="width:12px;height:12px" ng-click="vm.legendCheckboxClick(item)"  ng-src="../assets/images/btn_us.png"/>
+          {{item.name }} (亿元)
+        </th>
+        <td ng-repeat="data in item.JJZL track by $index">{{data}}</td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+  <div style="width:99%;height:26px;font-size:12px;color:#333;text-align:right;">数据来源：湖南省统计局</div>
+</section>
