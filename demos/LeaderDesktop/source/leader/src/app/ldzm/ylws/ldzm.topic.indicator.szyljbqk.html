@@ -1,0 +1,366 @@
+<!--
+<style>
+  .cf:after{content:'';display:block;width:0;height:0;clear:both;}
+  *{margin:0;padding:0;}
+  ul li{list-style:none;}
+  !*清除ie的默认选择框样式清除，隐藏下拉箭头*!
+   select::-ms-expand { display: none; }
+  .ylws{padding:10px;}
+  .row_child,.lie_three *{padding:0;}
+  .row_child{border: 1px solid #D2D6DE;}
+  .territory{height: 625px;padding:0;}
+  .row_one,.row_two{padding:0 15px;}
+  .row_one{height:325px;}
+  .row_one ng-echarts{height:230px;width:100%; position:static;}
+  .row_child{margin-right:10px;background-color:#fff;margin-bottom: 10px;}
+  .row_one .row_child:last-of-child{background-color:transparent;}
+  .row_one .row_child{height:325px;}
+  .row_child h3{width:98%;height:35px;margin:5px auto 15px;background-color:#eef1f8;border-radius: 0 0 10px 10px;color:#555;font-size:16px;line-height:35px;text-align:center;}
+  .row_child_bg h3{margin-bottom: 0px;}
+  !**!
+   .tabTop5{padding:10px;}
+  .tabTop5 li{font-size:12px;width:32%;height:35px;line-height:35px;float:left;text-align:center;margin-right:6px;background-color: #eef1f8;color: #243482;}
+  .tabTop5 li:last-of-type{margin-right:0;}
+  .tabTop5 li.choose{background-color:#243482;color:#fff;}
+  !*第三列 色块*!
+   .lie_three{background-color: transparent;}
+  .lie_three ul{margin-bottom:5px;background-color: #fff;}
+  .lie_three p{color:#fff;text-align:center;font-size:12px;margin:0;}
+  .lie_three p span{font-size:18px;font-weight: bold;}
+  .lie_three .ul_one_top p{text-align: left;}
+  .lie_three .ul_one_top p{font-size: 14px;}
+  .lie_three .ul_one_top p span{font-size: 20px;}
+  .lie_three .ul_one{background-color:#6cb964;height:135px;width:100%;padding:8px 0;}
+  .lie_three .ul_one li{height:100px;padding:10px 0;text-align:center;line-height:100px;}
+  .lie_three .ul_one p{line-height:90px;}
+  .lie_three .ul_three{margin-top:5px;}
+  .lie_three .ul_three li{height:138.3px;}
+  .lie_three .ul_three li:nth-child(1) p.p_title{border-right:2.5px solid #fff;}
+  .lie_three .ul_three li:nth-child(2) p.p_title{border-left:2.5px solid #fff;}
+  .lie_three .ul_three .p_title{background-color:#408bb7;height:65px;font-size:14px;line-height:65px;}
+  .lie_three .ul_three .count_f{height:40px;margin-top:15px;}
+  .lie_three .ul_three .count{color:#555;line-height:20px;font-size:14px;}
+  .row_two{height:300px;}
+  .row_two .row_child{height:290px;}
+  @media screen and (min-width: 1200px) {
+    .row_two .row_child_bg:before{content:'';position: absolute;right: -15px;top:5px;width:50px;height:35px;background-color:#eef1f8;border-radius: 0 0 10px 0;z-index: 5;}
+    .row_two .row_child_bg:after{content:'';background-color:#fff;width:20px;height:290px;position: absolute;right: -20px;top:-1px;border: 1px solid #D2D6DE;border-left:0;
+    }
+    .lineTab{line-height:25px;width:270px;position:absolute;top:65px;left:50%;margin-left:-135px;z-index:9999;}
+    .lineTab li{line-height:25px;float:left;padding:0 20px 0 25px;font-size:12px;}
+    .lineTab li.colorLi{background: url(../../../assets/images/icon_line.png) no-repeat left center;color:#5c5c5c;}
+    .lineTab li.colorLiNo{background: url(../../../assets/images/icon_line_on.png) no-repeat left center;color:#cacaca;}
+
+
+  .w001{
+    width:456px;height:610px;
+  }
+  .w001_1{
+    width: 430px; height: 550px;
+  }
+  .w000{
+    width:720px;height:290px
+  }
+  .w002{
+    width:340px;height:290px
+  }
+  .w002_1{
+    width: 320px; height: 230px;
+  }
+  .w003{
+    width:355px;height:290px
+  }
+  .w003_1{
+    width: 355px; height: 230px;
+  }
+  .w004{
+    width:697px;height:310px
+  }
+  .w004_1{
+    width: 697px; height: 260px;
+  }
+    .right_width{
+      width:48%
+    }
+
+  @media (min-width: 1900px){
+    .w001{
+      width:31%;height:810px;
+    }
+    .w001_1{
+      width: 530px; height: 700px;
+    }
+    .w000{
+      width:1130px;
+    }
+    .w002{
+      width:540px;height:400px
+    }
+    .w002_1{
+      width: 555px; height: 350px;
+    }
+    .w003{
+      width:540px;height:400px
+    }
+    .w003_1{
+      width: 525px; height: 360px;
+    }
+    .w004{
+      width:1110px;height:400px
+    }
+    .w004_1{
+      width: 1110px; height: 350px;
+    }
+
+    .right_width{
+      width:49.5%
+    }
+
+    .lie_three .ul_one{background-color:#6cb964;height:205px;width:100%;padding:8px 0;}
+    .lie_three .ul_one li{height:120px;padding:10px 0;text-align:center;line-height:120px;}
+    .lie_three .ul_one p{line-height:100px;}
+    .lie_three .ul_three .p_title{background-color:#408bb7;height:95px;font-size:14px;line-height:95px;}
+    .lie_three .ul_three li{height:178.3px;}
+  }
+
+</style>
+
+<section class="content">
+  <div class='box fl w001' style="margin-left:-5px;">
+    <div class="box-title">{{vm.curAreaName}}卫生机构数地域分布情况</div>
+    <ng-echarts class="col-xs-12 echarts w001_1" ec-config="vm.mapConfig" ec-option="vm.mapOption" style="position:static;"></ng-echarts>
+  </div>
+  <div class="fl w000">
+    <div class='box fl w002'>
+      <div class="box-title">{{vm.curAreaName}}卫生机构数情况</div>
+      <ng-echarts class="col-xs-12 echarts w002_1" ec-config="vm.ecConfig" ec-option="vm.ecOption" style=" position:static;"></ng-echarts>
+    </div>
+      <div class="row_child col-xs-5 lie_three right_width" style="border:none;margin-left:10px;">
+        <ul class="ul_one ul_one_top">
+          <li class="col-xs-5">
+            <img src="../../../assets/images/icon_hospital.png">
+          </li>
+          <li class="col-xs-7">
+            <p>{{vm.curAreaName}}卫生机构数</p>
+            <p style="margin-top:-70px"><span>{{vm.hunanData.INSTITUTIONS_NUM}}</span>家</p>
+          </li>
+        </ul>
+        <ul class="ul_three col-xs-12">
+          <li class="col-xs-6">
+            <p class="p_title">床位数</p>
+            <div class="count_f">
+              <p class="count"><span>{{vm.hunanData.BED_NUM}}</span></p>
+              <p class="count">床</p>
+            </div>
+          </li>
+          <li class="col-xs-6">
+            <p class="p_title">人员数</p>
+            <div class="count_f">
+              <p class="count"><span>{{vm.hunanData.PERSONEL_NUM}}</span></p>
+              <p class="count">人</p>
+            </div>
+          </li>
+        </ul>
+    </div>
+    <div class='box fl w004'>
+      <div class="box-title">
+        {{vm.curAreaName}}医疗基本情况
+      </div>
+      <ng-echarts class="col-xs-12 echarts w004_1" ec-config="vm.ecConfig2" ec-option="vm.ecOption2" style="position:static;"></ng-echarts>
+    </div>
+  </div>
+</section>
+-->
+
+
+<section class="content">
+  <div class="row">
+    <div class='box fl w001' style="margin-left:-5px;">
+      <div class="box-title">{{vm.showCurYear}}{{vm.curAreaName}}卫生机构数地域分布情况</div>
+      <ng-echarts class="col-xs-12 echarts w001_1" ec-config="vm.mapConfig" ec-option="vm.mapOption" style="position:static;"></ng-echarts>
+    </div>
+    <div class="fl w000">
+      <div class='box fl w002'>
+        <div class="box-title">{{vm.curAreaName}}卫生机构数情况</div>
+        <ng-echarts class="col-xs-12 echarts w002_1" ec-config="vm.ecConfig" ec-option="vm.ecOption" style=" position:static;"></ng-echarts>
+      </div>
+      <div class='box fl w003'>
+        <div class="ztz">
+          <ul  style="padding-top: 15px;height:150px;" >
+            <li class="li1" style="float: left;margin-top: 28px;">
+              <span class="img_span">
+                <img src="../../../assets/images/icon_hospital.png">
+              </span>
+            </li>
+            <li class="m_l_li" style="text-align:left;margin-top: 28px;">
+              <p>
+                <span class="ztz_span">{{vm.curAreaName}}卫生机构数</span>
+              </p>
+              <p style="font-size: 20px;color:#fff"><span>{{vm.hunanData.INSTITUTIONS_NUM}}</span>家</p>
+            </li>
+          </ul>
+          <ul class="ul_three col-xs-12" style="margin-top: 7px;">
+            <li class="col-xs-6" style="padding: 0;background: #ffffff;">
+              <p class="p_title">床位数</p>
+              <div class="count_f">
+                <p class="count bedstyle"><span>{{vm.hunanData.BED_NUM}}</span>床</p>
+              </div>
+            </li>
+            <li class="col-xs-6" style="padding:0 2px;background: #ffffff;">
+              <p class="p_title">人员数</p>
+              <div class="count_f">
+                <p class="count bedstyle"><span>{{vm.hunanData.PERSONEL_NUM}}</span>人</p>
+              </div>
+            </li>
+
+            <li class="col-xs-12 liyear" style="text-align:center;color:#333333;font-size:12px">
+              <div style="float:right;border-top: 1px solid #ccc;width:30%;margin-top:13px"></div>
+              <div style="float:right;padding-right:10px;padding-left:10px;width:40%;margin-top:5px">以上为2015年数据</div>
+              <div style="float:right;border-top: 1px solid #ccc;width:30%;margin-top:13px"></div>
+            </li>
+
+          </ul>
+
+        </div>
+      </div>
+      <div class='box fl w004'>
+        <div class="box-title">
+          {{vm.curAreaName}}医疗基本情况
+        </div>
+        <ng-echarts class="col-xs-12 echarts w004_1" ec-config="vm.ecConfig2" ec-option="vm.ecOption2" style="position:static;"></ng-echarts>
+      </div>
+    </div>
+  </div>
+  <div class='row cfd' style="text-align:right;padding:0;color:#333333;font-size:12px">
+    数据来源：{{vm.dataComeFrom}}
+  </div>
+
+
+</section>
+<style>
+  .jt_span{color: #FF4280;text-align: center;}
+  .count{text-align: center;}
+  .ztz_span{font-family: "微软雅黑";font-size: 18px;color: #ffffff;margin-right: 12px;}
+  .tbzz{color: #FFFF00;font-size: 12px;margin-right: 12px;}
+  .shue{font-size: 20px;color: #ffffff;}
+  .yiyuan_span{color: #ffffff;}
+  .zzl_span{font-size: 20px;color: #FFFF00;}
+  .ztz{background: #6cb964;  }
+  .img_span{
+    display: inline-block;
+    width: 60px;
+    height: 60px;}
+  .ztz ul{list-style: none;padding:0;margin: 0;overflow: hidden;
+  }
+  .p_title {
+    background-color: #408bb7;
+    height: 64.5px;
+    font-size: 14px;
+    line-height: 65px;
+    text-align: center;
+    color: #ffffff;
+    padding: 0;
+    /*width: 120px;*/
+    padding-left: 0;
+    margin-left: 0;
+  }
+ .count_f{height:40px;margin-top:15px;}
+  .count{color:#555;line-height:20px;font-size:14px;}
+  .w001{
+    width:39.2%;height:610px;
+  }
+  .w001_1{
+    width: 430px; height: 550px;
+  }
+  .w000{
+    width:720px;height:290px
+  }
+  .w002{
+    width:340px;height:290px
+  }
+  .w002_1{
+    width: 320px; height: 230px;
+  }
+  .w003{
+    width:355px;height:290px
+  }
+  .w003_1{
+    width: 355px; height: 230px;
+  }
+  .w004{
+    width:705px;height:310px
+  }
+  .w004_1{
+    width: 705px; height: 260px;
+  }
+  .m_l_li{
+    margin-left:120px
+  }
+  .li1{
+    margin-left:10%
+  }
+  .liyear{
+    margin-top:-20px
+  }
+  .cfd{
+    margin-right:1%;
+  }
+  @media (min-width: 1900px){
+    .cfd{
+      margin-right:1.3%;
+    }
+    .liyear{
+      margin-top:0px
+    }
+    .w001{
+      width:33.6%;height:810px;
+    }
+    .w001_1{
+      width: 530px; height: 700px;
+    }
+    .w000{
+      width:1040px;
+    }
+    .w002{
+      width:500px;height:400px
+    }
+    .w002_1{
+      width: 500px; height: 350px;
+    }
+    .w003{
+      width:500px;height:400px
+    }
+    .w003_1{
+      width: 525px; height: 360px;
+    }
+    .w004{
+      width:1010px;height:400px
+    }
+    .w004_1{
+      width: 1010px; height: 350px;
+    }
+    .m_l_li{
+      margin-left:220px
+    }
+    .li1{
+      margin-left:20%
+    }
+    .p_title {
+      background-color: #408bb7;
+      height: 124.5px;
+      font-size: 20px;
+      line-height: 125px;
+      text-align: center;
+      color: #ffffff;
+      padding: 0;
+      /*width: 120px;*/
+      padding-left: 0;
+      margin-left: 0;
+    }
+    .bedstyle{
+      font-size:20px;
+      margin-top:30px
+    }
+  }
+
+</style>
