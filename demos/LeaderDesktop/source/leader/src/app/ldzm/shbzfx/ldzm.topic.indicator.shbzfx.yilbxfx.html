@@ -1,0 +1,92 @@
+<div ng-if="vm.screenSizeType=='L'">
+  <style>
+    .box{height:390px;}
+    .echarts{height:340px;}
+    .indicator .content{padding-bottom:0;}
+  </style>
+</div>
+<div ng-if="vm.screenSizeType=='M'">
+  <style>
+    .box{height:300px;}
+    .echarts{height:250px;}
+    .indicator .content{padding-bottom:0;}
+  </style>
+</div>
+<section class="content">
+  <div class="row" ng-if="!vm.ecOption1">
+    <div class='col-lg-7' style="margin:5% 0 0 20%;">
+      <h2>没有数据显示！</h2>
+    </div>
+  </div>
+  <div class="container-fluid" style="width:99%; padding:0; margin:0; position:relative;">
+    <div class="row" style="margin:0 0 0 -10px; padding:0;">
+      <div class="col-md-4" style="padding:0">
+        <div class="box" style="width:auto;">
+          <div class="box-title">
+            省本级城镇职工医保参保和缴费情况
+          </div>
+          <ng-echarts id="echart-1" class="echarts" ec-config="vm.ecConfig1" ec-option="vm.ecOption1"
+                      style="display:block;"></ng-echarts>
+        </div>
+      </div>
+      <div class="col-md-4" style="padding:0">
+        <div class="box" style="width:auto;">
+          <div class="box-title">
+            {{vm.latestYear}}年住院总费用
+          </div>
+          <div style="text-align: center;margin-top:15px;">
+            <span style="font-size:16px;color:#666;">省本级住院人次：</span>
+            <span style="font-size:18px;color:#333;">{{vm.zyrc}}万人</span>
+          </div>
+          <ng-echarts id="echart-2" class="echarts" ec-config="vm.ecConfig2" ec-option="vm.ecOption2"
+                      style="display:block;"></ng-echarts>
+        </div>
+      </div>
+      <div class="col-md-4" style="padding:0">
+        <div class="box" style="width:auto;">
+          <div class="box-title">
+            {{vm.latestYear}}年发生门诊费用
+          </div>
+          <div style="text-align: center;margin-top:15px;">
+            <span style="font-size:16px;color:#666;">门诊大病人次：</span>
+            <span style="font-size:18px;color:#333;">{{vm.mzdbrc}}万人</span>
+          </div>
+          <ng-echarts id="echart-3" class="echarts" ec-config="vm.ecConfig3" ec-option="vm.ecOption3"
+                      style="display:block;"></ng-echarts>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid" style="width:99%; padding:0; margin:0; position:relative;">
+    <div class="row" style="margin:0 0 0 -10px; padding:0;">
+      <div class="col-md-4" style="padding:0">
+        <div class="box" style="width:auto;">
+          <div class="box-title">
+            {{vm.latestYear}}年省本级城镇职工医疗保险基金总收入
+          </div>
+          <ng-echarts id="echart-4" class="echarts" ec-config="vm.ecConfig4" ec-option="vm.ecOption4"
+                      style="display:block;"></ng-echarts>
+        </div>
+      </div>
+      <div class="col-md-4" style="padding:0">
+        <div class="box" style="width:auto;">
+          <div class="box-title">
+            {{vm.latestYear}}年省本级城镇职工医疗保险基金总支出
+          </div>
+          <ng-echarts id="echart-5" class="echarts" ec-config="vm.ecConfig5" ec-option="vm.ecOption5"
+                      style="display:block;"></ng-echarts>
+        </div>
+      </div>
+      <div class="col-md-4" style="padding:0">
+        <div class="box" style="width:auto;">
+          <div class="box-title">
+            {{vm.latestYear}}年省本级城镇职工医疗保险基金累计结余
+          </div>
+          <ng-echarts id="echart-6" class="echarts" ec-config="vm.ecConfig6" ec-option="vm.ecOption6"
+                      style="display:block;"></ng-echarts>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="width:99%;height:26px;font-size:12px;color:#333;text-align:right;">数据来源：湖南省人力资源和社会保障厅</div>
+</section>
