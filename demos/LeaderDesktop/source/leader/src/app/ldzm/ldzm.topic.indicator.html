@@ -1,0 +1,39 @@
+<div class="indicator">
+  <div class="">
+    <!--侧边指标导航begin-->
+    <aside class="main-sidebar" style="top:inherit;z-index:1">
+      <ul class="sidebar-menu" ng-if="vm.indicators">
+        <li class="treeview " ng-click="vm.indicator_click(indicator.indicatorsKey)" ng-class="{'menu-active':indicator.isActive}" ng-repeat="indicator in vm.indicators">
+          <a ng-if="indicator.isActive">
+            <img src="../assets/../assets/images/{{indicator.icon}}_on.png" width='30' height="30"/> <span>{{indicator.name}}</span>
+          </a>
+          <a ng-if="!indicator.isActive">
+            <img src="../assets/../assets/images/{{indicator.icon}}.png" width='30' height="30"/> <span>{{indicator.name}}</span>
+          </a>
+        </li>
+      </ul>
+    </aside>
+    <!--侧边指标导航end-->
+
+    <div class="content-wrapper" style="padding: 0;">
+    <!--指标内容展示视图begin-->
+    <div ui-view ></div>
+    <!--指标内容展示视图end-->
+    </div>
+  </div>
+</div>
+<div ng-if="vm.screenSizeType=='L'">
+  <style>
+    .indicator .content-wrapper{
+      //min-width:1690px;
+      min-width:1550px;
+    }
+  </style>
+</div>
+<div ng-if="vm.screenSizeType=='M'">
+  <style>
+    .indicator .content-wrapper{
+      //min-width:1193px;
+    }
+  </style>
+</div>
