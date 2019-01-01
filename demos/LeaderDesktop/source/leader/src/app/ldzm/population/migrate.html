@@ -1,0 +1,37 @@
+
+<section class="content">
+  <!--
+  <div class="row" ng-if="!vm.ecOption">
+    <div class='col-sm-7' style="margin:5% 0 0 20%;">
+      <h2>没有数据显示！</h2>
+    </div>
+  </div>
+  -->
+
+  <div class='row'>
+    <div class='col-sm-12 box' style='width:1170px;height:620px;margin-right:10px;'>
+      <div class="box-title">人口迁移及排行分析</div>
+
+      <div class="col-sm-6">
+        <div style="text-align:left; margin-top:10px">
+                    <span class="toggle-btn">
+                        <a href="javascript:void(0)" class="target" migrateType="1">迁入</a>
+                        <a href="javascript:void(0)" migrateType="2" class="">迁出</a>
+                    </span>
+        </div>
+
+        <ng-echarts class="echarts col-sm-12" ec-config="vm.migrateConfig" ec-option="vm.migrateOption" style="height:560px; position:static">
+        </ng-echarts>
+      </div>
+
+      <div class="col-sm-6">
+        <ng-echarts class="echarts col-sm-12" ec-config="vm.migrateTopNConfig" ec-option="vm.migrateTopNOption" style="height:560px; position:static">
+        </ng-echarts>
+      </div>
+
+    </div>
+  </div>
+
+
+
+</section>
