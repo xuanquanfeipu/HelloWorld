@@ -1,0 +1,108 @@
+
+<div ng-if="vm.screenSizeType=='L'">
+  <style>
+  .zsjc{width:99%;}
+  .cf:after{content:'';display:block;clear:both;}
+  .zsjc .echartsBox1{width:62%;height:405px;}
+  .zsjc .echartsBox2{width:-moz-calc(38% - 39px);width:-webkit-calc(38% - 39px);width:calc(38% - 39px);height:405px;position:relative;}
+  .zsjc .echartsBox3{width:-moz-calc(99% - 15px);width:-webkit-calc(99% - 15px);width:calc(99% - 15px);height:404px;position:relative;}
+  .zsjc #echarts1,.zsjc #echarts2{width:100%;height:335px;}
+  .zsjc #echarts3{width:100%;height:335px;}
+  .zsjc .leftTab{width:124px;height:210px;position:absolute;left:16px;top:100px;z-index:999;}
+  .zsjc .leftTab li{width:124px;height:30px;background-color:#e1dffd;border-radius: 4px;margin-bottom:5px;line-height:30px;text-align:center;font-size:14px;color:#333;border:1px solid #6662b6;}
+  .zsjc .leftTab li.active{background-color:#3f69e4;color:#fff;border:1px solid #3f69e4;}
+  .zsjc .leftTab li:hover{cursor:pointer;}
+  .zsjc .legendTitle{position:absolute;top:50px;left:-30px;font-size:12px;color:#333;}
+  .zsjc .legendTitle li{float:left;padding:3px 10px 3px 16px;position:relative;}
+  .zsjc .legendTitle li:after{content:'';position:absolute;top:4px;left:0;width:14px;height:14px;
+  border-radius:2px;}
+  .zsjc .legendTitle li:nth-of-type(1):after{padding-left:0;}
+  .zsjc .legendTitle li:nth-of-type(2):after{background-color:#3f69e4;}
+  .zsjc .legendTitle li:nth-of-type(3):after{background-color:#2b3b93;}
+  .zsjc .legendTitle li:nth-of-type(4):after{background-color:#ff0042;}
+  .zsjc .legendTitle li:nth-of-type(5):after{background:url("../../../assets/images/icon_norm.png") no-repeat center;background-size:auto 150%;}
+  .select_pos,.timeselect{width:22%;margin-left:2%;}
+  .ui-icon, .ui-widget-content .ui-icon, .ui-widget-header .ui-icon {
+    background-image: url("../../../app/images/ui-icons_222222_256x240.png");
+  }
+  </style>
+</div>
+<div ng-if="vm.screenSizeType=='M'">
+  <style>
+  .zsjc{width:99%;}
+  .cf:after{content:'';display:block;clear:both;}
+  .zsjc .echartsBox1{width:62%;height:405px;}
+  .zsjc .echartsBox2{width:-moz-calc(38% - 39px);width:-webkit-calc(38% - 39px);width:calc(38% - 39px);height:405px;position:relative;}
+  .zsjc .echartsBox3{width:-moz-calc(99% - 15px);width:-webkit-calc(99% - 15px);width:calc(99% - 15px);height:364px;position:relative;}
+  .zsjc #echarts1,.zsjc #echarts2{width:100%;height:335px;}
+  .zsjc #echarts3{width:100%;height:295px;}
+  .zsjc .leftTab{width:124px;height:210px;position:absolute;left:16px;top:100px;z-index:999;}
+  .zsjc .leftTab li{width:124px;height:30px;background-color:#e1dffd;border-radius: 4px;margin-bottom:5px;line-height:30px;text-align:center;font-size:14px;color:#333;border:1px solid #6662b6;}
+  .zsjc .leftTab li.active{background-color:#3f69e4;color:#fff;border:1px solid #3f69e4;}
+  .zsjc .leftTab li:hover{cursor:pointer;}
+  .zsjc .legendTitle{position:absolute;top:50px;left:-30px;font-size:12px;color:#333;}
+  .zsjc .legendTitle li{float:left;padding:3px 10px 3px 16px;position:relative;}
+  .zsjc .legendTitle li:after{content:'';position:absolute;top:4px;left:0;width:14px;height:14px;
+  border-radius:2px;}
+  .zsjc .legendTitle li:nth-of-type(1):after{padding-left:0;}
+  .zsjc .legendTitle li:nth-of-type(2):after{background-color:#3f69e4;}
+  .zsjc .legendTitle li:nth-of-type(3):after{background-color:#2b3b93;}
+  .zsjc .legendTitle li:nth-of-type(4):after{background-color:#ff0042;}
+  .zsjc .legendTitle li:nth-of-type(5):after{background:url("../../../assets/images/icon_norm.png") no-repeat center;background-size:auto 150%;}
+  .select_pos,.timeselect{width:22%;margin-left:2%;}
+  .ui-icon, .ui-widget-content .ui-icon, .ui-widget-header .ui-icon {
+    background-image: url("../../../app/images/ui-icons_222222_256x240.png");
+  }
+  </style>
+</div>
+<section class="content zsjc">
+    <div class='col-md-6 box echartsBox2'>
+      <div class="box-title">全省城市各类功能区昼/夜达标率</div>
+      <ng-echarts class="echarts col-md-12" id='radarChart' ec-config="vm.radarConfig" ec-option="vm.RadarOption" style="height:350px;">
+    </div>
+  <div class='col-md-4 box echartsBox1'>
+    <div class="box-title">全省各区域声级情况</div>
+    <select ng-model="vm.selectedArea1" ng-options="x.name for x in vm.areaList1" ng-change="vm.selectChanged1()" class="basic_select ng-pristine ng-valid ng-not-empty ng-touched select_pos"></select>
+    <select ng-model="vm.selectedArea2" ng-options="x.name for x in vm.areaList2" ng-change="vm.selectChanged2()"  class="basic_select ng-pristine ng-valid ng-not-empty ng-touched select_pos"></select>
+    <select ng-model="vm.selectedArea3" ng-options="x.name for x in vm.areaList3" ng-change="vm.selectChanged3()"  class="basic_select ng-pristine ng-valid ng-not-empty ng-touched select_pos"></select>
+    <input id="queryTime" class="timeselect datepicker form-control disabled" data-date-format="mm/dd/yyyy" style="display:inline-block;" readonly="readonly"/>
+
+    <div id="lineChart" style="height:320px;"></div>
+
+    <div>
+
+      <!--<ng-echarts class="echarts col-md-12" id='lineChart' ec-config="vm.lineConfig" ec-option="vm.lineOption" style="height:320px;">-->
+    </div>
+  </div>
+    <div class='col-md-4 box echartsBox1'>
+        <div class="box-title">全省城市各类功能区噪声昼/夜达标点次</div>
+        <ng-echarts class="echarts col-md-12" id='echarts1' ec-config="vm.barConfig1" ec-option="vm.barOption1" style="position:static;">
+        </ng-echarts>
+    </div>
+    <div class='col-md-6 box echartsBox2'>
+        <div class="box-title">全省城市声环境功能区噪声等效声级</div>
+        <ul class="legendTitle cf">
+          <li style="color:#8996a3;">单位：分贝</li>
+          <li>白昼</li>
+          <li>夜间</li>
+          <li>已超标</li>
+          <li>国家标准限值</li>
+        </ul>
+        <ng-echarts class="echarts col-md-12" id='echarts2' ec-config="vm.barConfig2" ec-option="vm.barOption2" style="position:static;">
+        </ng-echarts>
+    </div>
+    <!--<div class='col-md-12 box echartsBox3'>-->
+        <!--<div class="box-title">全省城市各类功能区噪声昼/夜达标率</div>-->
+        <!--<ul class="leftTab">-->
+            <!--<li ng-class="{active:vm.activeNo=='0'}" ng-click='vm.tabClick("0")'>0类区</li>-->
+            <!--<li ng-class="{active:vm.activeNo=='1'}" ng-click='vm.tabClick("1")'>1类区</li>-->
+            <!--<li ng-class="{active:vm.activeNo=='2'}" ng-click='vm.tabClick("2")'>2类区</li>-->
+            <!--<li ng-class="{active:vm.activeNo=='3'}" ng-click='vm.tabClick("3")'>3类区</li>-->
+            <!--<li ng-class="{active:vm.activeNo=='4a'}" ng-click='vm.tabClick("4a")'>4a类区</li>-->
+            <!--<li ng-class="{active:vm.activeNo=='4b'}" ng-click='vm.tabClick("4b")'>4b类区</li>-->
+        <!--</ul>-->
+        <!--<ng-echarts class="echarts col-md-12" id='echarts3' ec-config="vm.lineConfig" ec-option="vm.lineOption" style="position:static;">-->
+        <!--</ng-echarts>-->
+    <!--</div>-->
+     <div style="clear:both;width:99%;height:26px;font-size:12px;color:#333;text-align:right;">数据来源：湖南省环境保护厅</div>
+</section>
