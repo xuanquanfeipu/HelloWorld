@@ -1,0 +1,74 @@
+<section class="content czsrfxsrjgc" style="padding-right: 15px;">
+  <div class="row" ng-if="!vm.ecOption">
+    <div class='col-md-7' style="margin:5% 0 0 20%;">
+      <h2>没有数据显示！</h2>
+    </div>
+  </div>
+  <div class='row' ng-if="vm.ecOption">
+    <div class='col-md-8 box echartsBox1'>
+      <div class="box-title">{{vm.curYear}}年地方财政收入构成</div>
+      <ng-echarts class="echarts col-sm-12" id='echarts1' ec-config="vm.ecConfig1" ec-option="vm.ecOption1" style="margin-right:5px;position:static;"></ng-echarts>
+    </div>
+    <div class='col-md-4 box echartsBox2'>
+      <div class="box-title">单收入构成情况</div>
+      <div style="float:left;margin-left:35px;font-size:16px;color:#8c94b3;margin-top:8px;">
+        请选择类型
+      </div>
+      <select ng-init="selectedIndex = '0'" style="margin-left:10px;border:solid 1px #dde1f0;" ng-model="selectedIndex" ng-change="vm.selectChange1(selectedIndex);">
+        <option value="1">地方非税收收入总额</option>
+        <option value="0">地方税收收入总额</option>
+       <!--  <option value="2">上划中央两税收入总额</option>
+        <option value="3">上划中央所得税总额</option>
+        <option value="4">其他收入总额</option> -->
+      </select>
+      <ng-echarts class="echarts col-sm-12" id='echarts2' ec-config="vm.ecConfig" ec-option="vm.ecOption" style="margin-left:10px;position:static;"></ng-echarts>
+    </div>
+  </div>
+  <div class='row' ng-if="vm.ecOption">
+    <div class='col-md-12 box' style="width:99%">
+      <div class="box-title">地方财政收入构成一览</div>
+      <table class="c21-datatbl" style="margin-bottom: 15px;">
+        <thead><tr>
+          <th>指标</th>
+          <th ng-repeat="year in vm.yearList">
+            <input style="margin-left: 5px;" type="radio" name="selectYear" id="radio{{year}}" class="radio" value="{{year}}" ng-checked="year==vm.curYear" ng-click="vm.yearRadioClick(year)"/>
+            <label for="radio{{year}}"></label>{{year}}年
+          </th>
+        </tr></thead>
+        <tbody>
+        <tr  ng-repeat="type in vm.eduTypeList">
+          <th>
+            <img ng-if="type.checked"  ng-model="type.checked" style="width:12px;height:12px" ng-click="vm.legendCheckboxClick('y',type)"  ng-src="../assets/images/btn_s.png"/>
+            <img ng-if="!type.checked" ng-model="type.checked" style="width:12px;height:12px" ng-click="vm.legendCheckboxClick('y',type)"  ng-src="../assets/images/btn_us.png"/>
+            <!--<input style="margin-left: 5px;" type="checkbox" ng-checked="type.checked" ng-model="type.checked" ng-click="vm.legendCheckboxClick('y',type)">-->
+            <span > {{type.name}}(万元)</span>
+          </th>
+          <td ng-repeat="year in vm.yearList">
+            <span ng-repeat="data in vm.dataList">
+              <span ng-if="type.type==data.type && year==data.year">
+                  {{data.num}}
+              </span>
+            </span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-xs-12" style="text-align: right;font-size: 12px;line-height: 36px;color: #333;">数据来源：湖南省统计局</div>
+  </div>
+</section>
+<style type="text/css">
+  .czsrfxsrjgc .echartsBox1{width:-moz-calc(67% - 10px);width:-webkit-calc(67% - 10px);width:calc(67% - 10px);height:350px;}
+  .czsrfxsrjgc .echartsBox1 #echarts1{width:100%;height:280px;}
+  .czsrfxsrjgc .echartsBox2{width:32%;height:350px;}
+  .czsrfxsrjgc .echartsBox2 #echarts2{width:100%;height:250px;}
+  @media (min-width: 1900px){
+    .czsrfxsrjgc .echartsBox1{height:500px;}
+    .czsrfxsrjgc .echartsBox1 #echarts1{height:430px;}
+    .czsrfxsrjgc .echartsBox2{height:500px;}
+    .czsrfxsrjgc .echartsBox2 #echarts2{height:400px;}
+  }
+</style>
