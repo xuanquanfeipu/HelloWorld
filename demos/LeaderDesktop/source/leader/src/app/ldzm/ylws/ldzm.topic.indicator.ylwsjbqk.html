@@ -1,0 +1,154 @@
+<style>
+  .cf:after{content:'';display:block;width:0;height:0;clear:both;}
+  *{margin:0;padding:0;}
+  ul li{list-style:none;}
+/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+select::-ms-expand { display: none; }
+  .ylws{padding:10px 20px;}
+  .row_child,.lie_three *{padding:0;}
+  .row_child{border: 1px solid #D2D6DE;}
+  .ranking_echart{margin-top:-15px;}
+  .row_one,.row_two{padding:0 5px;}
+  .row_one{height:325px;}
+  .row_one ng-echarts{height:210px;width:100%; position:static;}
+  .row_one .row_child,.row_two .row_child{margin-right:10px;background-color:#fff;margin-bottom: 10px;}
+  .row_one .row_child:last-of-child{background-color:transparent;}
+  .row_one .row_child{height:325px;}
+  .row_child h3{width:98%;height:35px;margin:5px auto 15px;background-color:#eef1f8;border-radius: 0 0 10px 10px;color:#555;font-size:16px;line-height:35px;text-align:center;}
+  /*全省医疗卫生市州排行*/
+  .lie_ranking .ranking_tab{width:240px;height:35px;margin:0 auto;}
+  .lie_ranking .ranking_tab li{width:78px;height:35px;margin:0 1px;background-color:#eef1f8;float:left;font-size:14px;text-align:center;color:#263382;line-height:35px;}
+  .lie_ranking .ranking_tab li.choose{background-color:#263382;color:#fff;}
+  .lie_ranking .ranking_echart{padding:15px;}
+  /*医疗卫生基本情况*/
+  .basic_top div{height:35px;line-height:35px;color:#8c94b3;font-size:12px;text-align:left;padding-left:36px;}
+  .basic_top .basic_choose{position:relative;text-align:left;color:#555;padding-left:20px;}
+  .basic_top .basic_choose:before{content:'';display:inline-block;width:15px;height:15px;background-color:#137ebd;border-radius:3px;position:absolute;top:10px;left:0;}
+  .basic_top .basic_select{height:35px;line-height:35px;color:#8c94b3;font-size:12px;border-color:#8c94b3;margin-top:0;border-radius:3px;margin-left: 75px;}
+  .basic_echart{margin-top:-20px;}
+  /*第三列 色块*/
+  .lie_three ul{margin-bottom:5px;}
+  .lie_three p{color:#fff;text-align:center;font-size:12px;margin:0;}
+  .lie_three p span{font-size:16px;font-weight:bold;}
+  .lie_three .ul_one_top p{text-align: left;}
+  .lie_three .ul_one_top p{font-size: 14px;}
+  .lie_three .ul_one_top p span{font-size: 20px;}
+  .lie_three .ul_one{background-color:#6cb964;height:85px;width:100%;padding:8px 0;}
+  .lie_three .ul_one li{height:69px;padding:10px 0;text-align:center;}
+  .lie_three .ul_one p{line-height:25px;}
+  .lie_three .ul_two{background-color:#394aa9;height:45px;}
+  .lie_three .ul_two li{height:45px;line-height:45px;}
+  .lie_three .ul_two li:nth-child(1){border-right:2.5px solid #fff;}
+  .lie_three .ul_two li:nth-child(2){border-left:2.5px solid #fff;}
+  .lie_three .ul_three{margin-top:5px;}
+  .lie_three .ul_three li{height:74px;}
+  .lie_three .ul_three li:nth-child(odd) p{border-right:2.5px solid #fff;}
+  .lie_three .ul_three li:nth-child(even) p{border-left:2.5px solid #fff;}
+  .lie_three .ul_three .p_title{background-color:#408bb7;height:35px;font-size:12px;line-height:35px;}
+  .lie_three .ul_three .count{color:#555;line-height:34px;font-size:14px;}
+  .row_two{height:280px;}
+  @media screen and (min-width: 1200px) {
+    select {
+      border: 1px solid #4e99ff;
+      appearance: none;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      background: url("../../../assets/images/icon_select_l.png") no-repeat scroll right center transparent;
+      height: 35px;
+      line-height: 35px;
+      border-radius: 5px;
+      padding: 0 33px 0 6px;
+    }
+
+    select::-ms-expand {
+      display: none;
+    }
+  }
+</style>
+ <div class="ylws">
+	  <div class="row_one row lie_ranking">
+	     <div class="row_child col-md-4 yl_jbqk_box">
+         <h3>{{vm.latestYear}}年全省卫生机构数市州排行Top5</h3>
+         <ng-echarts class="col-md-12 echarts" id="sitesChar1" ec-config="vm.ecConfig" ec-option="vm.ecOption"></ng-echarts>
+	     </div>
+	     <div class="row_child col-md-4 yl_jbqk_box1">
+	        <h3>医疗卫生基本情况</h3>
+	        <div class="basic_top cf">
+	            <div class="col-md-4 text-center">数量:
+	                 <span ng-if="vm.basicVal == '卫生机构数'">家</span>
+	                 <span ng-if="vm.basicVal == '床位数'">张</span>
+	                 <span ng-if="vm.basicVal == '人员数'">人</span>
+	            </div>
+	            <div class="col-md-3 basic_choose">{{vm.basicVal}}</div>
+	            <select class="basic_select" ng-model="vm.basicVal" ng-change="vm.basicTabClick(vm.basicVal)" style="position:relative;">
+	                <option value="卫生机构数" selected>卫生机构数</option>
+	                <option value="床位数">床位数</option>
+	                <option value="人员数">人员数</option>
+	            </select>
+	        </div>
+	        <div class="row" style="margin-top: 20px;">
+	            <ng-echarts class="col-md-12 echarts" ec-config="vm.ecConfig5" ec-option="vm.ecOption5" style="display:block;height:210px; width: 100%; position:static;"></ng-echarts>
+	        </div>
+	     </div>
+	     <div class="row_child col-md-2 lie_three">
+	         <ul class="ul_one">
+	             <li class="col-md-5">
+	                <img src="../../../assets/images/icon_hospital.png">
+	             </li>
+	             <li class="col-md-7 ul_one_top">
+	                <p><span>{{vm.wsjg}}</span>家</p>
+	                <p>湖南省卫生机构数</p>
+	             </li>
+	         </ul>
+	         <ul class="ul_two">
+	             <li class="col-md-6">
+	                <p>床位数<span>{{vm.cws}}</span>床</p>
+	             </li>
+	             <li class="col-md-6">
+	                <p>人员数<span>{{vm.rys}}</span>人</p>
+	             </li>
+	         </ul>
+	         <ul class="ul_three col-md-12" ng-repeat="always in vm.alwaysData1" style="margin-bottom: 0;">
+	             <li class="col-md-6">
+	                <p class="p_title">传染病发病人数</p>
+	                <p class="count">{{always.DISEASE_HOLL}}人</p>
+	             </li>
+	             <li class="col-md-6">
+	                <p class="p_title">传染病死亡人数</p>
+	                <p class="count">{{always.DISEASE_DEATH_HOLL}}人</p>
+	             </li>
+	          </ul>
+	          <ul class="ul_three col-md-12" ng-repeat="always in vm.alwaysData" style="margin-bottom: 0;">
+	             <li class="col-md-6">
+	                <p class="p_title">诊疗人次</p>
+	                <p class="count">{{always.TREATMENT_COUNT}}万次</p>
+	             </li>
+	             <li class="col-md-6">
+	                <p class="p_title">病床使用率</p>
+	                <p class="count">{{always.BED_USAGE}}%</p>
+	             </li>
+	         </ul>
+         <div class="col-xs-12 li-year" style="text-align:center; padding:0 2%;color:#333333;font-size:12px;background-color:#fff">
+           <div style="float:right;border-top: 1px solid #ccc;width:18%;margin-top:13px"></div>
+           <div style="float:right;padding-right:10px;padding-left:10px;width:64%;margin-top:5px">以上为{{vm.latestYear}}年数据</div>
+           <div style="float:right;border-top: 1px solid #ccc;width:18%;margin-top:13px"></div>
+         </div>
+	     </div>
+	  </div>
+	  <div class="row_two row">
+	     <div class="row_child col-md-6 yl_jbqk_box3">
+         <h3>{{vm.latestYear}}年全省主要疾病情况分析</h3>
+         <ng-echarts id="yl_jbqk_chart1" class="col-md-12 echarts" ec-config="vm.ecConfig3" ec-option="vm.ecOption3" ></ng-echarts>
+	     </div>
+	     <div class="row_child col-md-4 row_child_bg yl_jbqk_box4">
+	        <h3>{{vm.latestYear}}年全省主要疾病死因构成</h3>
+	        <ng-echarts id="yl_jbqk_chart2" class="col-md-12 echarts" ec-config="vm.ecConfig4" ec-option="vm.ecOption4"></ng-echarts>
+	     </div>
+
+	  </div>
+   <div class="row">
+     <div class="col-xs-12" style="width:99%;text-align: right;font-size: 12px;line-height: 36px;color: #333;margin-top: -15px;">数据来源：湖南省统计局</div>
+   </div>
+  </div>
+
+
