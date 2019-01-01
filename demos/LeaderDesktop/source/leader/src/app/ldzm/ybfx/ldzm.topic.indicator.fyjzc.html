@@ -1,0 +1,60 @@
+
+
+<section class="content">
+  <div class="row" ng-if="!vm.ecOption">
+    <div class='col-lg-7' style="margin:5% 0 0 20%;">
+      <h2>没有数据显示！</h2>
+    </div>
+  </div>
+  <div class='row' ng-if="vm.ecOption" style="margin-left:10px">
+    <div class='col-lg-8' style="background: #fff;border-top:2px solid #008000;">
+      <ng-echarts class="echarts col-sm-12" ec-config="vm.ecConfig" ec-option="vm.ecOption" style=" height: 350px; position:static;"></ng-echarts>
+    </div>
+    <div class='col-lg-4' style="background: #fff;border-top:2px solid #008000;">
+
+
+        <select ng-model="selectedSite"  ng-change="vm.selectChange1(selectedSite);">
+          <option ng-repeat="x in vm.list" value="{{x.DATE_PERIOD}}">{{x.DATE_PERIOD}}</option>
+        </select>
+
+      <ng-echarts class="echarts col-sm-12" ec-config="vm.ecConfig1" ec-option="vm.ecOption1" style=" height: 325px; position:static;"></ng-echarts>
+    </div>
+
+
+  </div>
+  <div class='row' ng-if="vm.ecOption" style="margin-top:20px;margin-left:10px;background: #fff;">
+    <table class="table table-bordered table-hover">
+      <thead><tr>
+        <th>指标</th>
+        <th ng-repeat="category in vm.list">{{category.DATE_PERIOD}}<input style="margin-left: 5px;" type="checkbox" ng-checked="vm.isChecked[$index]" ng-model="isChecked" ng-click="vm.checkboxClick($index,isChecked)"></th>
+      </tr></thead>
+      <tbody>
+      <tr>
+        <td> 总费用（元）<input style="margin-left: 5px;" type="checkbox" ng-checked="vm.isItem1Checked" ng-model="isItem1Checked" ng-click="vm.checkboxClick('item1',isItem1Checked)">
+        </td>
+        <th ng-repeat="item1 in vm.list">{{item1.CJFY}}</th>
+      </tr>
+      <tr>
+        <td> 药品（元）<input style="margin-left: 5px;" type="checkbox" ng-checked="vm.isItem2Checked" ng-model="isItem2Checked" ng-click="vm.checkboxClick('item2',isItem2Checked)">
+        </td>
+        <th ng-repeat="item2 in vm.list">{{item2.YP_FY}}</th>
+      </tr>
+      <tr>
+        <td> 检查治疗（元）<input style="margin-left: 5px;" type="checkbox" ng-checked="vm.isItem3Checked" ng-model="isItem3Checked" ng-click="vm.checkboxClick('item3',isItem3Checked)">
+        </td>
+        <th ng-repeat="item3 in vm.list">{{item3.JCZL_FY}}</th>
+      </tr>
+      <tr>
+        <td> 材料（元）<input style="margin-left: 5px;" type="checkbox" ng-checked="vm.isItem4Checked" ng-model="isItem4Checked" ng-click="vm.checkboxClick('item4',isItem4Checked)">
+        </td>
+        <th ng-repeat="item4 in vm.list">{{item4.CL_FY}}</th>
+      </tr>
+      <tr>
+        <td> 其他（元）<input style="margin-left: 5px;" type="checkbox" ng-checked="vm.isItem5Checked" ng-model="isItem5Checked" ng-click="vm.checkboxClick('item5',isItem5Checked)">
+        </td>
+        <th ng-repeat="item5 in vm.list">{{item5.QT_FY}}</th>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
