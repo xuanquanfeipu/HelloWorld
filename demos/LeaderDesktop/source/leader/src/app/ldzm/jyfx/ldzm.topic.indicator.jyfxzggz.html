@@ -1,0 +1,28 @@
+<style>
+  .title{ background: #eef1f8; width:100%; height: 36px; margin-top: 10px; margin-bottom: 10px;border-radius:0 0 10px 10px;}
+  .title p{ text-align: center; line-height: 36px; color: #333; font-size: 20px;}
+</style>
+
+<section class="content" style="padding-right:35px;">
+  <!--<div class="row" ng-if="!vm.ecOption">-->
+    <!--<div class='col-lg-7' style="margin:5% 0 0 20%;">-->
+      <!--<h2>没有数据显示！</h2>-->
+    <!--</div>-->
+  <!--</div>-->
+  <div class="row"  ng-if="vm.ecOption" style="margin-left:1px; background: #fff;border: 1px solid #D2D6DE;">
+    <div class="col-md-12" >
+      <div class="title"><p>在岗职工工资总额发展情况</p></div>
+      <ng-echarts class="echarts col-sm-12" ec-config="vm.ecConfig" ec-option="vm.ecOption" style="height:280px; position:static;"></ng-echarts>
+    </div>
+  </div>
+
+  <div class="row"  ng-if="vm.ecOption" style="margin-left:1px; margin-top: 15px; background: #fff;border: 1px solid #D2D6DE;">
+    <div class="col-md-12">
+      <div class="title"><p>在岗职工平均工资发展情况</p></div>
+      <ng-echarts class="echarts col-sm-12" ec-config="vm.ecConfig1" ec-option="vm.ecOption1" style="height:280px; position:static;"></ng-echarts>
+    </div>
+  </div>
+<div class="row" style="margin-right: 10px; height:36px;">
+<div style="color:#333333;font-size:12px;line-height:36px;text-align: right;position:absolute;right:10px;">数据来源：湖南省统计局</div>
+</div>
+</section>
