@@ -1,0 +1,60 @@
+
+<section class="content">
+  <!--
+  <div class="row" ng-if="!vm.ecOption">
+    <div class='col-md-7' style="margin:5% 0 0 20%;">
+      <h2>没有数据显示！</h2>
+    </div>
+  </div>
+  -->
+
+  <div class='row'>
+
+    <div class="col-md-5 box po_dy_map">
+      <div class="box-title">{{vm.latestYear}}年全省人口分布情况</div>
+      <ng-echarts id="populationDistribute" class="echarts col-md-12" ec-config="vm.mapConfig" ec-option="vm.mapOption">
+      </ng-echarts>
+    </div>
+
+    <div class="col-md-7 row">
+
+      <div class="col-md-12" style="padding: 0;">
+        <div class='col-md-9 box po_dy_rkfz'>
+          <div class="box-title">{{cityName}}人口发展情况</div>
+          <ng-echarts id="po_dy_chart1" class="echarts col-md-12" ec-config="vm.urbanRuralConfig" ec-option="vm.urbanRuralOption" >
+          </ng-echarts>
+        </div>
+        <div class='col-md-3 box po_dy_box'>
+          <div style="width:100%; height:auto; color:#FFF;padding-top:0px;padding-left:0px;margin-left:0px;float:left">
+            <li id="totalPopulationOverview" class="col-md-12" style="height:145px;padding-top:30px;text-align: center;background-color:#408bb7;">
+              <p><img src="/assets/images/icon_people.png"></p>
+              <span style="font-size: 20px">{{totalPopulationStr}}</span>
+              <p style="font-size: 12px">{{cityName}}总人数</p>
+            </li>
+            <li class="col-md-12" style="height:145px;padding-top:30px; margin-top:10px;text-align: center;background-color:#6cb964;">
+              <p><img src="/assets/images/icon_number.png"></p>
+              <span style="font-size: 20px">{{totalHouseholdStr}}</span>
+              <p style="font-size: 12px">{{cityName}}总户数</p>
+            </li>
+            <li class="col-xs-12 li-year" style="text-align:center; padding:0 2%;color:#333333;font-size:12px;background-color:#fff">
+              <div style="float:right;border-top: 1px solid #ccc;width:7%;margin-top:13px"></div>
+              <div style="float:right;width:86%;margin-top:5px">以上为{{vm.latestYear}}年数据</div>
+              <div style="float:right;border-top: 1px solid #ccc;width:7%;margin-top:13px"></div>
+            </li>
+          </div>
+        </div>
+      </div>
+
+      <div class='col-md-12 box po_dy_czh'>
+        <div class="box-title">{{cityName}}城镇化水平</div>
+        <ng-echarts id="po_dy_chart2" class="echarts col-md-12" ec-config="vm.ageConfig" ec-option="vm.ageOption" >
+        </ng-echarts>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-xs-12" style="width:97%;text-align: right;font-size: 12px;line-height: 36px;color: #333;margin-top: -15px;">数据来源：湖南省统计局</div>
+  </div>
+</section>
