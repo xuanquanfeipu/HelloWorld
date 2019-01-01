@@ -1,0 +1,95 @@
+<style type="text/css">
+
+</style>
+<section class="content ztjjztfx">
+  <div class="row" ng-if="!vm.ecOption">
+    <div class='col-md-7' style="margin:5% 0 0 20%;">
+      <h2>没有数据显示！</h2>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-4 box echartsBox1'>
+      <div class="box-title">{{vm.lastYear}}全省GDP及产业分布</div>
+      <ng-echarts class="echarts col-md-12" id='echarts1' ec-config="vm.pieConfig" ec-option="vm.pieOption" style="position:static;">
+      </ng-echarts>
+      <div id="pieTitle" style="position:absolute;top:42%">
+        <div style="color:#B0B8C2;font-size:16px;text-align:center;">
+          全省GDP
+        </div>
+        <div style="color:#3A53A0;font-size:24px;text-align:center;padding:4px 0;">
+          {{vm.areaDataList[0].GDP}}亿
+        </div>
+        <div style="color:#FF466F;text-align:center;font-size:14px;padding:4px 0;">
+          ↑{{vm.areaDataList[0].ZZL}}%
+        </div>
+      </div>
+    </div>
+    <div class='col-md-4 box echartsBox2'>
+      <div class="box-title">全省GDP发展情况</div>
+      <div style="text-align:center;margin:8px 0 0 0;">
+        <span class="toggle-btn">
+          <a href="javascript:void(0)" class="target" tp="1">按年</a>
+          <a href="javascript:void(0)" tp="2" class="">按季</a>
+        </span>
+      </div>
+      <ng-echarts class="col-md-12 echarts" id='echarts2' ec-config="vm.ecConfig" ec-option="vm.ecOption" style="position:static;"></ng-echarts>
+    </div>
+    <div class='col-md-4 echartsBox3'>
+      <div style="width:234px;height:88px;color:#FFF;background-color:#6cb964;padding-top:10px">
+        <div style="width:75px;height:100%;float:left;padding-left:20px;padding-top:8px;">
+          <img src="/assets/images/icon_gdp.png">
+        </div>
+        <div style="margin-left:75px; height:100px; padding-top:6px;">
+          <div style="font-size:14px;">{{vm.areaMap[vm.areaDataList[0].DQLX]}}地区生产总值</div>
+          <div style="font-size:26px;font-weight:bold;">
+            {{vm.areaDataList[0].GDP}}<font style="font-size:18px;font-weight:normal;">亿元</font>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:6px;width:234px;background:#ffffff;" class="fl">
+        <div class="c13-area" ng-repeat="area in vm.areaDataList track by $index" ng-if="$index>0">
+          <div class="area-name" >
+            {{vm.areaMap[area.DQLX]}}地区
+          </div>
+          <div style="height:50px;padding:10px 0 0 0;text-align:center;">
+            <div>
+              {{area.GDP}}亿元
+            </div>
+            <div style="color:red">
+              ↑{{area.ZZL}}%
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="width:232px;height:40px;border:solid 1px #564FBE;margin-top:10px;background:#ffffff;position:relative;" class="fl">
+        <div style="float:left;text-align:center;width:40px;padding:3px 0;font-size:12px;color:#666;height:38px;line-height:18px;">
+          人均GDP
+        </div>
+        <div style="float:left;text-align:center;font-size:20px;width:154px;color:#4F5DB0;line-height:40px;">
+          {{vm.areaDataList[0].RJ_GDP}}元
+        </div>
+        <div style="position:absolute;right:0;top:0;text-align:center;width:50px;height:38px; background-color:#564FBE;color:#FFFFFF;font-size:12px;padding:2px 0;line-height:18px;">
+          ↑<br/>{{vm.areaDataList[0].RJ_ZZL}}%
+        </div>
+        <div style="clear:both"></div>
+      </div>
+      <div class="col-xs-12 liyear" style="height:40px;text-align:center;color:#333333;font-size:12px">
+              <div style="float:right;border-top: 1px solid #ccc;width:18%;margin-top:13px"></div>
+              <div style="float:right;padding-right:10px;padding-left:10px;width:64%;margin-top:5px">以上为{{vm.lastYear}}数据</div>
+              <div style="float:right;border-top: 1px solid #ccc;width:18%;margin-top:13px"></div>
+       </div>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class='col-md-4 box echartsBox4'>
+      <div class="box-title">{{vm.lastYear}}全省GDP市州排行</div>
+      <ng-echarts class="echarts" ec-config="vm.barConfig" id='echarts3' ec-option="vm.barOption" style="width:434px;height:220px;position:static;"></ng-echarts>
+    </div>
+    <div class='col-md-8 box echartsBox5'>
+      <div class="box-title">{{vm.lastYear}}全省GDP行业分布</div>
+      <ng-echarts class="col-md-12 echarts" id='echarts4' ec-config="vm.barConfig2" ec-option="vm.barOption2" style="position:static;"></ng-echarts>
+    </div>
+  </div>
+  <div style="width:99%;height:26px;font-size:12px;color:#333;text-align:right;">数据来源：湖南省统计局</div>
+</section>
