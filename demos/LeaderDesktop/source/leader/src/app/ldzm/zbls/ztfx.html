@@ -1,0 +1,93 @@
+<style type="text/css">
+  .zblsztfx{width:99%;}
+  .zblsztfx .updateTime{font-size:12px;color:#adadad;padding-left:20px;}
+  .zblsztfx .echartsBox1{width:38%;height:350px;}
+  .zblsztfx .echartsBox2{width:-moz-calc(62% - 39px);width:-webkit-calc(62% - 39px);width:calc(62% - 39px);height:350px;}
+  .zblsztfx .echartsBox3{width:-moz-calc(33.3% - 16px);width:-webkit-calc(33.3% - 16px);width:calc(33.3% - 16px);height:350px;position:relative;}
+  .zblsztfx .rowOne .echartsBox3{height:300px;}
+  .zblsztfx #echarts2,.zblsztfx #echarts4,.zblsztfx #echarts6{width:100%;height:285px;}
+  .zblsztfx #echarts6{width:100%;height:235px;}
+  .zblsztfx #echarts1,.zblsztfx #echarts3{width:100%;height:250px;}  
+  .zblsztfx #echarts5,.zblsztfx #echarts7{width:100%;height:267px;}  
+  .zblsztfx .pieTxt{position:absolute;left:40%;top:45%;margin-left:-49px;text-align:center;font-size:14px;color:#666666;line-height:20px;}
+  .zblsztfx .pieTxt p{margin-bottom:0;}
+  .zblsztfx .pieTxt .pieCount{color:#333333;font-weight:bold;}
+  .zblsztfx .pieTxt .pieCount span{font-size:22px;}
+  .zblsztfx .echartsTab{padding:10px 20px 8px;}
+  .zblsztfx .echartsTab .tabTitle{width:49%;float:left;background-color:#EEF2F8;color:#2E40A4;line-height:30px;font-size:14px;text-align:center;}
+  .zblsztfx .echartsTab .tabTitle:hover{cursor:pointer;}
+  .zblsztfx .echartsTab .tabTitle.active{width:49%;float:left;background-color:#2E41A3;color:#FFFFFF;}
+  .zblsztfx #echarts5{display:none;}
+  .zblsztfx .liyear{display:none;}
+  @media (min-width: 1900px){
+    .zblsztfx .echartsBox3{height:430px;}
+    .zblsztfx .rowOne .echartsBox3{height:380px;}
+    .zblsztfx #echarts2,.zblsztfx #echarts4,.zblsztfx #echarts6{height:365px;}
+    .zblsztfx #echarts6{height:315px;}
+    .zblsztfx #echarts1,.zblsztfx #echarts3{height:330px;}  
+    .zblsztfx #echarts5,.zblsztfx #echarts7{height:347px;}  
+  }
+</style>
+<section class="content zblsztfx">
+  <div class="row rowOne">
+    <div class='col-md-4 box echartsBox3'>
+        <div class="box-title">{{vm.lastYear1}}月中部六省地区生产总值增速分析</div>
+        <!-- <div class="updateTime">数据更新日期：{{vm.lastYear}}月底</div> -->
+        <ng-echarts class="echarts col-md-12" id='echarts1' ec-config="vm.barConfig1" ec-option="vm.barOption1" style="position:static;">
+        </ng-echarts>
+    </div>
+    <div class='col-md-4 box echartsBox3'>
+        <div class="box-title">{{vm.lastYear}}月中部六省规模工业增加值增速分析</div>
+        <ng-echarts class="echarts col-md-12" id='echarts3' ec-config="vm.barConfig3" ec-option="vm.barOption3" style="position:static;">
+        </ng-echarts>  
+    </div>
+     <div class='col-md-4 box echartsBox3'> 
+        <div class="box-title">{{vm.lastYear}}月中部六省地方财政收入绝对值</div>
+        <ng-echarts class="echarts col-md-12" id='echarts6' ec-config="vm.barConfig6" ec-option="vm.barOption6" style="position:static;">
+        </ng-echarts>     
+    </div>
+  </div>
+  <div class="row">
+    <div class='col-md-4 box echartsBox3'>
+        <div class="box-title">{{vm.lastYear}}月中部六省固定资产投资绝对值分析</div>
+       <ng-echarts class="echarts col-md-12" id='echarts4' ec-config="vm.barConfig4" ec-option="vm.barOption4" style="position:static;">
+        </ng-echarts>
+        <div class="pieTxt">
+            <p style="margin-bottom:3px;">{{vm.province}}</p>
+            <p class="pieCount"><span>{{vm.pieDataCount}}</span>亿元</p>
+            <p>占{{vm.provinceScale}}%</p>
+        </div>
+    </div>
+    <div class='col-md-4 box echartsBox3' id='banner01'>
+        <!-- <div class="box-title">中部六省居民消费价格指数</div>
+        <div class="updateTime">数据更新日期：{{vm.lastYear}}月底</div>-->
+        <div class="echartsTab" id='zblsTab'>
+          <div class="tabTitle active" id='activeTab1' ng-class='{active:vm.tabNub==1}' ng-click="vm.tabClick(1)">消费价格指数</div>
+          <div class="tabTitle" id='activeTab2' ng-class='{active:vm.tabNub==2}' ng-click="vm.tabClick(2)" style="margin-left:6px;">零售总额增速</div>
+          <div style="clear:both"></div>
+        </div>
+        <!-- 消费价格 -->
+        <ng-echarts class="echarts col-md-12" id='echarts7' ec-config="vm.barConfig7" ec-option="vm.barOption7" style="position:static;">
+        </ng-echarts>
+        <!-- 零售总额 -->
+        <ng-echarts class="echarts col-md-12" id='echarts5' ec-config="vm.barConfig5" ec-option="vm.barOption5" style="position:static;">
+        </ng-echarts>
+        <div class="col-xs-12 liyear" id='liyear1' style="height:40px;text-align:center;color:#333333;font-size:12px">
+              <div style="float:right;border-top: 1px solid #ccc;width:18%;margin-top:13px"></div>
+              <div style="float:right;padding-right:10px;padding-left:10px;width:64%;margin-top:5px">以上为{{vm.lastYear}}月数据</div>
+              <div style="float:right;border-top: 1px solid #ccc;width:18%;margin-top:13px"></div>
+        </div>
+        <div class="col-xs-12 liyear" id='liyear2' style="height:40px;text-align:center;color:#333333;font-size:12px">
+              <div style="float:right;border-top: 1px solid #ccc;width:18%;margin-top:13px"></div>
+              <div style="float:right;padding-right:10px;padding-left:10px;width:64%;margin-top:5px">以上为{{vm.lastYear1}}月数据</div>
+              <div style="float:right;border-top: 1px solid #ccc;width:18%;margin-top:13px"></div>
+        </div>
+    </div>
+     <div class='col-md-4 box echartsBox3'>
+        <div class="box-title">{{vm.lastYear}}月中部六省进出口绝对值分析</div>
+        <ng-echarts class="echarts col-md-12" id='echarts2' ec-config="vm.barConfig2" ec-option="vm.barOption2" style="position:static;">
+        </ng-echarts>
+    </div>
+  </div>
+  <div style="width:99%;height:26px;font-size:12px;color:#333;text-align:right;">数据来源：湖南省统计月报</div>
+</section>
