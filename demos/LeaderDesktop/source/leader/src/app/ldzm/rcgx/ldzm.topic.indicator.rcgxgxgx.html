@@ -1,0 +1,93 @@
+<style>
+.active1{
+  color:darkred;
+  background-color: greenYellow;
+}
+
+</style>
+<section class="content-header" ng-if="vm.breadcrumbs">
+  <h1>
+    {{vm.title}}
+  </h1>
+  <sc-breadcrumb breadcrumbs="vm.breadcrumbs"></sc-breadcrumb>
+</section>
+<ul class="nav nav-tabs" ng-init="vm.activeTab=1">
+  <li ng-class="{active: vm.activeTab == 1}"><a href="javascript:;" ng-click="vm.tabClick(1)">年龄</a></li>
+  <li ng-class="{active: vm.activeTab == 2}"><a href="javascript:;" ng-click="vm.tabClick(2)">教育程度</a></li>
+</ul>
+<div class='col-lg-8' style="background: #fff;border-top:2px solid #008000;">
+  <ng-echarts class="echarts" ec-config="vm.ecConfig" ec-option="vm.ecOption" style="width: 600px; height: 370px; position:static;"></ng-echarts>
+</div>
+<div class='col-lg-4' style="background: #fff;border-top:2px solid #008000;">
+
+  <div >
+    <div style="float:left" >
+    年份
+    <select ng-model="selectedSite" ng-init="selectedSite = '2016'"   ng-change="vm.selectChange(selectedSite);">
+      <option ng-repeat="year in vm.yearList" value="{{year.value}}" >{{year.value}}</option>
+    </select>
+    </div>
+    <!--<ul class="nav-tabs acs1" ng-init="vm.active1Tab=1">
+      <li ng-class="{active: vm.active1Tab == 1}"><a href="javascript:;" ng-click="vm.tab1Click(1)">供给</a></li>
+      <li ng-class="{active: vm.active1Tab == 2}"><a href="javascript:;" ng-click="vm.tab1Click(2)">需求</a></li>
+    </ul>-->
+    <button ng-class="{active1: vm.active1Tab == 1}" ng-click="vm.tab1Click(1)">供给</button>
+    <button ng-class="{active1: vm.active1Tab == 2}" ng-click="vm.tab1Click(2)">需求</button>
+  </div>
+  <ng-echarts class="echarts" ec-config="vm.ecConfig1" ec-option="vm.ecOption1" style="width: 350px; height: 330px; position:static;"></ng-echarts>
+</div>
+
+<table class="table table-bordered table-hover">
+  <thead>
+  <tr>
+    <th>指标(单位：万人)</th>
+    <th ng-repeat="year in vm.yearList">
+      {{year.value}}
+      <input style="margin-left: 5px;" type="checkbox" ng-checked="year.checked" ng-model="year.checked" ng-click="vm.legendCheckboxClick('x',year)">
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-if="vm.activeTab == 1" ng-repeat="ageGroup in vm.ageGroupList">
+    <td ng-if="ageGroup.type==0">
+      {{ageGroup.name}}供给人数
+      <input style="margin-left: 5px;" type="checkbox" ng-checked="ageGroup.checked" ng-model="ageGroup.checked" ng-click="vm.legendCheckboxClick('y',ageGroup)">
+    </td>
+    <td ng-if="ageGroup.type==1">
+      {{ageGroup.name}}需求人数
+      <input style="margin-left: 5px;" type="checkbox" ng-checked="ageGroup.checked" ng-model="ageGroup.checked" ng-click="vm.legendCheckboxClick('y',ageGroup)">
+    </td>
+    <th ng-repeat="year in vm.yearList">
+            <span ng-repeat="item in vm.dataList">
+              <span ng-if="ageGroup.name==item.ageGroup && year.value==item.year && ageGroup.type==0">
+                  {{item.data1}}
+              </span>
+              <span ng-if="ageGroup.name==item.ageGroup && year.value==item.year && ageGroup.type==1">
+                   {{item.data2}}
+              </span>
+            </span>
+    </th>
+  </tr>
+
+  <tr ng-if="vm.activeTab == 2" ng-repeat="edu in vm.eduList">
+    <td ng-if="edu.type==0">
+      {{edu.name}}供给人数
+      <input style="margin-left: 5px;" type="checkbox" ng-checked="edu.checked" ng-model="edu.checked" ng-click="vm.legendCheckboxClick('y',edu)">
+    </td>
+    <td ng-if="edu.type==1">
+      {{edu.name}}需求人数
+      <input style="margin-left: 5px;" type="checkbox" ng-checked="edu.checked" ng-model="edu.checked" ng-click="vm.legendCheckboxClick('y',edu)">
+    </td>
+    <th ng-repeat="year in vm.yearList">
+            <span ng-repeat="item in vm.data1List">
+              <span ng-if="edu.name==item.education && year.value==item.year && edu.type==0">
+                {{item.data1}}
+              </span>
+              <span ng-if="edu.name==item.education && year.value==item.year && edu.type==1">
+                {{item.data2}}
+              </span>
+            </span>
+    </th>
+  </tr>
+  </tbody>
+</table>
