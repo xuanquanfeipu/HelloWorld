@@ -1,0 +1,160 @@
+<style>
+  .active1{
+    color:darkred;
+    background-color: greenYellow;
+  }
+  .indi-chart-p {
+    float: left;
+    background-color:white;
+    border: 1px solid #D2D6DE
+  }
+  .indi-chart-p .title {
+    height: 35px;
+    background-color: #EFF1F9;
+    text-align: center;
+    line-height: 20px;
+    padding: 8px 0;
+    margin: 6px;
+    border-radius: 0 0 12px 12px;
+    color: #515A64;
+    font-size: 16px;
+  }
+  .indi-chart-p .c21-datatbl {
+    width: 100%;
+    font-size: 14px;
+    color: #515A64;
+  }
+
+  .indi-chart-p .c21-datatbl thead tr {
+    background-color: #F6F7FB
+  }
+
+  .indi-chart-p .c21-datatbl tbody tr:nth-child(even) {
+    background-color: #F6F7FB
+  }
+
+  .indi-chart-p .c21-datatbl tbody tr:nth-child(odd) {
+    background-color: #FFF
+  }
+
+  .indi-chart-p .c21-datatbl th {
+    font-weight: normal;
+  }
+
+  .indi-chart-p .c21-datatbl tbody th {
+    text-align:left;
+    padding-left: 10px;
+    width: 235px;
+  }
+  .indi-chart-p .c21-datatbl th, .indi-chart-p .c21-datatbl td {
+    text-align: center;
+    line-height:35px;
+    border: solid 1px #EFF1F9;
+  }
+
+  .indi-chart-p .c21-datatbl th:hover, .indi-chart-p .c21-datatbl td:hover {
+    border-color: #E9F9F9;
+    background-color: #D4EDED
+  }
+</style>
+<section class="content">
+
+  <div class="indi-chart-p yl_crb_box1">
+    <div class="title" >
+      传染病情况分析
+    </div>
+    <ng-echarts id="yl_crb_chart" class="echarts col-sm-12" ec-config="vm.ecConfig" ec-option="vm.ecOption"></ng-echarts>
+  </div>
+
+
+  <div class="indi-chart-p yl_crb_box2">
+    <div class="title">
+      传染病情况分布一览
+    </div>
+
+    <div style="margin-top:15px;">
+      <table class="c21-datatbl" id="c21-datatbl">
+        <thead>
+        <tr>
+          <th style="text-align:left; padding-left:10px;">
+            指标
+          </th>
+          <th ng-repeat="year in vm.yearList">
+            <img ng-if="year.checked"  ng-model="year.checked" style="width:12px;height:12px" ng-click="vm.legendCheckboxClick('x',year)"  ng-src="../assets/images/btn_s.png"/>
+            <img ng-if="!year.checked" ng-model="year.checked" style="width:12px;height:12px" ng-click="vm.legendCheckboxClick('x',year)"  ng-src="../assets/images/btn_us.png"/>
+            {{year.value}}年
+           <!-- <input style="margin-left: 5px;" type="checkbox" ng-checked="year.checked" ng-model="year.checked" ng-click="vm.legendCheckboxClick('x',year)">-->
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr  ng-repeat="type in vm.eduTypeList">
+          <th>
+            <img ng-if="type.checked"  ng-model="type.checked" style="width:12px;height:12px" ng-click="vm.legendCheckboxClick('y',type)"  ng-src="../assets/images/btn_s.png"/>
+            <img ng-if="!type.checked" ng-model="type.checked" style="width:12px;height:12px" ng-click="vm.legendCheckboxClick('y',type)"  ng-src="../assets/images/btn_us.png"/>
+            <span > {{type.name}}</span>
+<!--
+            <input style="margin-left: 5px;" type="checkbox" ng-checked="type.checked" ng-model="type.checked" ng-click="vm.legendCheckboxClick('y',type)">
+-->
+          </th>
+          <td ng-repeat="year in vm.yearList">
+                <span ng-repeat="data in vm.dataList">
+                  <span ng-if="type.type==data.type && year.value==data.year">
+                      {{data.num}}
+                  </span>
+                </span>
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12" style="width:97%;text-align: right;font-size: 12px;line-height: 36px;color: #333;margin-top: -15px;">数据来源：湖南省统计局</div>
+  </div>
+</section>
+
+<!--<section class="content-header" ng-if="vm.breadcrumbs">
+  <h1>
+    {{vm.title}}
+  </h1>
+  <sc-breadcrumb breadcrumbs="vm.breadcrumbs"></sc-breadcrumb>
+</section>
+<section class="content">
+  <div class='row' ng-if="vm.ecOption" style="margin-left:10px">
+    <div class='col-md-12' style="background: #fff;border-top:2px solid #008000;">
+      <ng-echarts class="echarts" ec-config="vm.ecConfig" ec-option="vm.ecOption" style="width:1100px; height: 370px; position:static;"></ng-echarts>
+    </div>
+  </div>
+  <div style="margin-top:20px;margin-left:10px;">
+    <table class="table table-bordered table-hover" style="background: #fff;width:95%">
+      <thead>
+      <tr>
+        <th>指标</th>
+        <th ng-repeat="year in vm.yearList">
+          {{year.value}}
+          <input style="margin-left: 5px;" type="checkbox" ng-checked="year.checked" ng-model="year.checked" ng-click="vm.legendCheckboxClick('x',year)">
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr  ng-repeat="type in vm.eduTypeList">
+        <td>
+          <span > {{type.name}}</span>
+          <input style="margin-left: 5px;" type="checkbox" ng-checked="type.checked" ng-ckdel="type.checked" ng-click="vm.legendCheckboxClick('y',type)">
+        </td>
+        <th ng-repeat="year in vm.yearList">
+                <span ng-repeat="data in vm.dataList">
+                  <span ng-if="type.type==data.type && year.value==data.year">
+                      {{data.num}}
+                  </span>
+                </span>
+        </th>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</section>-->
