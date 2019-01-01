@@ -1,0 +1,127 @@
+
+<section style="min-height: 300px; padding-top: 20px;">
+  <div class="box">
+    <div class="box-title">中部六省时序分析</div>
+    <div style="width:50%; float:right; text-align: right">
+
+      <div class="exponential">
+        <div class="selectSite">请选择指标</div>
+        <div class="textBox">
+          <span>{{vm.dropOrderTxt}}<i class="jt_icon"></i></span>
+          <ul class="textList">
+            <li ng-class="{active:vm.dropOrder == 1}" ng-click="vm.dropBtn(1,'地区生产总值增速')">地区生产总值增速</li>
+            <li ng-class="{active:vm.dropOrder == 2}" ng-click="vm.dropBtn(2,'规模工业增加值增速')">规模工业增加值增速</li>
+            <li ng-class="{active:vm.dropOrder == 3}" ng-click="vm.dropBtn(3,'固定资产投资绝对值及增速')">固定资产投资绝对值及增速</li>
+            <li ng-class="{active:vm.dropOrder == 4}" ng-click="vm.dropBtn(4,'社会消费品零售总额增速')">社会消费品零售总额增速</li>
+            <li ng-class="{active:vm.dropOrder == 5}" ng-click="vm.dropBtn(5,'进出口绝对值及增速')">进出口绝对值及增速</li>
+            <li ng-class="{active:vm.dropOrder == 6}" ng-click="vm.dropBtn(6,'出口绝对值')">出口绝对值</li>
+            <li ng-class="{active:vm.dropOrder == 7}" ng-click="vm.dropBtn(7,'进口绝对值')">进口绝对值</li>
+            <li ng-class="{active:vm.dropOrder == 8}" ng-click="vm.dropBtn(8,'地方财政收入绝对值及增速')">地方财政收入绝对值及增速</li>
+            <li ng-class="{active:vm.dropOrder == 9}" ng-click="vm.dropBtn(9,'居民消费价格指数')">居民消费价格指数</li>
+          </ul>
+        </div>
+      </div>
+      <div style="float:right;margin-left:35px;margin-top:19px;font-size: 14px; color: #343b43;">
+        请选择省份
+        <select ng-init="selectedIndex = '1'" ng-model="selectedIndex" ng-change="vm.switchBarChart(selectedIndex);">
+          <option ng-repeat="category in vm.provinces" value="{{category.index}}">{{category.value}}</option>
+        </select>
+      </div>
+    </div>
+    <ng-echarts id="echarts" class="echarts col-sm-12" ng-if='vm.dropOrder==1 || vm.dropOrder==2 || vm.dropOrder==4|| vm.dropOrder==6|| vm.dropOrder==7|| vm.dropOrder==9' ec-config="vm.barConfig" ec-option="vm.barOption" style=" position:relative;"></ng-echarts>
+    <ng-echarts id="echarts1" class="echarts col-sm-12" ng-if='vm.dropOrder==3 || vm.dropOrder==5 || vm.dropOrder==8' ec-config="vm.barConfig1" ec-option="vm.barOption1" style=" position:relative;"></ng-echarts>
+    <div id="pieChartBox">
+      <ng-echarts id="pieChart" class="echarts col-sm-12" ec-config="vm.pieConfig" ec-option="vm.pieOption" style="height: 240px; position:absolute;"></ng-echarts>
+    </div>
+
+  </div>
+  <div style="width:97%;height:26px;font-size:12px;color:#333;text-align:right;">数据来源：湖南省统计月报</div>
+</section>
+
+<style>
+  .box{ background: #fff; margin-left: 15px; width: 97%; height: 670px; position: relative; overflow: hidden;}
+  select{ padding-right: 45px!important;}
+  .exponential{
+    float: right;
+    margin: 22px 22px 0;
+    font-size: 14px;
+    color: #676d85;
+    line-height: 30px;
+  }
+  .select>div,.select>span{
+    display: block;
+    float: left;
+    padding-left: 10px;
+  }
+  .textBox>span{
+    display: block;
+    width: 100%;
+    padding-right: 10px;
+    line-height: 32px;
+    text-align: left;
+  }
+  .textList{
+    border-width: 0 1px 1px 1px;
+    border-style:solid;
+    border-color:#eee;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background: #ffffff;
+    position: absolute;
+    margin-top:2px;
+    padding-bottom: 10px;
+    top: 30px;
+    left: -1px;
+    width: 100%;
+    display: none;
+    padding-left: 0px;
+    text-align: left;
+  }
+  .textList li{
+    line-height: 30px;
+    padding-left: 10px;
+    cursor: pointer;
+    position: relative;
+  }
+  .textList li:hover,.on
+  {
+    color: #fff;
+    background: #5b62a2;
+  }
+  .selectSite,.textBox{
+    display: inline-block;
+    color: #343b43;
+  }
+  .textBox{
+    min-width: 225px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 0 35px 0 10px ;
+    margin:0 12px;
+    cursor: pointer;
+    position: relative;
+    z-index: 99;
+    background: url("../../../assets/images/icon_select_z.png") no-repeat center right;
+  }
+  #pieChart{
+    width: 300px;
+    height: 240px;
+    padding: 0;
+    z-index: 9;
+    top: -92%;
+    left: 10%;
+  }
+  #pieChartBox{
+    display: block;
+    position: relative;
+    top:-20px;
+  }
+  #echarts{ height: 520px;}
+  #echarts1{ height: 520px;}
+  @media screen and (min-width:1900px){
+    .textBox{ min-width: 225px;}
+    .box{ height: 820px;}
+    #echarts{ height: 701px;}
+    #echarts1{ height: 701px;}
+  }
+</style>
