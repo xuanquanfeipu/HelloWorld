@@ -1,0 +1,173 @@
+<style>
+    .right-title>div{display:inline-block;float:left;}
+    .right-title-col2 span{color:blue;}
+    .right-title-col2{font-weight: bold;}
+    .right-content1-right{height:100%;}
+    .right-content2-title{height:38px;}
+    .right-content2-title button{height:30px;margin: 4px;}
+    .box2{position: relative;
+      background: #ffffff;
+      border: 1px solid #d2d6de;
+      margin: 0 0 10px 10px;
+    }
+    select {
+      border:1px solid #eee;
+      appearance:none;
+      -moz-appearance:none;
+      -webkit-appearance:none;
+      background: url("../../../assets/images/icon_select_z.png") no-repeat scroll right center transparent;
+      height: 35px;line-height: 35px;border-radius: 5px;
+      padding: 0 35px 0 6px;
+    }
+    select::-ms-expand { display: none; }
+    .envBtn{cursor:pointer;background-color:#e1dffD;border:1px solid #6662B6;margin:5px 20px;text-align:center;border-radius:5px;color:#333;}
+    .envBtn_selected{background-color:#3F69E4;border:1px solid #3f69e4;color:#fff;}
+    .envBtnHorizon1{float:left;height:30px;width:72px;line-height:30px;cursor:pointer;background-color:#fff;border:1px solid #6662B6;margin:5px 5px;text-align:center;border-radius:5px;color:#4c73e6;}
+    .envBtnHorizon1_selected{background-color:#3F69E4;border:1px solid #3f69e4;color:#fff;}
+</style>
+<style ng-if="vm.screenSizeType=='L'">
+    .box{height:600px;}
+    .box2{height:410px;}
+    .echarts{height:340px;}
+    .indicator .content{padding-bottom:0;}
+    .right-title{height:60px;}
+    .right-content1{height:210px;width:100%;}
+    .right-content2{height:330px;width:100%;}
+    .right-title-col1{width:33%;padding:15px 0; color:#333; border-bottom: 1px solid #ccc;}
+    .right-title-col2{width:32%;font-size:18px;color:#333;vertical-align: middle;margin:15px 1%;text-align: center;}
+    .right-title-col3{width:33%;padding:15px 0; color:#333; border-bottom: 1px solid #ccc;}
+    .right-content1-right>div>div{height:22%;margin: 22px 0 5% 0;}
+    .right-content2-content{height:290px;}
+    .btn-col{margin-top:25px;height:35px;}
+    .btn-col button{display:block;width:80%;margin:20px 10% 0 10%;}
+    .barchart2{height:290px;}
+    .envBtn{height:40px;width:220px;line-height:40px;}
+</style>
+<style ng-if="vm.screenSizeType=='M'">
+    .box{height:490px;}
+    .box2{height:320px;}
+    .echarts{height:250px;}
+    .indicator .content{padding-bottom:0;}
+    .right-title{height:49px;}
+    .right-content1{height:190px;width:100%;}
+    .right-content2{height:260px;width:100%;}
+    .right-title-col1{width:28%;padding:12px 0; color:#333; border-bottom: 1px solid #ccc;}
+    .right-title-col2{width:38%;font-size:16px;color:#333;vertical-align: middle;;margin:12px 1%;text-align: center;}
+    .right-title-col3{width:28%;padding:12px 0; color:#333; border-bottom: 1px solid #ccc;}
+    .right-content1-right>div>div{height:20%;margin: 20px 0 5% 0;}
+    .right-content2-content{height:210px;}
+    .btn-col{margin-top:16px;}
+    .btn-col button{display:block;width:80%;margin:12px 10% 0 10%;}
+    .barchart2{height:240px;}
+    .envBtn{height:30px;width:128px;line-height:30px;}
+</style>
+<section class="content">
+  <div class="container-fluid" style="width:99%; padding:0; margin:0; position:relative;">
+    <div class="row" style="margin:0 0 0 -10px; padding:0;">
+      <div class="box" style="width:auto;">
+        <div class="col-md-4" style="padding:0;height:100%;">
+          <div class="box-title">
+            区域环境空气质量状况分析
+          </div>
+          <div style="height:100%;">
+            <ng-echarts id="echart-map" class="echarts" ec-config="vm.mapConfig1" ec-option="vm.mapOption1"
+                      style="display:block;height:90%;"></ng-echarts>
+          </div>
+        </div>
+        <div class="col-md-8" style="padding:0;height:100%;">
+          <div class="right-title" style="padding:0 10px; background-color:#fff;margin:0">
+            <div class="right-title-col1"></div>
+            <div class="right-title-col2">
+              <span>{{vm.curAreaName}}{{vm.recentMonthFormatted}}</span>空气质量分析
+            </div>
+            <div class="right-title-col3"></div>
+          </div>
+          <div class="right-content1 row">
+            <div class="col-md-6" style="height:100%;">
+              <ng-echarts id="echart-gauge" class="echarts" ec-config="vm.gaugeConfig" ec-option="vm.gaugeOption"
+                          style="display:block;height:100%;"></ng-echarts>
+            </div>
+            <div class="right-content1-right col-md-6 row">
+              <div class="col-md-8" style="height:100%">
+                <div>优良天数
+                  <div style="height:14px;width:160px;background-color:#f1f1f1;float:right;text-align:right;position: relative;font-size: 12px;z-index: 99999;margin-top:2px;">
+                    <div id="barWidth" style="height: 100%;background-color: #3f69e4;position: absolute;left: 0;z-index: 0;"></div>
+                    <div style="height:100%;color:#fff;position:absolute;left:2px;z-index:9999;margin-top:-2px;">{{(vm.ylts/vm.daysTotal)*100|number:0}}%</div>
+                  </div>
+                </div>
+                <div>优良天数同比增长率</div>
+                <div>综合指数同比变化率</div>
+              </div>
+              <div class="col-md-4" style="height:100%">
+                <div style="color:#3f69e4;font-weight:bold;">{{vm.ylts}}天/{{vm.daysTotal}}天</div>
+                <div style="font-weight:bold;" ng-style="vm.color1">{{vm.ylts_zzl}}</div>
+                <div style="font-weight:bold;" ng-style="vm.color2">{{vm.zhzs_zzl}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="right-content2 row">
+            <div class="tzhy_div right-content2-title">
+              <a href="#" style="height:38px;"></a>
+              <span style="line-height:38px;">{{vm.curAreaName}}空气质量分析</span>
+              <div id="btnDivHorizon" style="float:right;">
+                <div class="envBtnHorizon1" ng-click="vm.switchBar1(1)">优良天数</div>
+                <div class="envBtnHorizon1" ng-click="vm.switchBar1(2)">综合指数</div>
+                <div class="envBtnHorizon1 envBtnHorizon1_selected" ng-click="vm.switchBar1(3)">PM2.5</div>
+              </div>
+            </div>
+            <div class="right-content2-content">
+              <ng-echarts id="echart-bar1" class="barchart2" ec-config="vm.bar1Config" ec-option="vm.bar1Option"
+                          style="display:block;height:100%;"></ng-echarts>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid" style="width:99%; padding:0; margin:0; position:relative;">
+    <div class="row" style="margin:0 0 0 -10px; padding:0;">
+      <div class="box2" style="width:auto;">
+        <div class="" style="padding:0;height:100%;">
+          <div class="box-title">
+            区域环境空气污染物浓度情况分析
+            <div id="btnDivHorizon2" style="float:right;margin:-12px 20px 0 0;font-weight:normal;font-size:14px;">
+              <div class="envBtnHorizon1 envBtnHorizon1_selected" ng-click="vm.switchBar2(1)">按月</div>
+              <div class="envBtnHorizon1" ng-click="vm.switchBar2(2)">按天</div>
+            </div>
+          </div>
+          <div class="row" style="height:100%;">
+            <div id="btnDiv" class="btn-col col-md-2">
+              <div class="envBtn envBtn_selected" ng-click="vm.switchTab(1,selectedIndex)" value="1">PM2.5值</div>
+              <div class="envBtn" ng-click="vm.switchTab(2,selectedIndex)" value="2">PM10值</div>
+              <div class="envBtn" ng-click="vm.switchTab(3,selectedIndex)" value="3">SO<sub>2</sub>值</div>
+              <div class="envBtn" ng-click="vm.switchTab(4,selectedIndex)" value="4">NO<sub>2</sub>值</div>
+              <div class="envBtn" ng-click="vm.switchTab(5,selectedIndex)" value="5">CO值</div>
+              <div class="envBtn" ng-click="vm.switchTab(6,selectedIndex)" value="6">O<sub>3</sub>值</div>
+            </div>
+            <div class="col-md-10" style="position:relative;">
+              <div style="position:absolute;right:30px;top:10px;z-index:99999;">
+                <select id="monthSelect" ng-init="selectedIndex = '0'" ng-model="selectedIndex" ng-change="vm.switchBarChart(selectedIndex);">
+                  <option ng-repeat="month in vm.months" value="{{$index}}">{{month.name}}</option>
+                </select>
+
+                <select id="daySelect" ng-init="selectedIndex = '0'" ng-model="selectedIndex" ng-change="vm.switchBarChartByDay(selectedIndex);" style="display:none;">
+                  <option ng-repeat="day in vm.days" value="{{$index}}">{{day.name}}</option>
+                </select>
+                <!--<select ng-init="selectedIndex = '0'" ng-model="selectedIndex" ng-change="vm.switchBarChart(selectedIndex);">-->
+                  <!--<option ng-repeat="category in vm.dataList" value="{{$index}}">{{category.name}}</option>-->
+                <!--</select>-->
+              </div>
+              <div>
+                <ng-echarts id="echart-bar2" class="barchart2" ec-config="vm.bar2Config" ec-option="vm.bar2Option"
+                            style="display:block;"></ng-echarts>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="clear:both;width:99%;height:26px;font-size:12px;color:#333;text-align:right;">数据来源：湖南省环境保护厅</div>
+</section>
