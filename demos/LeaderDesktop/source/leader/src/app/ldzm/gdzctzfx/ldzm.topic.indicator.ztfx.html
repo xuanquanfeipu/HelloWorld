@@ -1,0 +1,199 @@
+<style>
+  .p_title {
+    background-color: #408bb7;
+    height: 33.5px;
+    font-size: 14px;
+    line-height: 33px;
+    text-align: center;
+    color: #ffffff;
+    padding: 0;
+    /*width: 120px;*/
+    padding-left: 0;
+    margin-left: 0;
+  }
+  .jt_span{color: #FF4280;text-align: center;}
+  .count{text-align: center;}
+  .ztz_span{font-family: "微软雅黑";font-size: 18px;color: #ffffff;margin-right: 12px;}
+  .tbzz{color: #FFFF00;font-size: 12px;margin-right: 12px;}
+  .shue{font-size: 20px;color: #ffffff;}
+  .yiyuan_span{color: #ffffff;}
+  .zzl_span{font-size: 20px;color: #FFFF00;}
+  .ztz{
+    /*width: 217px;*/
+    /*height: 100px;*/
+    background: #6cb964;
+  }
+  .img_span{
+    display: inline-block;
+    width: 60px;
+    height: 60px;}
+  .ztz ul{list-style: none;padding:0;margin: 0;overflow: hidden;
+  }
+
+  .echart_w1{
+    width:400px;
+    height: 270px
+  }
+  .echart_w2{
+    //width: 400px;
+    height: 270px;
+    padding:0 5px;
+  }
+  .echart_w3{
+    width: 380px;
+    height: 228px;
+  }
+  .echart_w4{
+    width: 760px;
+    height: 228px;
+  }
+  .w4{
+    width: 63.3%;
+  }
+  .fll{
+    float: right;
+  }
+  .li1{
+    margin-left:20px
+  }
+  .li-year{
+    margin-top:-5px
+  }
+  .cfd{
+    margin-right:1.5%
+  }
+  @media (min-width: 1900px){
+    .echart_w1{
+      width:510px;
+      height: 350px
+    }
+    .echart_w2{
+      width:500px;
+      height: 350px;
+    }
+    .echart_w3{
+      width: 520px;
+      height: 350px;
+    }
+    .echart_w4{
+      width: 990px;
+      height: 350px;
+    }
+    .p_title {
+      height: 72px;
+      line-height: 74px;
+    }
+    .w4{
+      width: 63.6%;
+    }
+    .c_2{
+      margin-left:-20%
+    }
+    .fll{
+      float: left;
+    }
+    .li1{
+      margin-left:100px
+    }
+    .cfd{
+      margin-right:2%
+    }
+  }
+
+</style>
+<section class="content">
+  <div class="row" ng-if="!vm.ecOption">
+    <div class='col-md-7' style="margin:5% 0 0 20%;">
+      <h2>没有数据显示！</h2>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-4 box' style='width: 32.5%;'>
+      <div class="box-title">全省固定资产投资发展情况</div>
+      <!-- <div style="text-align:center; margin:8px 0 12px 0">
+          <span class="toggle-btn">
+              <a href="javascript:void(0)" class="target" tp="year">按年</a>
+              <a href="javascript:void(0)" tp="quarter" class="">按季</a>
+          </span>
+      </div> -->
+      <ng-echarts class="col-md-12 echarts echart_w1" ec-config="vm.ecConfig" ec-option="vm.ecOption" style=" position:static;"></ng-echarts>
+    </div>
+    <div class='col-md-4 box' style='width: 32.5%;'>
+      <div class="box-title">{{vm.showCurYear}}全省固定投资完成情况及区域分布</div>
+      <ng-echarts class="col-md-12 echarts echart_w2" ec-config="vm.pieConfig" ec-option="vm.pieOption" style="position:static;">
+      </ng-echarts>
+    </div>
+    <div class='col-md-4' style='width:32%;' ng-repeat="always in vm.alwaysData">
+      <div class="ztz">
+        <ul  style="padding-top: 15px;" >
+          <li class="li1" style="float: left;margin-top: 8px;">
+              <span class="img_span">
+                <img src="/assets/images/icon_gdp.png">
+              </span>
+          </li>
+          <li class="fll" style="">
+            <p>
+              <span class="ztz_span">全省房地产计划总投资</span>
+              <span  ng-if="always.JHTZ_ZZL >= 0" class="tbzz">同比增长</span>
+              <span  ng-if="always.JHTZ_ZZL < 0" class="tbzz">同比下降</span>
+            </p>
+            <p class="yiyuan" >
+                <span  style="display: inline-block;width: 160px;">
+                  <span class="shue">{{always.JHTZ_ZL}}</span>
+                  <span class="yiyuan_span">亿元</span>
+                </span>
+              <span class="zzl_span" style="float:right;margin-right:14px">{{always.JHTZ_ZZL}}%</span>
+            </p>
+          </li>
+        </ul>
+        <ul class="ul_three col-md-12" style="margin-top: 7px;">
+          <li class="col-md-6" style="padding: 0;background: #ffffff;">
+            <p class="p_title">施工房屋面积</p>
+            <p class="count">{{always.SGMJ}}万平方米</p>
+            <p  ng-if="always.SGMJ_ZZL >= 0" class="jt_span">↑{{always.SGMJ_ZZL}}%</p>
+            <p  ng-if="always.SGMJ_ZZL < 0" class="jt_span" style="color:green">↓{{-always.SGMJ_ZZL}}%</p>
+          </li>
+          <li class="col-md-6" style="padding:0 2px;background: #ffffff;">
+            <p class="p_title">竣工房屋面积</p>
+            <p class="count">{{always.JGMJ}}万平方米</p>
+            <p  ng-if="always.JGMJ_ZZL >= 0" class="jt_span">↑{{always.JGMJ_ZZL}}%</p>
+            <p  ng-if="always.JGMJ_ZZL < 0" class="jt_span" style="color:green">↓{{-always.JGMJ_ZZL}}%</p>
+          </li>
+        </ul>
+        <ul class="ul_three col-md-12">
+          <li class="col-md-6" style="padding: 0;background: #ffffff;">
+            <p class="p_title">商品房销售建筑面积</p>
+            <p class="count">{{always.SPF_XSMJ}}万平方米</p>
+            <p  ng-if="always.SPF_XSMJ_ZZL >= 0" class="jt_span">↑{{always.SPF_XSMJ_ZZL}}%</p>
+            <p  ng-if="always.SPF_XSMJ_ZZL < 0" class="jt_span" style="color:green">↓{{-always.SPF_XSMJ_ZZL}}%</p>
+          </li>
+          </li>
+          <li class="col-md-6" style="padding:0 2px;background: #ffffff;">
+            <p class="p_title">商品房销售额</p>
+            <p class="count">{{always.SPF_XSE}}亿元</p>
+            <p  ng-if="always.SPF_ZZL >= 0" class="jt_span">↑{{always.SPF_ZZL}}%</p>
+            <p  ng-if="always.SPF_ZZL < 0" class="jt_span" style="color:green">↓{{-always.SPF_ZZL}}%</p>
+          </li>
+          <li class="col-xs-12 li-year" style="text-align:center;color:#333333;font-size:12px;background-color:#fff">
+            <div style="float:right;border-top: 1px solid #ccc;width:30%;margin-top:13px"></div>
+            <div style="float:right;padding-right:10px;padding-left:10px;width:40%;margin-top:5px">以上为2015年数据</div>
+            <div style="float:right;border-top: 1px solid #ccc;width:30%;margin-top:13px"></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-4 box' style='width: 32.5%;'>
+      <div class="box-title">{{vm.showCurYear}}全省固定资产投资市州排行TOP5</div>
+      <ng-echarts class="col-md-12 echarts echart_w3" ec-config="vm.barConfig" ec-option="vm.barOption" style=" position:static;"></ng-echarts>
+    </div>
+    <div class='col-md-8 box w4' style=''>
+      <div class="box-title">{{vm.showCurYear}}全省固定资产投资行业分布</div>
+      <ng-echarts class="col-md-12 echarts echart_w4" ec-config="vm.barConfig2" ec-option="vm.barOption2" style=" position:static;"></ng-echarts>
+    </div>
+  </div>
+  <div class='row cfd' style="text-align:right;;padding:0;color:#333333;font-size:12px">
+         数据来源：{{vm.dataComeFrom}}
+  </div>
+</section>
