@@ -1,0 +1,106 @@
+<div ng-if="vm.screenSizeType=='L'">
+  <style>
+    .box{height:390px;}
+    .shbzfx-autoheight{height:390px;}
+    .shbzfx-autoheight-top{height:145px;}
+    .shbzfx-autoheight-bottom{height:195px;}
+    .shbzfx-autoheight-bottom2{height:40px;}
+    .echarts{height:340px;}
+    .shbzfx-autoheight-bottom2-col1{width:34%;float:left;}
+    .shbzfx-autoheight-bottom2-col2{width:30%;float:left;margin:0 1%;}
+    .shbzfx-autoheight-bottom2-col3{width:34%;float:left;}
+    .indicator .content{padding-bottom:0;}
+  </style>
+</div>
+<div ng-if="vm.screenSizeType=='M'">
+  <style>
+    .box{height:300px;}
+    .shbzfx-autoheight{height:300px;}
+    .shbzfx-autoheight-top{height:100px;}
+    .shbzfx-autoheight-bottom{height:150px;}
+    .shbzfx-autoheight-bottom2{height:40px;}
+    .echarts{height:250px;}
+    .shbzfx-autoheight-bottom2-col1{width:29%;float:left;}
+    .shbzfx-autoheight-bottom2-col2{width:39%;margin:0 1%;float:left;}
+    .shbzfx-autoheight-bottom2-col3{width:29%;float:left;}
+    .indicator .content{padding-bottom:0;}
+  </style>
+</div>
+<section class="content">
+  <div class="row" ng-if="!vm.ecOption1">
+    <div class='col-md-7' style="margin:5% 0 0 20%;">
+      <h2>没有数据显示！</h2>
+    </div>
+  </div>
+  <div class="container-fluid" style="width:99%; padding:0; margin:0; position:relative;">
+    <div class="row" style="margin:0 0 0 -10px; padding:0;">
+      <div class="col-md-5" style="padding:0">
+        <div class="box" style="width:auto;">
+          <div class="box-title">
+            生育保险参保情况
+          </div>
+          <ng-echarts id="echart-1" class="echarts" ec-config="vm.ecConfig1" ec-option="vm.ecOption1"
+                      style="display:block;"></ng-echarts>
+        </div>
+      </div>
+      <div class="col-md-4" style="padding:0">
+        <div class="box" style="width:auto;">
+          <div class="box-title">
+            {{vm.latestYear}}年生育保险待遇享受情况
+          </div>
+          <ng-echarts id="echart-2" class="echarts" ec-config="vm.ecConfig2" ec-option="vm.ecOption2"
+                      style="display:block;"></ng-echarts>
+        </div>
+      </div>
+      <div class="col-md-3" style="padding:0">
+        <div class="shbzfx-autoheight" style="width:auto;margin: 0 0 10px 10px;">
+          <div class="shbzfx-autoheight-top" style="margin-bottom:10px; background:url('../assets/images/icon_shbz_unit.png') 10% 50% no-repeat #6db863">
+            <div style="float:right;width: 50%;height:100%;">
+              <div style="width:100%;height:50%;text-align: center;display:inline-block;position:relative;">
+                <div style="position:absolute;bottom:12px;width:100%;height:30%;text-align: center;color:#fff;">
+                  <span style="font-size:24px;">{{vm.cbdws}}</span>&nbsp;
+                  <span style="font-size:20px;">家</span>
+                </div>
+              </div>
+              <div style="width:100%;height:50%;text-align: center;display:inline-block;vertical-align: top;font-size:14px;color:#fff;">参保单位数</div>
+            </div>
+          </div>
+          <div class="shbzfx-autoheight-bottom">
+            <div style="float:left;width:50%;height:100%;background:url('../assets/images/icon_shbz_medical2.png') 50% 20% no-repeat #4347a3;position:relative;">
+              <div style="width:100%;position:absolute;top:60%;text-align: center;color:#fff;">
+                <div><span style="font-size:20px;">{{vm.yldy}}</span>&nbsp;<span style="font-size:16px;">亿元</span></div>
+                <div style="font-size:12px;">发生医疗费用</div>
+              </div>
+            </div>
+            <div style="float:left;width:50%;height:100%;background:url('../assets/images/icon_shbz_money.png') 50% 20% no-repeat #4886be;position:relative;">
+              <div style="width:100%;position:absolute;top:60%;text-align: center;color:#fff;">
+                <div><span style="font-size:20px;">{{vm.jtdy}}</span>&nbsp;<span style="font-size:16px;">亿元</span></div>
+                <div style="font-size:12px;">发放津贴</div>
+              </div>
+            </div>
+          </div>
+          <div class="row shbzfx-autoheight-bottom2" style="padding:0 10px; background-color:#fff;margin:0;">
+            <div class="shbzfx-autoheight-bottom2-col1" style="padding:10px 0; color:#333; border-bottom: 1px solid #ccc;"></div>
+            <div class="shbzfx-autoheight-bottom2-col2" style="font-size:12px;color:#333;vertical-align: middle;margin-top:12px;">以上为{{vm.latestYear}}年数据</div>
+            <div class="shbzfx-autoheight-bottom2-col3" style="padding:10px 0; color:#333; border-bottom: 1px solid #ccc;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid" style="width:99%; padding:0; margin:0; position:relative;">
+    <div class="row" style="margin:0 0 0 -10px; padding:0;">
+      <div class="col-md-12" style="padding:0">
+        <div class="box" style="width:auto;">
+          <div class="box-title">
+            生育保险基金收余情况
+          </div>
+          <ng-echarts id="echart-3" class="echarts" ec-config="vm.ecConfig3" ec-option="vm.ecOption3"
+                      style="display:block;"></ng-echarts>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div style="width:99%;height:26px;font-size:12px;color:#333;text-align:right;">数据来源：湖南省人力资源和社会保障厅</div>
+</section>
