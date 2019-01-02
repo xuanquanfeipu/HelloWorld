@@ -1,0 +1,59 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="description" content="CSS style样式的实时编辑与效果显示 ">
+
+<title>CSS style样式的实时编辑与效果显示</title>
+<link rel="stylesheet" href="../css/demo.css" type="text/css">
+<style>
+.p20{padding:20px;}
+body style{display:block; padding:0.6em 0.8em; border:1px dashed #ccc; background-color:#f5f5f5; color:#000; font-family:Monaco, monospace; font-size:12px; white-space:pre-wrap; word-wrap:break-word;}
+body style:focus{-moz-box-shadow:0 0 4px green; box-shadow:0 0 4px blue;}
+</style>
+<style id="tsbrowser_video_independent_player_style" type="text/css">                                                            
+[tsbrowser_force_max_size] {  
+width: 100% !important;
+height: 100% !important;
+left: 0px !important; 
+top: 0px !important; 
+margin: 0px !important;
+padding: 0px !important;
+}
+[tsbrowser_force_fixed] { 
+position: fixed !important;
+z-index: 9999 !important; 
+ background: black !important;  
+ } 
+ [tsbrowser_force_hidden] { 
+ opacity: 0 !important; 
+ z-index: 0 !important; 
+ } 
+ [tsbrowser_hide_scrollbar] { 
+ overflow: hidden !important; 
+ }
+ </style></head>
+
+<body>
+
+<div id="main">
+	<h1>CSS style样式的实时编辑与效果显示实例页面</h1>
+    <div id="body">
+    	<div id="code" class="part">
+        	<h3>代码：</h3>
+            <div class="show p20">
+                <style contenteditable="">.test_image{ padding: 3px; border: 1px solid #ccc; background-color: #fff; }</style>
+            </div>
+        </div>
+        <div id="effect" class="part">
+        	<h3>效果：</h3>
+            <div class="show">
+            	<div class="demo">
+                	<img class="test_image" src="mm1.jpg">
+                </div>
+            </div>
+        </div>       
+    </div>
+</div>
+
+
+
+</body></html>
