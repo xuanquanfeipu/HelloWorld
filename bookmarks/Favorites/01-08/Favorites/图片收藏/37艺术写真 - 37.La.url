@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=http://mm.37.la/
+[DOC_baiduSpFrame]
+BASEURL=http://spcode.baidu.com/spcode/spstyle/style2020.jsp?tn=37la_sp&ctn=0&styleid=2020
+ORIGURL=http://spcode.baidu.com/spcode/spstyle/style2020.jsp?tn=37la_sp&ctn=0&styleid=2020
+[InternetShortcut]
+URL=http://mm.37.la/
+IDList=
+IconFile=http://mm.37.la/
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

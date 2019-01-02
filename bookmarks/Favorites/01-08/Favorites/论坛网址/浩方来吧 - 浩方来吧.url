@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://laiba.cga.com.cn/laiba/CampaignTop?id=holdfast
+[InternetShortcut]
+URL=http://laiba.cga.com.cn/laiba/CampaignTop?id=holdfast
+IDList=
+IconFile=http://laiba.cga.com.cn/laiba/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

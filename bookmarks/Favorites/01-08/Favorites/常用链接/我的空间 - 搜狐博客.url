@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://blog.sohu.com/manage/main.do
+[InternetShortcut]
+URL=http://blog.sohu.com/manage/main.do
+IDList=
+IconFile=http://blog.sohu.com/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

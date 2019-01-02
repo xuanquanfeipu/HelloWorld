@@ -1,0 +1,7 @@
+[DEFAULT]
+BASEURL=http://www.google.cn/webhp?hl=zh-CN&btnG=Google+%E6%90%9C%E7%B4%A2
+[InternetShortcut]
+URL=http://www.google.cn/webhp?hl=zh-CN&btnG=Google+%E6%90%9C%E7%B4%A2
+Modified=B0C98DA1A94BC90165
+IconFile=http://www.google.cn/favicon.ico
+IconIndex=1

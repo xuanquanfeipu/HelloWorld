@@ -1,0 +1,13 @@
+[DEFAULT]
+BASEURL=http://dl.pconline.com.cn/html_2/1/111/id=1200&pn=0.html
+[DOC__ivf0001Show]
+BASEURL=http://ivy.pconline.com.cn/adpuba/show?id=pc.xz.rjxz.liandian.dilan2.&media=html&adid=101056&trace=1
+ORIGURL=http://ivy.pconline.com.cn/adpuba/show?id=pc.xz.rjxz.liandian.dilan2.&media=html&adid=101056&trace=1
+[DOC__ivf0002Show]
+BASEURL=http://ivy.pconline.com.cn/adpuba/show?id=pc.xz.qudong.dilan1.&media=html&adid=101063&trace=1
+ORIGURL=http://ivy.pconline.com.cn/adpuba/show?id=pc.xz.qudong.dilan1.&media=html&adid=101063&trace=1
+[InternetShortcut]
+URL=http://dl.pconline.com.cn/html_2/1/111/id=1200&pn=0.html
+Modified=C0D1C5552FC6C9016A
+IconFile=http://dl.pconline.com.cn/favicon.ico
+IconIndex=1

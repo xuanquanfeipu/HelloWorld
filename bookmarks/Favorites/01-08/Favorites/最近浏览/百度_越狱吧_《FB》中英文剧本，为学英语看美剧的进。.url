@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://tieba.baidu.com/f?kz=151741642
+[InternetShortcut]
+URL=http://tieba.baidu.com/f?kz=151741642
+IDList=
+IconFile=http://tieba.baidu.com/tb/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

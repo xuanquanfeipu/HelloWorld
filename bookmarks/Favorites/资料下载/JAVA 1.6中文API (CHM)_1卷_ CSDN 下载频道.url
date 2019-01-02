@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=http://d.download.csdn.net/down/1640695/jzlyx
+[DOC#202]
+BASEURL=http://dl6.csdn.net/fd.php?i=550316406953130&s=a386a2d04e4b5d47a7efd6447012a10d
+ORIGURL=
+[InternetShortcut]
+URL=http://d.download.csdn.net/down/1640695/jzlyx
+IDList=
+IconFile=http://www.csdn.net/images/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

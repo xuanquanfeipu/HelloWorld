@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=http://xiaonei.com/profile.do?id=256279273
+[DOC_imengine]
+BASEURL=res://C:\WINDOWS\system32\shdoclc.dll/dnserror.htm
+ORIGURL=http://wpi.xiaonei.com/wtalk/ime.htm?ver=86480
+[InternetShortcut]
+URL=http://xiaonei.com/profile.do?id=256279273#
+Modified=B026454BD340C90143
+IconFile=http://xnimg.cn/favicon.ico
+IconIndex=1
+[MyIE2]
+VisitTimes=1

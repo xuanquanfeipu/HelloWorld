@@ -1,0 +1,13 @@
+[DEFAULT]
+BASEURL=http://www.softhouse.com.cn/
+[DOC_google_ads_frame1]
+BASEURL=res://C:\WINDOWS\system32\shdoclc.dll/http_404.htm
+ORIGURL=http://googleads.g.doubleclick.net/cpa/ads?&cpa_choice=CAAQrcL8zwEaCBl2rQiRtH-LKL-_93M&oe=gb2312client=ca-pub-7771468923744729&dt=1239346893359&lmt=1239346893&format=120x60_as_rimg&output=html&correlator=1239346893359&channel=0101939783&url=http%3A%2F%2Fwww.softhouse.com.cn%2F&region=_google_cpa_region_&ref=http%3A%2F%2Fwww.softhouse.com.cn%2Fhtml%2F200505%2F2005051714573600007406.html&frm=0&ga_vid=1835576714.1239346893&ga_sid=1239346893&ga_hid=549279931&flash=10.0.12.36&u_h=768&u_w=1024&u_ah=738&u_aw=1024&u_cd=32&u_tz=480&u_java=true&dtd=125&w=120&h=60&xpc=CN5sqayzFp&p=http%3A//www.softhouse.com.cn
+[DOC_google_ads_frame2]
+BASEURL=res://C:\WINDOWS\system32\shdoclc.dll/http_404.htm
+ORIGURL=http://googleads.g.doubleclick.net/cpa/ads?&cpa_choice=CAAQyKmU_AEaCEgmBX1Smfx8KODy9IMB&oe=gb2312client=ca-pub-7771468923744729&dt=1239346893656&lmt=1239346893&prev_fmts=120x60_as_rimg&format=120x60_as_rimg&output=html&correlator=1239346893359&channel=0101939783&pv_ch=0101939783%2B&url=http%3A%2F%2Fwww.softhouse.com.cn%2F&region=_google_cpa_region_&ref=http%3A%2F%2Fwww.softhouse.com.cn%2Fhtml%2F200505%2F2005051714573600007406.html&frm=0&ga_vid=1835576714.1239346893&ga_sid=1239346893&ga_hid=549279931&flash=10.0.12.36&u_h=768&u_w=1024&u_ah=738&u_aw=1024&u_cd=32&u_tz=480&u_java=true&dtd=78&w=120&h=60&xpc=9yGp10cbJJ&p=http%3A//www.softhouse.com.cn
+[InternetShortcut]
+URL=http://www.softhouse.com.cn/
+Modified=20B3D734AAB9C9010B
+IconFile=http://www.softhouse.com.cn/favicon.ico
+IconIndex=1

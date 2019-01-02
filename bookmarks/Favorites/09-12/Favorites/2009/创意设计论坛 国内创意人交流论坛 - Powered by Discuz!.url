@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://bbs.vicnc.com/index.php
+[InternetShortcut]
+URL=http://bbs.vicnc.com/index.php
+IDList=
+IconFile=http://bbs.vicnc.com/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

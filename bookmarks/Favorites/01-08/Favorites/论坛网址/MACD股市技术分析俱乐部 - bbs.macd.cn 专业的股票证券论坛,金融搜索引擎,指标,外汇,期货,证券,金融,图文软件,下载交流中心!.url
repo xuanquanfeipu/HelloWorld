@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://bbs.macd.cn/index.php
+[DOC_tiprect2050333]
+BASEURL=http://www.macdwx.com/templets/down/sl/2009.html
+ORIGURL=http://www.macdwx.com/templets/down/sl/2009.html
+[InternetShortcut]
+URL=http://bbs.macd.cn/index.php
+Modified=80C4816681C2C90138
+IconFile=http://bbs.macd.cn/favicon.ico
+IconIndex=1

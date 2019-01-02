@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://www.ppcn.net/
+[DOC_baiduSpFrame]
+BASEURL=http://spcode.baidu.com/spcode/spstyle/style1307.jsp?tn=ppcnnet_sp&ctn=0&styleid=1307
+ORIGURL=http://spcode.baidu.com/spcode/spstyle/style1307.jsp?tn=ppcnnet_sp&ctn=0&styleid=1307
+[InternetShortcut]
+URL=http://www.ppcn.net/
+Modified=A03360FF6366C901C5
+IconFile=http://www.ppcn.net/favicon.ico
+IconIndex=1

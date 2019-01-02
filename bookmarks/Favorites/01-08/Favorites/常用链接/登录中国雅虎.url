@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=https://login.yahoo.com/config/login_verify2?.intl=cn&.src=ym&.done=http%3a%2f%2fcn.mc922.mail.yahoo.com%2fmc%2fshowFolder%3f%26fid%3dInbox%26.rand%3d718506805
+[InternetShortcut]
+URL=https://login.yahoo.com/config/login_verify2?.intl=cn&.src=ym&.done=http%3a%2f%2fcn.mc922.mail.yahoo.com%2fmc%2fshowFolder%3f%26fid%3dInbox%26.rand%3d718506805
+IDList=
+IconFile=https://login.yahoo.com/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,11

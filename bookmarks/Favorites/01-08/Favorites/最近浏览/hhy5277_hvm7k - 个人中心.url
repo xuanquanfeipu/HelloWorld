@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://iask.sina.com.cn/user/user.php
+[InternetShortcut]
+URL=http://iask.sina.com.cn/user/user.php
+IDList=
+IconFile=http://iask.sina.com.cn/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

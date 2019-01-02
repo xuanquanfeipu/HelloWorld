@@ -1,0 +1,13 @@
+[DEFAULT]
+BASEURL=http://www.163.com/
+[DOC#798]
+BASEURL=http://images.163.com/js/yadun/0522/yadun0606.html
+ORIGURL=http://images.163.com/js/yadun/0522/yadun0606.html
+[DOC#1204]
+BASEURL=http://images.163.com/js/ebay/618/163hp080617j300215e.html
+ORIGURL=http://images.163.com/js/ebay/618/163hp080617j300215e.html
+[InternetShortcut]
+URL=http://www.163.com/
+Modified=504B8B7AF7D8C80138
+IconFile=http://www.163.com/favicon.ico
+IconIndex=1

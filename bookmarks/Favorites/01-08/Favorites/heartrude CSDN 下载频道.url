@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://heartrude.download.csdn.net/user/heartrude/all/1
+[InternetShortcut]
+URL=http://heartrude.download.csdn.net/user/heartrude/all/1
+IDList=
+IconFile=http://heartrude.download.csdn.net/avatar/heartrude
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

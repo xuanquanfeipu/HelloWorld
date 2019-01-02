@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=http://www.narutom.com/
+[DOC_baiduSpFrame]
+BASEURL=http://spcode.baidu.com/spcode/spstyle/style3172.jsp?tn=naruto123_sp&ctn=0&styleid=3172
+ORIGURL=http://spcode.baidu.com/spcode/spstyle/style3172.jsp?tn=naruto123_sp&ctn=0&styleid=3172
+[InternetShortcut]
+URL=http://www.narutom.com/
+IDList=
+IconFile=http://www.narutom.com/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

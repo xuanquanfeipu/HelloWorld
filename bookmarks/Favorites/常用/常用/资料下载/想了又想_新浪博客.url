@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=http://blog.sina.com.cn/u/1320713030
+[DOC_webIM_Conn_Iframe]
+BASEURL=http://web.uc.sina.com.cn/proxy/proxy.html?my_uid=1575562963
+ORIGURL=http://web.uc.sina.com.cn/proxy/proxy.html?my_uid=1575562963
+[InternetShortcut]
+URL=http://blog.sina.com.cn/u/1320713030
+IDList=
+IconFile=http://blog.sina.com.cn/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

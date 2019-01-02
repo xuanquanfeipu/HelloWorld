@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://www.narutom.com/
+[DOC_oV3]
+BASEURL=about:blank
+ORIGURL=javascript:parent.fV11()
+[InternetShortcut]
+URL=http://www.narutom.com/
+Modified=303C7E8DB44EC90143
+IconFile=http://www.narutom.com/favicon.ico
+IconIndex=1

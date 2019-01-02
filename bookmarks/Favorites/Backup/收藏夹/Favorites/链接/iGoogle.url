@@ -1,0 +1,16 @@
+[DEFAULT]
+BASEURL=http://www.google.cn/ig/china?source=hpp
+[DOC_remote_iframe_1]
+BASEURL=http://www.google.cn/ig/ifr?pid=china&url=http://www.google.com/ig/modules/china/finance_portfolios2.xml&nocache=0&up_contracted=,&up_country=China&up_stocks_app=&up_port_order=&up_stockIdFromOnebox=&env_rc=1&env_ft.environment=1&env_ft.setprefs=1&env_ft.templates=1&env_ft.finance_internal=1&env_ft.google-domain=1&env_ft.dynamic-height=1&env_ap=&env_acct=/accounts&env_ah=&env_ts=1227251695&env_uu=http://www.google.cn&lang=zh-CN&country=cn&.lang=zh-CN&.country=cn&synd=gasp2&mid=1&ifpctok=-8391326895244624765&parent=http://www.google.cn&extern_js=/extern_js/f/CgJlbhICdXMrMBA4ACwrMBE4ACw/KmV1djE8RfA.js
+ORIGURL=/ig/ifr?pid=china&url=http://www.google.com/ig/modules/china/finance_portfolios2.xml&nocache=0&up_contracted=,&up_country=China&up_stocks_app=&up_port_order=&up_stockIdFromOnebox=&env_rc=1&env_ft.environment=1&env_ft.setprefs=1&env_ft.templates=1&env_ft.finance_internal=1&env_ft.google-domain=1&env_ft.dynamic-height=1&env_ap=&env_acct=/accounts&env_ah=&env_ts=1227251695&env_uu=http://www.google.cn&lang=zh-CN&country=cn&.lang=zh-CN&.country=cn&synd=gasp2&mid=1&ifpctok=-8391326895244624765&parent=http://www.google.cn&extern_js=/extern_js/f/CgJlbhICdXMrMBA4ACwrMBE4ACw/KmV1djE8RfA.js
+[DOC_remote_iframe_3]
+BASEURL=http://www.google.cn/ig/ifr?pid=china&url=http://www.google.com/ig/modules/china/videocn.xml&nocache=0&lang=zh-CN&country=cn&.lang=zh-CN&.country=cn&synd=gasp2&mid=3&ifpctok=4817411723040686112&parent=http://www.google.cn&extern_js=/extern_js/f/CgJlbhICdXMrMBA4ACwrMBE4ACw/KmV1djE8RfA.js
+ORIGURL=/ig/ifr?pid=china&url=http://www.google.com/ig/modules/china/videocn.xml&nocache=0&lang=zh-CN&country=cn&.lang=zh-CN&.country=cn&synd=gasp2&mid=3&ifpctok=4817411723040686112&parent=http://www.google.cn&extern_js=/extern_js/f/CgJlbhICdXMrMBA4ACwrMBE4ACw/KmV1djE8RfA.js
+[DOC_remote_iframe_7]
+BASEURL=http://www.google.cn/ig/ifr?pid=china&url=http://www.google.com/ig/modules/china/shd_suggest.xml&nocache=0&up_categoryID=&up_suggest_window_backgroundcolor=white&up_suggest_window_highlightcolor=red&up_suggest_window_highlightbold=0&up_suggest_window_columnwidth=90&up_suggest_window_maximumcount=24&up_last_websites_url=http://daohang.google.cn/topwebsites%3Fnum%3D24&lang=zh-CN&country=cn&.lang=zh-CN&.country=cn&synd=gasp2&mid=7&ifpctok=7295329357834560586&parent=http://www.google.cn&extern_js=/extern_js/f/CgJlbhICdXMrMBA4ACwrMBE4ACw/KmV1djE8RfA.js
+ORIGURL=/ig/ifr?pid=china&url=http://www.google.com/ig/modules/china/shd_suggest.xml&nocache=0&up_categoryID=&up_suggest_window_backgroundcolor=white&up_suggest_window_highlightcolor=red&up_suggest_window_highlightbold=0&up_suggest_window_columnwidth=90&up_suggest_window_maximumcount=24&up_last_websites_url=http://daohang.google.cn/topwebsites%3Fnum%3D24&lang=zh-CN&country=cn&.lang=zh-CN&.country=cn&synd=gasp2&mid=7&ifpctok=7295329357834560586&parent=http://www.google.cn&extern_js=/extern_js/f/CgJlbhICdXMrMBA4ACwrMBE4ACw/KmV1djE8RfA.js
+[InternetShortcut]
+URL=http://www.google.cn/ig/china?source=hpp
+Modified=B077959BA94BC90115
+IconFile=http://www.google.cn/favicon.ico
+IconIndex=1

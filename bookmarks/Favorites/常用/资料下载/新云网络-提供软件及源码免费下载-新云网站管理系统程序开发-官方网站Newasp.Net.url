@@ -1,0 +1,15 @@
+[DEFAULT]
+BASEURL=http://www.newasp.net/
+[DOC_sugCompleteIFrame]
+BASEURL=res://ieframe.dll/dnserror.htm
+ORIGURL=javascript:void(0)
+[DOC#1324]
+BASEURL=http://img6.1133.cc/union/jiangxu/270-200-2/?provider=18_69409&ds8datastr=MzYzOTM0MzAzOTdjMzczHGFVaXzM4MzM=
+ORIGURL=http://img6.1133.cc/union/jiangxu/270-200-2/?provider=18_69409&ds8datastr=MzYzOTM0MzAzOTdjMzczHGFVaXzM4MzM=
+[InternetShortcut]
+URL=http://www.newasp.net/
+IDList=
+IconFile=http://www.newasp.net/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://so.youku.com/search_video/q_%E7%A7%BB%E9%AD%82%E9%83%BD%E5%B8%82
+[InternetShortcut]
+URL=http://so.youku.com/search_video/q_%E7%A7%BB%E9%AD%82%E9%83%BD%E5%B8%82
+IDList=
+IconFile=http://so.youku.com/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://java.decompiler.free.fr/
+[InternetShortcut]
+URL=http://java.decompiler.free.fr/
+IDList=
+IconFile=http://java.decompiler.free.fr/sites/default/themes/jd/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

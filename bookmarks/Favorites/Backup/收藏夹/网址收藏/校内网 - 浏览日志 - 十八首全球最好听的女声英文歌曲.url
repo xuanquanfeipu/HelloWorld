@@ -1,0 +1,8 @@
+[DEFAULT]
+BASEURL=http://blog.xiaonei.com/GetEntry.do?id=333041128&owner=233173999
+[DOC_imengine]
+BASEURL=res://C:\WINDOWS\system32\shdoclc.dll/dnserror.htm
+ORIGURL=http://wpi.xiaonei.com/wtalk/ime.htm
+[InternetShortcut]
+URL=http://blog.xiaonei.com/GetEntry.do?id=333041128&owner=233173999
+Modified=501A36BC7C42C901E4

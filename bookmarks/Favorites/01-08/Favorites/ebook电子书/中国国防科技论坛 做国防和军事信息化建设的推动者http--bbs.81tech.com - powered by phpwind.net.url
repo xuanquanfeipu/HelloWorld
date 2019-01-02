@@ -1,0 +1,15 @@
+[DEFAULT]
+BASEURL=http://bbs.81tech.com/
+[DOC#50]
+BASEURL=http://www.gmodules.com/ig/ifr?url=http://www.google.com/ig/modules/translatemypage.xml&up_source_language=zh-CN&w=160&h=60&title=&border=&source=http%3A%2F%2Fbbs.81tech.com%2F
+ORIGURL=http://www.gmodules.com/ig/ifr?url=http://www.google.com/ig/modules/translatemypage.xml&up_source_language=zh-CN&w=160&h=60&title=&border=&source=http%3A%2F%2Fbbs.81tech.com%2F
+[DOC#61]
+BASEURL=http://bbs.81tech.com/hack/Language/
+ORIGURL=hack\Language
+[DOC#61_google-feedback-frame]
+BASEURL=about:blank
+[InternetShortcut]
+URL=http://bbs.81tech.com/
+Modified=60FCEC9D6FBAC901D8
+IconFile=http://bbs.81tech.com/favicon.ico
+IconIndex=1

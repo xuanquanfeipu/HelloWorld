@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://play.hupo.tv/tv/184077.html
+[DOC#390]
+BASEURL=http://cd.u.17k.com/show.php?data=1033|217|*|90|370|1228142213|2045305238|UTF-8|1|0|0|0|9592217f0b6e647553e56ac3563a9aae&u=112,108,97,121,46,104,117,112,111,46,116,118
+ORIGURL=http://cd.u.17k.com/show.php?data=1033|217|*|90|370|1228142213|2045305238|UTF-8|1|0|0|0|9592217f0b6e647553e56ac3563a9aae&u=112,108,97,121,46,104,117,112,111,46,116,118
+[InternetShortcut]
+URL=http://play.hupo.tv/tv/184077.html
+Modified=A01FB8D2C353C90129
+IconFile=http://play.hupo.tv/favicon.ico
+IconIndex=1

@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=http://download.csdn.net/down/456054/xfjJason
+[DOC#208]
+BASEURL=http://dl2.csdn.net/fd.php?i=67924560548457&s=1e7158ef3bc58fe5aa7291c15a805513
+ORIGURL=
+[InternetShortcut]
+URL=http://download.csdn.net/down/456054/xfjJason
+IDList=
+IconFile=http://www.csdn.net/images/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

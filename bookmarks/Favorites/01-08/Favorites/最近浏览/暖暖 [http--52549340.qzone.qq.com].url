@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=http://user.qzone.qq.com/52549340?ptlang=2052
+[DOC_tblog]
+BASEURL=http://b.qzone.qq.com/cgi-bin/blognew/blog_output_data?uin=52549340&blogid=1242021741&imgdm=imgcache.qq.com&bdm=b.qzone.qq.com&mode=1&numperpage=15&blogseed=0.012120978949705485&property=GoRE&timestamp=1242025481
+ORIGURL=http://imgcache.qq.com/qzone/newblog/blogcanvas.html?uin=52549340&keyname=blog&params=1242021741
+[InternetShortcut]
+URL=http://user.qzone.qq.com/52549340?ptlang=2052
+IDList=
+IconFile=http://imgcache.qq.com/qzone_v5/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

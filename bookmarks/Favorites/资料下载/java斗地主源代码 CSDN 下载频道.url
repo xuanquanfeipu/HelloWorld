@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=http://d.download.csdn.net/down/1681727/commandlife2
+[DOC#202]
+BASEURL=http://dl6.csdn.net/fd.php?i=980616817276505&s=4815db920170b91d0aba1364c22304b3
+ORIGURL=
+[InternetShortcut]
+URL=http://d.download.csdn.net/down/1681727/commandlife2
+IDList=
+IconFile=http://www.csdn.net/images/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

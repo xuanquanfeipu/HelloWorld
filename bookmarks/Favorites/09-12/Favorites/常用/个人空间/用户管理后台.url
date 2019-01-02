@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=http://www.blog007.com/user_index.aspx
+[DOC_baiduSpFrame]
+BASEURL=http://spcode.baidu.com/spcode/spstyle/style2630.jsp?tn=blog007_sp&ctn=0&styleid=2630
+ORIGURL=http://spcode.baidu.com/spcode/spstyle/style2630.jsp?tn=blog007_sp&ctn=0&styleid=2630
+[InternetShortcut]
+URL=http://www.blog007.com/user_index.aspx
+IDList=
+IconFile=http://www.blog007.com/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

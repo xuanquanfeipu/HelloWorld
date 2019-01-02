@@ -1,0 +1,13 @@
+[DEFAULT]
+BASEURL=http://www.jsustenglish.cn/
+[DOC#10]
+BASEURL=http://www.jsustenglish.cn/index2.htm
+ORIGURL=index2.htm
+[DOC#10#7#9#11]
+BASEURL=http://www.jsustenglish.cn/yjs/multimedia.htm
+ORIGURL=index1.htm
+[InternetShortcut]
+URL=http://www.jsustenglish.cn/
+IDList=
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://koudai.360.cn/u/17575139
+[InternetShortcut]
+URL=http://koudai.360.cn/u/17575139
+IDList=
+IconFile=http://koudai.360.cn/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://dl.pconline.com.cn/
+[DOC__ivf0001Show]
+BASEURL=http://ivy.pconline.com.cn/adpuba/show?id=pc.shumasj.sheyingzhanqu.tl1xf.&media=html&adid=103035&trace=1
+ORIGURL=http://ivy.pconline.com.cn/adpuba/show?id=pc.shumasj.sheyingzhanqu.tl1xf.&media=html&adid=103035&trace=1
+[InternetShortcut]
+URL=http://dl.pconline.com.cn/
+Modified=205FC12FC0C7C901C0
+IconFile=http://dl.pconline.com.cn/favicon.ico
+IconIndex=1

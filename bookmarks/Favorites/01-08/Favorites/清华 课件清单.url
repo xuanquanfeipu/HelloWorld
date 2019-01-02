@@ -1,0 +1,7 @@
+[DEFAULT]
+BASEURL=http://learn.tsinghua.edu.cn/cod_search.jsp?c_Class=10
+[InternetShortcut]
+URL=http://learn.tsinghua.edu.cn/cod_search.jsp?c_Class=10
+IDList=
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

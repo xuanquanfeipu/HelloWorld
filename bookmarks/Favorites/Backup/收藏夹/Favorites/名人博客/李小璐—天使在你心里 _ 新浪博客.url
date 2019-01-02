@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://blog.sina.com.cn/lixiaolu
+[DOC__Widget_Frame_1zcpxfqi2g5dve30_0_minitv]
+BASEURL=http://widget.say-on.com/widgets/wgt_static/minitv/skins/tv_style/minitv.html?hid=commzofxltpumdgi&wgtid=1zcpxfqi2g5dve30&modid=0
+ORIGURL=http://widget.say-on.com/widgets/wgt_static/minitv/skins/tv_style/minitv.html?hid=commzofxltpumdgi&wgtid=1zcpxfqi2g5dve30&modid=0
+[InternetShortcut]
+URL=http://blog.sina.com.cn/lixiaolu
+Modified=B0A343B82358C90193
+IconFile=http://blog.sina.com.cn/favicon.ico
+IconIndex=1

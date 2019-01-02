@@ -1,0 +1,15 @@
+[DEFAULT]
+BASEURL=http://danelq.xiaonei.com/?portal=homeUmayknow&id=224141340
+[DOC_musicFrm]
+BASEURL=http://movie.img.xiaonei.com/vip/swf/music.html?muid=224141340&uid2=230914463&z=0&t=1226060827093&ver=080802
+ORIGURL=http://movie.img.xiaonei.com/vip/swf/music.html?muid=224141340&uid2=230914463&z=0&t=1226060827093&ver=080802
+[DOC_imengine]
+BASEURL=res://C:\WINDOWS\system32\shdoclc.dll/dnserror.htm
+ORIGURL=http://wpi.xiaonei.com/wtalk/ime.htm?ver=86480
+[InternetShortcut]
+URL=http://danelq.xiaonei.com/?portal=homeUmayknow&id=224141340#
+Modified=3017B2B2D440C90189
+IconFile=http://xnimg.cn/favicon.ico
+IconIndex=1
+[MyIE2]
+VisitTimes=6

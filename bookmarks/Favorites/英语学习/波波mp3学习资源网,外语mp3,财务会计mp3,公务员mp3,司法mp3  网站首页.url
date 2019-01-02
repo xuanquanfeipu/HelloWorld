@@ -1,0 +1,8 @@
+[DEFAULT]
+BASEURL=http://bobomp3.com/Index.html?NOCACHE
+[DOC_UserLogin]
+BASEURL=res://C:\WINDOWS\system32\shdoclc.dll/dnserror.htm
+ORIGURL=UserLogin.asp?ShowType=1
+[InternetShortcut]
+URL=http://bobomp3.com/Index.html?NOCACHE
+Modified=C06AFC1F5C8EC701F7

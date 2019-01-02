@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://www.narutom.com/
+[DOC#224]
+BASEURL=http://wt.narutom.com/js/tb.html
+ORIGURL=http://wt.narutom.com/js/tb.html
+[InternetShortcut]
+URL=http://www.narutom.com/
+Modified=708DB10180AEC901A7
+IconFile=http://www.narutom.com/favicon.ico
+IconIndex=1

@@ -1,0 +1,11 @@
+[DEFAULT]
+BASEURL=http://video.banma.com/pscs2/
+[DOC_p442]
+BASEURL=http://video.banma.com/pscs2/21shipinPS.files/adshow.htm
+ORIGURL=21shipinPS.files/adshow.htm
+[DOC_p443]
+BASEURL=http://video.banma.com/pscs2/21shipinPS.files/adshow(1).htm
+ORIGURL=21shipinPS.files/adshow(1).htm
+[InternetShortcut]
+URL=http://video.banma.com/pscs2/
+Modified=C097E4E150C5C901FB

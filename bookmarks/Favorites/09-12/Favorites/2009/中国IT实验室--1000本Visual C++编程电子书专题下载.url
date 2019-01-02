@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://download.chinaitlab.com/special/visualcebook.htm
+[InternetShortcut]
+URL=http://download.chinaitlab.com/special/visualcebook.htm
+IDList=
+IconFile=http://download.chinaitlab.com/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

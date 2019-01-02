@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://bbs.itepub.net/index.php
+[InternetShortcut]
+URL=http://bbs.itepub.net/index.php
+IDList=
+IconFile=http://bbs.itepub.net/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

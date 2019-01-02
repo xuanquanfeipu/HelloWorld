@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://yycc08819.xiaonei.com/?id=231521227
+[DOC_imengine]
+BASEURL=http://wpi.xiaonei.com/wtalk/ime.htm?ver=99986
+ORIGURL=http://wpi.xiaonei.com/wtalk/ime.htm?ver=99986
+[InternetShortcut]
+URL=http://yycc08819.xiaonei.com/?id=231521227
+Modified=20AA8C135E71C90102
+IconFile=http://xnimg.cn/favicon.ico
+IconIndex=1

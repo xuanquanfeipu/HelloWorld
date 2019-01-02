@@ -1,0 +1,11 @@
+[DEFAULT]
+BASEURL=http://www.mmle.com/?jdfwkey=c05kz
+[DOC#3#4#8]
+BASEURL=http://mydomain.namerich.cn/?domain=mmle.com&jdfwkey=gfsib1
+ORIGURL=http://mydomain.namerich.cn/?domain=mmle.com
+[DOC#3#5]
+BASEURL=http://searchportal.name8.cn/
+ORIGURL=http://searchportal.name8.cn/?o_id=66096&a_id=78336&domainname=mmle.com
+[InternetShortcut]
+URL=http://www.mmle.com/?jdfwkey=c05kz
+Modified=30EBC424B269C901E8

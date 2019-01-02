@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=http://blog.sina.com.cn/u/1224449043
+[DOC_xp_content_iframe]
+BASEURL=http://blog.sina.com.cn/lm/mini/01.html
+ORIGURL=http://blog.sina.com.cn/lm/mini/01.html
+[InternetShortcut]
+URL=http://blog.sina.com.cn/u/1224449043
+Modified=D07C62CAEC7FC701AB
+IconFile=http://blog.sina.com.cn/favicon.ico
+IconIndex=1
+[MyIE2]
+VisitTimes=11

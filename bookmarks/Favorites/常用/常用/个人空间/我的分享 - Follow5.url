@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://www.follow5.com/f5/mwfm/home
+[InternetShortcut]
+URL=http://www.follow5.com/f5/mwfm/home
+IDList=
+IconFile=http://www.follow5.com/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

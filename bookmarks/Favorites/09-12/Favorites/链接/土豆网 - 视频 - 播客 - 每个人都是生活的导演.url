@@ -1,0 +1,7 @@
+[DEFAULT]
+BASEURL=http://www.tudou.com/
+[InternetShortcut]
+URL=http://www.tudou.com/
+Modified=30B850E8A068C901F2
+IconFile=http://www.tudou.com/favicon.ico
+IconIndex=1

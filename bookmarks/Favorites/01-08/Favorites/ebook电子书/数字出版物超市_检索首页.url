@@ -1,0 +1,8 @@
+[DEFAULT]
+BASEURL=http://epub.cnki.net/grid2008/brief/index.aspx?code=ZKCALD
+[DOC#1871]
+BASEURL=http://epub.cnki.net/grid2008/bottom.htm
+ORIGURL=../bottom.htm
+[InternetShortcut]
+URL=http://epub.cnki.net/grid2008/brief/index.aspx?code=ZKCALD
+Modified=E0D74CA471BAC9019C

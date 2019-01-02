@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://forum.csdn.net/BList/GameDevelop/NotReplyList
+[InternetShortcut]
+URL=http://forum.csdn.net/BList/GameDevelop/NotReplyList
+IDList=
+IconFile=http://forum.csdn.net/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

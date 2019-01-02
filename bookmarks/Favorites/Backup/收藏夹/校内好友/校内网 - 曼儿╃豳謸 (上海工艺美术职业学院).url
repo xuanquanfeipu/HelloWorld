@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=http://xiaonei.com/getuser.do?id=225858760
+[DOC_imengine]
+BASEURL=res://C:\WINDOWS\system32\shdoclc.dll/dnserror.htm
+ORIGURL=http://wpi.xiaonei.com/wtalk/ime.htm?ver=86480
+[InternetShortcut]
+URL=http://xiaonei.com/getuser.do?id=225858760
+Modified=508ADB83D340C90115
+IconFile=http://xnimg.cn/favicon.ico
+IconIndex=1
+[MyIE2]
+VisitTimes=5

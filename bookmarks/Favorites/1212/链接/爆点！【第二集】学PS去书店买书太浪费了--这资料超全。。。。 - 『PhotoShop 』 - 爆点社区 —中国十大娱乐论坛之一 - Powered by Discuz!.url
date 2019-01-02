@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://bbs.podon.cn/thread-757-1-1.html
+[DOC#895]
+BASEURL=http://say-on.com/webchat/preview.jsp?title=%u7206%u70B9%u793E%u533A%u5728%u7EBF%u4EA4%u8C08&user=_auto&color=FF6666&roomid=bbs.podon.cn
+ORIGURL=http://say-on.com/webchat/preview.jsp?title=%u7206%u70B9%u793E%u533A%u5728%u7EBF%u4EA4%u8C08&user=_auto&color=FF6666&roomid=bbs.podon.cn
+[InternetShortcut]
+URL=http://bbs.podon.cn/thread-757-1-1.html
+Modified=E0CAAF002852C9019D
+IconFile=http://bbs.podon.cn/favicon.ico
+IconIndex=1

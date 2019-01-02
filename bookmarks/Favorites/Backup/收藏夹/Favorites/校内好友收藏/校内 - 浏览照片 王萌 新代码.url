@@ -1,0 +1,13 @@
+[DEFAULT]
+BASEURL=http://photo.xiaonei.com/getphoto.do?id=1136185090&owner=242879536&curpage=1
+[DOC_albumHistoryIframe]
+BASEURL=http://photo.xiaonei.com/getphoto.do?id=1136185090&owner=242879536&curpage=1
+ORIGURL=http://photo.xiaonei.com/pages/album/ajaxHistory.html
+[DOC_imengine]
+BASEURL=http://wpi.xiaonei.com/wtalk/ime.htm?ver=90716
+ORIGURL=http://wpi.xiaonei.com/wtalk/ime.htm?ver=90716
+[InternetShortcut]
+URL=http://photo.xiaonei.com/getphoto.do?id=1136185090&owner=242879536&curpage=1#1134759570
+Modified=5064BC655450C90143
+IconFile=http://xnimg.cn/favicon.ico
+IconIndex=1

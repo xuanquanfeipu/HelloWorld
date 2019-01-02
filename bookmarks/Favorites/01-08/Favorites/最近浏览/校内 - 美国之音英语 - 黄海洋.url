@@ -1,0 +1,15 @@
+[DEFAULT]
+BASEURL=http://apps.xiaonei.com/voa-english/?xn_sig_newbie=1&origin=1001
+[DOC#249#50_iframe1]
+BASEURL=about:blank
+ORIGURL=
+[DOC#249#58]
+BASEURL=http://voa-english.ulet.cn/voa-english1.2/voa-player.php?xn_sig_newbie=1&origin=1001&xn_sig_in_iframe=1&xn_sig_method=get&xn_sig_time=1241332862578&xn_sig_added=1&xn_sig_user=263059610&xn_sig_session_key=2.1967f66d23c81d5c182f1d2cd6e8157f.3600.1241337600-263059610&xn_sig_expires=0&xn_sig_api_key=df9f36aa72bb4bd2a1c696389e9f74f2&xn_sig_app_id=21871
+ORIGURL=http://voa-english.ulet.cn/voa-english1.2/voa-player.php?xn_sig_newbie=1&origin=1001&xn_sig_in_iframe=1&xn_sig_method=get&xn_sig_time=1241332862578&xn_sig_added=1&xn_sig_user=263059610&xn_sig_session_key=2.1967f66d23c81d5c182f1d2cd6e8157f.3600.1241337600-263059610&xn_sig_expires=0&xn_sig_api_key=df9f36aa72bb4bd2a1c696389e9f74f2&xn_sig_app_id=21871
+[InternetShortcut]
+URL=http://apps.xiaonei.com/voa-english/?xn_sig_newbie=1&origin=1001
+IDList=
+IconFile=http://xnimg.cn/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

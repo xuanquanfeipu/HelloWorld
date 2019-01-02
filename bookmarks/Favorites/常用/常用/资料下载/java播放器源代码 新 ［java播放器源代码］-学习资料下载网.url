@@ -1,0 +1,13 @@
+[DEFAULT]
+BASEURL=http://www.studydown.com/group_thread/view/id-38621
+[DOC#127#6]
+BASEURL=http://www.jialidun.com/new/iframe/jisuanji.html
+ORIGURL=jisuanji.html
+[DOC_body_area]
+BASEURL=http://www.studydown.com/group_thread/view/id-38621
+ORIGURL=
+[InternetShortcut]
+URL=http://www.studydown.com/group_thread/view/id-38621
+IDList=
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

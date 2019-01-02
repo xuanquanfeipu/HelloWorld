@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://movie.xiaonei.com/movie.do?d=init&id=33636
+[DOC_imengine]
+BASEURL=http://wpi.xiaonei.com/wtalk/ime.htm?ver=$revxxx$
+ORIGURL=http://wpi.xiaonei.com/wtalk/ime.htm?ver=$revxxx$
+[InternetShortcut]
+URL=http://movie.xiaonei.com/movie.do?d=init&id=33636
+Modified=10C6535DFB52C9019D
+IconFile=http://xnimg.cn/favicon.ico
+IconIndex=1

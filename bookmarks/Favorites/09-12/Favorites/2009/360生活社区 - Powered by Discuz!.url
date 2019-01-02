@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=http://bbs.fm360.com/
+[DOC_google_ads_frame1]
+BASEURL=res://ieframe.dll/http_400.htm
+ORIGURL=http://googleads.g.doubleclick.net/pagead/ads?&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&dtd=312&xpc=ptL20XFMAO&p=http%3A//bbs.fm360.com
+[InternetShortcut]
+URL=http://bbs.fm360.com/
+IDList=
+IconFile=http://bbs.fm360.com/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

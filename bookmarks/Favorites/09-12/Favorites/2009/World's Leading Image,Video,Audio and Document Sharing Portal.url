@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://www.ziddu.com/
+[InternetShortcut]
+URL=http://www.ziddu.com/
+IDList=
+IconFile=http://www.ziddu.com/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

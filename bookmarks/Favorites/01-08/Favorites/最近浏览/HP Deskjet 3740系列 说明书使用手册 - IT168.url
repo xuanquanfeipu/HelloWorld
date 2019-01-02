@@ -1,0 +1,16 @@
+[DEFAULT]
+BASEURL=http://guide.it168.com/pages/11066.shtml
+[DOC_test1]
+BASEURL=http://guide.it168.com/files/11066/11066003002001.asp
+ORIGURL=/include/firstpage.asp?pagename=HP Deskjet 3740系列&cbrand_name=HP&cspec_name=deskjet 3748&cspace_code=79793
+[DOC_test1.A]
+ORIGURL=/include/firstpage.asp?pagename=HP Deskjet 3740系列&cbrand_name=HP&cspec_name=deskjet 3748&cspace_code=79793
+[DOC_test1.W]
+ORIGURL=/include/firstpage.asp?pagename+AD0-HP Deskjet 3740+fPtSFwAm-cbrand+AF8-name+AD0-HP+ACY-cspec+AF8-name+AD0-deskjet 3748+ACY-cspace+AF8-code+AD0-79793
+[InternetShortcut]
+URL=http://guide.it168.com/pages/11066.shtml
+IDList=
+IconFile=http://guide.it168.com/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

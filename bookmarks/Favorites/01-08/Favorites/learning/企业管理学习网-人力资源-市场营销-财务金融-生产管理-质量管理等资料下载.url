@@ -1,0 +1,13 @@
+[DEFAULT]
+BASEURL=http://www.5ixue.com/
+[DOC#129]
+BASEURL=http://www.5ixue.com/e/member/iframe/
+ORIGURL=/e/member/iframe
+[DOC#130]
+BASEURL=http://www.5ixue.com/about/help.html
+ORIGURL=/about/help.html
+[InternetShortcut]
+URL=http://www.5ixue.com/
+Modified=3020A2216BBAC90102
+IconFile=http://www.5ixue.com/favicon.ico
+IconIndex=1

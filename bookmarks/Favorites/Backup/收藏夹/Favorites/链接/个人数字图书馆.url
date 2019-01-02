@@ -1,0 +1,8 @@
+[DEFAULT]
+BASEURL=http://epub.cnki.net/grid2008/library/Template01/DigitalPersonal.aspx?targetname=hhy5277
+[DOC#1611]
+BASEURL=http://epub.cnki.net/grid2008/bottom.htm
+ORIGURL=/grid2008/bottom.htm
+[InternetShortcut]
+URL=http://epub.cnki.net/grid2008/library/Template01/DigitalPersonal.aspx?targetname=hhy5277
+Modified=8082435DF85CC901C0

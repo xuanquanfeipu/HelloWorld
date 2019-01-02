@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://login.xiaonei.com/Login.do
+[InternetShortcut]
+URL=http://login.xiaonei.com/Login.do
+Modified=20F23EF7522BC9018E
+IconFile=http://xnimg.cn/favicon.ico
+IconIndex=1
+[MyIE2]
+VisitTimes=82

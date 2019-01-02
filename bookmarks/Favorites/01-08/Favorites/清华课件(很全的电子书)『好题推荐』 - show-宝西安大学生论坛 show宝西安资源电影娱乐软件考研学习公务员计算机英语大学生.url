@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://www.show-bao.cn/bbs/viewthread.php?tid=755&extra=page%3D2
+[InternetShortcut]
+URL=http://www.show-bao.cn/bbs/viewthread.php?tid=755&extra=page%3D2
+IDList=
+IconFile=http://www.show-bao.cn/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

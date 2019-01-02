@@ -1,0 +1,11 @@
+[DEFAULT]
+BASEURL=http://www.mydown.com/tests/120/120331.html
+[InternetShortcut]
+URL=http://www.mydown.com/tests/120/120331.html
+IDList=
+IconFile=http://www.mydown.com/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2
+[MyIE2]
+VisitTimes=1

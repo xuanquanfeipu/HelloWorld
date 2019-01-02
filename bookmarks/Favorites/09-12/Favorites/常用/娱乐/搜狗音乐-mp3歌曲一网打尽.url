@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://mp3.sogou.com/?w=02009900&dr=1
+[InternetShortcut]
+URL=http://mp3.sogou.com/?w=02009900&dr=1
+IDList=
+IconFile=http://mp3.sogou.com/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

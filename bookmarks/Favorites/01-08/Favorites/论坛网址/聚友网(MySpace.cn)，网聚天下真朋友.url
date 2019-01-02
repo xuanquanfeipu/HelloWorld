@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=http://myspace.cn/
+[DOC_myspacead_iframe]
+BASEURL=http://gg.un.myspace.cn/files/1692adfe1fa4418bb4ffdf095e7fb1e4.asp?pid=65_98_10009_1192_0000
+ORIGURL=http://gg.un.myspace.cn/files/1692adfe1fa4418bb4ffdf095e7fb1e4.asp?pid=65_98_10009_1192_0000
+[InternetShortcut]
+URL=http://myspace.cn/
+IDList=
+IconFile=http://myspace.cn/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

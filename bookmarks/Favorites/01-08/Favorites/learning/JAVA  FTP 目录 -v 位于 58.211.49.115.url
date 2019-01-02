@@ -1,0 +1,7 @@
+[DEFAULT]
+BASEURL=ftp://java:java@58.211.49.115/v/
+[InternetShortcut]
+URL=ftp://58.211.49.115/v/
+IDList=
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,1

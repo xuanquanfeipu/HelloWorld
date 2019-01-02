@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://reg.renren.com/xn6207.do?ss=10112&rt=26
+[InternetShortcut]
+URL=http://reg.renren.com/xn6207.do?ss=10112&rt=26
+IDList=
+IconFile=http://s.xnimg.cn/favicon-rr.ico?ver=$revxxx$
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

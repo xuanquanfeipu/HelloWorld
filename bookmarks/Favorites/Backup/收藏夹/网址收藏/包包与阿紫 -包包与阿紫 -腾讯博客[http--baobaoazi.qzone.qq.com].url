@@ -1,0 +1,16 @@
+[DEFAULT]
+BASEURL=http://user.qzone.qq.com/823677940/photo
+[DOC_tphoto]
+BASEURL=http://imgcache.qq.com/qzone/client/photo/pages/qzone_v4/photo_list.htm?1.0.2.2&a_id=46e5b1ae-8fbe-4cc6-9c9e-73dc6ecd4a3c
+ORIGURL=http://imgcache.qq.com/qzone/client/photo/pages/qzone_v4/photo_view.htm?1.0.2.2&a_id=46e5b1ae-8fbe-4cc6-9c9e-73dc6ecd4a3c&lloc=0492735e-f83e-4b40-b24d-cf0ae783a6a3
+[DOC#384]
+BASEURL=http://photo.qq.com/proxy.html
+ORIGURL=http://photo.qq.com/proxy.html
+[DOC#385]
+BASEURL=http://static.photo.qq.com/proxy.html
+ORIGURL=http://static.photo.qq.com/proxy.html
+[InternetShortcut]
+URL=http://user.qzone.qq.com/823677940/photo
+IDList=
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

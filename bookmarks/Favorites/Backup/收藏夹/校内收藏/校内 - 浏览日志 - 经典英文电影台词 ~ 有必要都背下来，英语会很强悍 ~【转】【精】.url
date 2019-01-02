@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://blog.xiaonei.com/GetEntry.do?id=336181669&owner=239038521
+[DOC_imengine]
+BASEURL=http://wpi.xiaonei.com/wtalk/ime.htm?ver=90716
+ORIGURL=http://wpi.xiaonei.com/wtalk/ime.htm?ver=90716
+[InternetShortcut]
+URL=http://blog.xiaonei.com/GetEntry.do?id=336181669&owner=239038521
+Modified=B0B5F352A150C90165
+IconFile=http://xnimg.cn/favicon.ico
+IconIndex=1

@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://www.lrdvd.cn/
+[DOC#324]
+BASEURL=http://cpc.9v.cn/code/barnners.asp?w=740&h=90&typeid=43&userid=43513&top=http%3A//www.lrdvd.cn/&err=&ref=
+ORIGURL=http://cpc.9v.cn/code/barnners.asp?w=740&h=90&typeid=43&userid=43513&top=http%3A//www.lrdvd.cn/&err=&ref=
+[InternetShortcut]
+URL=http://www.lrdvd.cn/
+Modified=90E8540AAA5DC901A7
+IconFile=http://www.lrdvd.cn/favicon.ico
+IconIndex=1

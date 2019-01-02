@@ -1,0 +1,8 @@
+[DEFAULT]
+BASEURL=http://in.t.mop.com/?f=997003201
+[DOC#14_loginFrame]
+BASEURL=http://in.t.mop.com/server/login.html
+ORIGURL=login.html
+[InternetShortcut]
+URL=http://in.t.mop.com/?f=997003201
+Modified=70A1A46D2055C90161

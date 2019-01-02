@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://jing8705.xiaonei.com/?id=234999291
+[DOC_imengine]
+BASEURL=http://wpi.xiaonei.com/wtalk/ime.htm?ver=98096
+ORIGURL=http://wpi.xiaonei.com/wtalk/ime.htm?ver=98096
+[InternetShortcut]
+URL=http://jing8705.xiaonei.com/?id=234999291
+Modified=80CFD25EF568C901A6
+IconFile=http://xnimg.cn/favicon.ico
+IconIndex=1

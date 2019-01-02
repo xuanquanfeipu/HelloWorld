@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://starblog.xunlei.com/php/picture_detail.php?u=8&i=211
+[DOC_pinglun2]
+BASEURL=http://comment.vzone.xunlei.com/comment.html?opusid=8&moduleType=starblog-pictrue
+ORIGURL=http://comment.vzone.xunlei.com/comment.html?opusid=8&moduleType=starblog-pictrue
+[InternetShortcut]
+URL=http://starblog.xunlei.com/php/picture_detail.php?u=8&i=211
+IDList=
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

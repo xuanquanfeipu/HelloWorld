@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://pic.sogou.com/pics?query=%C8%CB%CC%E5%D2%D5%CA%F5%CD%BC%C6%AC&p=40230500
+[DOC#86]
+BASEURL=res://C:\WINDOWS\system32\xpsp3res.dll/dnserror.htm
+ORIGURL=http://inte.sogou.com/textlink?pid=sogou__pic&ct=textlink&iw=1000&ih=50&rn=2&cn=5&cm=16&c_bg=FFFFFF&c_te=0000CC&c_ho=001B68&pr=0&ul=0&al=0&ti=%E6%90%9C%E7%8B%97Sogou--%E5%9B%BE%E7%89%87%E6%90%9C%E7%B4%A2%EF%BC%9A%E4%BA%BA%E4%BD%93%E8%89%BA%E6%9C%AF%E5%9B%BE%E7%89%87&sohuurl=http://pic.sogou.com/pics?query=%25C8%25CB%25CC%25E5%25D2%25D5%25CA%25F5%25CD%25BC%25C6%25AC%26p=40230500
+[InternetShortcut]
+URL=http://pic.sogou.com/pics?query=%C8%CB%CC%E5%D2%D5%CA%F5%CD%BC%C6%AC&p=40230500
+Modified=A0940B2C21C0C90116
+IconFile=http://pic.sogou.com/favicon.ico
+IconIndex=1

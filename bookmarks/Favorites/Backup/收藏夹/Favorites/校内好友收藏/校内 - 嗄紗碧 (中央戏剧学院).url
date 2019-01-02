@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://xiaonei.com/getuser.do?id=246258418
+[DOC_imengine]
+BASEURL=http://wpi.xiaonei.com/wtalk/ime.htm?ver=92723
+ORIGURL=http://wpi.xiaonei.com/wtalk/ime.htm?ver=92723
+[InternetShortcut]
+URL=http://xiaonei.com/getuser.do?id=246258418
+Modified=60A8359FAB56C901A7
+IconFile=http://xnimg.cn/favicon.ico
+IconIndex=1

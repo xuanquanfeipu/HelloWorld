@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=http://www.esnips.com/HomeAction.ns
+[DOC_IL_FRAME]
+BASEURL=http://rt21.infolinks.com/static/blank.html
+ORIGURL=http://rt21.infolinks.com/static/blank.html
+[InternetShortcut]
+URL=http://www.esnips.com/HomeAction.ns
+IDList=
+IconFile=http://www.esnips.com/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

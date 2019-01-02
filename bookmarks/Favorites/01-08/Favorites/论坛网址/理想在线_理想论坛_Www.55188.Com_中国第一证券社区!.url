@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://home.55188.com/index.html
+[DOC#165]
+BASEURL=http://stock.55188.com/stock/modbar.php?hide=1
+ORIGURL=http://stock.55188.com/stock/modbar.php?hide=1
+[InternetShortcut]
+URL=http://home.55188.com/index.html
+Modified=E007D37D89C2C9014C
+IconFile=http://home.55188.com/favicon.ico
+IconIndex=1

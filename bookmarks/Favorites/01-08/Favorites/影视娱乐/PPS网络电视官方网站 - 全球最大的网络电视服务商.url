@@ -1,0 +1,7 @@
+[DEFAULT]
+BASEURL=http://www.pps.tv/
+[InternetShortcut]
+URL=http://www.pps.tv/
+Modified=D027D86603C3C901C5
+IconFile=http://www.pps.tv/favicon.ico
+IconIndex=1

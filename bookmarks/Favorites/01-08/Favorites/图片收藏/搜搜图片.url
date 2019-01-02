@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://image.soso.com/
+[InternetShortcut]
+URL=http://image.soso.com/
+IDList=
+IconFile=http://image.soso.com/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

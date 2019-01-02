@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=http://www.popmoon.com/
+[DOC#990]
+BASEURL=http://www.popmoon.com/try2.htm
+ORIGURL=try2.htm
+[InternetShortcut]
+URL=http://www.popmoon.com/
+IDList=
+IconFile=http://www.popmoon.com/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

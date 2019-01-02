@@ -1,0 +1,7 @@
+[DEFAULT]
+BASEURL=http://bbs.enfamily.cn/index.php
+[InternetShortcut]
+URL=http://bbs.enfamily.cn/index.php
+Modified=9093A148E35CC90115
+IconFile=http://bbs.enfamily.cn/favicon.ico
+IconIndex=1

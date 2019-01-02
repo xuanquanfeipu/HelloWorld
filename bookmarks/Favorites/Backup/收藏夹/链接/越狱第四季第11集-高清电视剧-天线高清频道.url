@@ -1,0 +1,15 @@
+[DEFAULT]
+BASEURL=http://hd.openv.com/tv_play-hdteleplay_20081118_6932967.html?utm_source=video.baidu.com&utm_medium=cpc&utm_term=越狱%20第4季%2011&utm_campaign=baidu_qianci
+[DEFAULT.A]
+BASEURL=http://hd.openv.com/tv_play-hdteleplay_20081118_6932967.html?utm_source=video.baidu.com&utm_medium=cpc&utm_term=越狱%20第4季%2011&utm_campaign=baidu_qianci
+[DEFAULT.W]
+BASEURL=http://hd.openv.com/tv+AF8-play-hdteleplay+AF8-20081118+AF8-6932967.html?utm+AF8-source+AD0-video.baidu.com+ACY-utm+AF8-medium+AD0-cpc+ACY-utm+AF8-term+AD2NinLxACU-20+eyw-4+W2MAJQ-2011+ACY-utm+AF8-campaign+AD0-baidu+AF8-qianci
+[InternetShortcut]
+URL=http://hd.openv.com/tv_play-hdteleplay_20081118_6932967.html?utm_source=video.baidu.com&utm_medium=cpc&utm_term=越狱%20第4季%2011&utm_campaign=baidu_qianci
+Modified=D0693197E44DC901FC
+IconFile=http://hd.openv.com/favicon.ico
+IconIndex=1
+[InternetShortcut.A]
+URL=http://hd.openv.com/tv_play-hdteleplay_20081118_6932967.html?utm_source=video.baidu.com&utm_medium=cpc&utm_term=越狱%20第4季%2011&utm_campaign=baidu_qianci
+[InternetShortcut.W]
+URL=http://hd.openv.com/tv+AF8-play-hdteleplay+AF8-20081118+AF8-6932967.html?utm+AF8-source+AD0-video.baidu.com+ACY-utm+AF8-medium+AD0-cpc+ACY-utm+AF8-term+AD2NinLxACU-20+eyw-4+W2MAJQ-2011+ACY-utm+AF8-campaign+AD0-baidu+AF8-qianci

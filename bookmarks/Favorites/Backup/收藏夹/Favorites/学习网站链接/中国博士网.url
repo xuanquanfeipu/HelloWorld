@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://www.chinaphd.com/
+[DOC#4#6]
+BASEURL=http://www.chinaphd.com/main/leobbs.cgi
+ORIGURL=/main/
+[InternetShortcut]
+URL=http://www.chinaphd.com/
+Modified=205411E62652C901AD
+IconFile=http://www.chinaphd.com/favicon.ico
+IconIndex=1

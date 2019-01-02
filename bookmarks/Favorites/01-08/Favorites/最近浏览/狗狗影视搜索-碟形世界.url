@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://movie.gougou.com/search?search=%E7%A2%9F%E5%BD%A2%E4%B8%96%E7%95%8C&id=20
+[DOC_bd_relevant]
+BASEURL=res://C:\WINDOWS\system32\xpsp3res.dll/dnserror.htm
+ORIGURL=http://web.gougou.com/bc1?search=%e7%a2%9f%e5%bd%a2%e4%b8%96%e7%95%8c&id=10000020
+[InternetShortcut]
+URL=http://movie.gougou.com/search?search=%E7%A2%9F%E5%BD%A2%E4%B8%96%E7%95%8C&id=20
+Modified=90BCD212ABC5C9016A
+IconFile=http://img.gougou.com/image/so/gougou.ico
+IconIndex=1

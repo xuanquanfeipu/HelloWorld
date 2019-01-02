@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://photo.xiaonei.com/getalbum.do?id=264667359&owner=236038482
+[DOC_imengine]
+BASEURL=http://wpi.xiaonei.com/wtalk/ime.htm?ver=96042
+ORIGURL=http://wpi.xiaonei.com/wtalk/ime.htm?ver=96042
+[InternetShortcut]
+URL=http://photo.xiaonei.com/getalbum.do?id=264667359&owner=236038482
+Modified=A0EFEEC2AC69C9011E
+IconFile=http://xnimg.cn/favicon.ico
+IconIndex=1

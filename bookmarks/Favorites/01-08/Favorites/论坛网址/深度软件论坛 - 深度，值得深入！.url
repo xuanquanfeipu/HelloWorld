@@ -1,0 +1,7 @@
+[DEFAULT]
+BASEURL=http://soft.deepin.org/
+[InternetShortcut]
+URL=http://soft.deepin.org/
+Modified=D0E7A76C82C2C901D8
+IconFile=http://soft.deepin.org/favicon.ico
+IconIndex=1

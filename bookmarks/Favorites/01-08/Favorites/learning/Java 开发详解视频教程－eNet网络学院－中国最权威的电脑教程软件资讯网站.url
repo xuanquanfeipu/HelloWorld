@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=http://www.enet.com.cn/eschool/zhuanti/java/
+[DOC#1254]
+BASEURL=http://www.enet.com.cn/addemo/imp/30wan.jsp
+ORIGURL=http://www1.enet.com.cn/UserTrack
+[InternetShortcut]
+URL=http://www.enet.com.cn/eschool/zhuanti/java/
+IDList=
+IconFile=http://www.enet.com.cn/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

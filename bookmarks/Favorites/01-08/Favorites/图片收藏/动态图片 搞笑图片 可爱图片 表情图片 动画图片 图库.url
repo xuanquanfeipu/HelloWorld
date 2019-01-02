@@ -1,0 +1,8 @@
+[DEFAULT]
+BASEURL=http://www.8ttt8.com/index.htm
+[DOC_baiduframe]
+BASEURL=res://C:\WINDOWS\system32\xpsp3res.dll/dnserror.htm
+ORIGURL=http://unstat.baidu.com/bdun.bsc?tn=yjfukyygy_pg&cv=0&cid=1052035&csid=1&rkcs=1&bgcr=FFFFFF&ftcr=0000CC&rk=0&bd=1&tbsz=12&tbst=0&sropls=1&wd=300&ht=45&kwnm=0&kwgp=1&sropst=0&bdas=0
+[InternetShortcut]
+URL=http://www.8ttt8.com/index.htm
+Modified=D05D27DA13B0C901BB

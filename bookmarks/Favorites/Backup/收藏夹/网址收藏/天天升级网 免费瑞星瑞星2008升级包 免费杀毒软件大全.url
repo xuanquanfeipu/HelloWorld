@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=http://rav.q766.com/
+[DOC_baiduframe]
+BASEURL=res://ieframe.dll/dnserrordiagoff.htm
+ORIGURL=http://unstat.baidu.com/bdun.bsc?tn=suchunwang_pg&cv=0&cid=1049797&csid=103&bgcr=ffffff&ftcr=000000&urlcr=0000ff&tbsz=230&sropls=1,2,3,4,5,6,7,9,10
+[InternetShortcut]
+URL=http://rav.q766.com/
+IDList=
+IconFile=http://rav.q766.com/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

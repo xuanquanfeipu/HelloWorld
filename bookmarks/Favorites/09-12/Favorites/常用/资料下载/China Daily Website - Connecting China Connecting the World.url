@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://www.chinadaily.com.cn/
+[DOC_main_s]
+BASEURL=http://www.chinadaily.com.cn/html/survey/2009/12593054099416.html
+ORIGURL=html/survey/vote_gate.html?images/vote__2008_06_06_1971.html
+[InternetShortcut]
+URL=http://www.chinadaily.com.cn/
+IDList=
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

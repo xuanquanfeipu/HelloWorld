@@ -1,0 +1,15 @@
+[DEFAULT]
+BASEURL=http://beipiaomm.blog.hexun.com/31581118_d.html
+[DOC#205]
+BASEURL=res://ieframe.dll/dnserror.htm
+ORIGURL=http://shequ.tools.hexun.com/default.aspx?userid=10160237&username=hren0_1&blogname=beipiaomm
+[DOC#206]
+BASEURL=res://ieframe.dll/dnserror.htm
+ORIGURL=http://point.tool.hexun.com/point.aspx?userid=10160237
+[InternetShortcut]
+URL=http://beipiaomm.blog.hexun.com/31581118_d.html
+IDList=
+IconFile=http://beipiaomm.blog.hexun.com/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

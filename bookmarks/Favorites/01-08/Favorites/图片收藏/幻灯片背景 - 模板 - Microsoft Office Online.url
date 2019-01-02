@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=http://office.microsoft.com/zh-cn/templates/CT101172622052.aspx?Origin=EC010172872052&CTT=6&av=ZPP
+[DOC_dapIfM0]
+BASEURL=http://office.microsoft.com/zh-cn/templates/CT101172622052.aspx?Origin=EC010172872052&CTT=6&av=ZPP
+ORIGURL=javascript:void(document.write('<html><head><title>Advertisement</title></head><body id="dapIfM0" leftmargin="0" topmargin="0" style="background-color:transparent"><script type="text/javascript">var inDapIF=true; var inDapMgrIf=true;</script><script type="text/javascript"  src="http://rad.msn.com/ADSAdClient31.dll?GetSAd=&DPJS=4&PG=OOLCH7&AP=1467" onreadystatechange="startTimer();"></script><script type="text/javascript">function startTimer(){if (event.srcElement.readyState == "complete") {parent.verifyDapResize(0);window.setTimeout("document.close();", 2000);}}</script></body></html>'));
+[InternetShortcut]
+URL=http://office.microsoft.com/zh-cn/templates/CT101172622052.aspx?Origin=EC010172872052&CTT=6&av=ZPP
+IDList=
+IconFile=http://office.microsoft.com/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

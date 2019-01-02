@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://www.cnki.com.cn/
+[DOC#1498]
+BASEURL=http://www.cnki.com.cn/HeadFoot/Footer.htm
+ORIGURL=/HeadFoot/Footer.htm
+[InternetShortcut]
+URL=http://www.cnki.com.cn/
+Modified=10D696D2CBB9C9019C
+IconFile=http://www.cnki.com.cn/favicon.ico
+IconIndex=1

@@ -1,0 +1,13 @@
+[DEFAULT]
+BASEURL=http://bbs.btbbt.com/
+[DOC#36]
+BASEURL=http://so.btbbt.com/bbsframe.html
+ORIGURL=http://so.btbbt.com/bbsframe.html
+[DOC#101]
+BASEURL=http://vampire.btbbt.com/wbad/20070413_960x80.asp
+ORIGURL=http://vampire.btbbt.com/wbad/20070413_960x80.asp
+[InternetShortcut]
+URL=http://bbs.btbbt.com/
+Modified=C01B12056A89C701AD
+IconFile=http://bbs.btbbt.com/favicon.ico
+IconIndex=1

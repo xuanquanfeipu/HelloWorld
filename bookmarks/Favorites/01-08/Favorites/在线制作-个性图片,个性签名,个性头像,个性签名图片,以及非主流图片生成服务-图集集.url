@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=http://www.tujiji.com/
+[DOC#147]
+BASEURL=http://w.a6sms.cn/codes/qm2/gn/680x80/1/?unionid=1000&smsid=433260
+ORIGURL=http://w.a6sms.cn/codes/qm2/gn/680x80/1/?unionid=1000&smsid=433260
+[InternetShortcut]
+URL=http://www.tujiji.com/
+IDList=
+IconFile=http://www.tujiji.com/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

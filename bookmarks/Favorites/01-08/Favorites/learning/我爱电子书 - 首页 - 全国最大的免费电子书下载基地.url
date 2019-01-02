@@ -1,0 +1,11 @@
+[DEFAULT]
+BASEURL=http://www.52eshu.com/
+[DOC#48]
+BASEURL=http://www.52eshu.com/adfile/ad1.htm
+ORIGURL=/adfile/ad1.htm
+[DOC#103]
+BASEURL=http://www.52eshu.com/adfile/ad2.htm
+ORIGURL=/adfile/ad2.htm
+[InternetShortcut]
+URL=http://www.52eshu.com/
+Modified=E0456D8F6BBAC90110

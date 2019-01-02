@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://www.fzl8.com/
+[DOC#18]
+BASEURL=http://stat.wauee.com/cts/nhtml/760_60_dc2e6.html?pid=21&mid=18864&channel=8&cid=1171
+ORIGURL=http://stat.wauee.com/cts/nhtml/760_60_dc2e6.html?pid=21&mid=18864&channel=8&cid=1171
+[InternetShortcut]
+URL=http://www.fzl8.com/
+IDList=
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

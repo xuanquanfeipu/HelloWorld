@@ -1,0 +1,15 @@
+[DEFAULT]
+BASEURL=http://www.enet.com.cn/article/2006/0704/A20060704124810.shtml
+[DOC_eschoolbanner]
+BASEURL=http://www.enet.com.cn/enetshow.shtml?Pool=eschoolbanner
+ORIGURL=http://www.enet.com.cn/enetshow.shtml?Pool=eschoolbanner
+[DOC_flash1]
+BASEURL=http://www.enet.com.cn/enetshow.shtml?Pool=eschoolflash
+ORIGURL=http://www.enet.com.cn/enetshow.shtml?Pool=eschoolflash
+[InternetShortcut]
+URL=http://www.enet.com.cn/article/2006/0704/A20060704124810.shtml
+IDList=
+IconFile=http://www.enet.com.cn/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

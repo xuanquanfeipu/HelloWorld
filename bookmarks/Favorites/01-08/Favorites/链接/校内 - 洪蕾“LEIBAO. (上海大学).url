@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://xiaonei.com/profile.do?id=255480671&ref=newsfeed
+[InternetShortcut]
+URL=http://xiaonei.com/profile.do?id=255480671&ref=newsfeed
+IDList=
+IconFile=http://xnimg.cn/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

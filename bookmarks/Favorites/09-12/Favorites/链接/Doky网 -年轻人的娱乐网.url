@@ -1,0 +1,11 @@
+[DEFAULT]
+BASEURL=http://www.doky.cn/
+[DOC#223#5]
+BASEURL=http://c1.unionete.cn/code_tabloid.php?etebid=3240
+[DOC#1023#5]
+BASEURL=http://c4.unionete.cn/code_tabloid.php?etebid=3240
+[InternetShortcut]
+URL=http://www.doky.cn/
+Modified=50CE62A0E168C90133
+IconFile=http://www.doky.cn/favicon.ico
+IconIndex=1

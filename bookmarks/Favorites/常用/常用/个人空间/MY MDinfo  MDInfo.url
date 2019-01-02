@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://www.mdinfo.com/my.asp
+[InternetShortcut]
+URL=http://www.mdinfo.com/my.asp
+IDList=
+IconFile=http://www.mdinfo.com/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

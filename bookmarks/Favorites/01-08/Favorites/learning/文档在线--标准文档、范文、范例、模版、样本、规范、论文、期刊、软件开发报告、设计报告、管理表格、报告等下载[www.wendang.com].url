@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://www.wendang.com/default.asp
+[DOC_baiduSpFrame]
+BASEURL=http://spcode.baidu.com/spcode/spstyle/style1327.jsp?tn=yx510_sp&ctn=0&styleid=1327
+ORIGURL=http://spcode.baidu.com/spcode/spstyle/style1327.jsp?tn=yx510_sp&ctn=0&styleid=1327
+[InternetShortcut]
+URL=http://www.wendang.com/default.asp
+IDList=
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://www.qcc1.cn/
+[InternetShortcut]
+URL=http://www.qcc1.cn/
+IDList=
+IconFile=http://www.qcc1.cn/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

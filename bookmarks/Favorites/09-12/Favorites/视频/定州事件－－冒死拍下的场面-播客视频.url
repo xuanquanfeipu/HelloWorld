@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://you.video.sina.com.cn/b/10070636-1342580361.html
+[DOC#219]
+BASEURL=http://space.sina.com.cn/zt/iframe/app1.html
+ORIGURL=http://space.sina.com.cn/zt/iframe/app1.html
+[DOC_friendDialogIframe]
+BASEURL=http://you.video.sina.com.cn/b/10070636-1342580361.html
+[InternetShortcut]
+URL=http://you.video.sina.com.cn/b/10070636-1342580361.html
+Modified=F033F74D7B69C90115

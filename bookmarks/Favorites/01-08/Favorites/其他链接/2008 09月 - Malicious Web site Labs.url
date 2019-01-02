@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://www.mwsl.org.cn/?m=200809
+[DOC#476]
+BASEURL=http://m.menhutong.com.cn/cembed.php?a=xwyx_embed_468_301&b=CE3031&c=FFFFFF&d=333333&e=FFFFFF&f=CE3031&g=250x250&h=Mozilla/4.0%20%28compatible%3B%20MSIE%208.0%3B%20Windows%20NT%205.1%3B%20Trident/4.0%3B%20CIBA%3B%20.NET%20CLR%202.0.50727%29&i=10.0&j=1024x768&k=&l=1003x568&m=1003x568&n=1244340233890&o=http%3A%2F%2Fwww.mwsl.org.cn%2F%3Fm%3D200809&p=&q=2008%2009%E6%9C%88%20-%20Malicious%20Web%20site%20Labs&r=&s=http%3A%2F%2Fwww.baidu.com%2Fs%3Ftn%3Dutf7_dg%26wd%3Dwww.xiangzuoaiffe.cn%26ie%3DUTF-8
+ORIGURL=http://m.menhutong.com.cn/cembed.php?a=xwyx_embed_468_301&b=CE3031&c=FFFFFF&d=333333&e=FFFFFF&f=CE3031&g=250x250&h=Mozilla/4.0%20%28compatible%3B%20MSIE%208.0%3B%20Windows%20NT%205.1%3B%20Trident/4.0%3B%20CIBA%3B%20.NET%20CLR%202.0.50727%29&i=10.0&j=1024x768&k=&l=1003x568&m=1003x568&n=1244340233890&o=http%3A%2F%2Fwww.mwsl.org.cn%2F%3Fm%3D200809&p=&q=2008%2009%E6%9C%88%20-%20Malicious%20Web%20site%20Labs&r=&s=http%3A%2F%2Fwww.baidu.com%2Fs%3Ftn%3Dutf7_dg%26wd%3Dwww.xiangzuoaiffe.cn%26ie%3DUTF-8
+[InternetShortcut]
+URL=http://www.mwsl.org.cn/?m=200809
+IDList=
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

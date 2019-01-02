@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://hhy5277.6621.cn/
+[InternetShortcut]
+URL=http://hhy5277.6621.cn/
+IDList=
+IconFile=http://hhy5277.6621.cn/6621.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

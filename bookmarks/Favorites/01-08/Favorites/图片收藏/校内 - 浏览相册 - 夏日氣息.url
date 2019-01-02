@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://photo.xiaonei.com/getalbum.do?id=300262752&owner=258691964
+[InternetShortcut]
+URL=http://photo.xiaonei.com/getalbum.do?id=300262752&owner=258691964
+IDList=
+IconFile=http://xnimg.cn/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

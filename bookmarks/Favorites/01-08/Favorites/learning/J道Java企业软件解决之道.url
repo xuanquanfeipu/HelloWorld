@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=http://www.jdon.com/index.html
+[DOC#79]
+BASEURL=http://www.jdon.com/sales/728x90.html
+ORIGURL=http://www.jdon.com/sales/728x90.html
+[InternetShortcut]
+URL=http://www.jdon.com/index.html
+IDList=
+IconFile=http://www.jdon.com/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

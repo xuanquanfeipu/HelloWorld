@@ -1,0 +1,17 @@
+[DEFAULT]
+BASEURL=http://www.jsustenglish.cn/
+[DOC#10]
+BASEURL=http://www.jsustenglish.cn/index2.htm
+ORIGURL=http://www.jsustenglish.cn/index2.htm
+[DOC#10#7#8]
+BASEURL=http://www.jsustenglish.cn/yjs/Upperframe.html
+ORIGURL=http://www.jsustenglish.cn/yjs/Upperframe.html
+[DOC#10#7#9#10]
+BASEURL=http://www.jsustenglish.cn/yjs/left_frame.html
+ORIGURL=http://www.jsustenglish.cn/yjs/left_frame.html
+[DOC#10#7#9#11]
+BASEURL=http://www.hao123.com/campuseng.htm
+ORIGURL=http://www.jsustenglish.cn/yjs/yjszy.htm
+[InternetShortcut]
+URL=http://www.jsustenglish.cn/
+Modified=E08A79808365C90115

@@ -1,0 +1,14 @@
+[DEFAULT]
+BASEURL=http://zgxz.tf168.cn/
+[DOC#7#9#1947#5]
+BASEURL=res://C:\WINDOWS\system32\shdoclc.dll/dnserror.htm
+ORIGURL=http://play.unionsky.cn/show/?placeID=43784
+[DOC#7#9#1956]
+BASEURL=res://C:\WINDOWS\system32\shdoclc.dll/dnserror.htm
+ORIGURL=http://www.any2000.com/perweb/unionad/baidu_web.htm
+[DOC#7#9#1957#9]
+BASEURL=res://C:\WINDOWS\system32\shdoclc.dll/dnserror.htm
+ORIGURL=http://www.ting2000.com/eqifa3.htm
+[InternetShortcut]
+URL=http://zgxz.tf168.cn/
+Modified=A0EAB16D848FC70183

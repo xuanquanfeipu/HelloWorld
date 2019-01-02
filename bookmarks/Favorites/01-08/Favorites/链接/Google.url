@@ -1,0 +1,7 @@
+[DEFAULT]
+BASEURL=http://www.google.cn/
+[InternetShortcut]
+URL=http://www.google.cn/
+Modified=90CBCEBCF7D8C8017D
+IconFile=http://www.google.cn/favicon.ico
+IconIndex=1

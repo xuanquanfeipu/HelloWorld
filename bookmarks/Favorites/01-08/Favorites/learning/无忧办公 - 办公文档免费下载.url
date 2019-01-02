@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=http://www.51oa.net/
+[DOC#61]
+BASEURL=http://file.chanet.com.cn/html/js/position/iframe.html?e_id=24919&u=&e=&r=9706
+ORIGURL=http://file.chanet.com.cn/html/js/position/iframe.html?e_id=24919&u=&e=&r=9706
+[InternetShortcut]
+URL=http://www.51oa.net/
+IDList=
+IconFile=http://www.51oa.net/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

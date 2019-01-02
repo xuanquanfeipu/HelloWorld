@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://www.hubotv.com/
+[InternetShortcut]
+URL=http://www.hubotv.com/search/
+Modified=A069DD041987C70152
+IconFile=http://www.hubotv.com/favicon.ico
+IconIndex=1
+[MyIE2]
+VisitTimes=24

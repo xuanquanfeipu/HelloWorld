@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://d.download.csdn.net/down/1898132/lee_why
+[InternetShortcut]
+URL=http://d.download.csdn.net/down/1898132/lee_why
+IDList=
+IconFile=http://www.csdn.net/images/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

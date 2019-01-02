@@ -1,0 +1,13 @@
+[DEFAULT]
+BASEURL=http://www.taisha.org/
+[DOC#7]
+BASEURL=http://www.taisha.org/abroad/www/index.php
+ORIGURL=http://www.taisha.org/abroad/www/index.php
+[DOC#7#132]
+BASEURL=http://www.taisha.org/abroad/head/banner_ask.html
+ORIGURL=http://www.taisha.org/abroad/head/banner_ask.html
+[InternetShortcut]
+URL=http://www.taisha.org/
+IDList=
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

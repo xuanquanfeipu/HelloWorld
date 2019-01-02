@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://asiafind1.com/p/page.cgi?dcb=asiafind1&od=asiafind1
+[InternetShortcut]
+URL=http://asiafind1.com/p/page.cgi?dcb=asiafind1&od=asiafind1
+IDList=
+IconFile=http://asiafind1.com/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=http://xiaonei.com/profile.do?id=202985033
+[DOC_imengine]
+BASEURL=res://ieframe.dll/dnserror.htm
+ORIGURL=http://wpi.xiaonei.com/wtalk/ime.htm?ver=$revxxx$
+[InternetShortcut]
+URL=http://xiaonei.com/profile.do?id=202985033#
+IDList=
+IconFile=http://xnimg.cn/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

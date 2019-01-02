@@ -1,0 +1,13 @@
+[DEFAULT]
+BASEURL=http://photo.xiaonei.com/getalbum.do?id=219595685&owner=235863815
+[DOC_bottomstatus]
+BASEURL=http://221.231.148.195/index_iframe.html
+ORIGURL=http://wpi.xiaonei.com/getofflinemessagecount.do?1
+[DOC_imengine]
+BASEURL=http://wpi.xiaonei.com/wtalk/ime.htm?ver=89642
+ORIGURL=http://wpi.xiaonei.com/wtalk/ime.htm?ver=89642
+[InternetShortcut]
+URL=http://photo.xiaonei.com/getalbum.do?id=219595685&owner=235863815
+Modified=C0DF2C04AE4CC90193
+IconFile=http://xnimg.cn/favicon.ico
+IconIndex=1

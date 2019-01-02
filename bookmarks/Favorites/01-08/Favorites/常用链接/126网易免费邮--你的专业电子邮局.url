@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://www.126.com/
+[DOC_frmDm3]
+BASEURL=http://www.126.com/
+ORIGURL=about:blank
+[InternetShortcut]
+URL=http://www.126.com/
+Modified=606306A573C5C90170
+IconFile=http://www.126.com/favicon.ico
+IconIndex=1

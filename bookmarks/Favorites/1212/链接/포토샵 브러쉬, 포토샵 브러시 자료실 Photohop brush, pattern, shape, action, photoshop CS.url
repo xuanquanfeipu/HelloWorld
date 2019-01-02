@@ -1,0 +1,13 @@
+[DEFAULT]
+BASEURL=http://yoonmi.net/zboard/zboard.php?id=brush&page=22&select_arrange=headnum&desc=asc&category=&sn=off&ss=on&sc=on&keyword=&sn1=&divpage=1
+[DOC#91]
+BASEURL=http://yoonmi.net/zboard/counter.php
+ORIGURL=counter.php
+[DOC#97]
+BASEURL=http://yoonmi.net/zboard/zchat.php
+ORIGURL=zchat.php
+[InternetShortcut]
+URL=http://yoonmi.net/zboard/zboard.php?id=brush&page=22&select_arrange=headnum&desc=asc&category=&sn=off&ss=on&sc=on&keyword=&sn1=&divpage=1
+Modified=A06CA54FA85DC901CF
+IconFile=http://yoonmi.net/favicon.ico
+IconIndex=1

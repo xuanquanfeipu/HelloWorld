@@ -1,0 +1,7 @@
+[DEFAULT]
+BASEURL=http://www.baidu.com/
+[InternetShortcut]
+URL=http://www.baidu.com/
+Modified=A0CA91440152C9015C
+IconFile=http://www.baidu.com/favicon.ico
+IconIndex=1

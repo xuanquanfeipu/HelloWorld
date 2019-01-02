@@ -1,0 +1,13 @@
+[DEFAULT]
+BASEURL=http://gaokao.eol.cn/
+[DOC#308]
+BASEURL=http://gkcx.eol.cn/index_login.htm
+ORIGURL=http://gkcx.eol.cn/index_login.htm
+[DOC#1344]
+BASEURL=http://gkcx.eol.cn/click_gaokao_ref.htm
+ORIGURL=http://gkcx.eol.cn/click_gaokao_ref.htm
+[InternetShortcut]
+URL=http://gaokao.eol.cn/
+IDList=
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

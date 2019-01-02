@@ -1,0 +1,13 @@
+[DEFAULT]
+BASEURL=http://www.xiaonei.com/
+[DOC#124]
+BASEURL=about:blank
+[DOC#190]
+BASEURL=about:blank
+[DOC#262]
+BASEURL=about:blank
+[InternetShortcut]
+URL=http://www.xiaonei.com/
+Modified=800FF93D964BC90170
+IconFile=http://xnimg.cn/favicon.ico
+IconIndex=1

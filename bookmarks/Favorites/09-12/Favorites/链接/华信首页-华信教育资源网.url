@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://www.hxedu.com.cn/hxedu/index.jsp
+[InternetShortcut]
+URL=http://www.hxedu.com.cn/hxedu/index.jsp
+IDList=
+IconFile=http://www.hxedu.com.cn/hxedu/images/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

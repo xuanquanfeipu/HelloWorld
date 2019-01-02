@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://9551.com/
+[DOC#4_MainFrame]
+BASEURL=http://landing.domainsponsor.com/index.mas?epl=00760001W1sWZ1sJXFcKVQZeCUMSQFwFVANXAgFWVAEDHllrWAEIBlIPDENXWwxRCw1WBAtWXA1TAlIbVA4M
+ORIGURL=http://landing.domainsponsor.com/?a_id=2075&domainname=referer_detect
+[InternetShortcut]
+URL=http://9551.com/
+IDList=
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

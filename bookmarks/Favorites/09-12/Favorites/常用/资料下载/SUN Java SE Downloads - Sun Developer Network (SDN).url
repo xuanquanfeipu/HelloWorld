@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://java.sun.com/javase/downloads/index.jsp
+[InternetShortcut]
+URL=http://java.sun.com/javase/downloads/index.jsp
+IDList=
+IconFile=http://java.sun.com/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

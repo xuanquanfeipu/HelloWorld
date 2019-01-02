@@ -1,0 +1,7 @@
+[DEFAULT]
+BASEURL=http://www.nybooks.com/
+[InternetShortcut]
+URL=http://www.nybooks.com/
+Modified=F047298D3151C90139
+IconFile=http://www.nybooks.com/favicon.ico
+IconIndex=1

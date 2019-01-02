@@ -1,0 +1,8 @@
+[DEFAULT]
+BASEURL=http://music.xunlei.com/album,19354.html
+[DOC_iframe_comment]
+BASEURL=http://comment.xunlei.com/comment.php?channel=music&id=19354&action=iframe_view
+ORIGURL=http://comment.xunlei.com/comment.php?channel=music&id=19354&action=iframe_view
+[InternetShortcut]
+URL=http://music.xunlei.com/album,19354.html
+Modified=102080416A4CC90171

@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://www.eol.cn/
+[DOC#16]
+BASEURL=http://www.eol.cn/html/2008/aoyun/aoyun.html
+ORIGURL=/html/2008/aoyun/aoyun.html
+[InternetShortcut]
+URL=http://www.eol.cn/
+IDList=
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

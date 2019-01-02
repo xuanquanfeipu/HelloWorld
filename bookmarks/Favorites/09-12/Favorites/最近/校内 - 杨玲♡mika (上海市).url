@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://xiaonei.com/profile.do?id=256674372
+[DOC_imengine]
+BASEURL=http://wpi.xiaonei.com/wtalk/ime.htm?ver=99986
+ORIGURL=http://wpi.xiaonei.com/wtalk/ime.htm?ver=99986
+[InternetShortcut]
+URL=http://xiaonei.com/profile.do?id=256674372
+Modified=407A01045E71C90158
+IconFile=http://xnimg.cn/favicon.ico
+IconIndex=1

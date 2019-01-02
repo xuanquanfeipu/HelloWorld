@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://www.baidu.com/
+[DOC_sugif]
+BASEURL=res://C:\WINDOWS\system32\xpsp3res.dll/dnserror.htm
+ORIGURL=javascript:void(0)
+[InternetShortcut]
+URL=http://www.baidu.com/
+Modified=8099B5ABC79CC901A6
+IconFile=http://www.baidu.com/favicon.ico
+IconIndex=1

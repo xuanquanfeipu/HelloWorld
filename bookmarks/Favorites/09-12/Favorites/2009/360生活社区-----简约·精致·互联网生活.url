@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=http://www.fm360.com/
+[DOC_weather1]
+BASEURL=http://www.265.com/weather/58238.htm
+ORIGURL=http://www.265.com/weather.htm
+[InternetShortcut]
+URL=http://www.fm360.com/
+IDList=
+IconFile=http://www.fm360.com/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

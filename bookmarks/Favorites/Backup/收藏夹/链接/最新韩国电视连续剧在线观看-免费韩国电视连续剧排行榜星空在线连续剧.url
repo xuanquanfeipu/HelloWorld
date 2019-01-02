@@ -1,0 +1,16 @@
+[DEFAULT]
+BASEURL=http://xkyn.com/TV/韩国电视连续剧/
+[DEFAULT.A]
+BASEURL=http://xkyn.com/TV/韩国电视连续剧/
+[DEFAULT.W]
+BASEURL=http://xkyn.com/TV/+l+lW/XU1icaP3n7tUmc-/
+[DOC_baiduSpFrame]
+BASEURL=http://spcode.baidu.com/spcode/spstyle/style1613.jsp?tn=verywind_sp&ctn=0&styleid=1613
+ORIGURL=http://spcode.baidu.com/spcode/spstyle/style1613.jsp?tn=verywind_sp&ctn=0&styleid=1613
+[InternetShortcut]
+URL=http://xkyn.com/TV/韩国电视连续剧/
+Modified=C078AAC09050C9014C
+[InternetShortcut.A]
+URL=http://xkyn.com/TV/韩国电视连续剧/
+[InternetShortcut.W]
+URL=http://xkyn.com/TV/+l+lW/XU1icaP3n7tUmc-/

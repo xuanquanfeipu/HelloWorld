@@ -1,0 +1,13 @@
+[DEFAULT]
+BASEURL=http://www.crsky.com/list/s_154_1.html
+[DOC#26]
+BASEURL=http://www.crsky.com/Ggao/all_top.htm
+ORIGURL=/Ggao/all_top.htm
+[DOC#84]
+BASEURL=http://test.pee.cn:81/adsAlliance-access/handleImpr?zz=http://www.crsky.com&lid=11&aid=17&wid=10001&type=image
+ORIGURL=http://test.pee.cn:81/adsAlliance-access/handleImpr?zz=http://www.crsky.com&lid=11&aid=17&wid=10001&type=image
+[InternetShortcut]
+URL=http://www.crsky.com/list/s_154_1.html
+Modified=9023CB697FAEC901DE
+IconFile=http://www.crsky.com/favicon.ico
+IconIndex=1

@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://www.360doc.com/myfiles.aspx
+[DOC___historyFrame]
+BASEURL=http://www.360doc.com/WebResource.axd?d=1HoTdySzzjSnk1w04R_KJioHNsyymFNxQOGjKTVPT9PoiLmP2sNDgGiR2QS7GvPq0&t=633142299000000000&_state={"pageClientState":"myindex111();"}
+ORIGURL=/WebResource.axd?d=1HoTdySzzjSnk1w04R_KJioHNsyymFNxQOGjKTVPT9PoiLmP2sNDgGiR2QS7GvPq0&t=633142299000000000&_state={"pageClientState":"myindex111();"}
+[InternetShortcut]
+URL=http://www.360doc.com/myfiles.aspx#%7B%22pageClientState%22%3A%22myindex111()%3B%22%7D
+IDList=
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2

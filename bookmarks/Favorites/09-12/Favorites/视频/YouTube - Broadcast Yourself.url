@@ -1,0 +1,7 @@
+[DEFAULT]
+BASEURL=http://www.youtube.com/verify_age?next_url=%2Fwatch%3Fv%3DH5M02VnqNSI%26feature%3Drelated
+[InternetShortcut]
+URL=http://www.youtube.com/verify_age?&next_url=/watch%3Fv%3DH5M02VnqNSI%26feature%3Drelated
+Modified=F09B97C44E67C90165
+IconFile=http://www.youtube.com/favicon.ico
+IconIndex=1

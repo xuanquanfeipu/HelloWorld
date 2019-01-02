@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://xiaonei.com/profile.do?portal=homeStar&id=221002239
+[DOC_imengine]
+BASEURL=http://wpi.xiaonei.com/wtalk/ime.htm?ver=99986
+ORIGURL=http://wpi.xiaonei.com/wtalk/ime.htm?ver=99986
+[InternetShortcut]
+URL=http://xiaonei.com/profile.do?portal=homeStar&id=221002239
+Modified=20277ED15E71C9012F
+IconFile=http://xnimg.cn/favicon.ico
+IconIndex=1

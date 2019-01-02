@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=http://www.gxfa.com/meitu/
+[DOC_baiduSpFrame]
+BASEURL=http://spcode.baidu.com/spcode/spstyle/style1632.jsp?tn=gxfa_sp&ctn=0&styleid=1632
+ORIGURL=http://spcode.baidu.com/spcode/spstyle/style1632.jsp?tn=gxfa_sp&ctn=0&styleid=1632
+[InternetShortcut]
+URL=http://www.gxfa.com/meitu/
+IDList=
+IconFile=http://www.gxfa.com/favicon.ico
+IconIndex=1
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2
