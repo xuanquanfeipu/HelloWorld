@@ -1,0 +1,4 @@
+证书：leaderDesktop.key
+key store password:12345678
+key alias:leaderDesktopKey
+key password:12345678
