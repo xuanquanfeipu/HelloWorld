@@ -1,0 +1,22 @@
+# Non-project-specific build files:
+build.xml
+local.properties
+*.bak
+*.iml
+**/merger.xml
+/gradlew
+/gradlew.bat
+/gradle
+/.gradle/
+/.idea/
+/.settings/
+/cordova/
+/CordovaLib/
+# Ant builds
+ant-build
+ant-gen
+# Eclipse builds
+gen
+out
+# Gradle builds
+/build
