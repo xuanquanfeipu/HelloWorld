@@ -1,0 +1,11 @@
+<a class="modalSelect button button-block icon-right ion-ios-arrow-down button-calm select-button" ng-click="openPopover($event)"
+   style="background-color:#e9effb;color:#333333;margin-top:0;border-radius: 6px;margin-bottom:0;">{{vm.defaultItem.name}}</a>
+<script id="templates/popover.html" type="text/ng-template">
+    <ion-popover-view>
+        <ion-content scroll="true">
+            <ion-list>
+                <ion-radio ng-repeat="x in vm.data" ng-model="vm.defaultItem" ng-value="x" ng-click="sel($event,x)" icon="select-icon">{{x.name}}</ion-radio>
+            </ion-list>
+        </ion-content>
+    </ion-popover-view>
+</script>
