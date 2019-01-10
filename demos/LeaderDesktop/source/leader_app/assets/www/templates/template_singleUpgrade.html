@@ -1,0 +1,12 @@
+<div class="list panel_bg48">
+  <div class="item item-input-inset">
+    <label class="item-input-wrapper item-select item-stacked-label">
+      <select class="select2" id="executeType" ng-change="selectChange(x)" ng-model="x">
+        <option value="immediate" translate="upgrade.newest.immediate"></option>
+        <option value="{{planTime}}" translate="upgrade.newest.plantime" translate-values='{{translatePlanTime}}'></option>
+      </select>
+    </label>
+    <button class="button button-balanced button-small button-small-new upgrade-font" ng-click="immediateUpgrade(item);" translate="upgrade.newest.upgradenow">
+    </button>
+  </div>
+</div>
