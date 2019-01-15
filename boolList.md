@@ -17,6 +17,14 @@ SASS用法指南 http://www.ruanyifeng.com/blog/2012/06/sass.html  https://www.w
 Materliu 在慕课的视频: http://www.imooc.com/learn/364 、 http://www.imooc.com/wiki/371  sass入门:http://www.w3cplus.com/sassguide/  
 可以用图形界面的编译工具  [koala](http://koala-app.com/index-zh.html) 不用命令行了  http://koala-app.com/index-zh.html
 
+CSS精品教程 https://github.com/chokcoco/CSS-Inspiration  https://github.com/marvin1023/css-source  https://github.com/marvin1023/mark  
+https://github.com/marvin1023/css-layout  http://layout.imweb.io/   https://github.com/hhy5277/im-reset  
+
+Git https://github.com/hhy5277/git-learn  
+
+https://github.com/hhy5277/dynamics.js  
+
+Game Off 2018 https://blog.github.com/2018-12-22-game-off-2018-highlights/    https://itch.io/jam/game-off-2018  
 
 
 
