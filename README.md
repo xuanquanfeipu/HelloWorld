@@ -1,4 +1,4 @@
-# HelloWorld #    
+# HelloWorld  
 
 组件收集、学习笔记、各种语言HelloWorld! 
 
@@ -12,7 +12,7 @@ https://hhy5277.github.io/HelloWorld/
 
 http://www.tablesgenerator.com/
 
-## Markdown部分常用语法整理 ##
+## Markdown部分常用语法整理
 
 **标题**
 ```
@@ -22,6 +22,7 @@ http://www.tablesgenerator.com/
 #### 这是四级标题
 ##### 这是五级标题
 ###### 这是六级标题
+注：# 后面保持空格
 ```
 
 **字体**
