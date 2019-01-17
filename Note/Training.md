@@ -25,6 +25,7 @@
 13. 元编程
 14. 尾递归
 15. [ES7/8新特性](https://www.jianshu.com/p/13c5d002478b)  
+16. [ES9(es2018新特性)](https://juejin.im/post/5b2a186cf265da596d04a648)  
 
 #### 4.常用javascript框架介绍
 1. avalon（项目中用到、重点讲下）
