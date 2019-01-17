@@ -9,7 +9,7 @@
 2）常用组件
 3）常用插件
 
-3.ES2015(ES6)新特性
+3.[ES2015(ES6)新特性](http://es6.ruanyifeng.com/)  
 1）块级作用域（let、const）
 2）箭头函数（回调函数、词法this）
 3）参数处理（剩余参数、扩展运算符）
@@ -24,6 +24,7 @@
 12）promise
 13）元编程
 14）尾递归
+15)[ES7/8新特性](https://www.jianshu.com/p/13c5d002478b)  
 
 4.常用javascript框架介绍
 1）avalon（项目中用到、重点讲下）
