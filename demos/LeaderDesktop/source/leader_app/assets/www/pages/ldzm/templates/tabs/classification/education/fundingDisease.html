@@ -1,0 +1,25 @@
+<div class="bar bar-header bar-positive detail-header">
+    <a class="button button-clear" ng-click="vm.goBack()"><img src="../../images/universal_btn_icon_back.png"/></a>
+    <h1 class="title">{{vm.economicName}}</h1>
+</div>
+<ion-content class="fundingDiseaseClass" >
+    <div class="txtCount cf">
+        <div class="txtCountChlid txtCountChlid1">
+            <p class="txtNumber"> 
+            <span id='fundingDisease'>0</span></p>
+            <p class="txtRound txtSmall" id='fundingDiseaseTxt'></p>
+        </div>
+    </div>
+    <div class="row">
+        <ng-echarts class="echarts col" ec-config="vm.barConfig" ec-option="vm.barOption" style="position:static;height:484px;width:100%;"></ng-echarts>
+    </div>
+</ion-content>
+<style type="text/css">
+.cf:after{content:'';display:block;width:0;height:0;clear:both;}
+.fundingDiseaseClass .txtCount{margin:70px auto 32px;width:143px;}
+.fundingDiseaseClass .txtCountChlid{position:relative;width:143px;height:50px;text-align:center;}
+.fundingDiseaseClass .txtSmall{font-size:14px;color:#666;line-height:1.5;position:relative;}
+.fundingDiseaseClass .txtRound{padding-left:14px;display:inline-block;}
+.fundingDiseaseClass .txtRound:before{position:absolute;left:0;top:7px;content:'';width:7px;height:7px;border-radius:50%;background-color:#0090d3;}
+.fundingDiseaseClass .txtNumber{font-size:26px;color:#333;line-height:1;}
+</style>
