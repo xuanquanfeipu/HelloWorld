@@ -1,0 +1,20 @@
+<div class="bar bar-header bar-positive detail-header">
+    <a class="button button-clear" ng-click="vm.goBack()"><img src="../../images/universal_btn_icon_back.png"/></a>
+    <h1 class="title">图表</h1>
+</div>
+<ion-content class="has-header">
+    <div class="row">
+        <div class="col" style="padding: 10px 0 10px 0;text-align: center;font-size:14px;color:#666">数据统计截至：{{vm.endDate}} 数据来源：湖南省统计局</div>
+    </div>
+    <div class="row">
+        <div class="col" style="padding: 40px 0 10px 0;text-align: center;font-size:22px;color:#FFB901" id="eventTotal">{{vm.latestData.value}}</div>
+    </div>
+    <div class="row">
+        <div class="col" style="padding: 10px 0 40px 0;text-align: center;font-size:18px;color:#666">
+            <span class="round" style="font-size:20px;color:#FFB901">●</span>
+            <span style="margin-left:15px">{{vm.chartdata[0].name}}</span>
+        </div>
+    </div>
+    <ng-echarts class="echarts row" ec-config="vm.chartConfig" ec-option="vm.chartOption"
+                style="position:static;padding:0;" ng-style="{'height':vm.chartHeight}">
+</ion-content>
