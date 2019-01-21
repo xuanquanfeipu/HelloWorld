@@ -1,0 +1,95 @@
+<div class="educationPage">
+    <div class="topBar">
+        <a href="#/education-teacherStudent" class="row">
+            <ng-echarts class="echarts col" ec-config="vm.barConfig" ec-option="vm.barOption" style="position:static;height:234px;width:100%;"></ng-echarts>
+        </a>
+    </div>
+    <div class="educationOne educationBox">
+        <a href="#/education-funding/2" class="blockA">
+            <div class="imgL imgL0"></div>
+            <div class="txtC">教育经费<span>(万元)</span></div>
+            <div class="txtR">
+                <div class="txtR_top">{{vm.educationFund2015}}</div>
+                <div class="txtR_btm">环比 <span class='txtRed'>↑{{vm.educationFundRatio}}%</span></div>
+            </div>
+            <div class="btnArrows"></div>
+        </a>
+    </div>
+    <div class="educationBox educationBox1">
+        <a href="#/education-higherEdu/1" style="text-decoration: none">
+            <div class="txtTitle">高等教育分析</div>
+            <div class="btnArrows"></div>
+            <div class="row colRow">
+                <div class="col-50 colBox">
+                    <div class="imgL imgL1"></div>
+                    <p class="noBlack">{{vm.newRecruits}}</p>
+                    <p class="txtHui">新招人数<span>(万人)</span></p>
+                </div>
+                <div class="col-50 colBox">
+                    <div class="imgL imgL2"></div>
+                    <p class="noBlack">{{vm.graduation}}</p>
+                    <p class="txtHui">毕业人数<span>(万人)</span></p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="educationBox educationBox2">
+        <a href="#/education-compulsory/1">
+            <div class="txtTitle">义务教育分析</div>
+            <div class="btnArrows"></div>        
+            <div class="row colRow">
+                <div class="col-50 colBox">
+                    <div class="imgL imgL3"></div>
+                    <p class="noBlack">{{vm.childAge}}%</p>
+                    <p class="txtHui">适龄入学率<span>(%)</span></p>
+                </div>
+                <div class="col-50 colBox">
+                    <div class="imgL imgL4"></div>
+                    <p class="noBlack">{{vm.highSchool}}%</p>
+                    <p class="txtHui">初中升学率<span>(%)</span></p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+<style>
+    a{text-decoration:none;}
+    .educationPage{background-color:#f1f1f1;padding-bottom:1px;}
+    .educationPage .blockA{display:inline-block;width:100%;height:100%;}
+    .educationPage .txtRed{color:#ff0000;}
+    .educationPage .txtTitle{position:relative;color:#57555e;font-size:16px;padding-left:15px;line-height:14px;}
+    .educationPage .txtTitle:before{content:'';width:5px;height:14px;position:absolute;left:0;top:0;}
+    .educationPage .btnArrows{
+        position:absolute;right:12px;width:14px;height:14px;background:url("../../images/universal_btn_icon_more.png") no-repeat center;}
+    .educationPage .topBar{width:100%;height:234px;position:relative;
+        background-image:-webkit-linear-gradient(-60deg, #37127c, #21286a);
+        background-image:linear-gradient(-60deg, #37127c, #21286a);
+    }
+    .educationPage .topBar:after{content:'';display:block;width:100%;height:24px;background-color:rgba(0,0,0,.3);position:absolute;bottom:0;
+        left:0;}
+    .educationPage .educationBox{padding:10px 0;background-color:#fff;box-shadow:5px 5px 5px #e4e4e7;margin:12px 10px;border-radius:5px;}
+    .educationPage .imgL{position:absolute;left:8px;height:60px;width:60px;}
+    .educationPage .educationOne{position:relative;height:120px;}
+    .educationPage .educationOne .imgL0{top:30px;background:url("../../images/subject_icon_pay.png") no-repeat center;background-size:100%;}
+    .educationPage .educationOne .txtC{font-size:18px;color:#57555e;position:absolute;left:80px;top:49px;}
+    .educationPage .educationOne .txtC span{font-size:12px;}
+    .educationPage .educationOne .txtR{color:#333;position:absolute;right:40px;top:40px;font-size:20px;text-align:right;}
+    .educationPage .educationOne .txtR_btm{color:#999;font-size:12px;}
+    .educationPage .educationOne .btnArrows{top:49px;}
+    .educationPage .educationBox1,.educationPage .educationBox2{position:relative;height:120px;}
+    .educationPage .educationBox1 .txtTitle:before{background-color:#396cee;}
+    .educationPage .educationBox2 .txtTitle:before{background-color:#2ec6cf;}
+    .educationPage .educationBox1 .btnArrows,.educationPage .educationBox2 .btnArrows{top:12px;}
+    .educationPage .educationBox .colRow{height:60px;margin-top:15px;}
+    .educationPage .educationBox .colBox{position:relative;}
+    .educationPage .educationBox .imgL1{left:5px;top:0;background:url("../../images/subject_icon_new.png") no-repeat center;background-size:100%;}
+    .educationPage .educationBox .imgL2{left:5px;top:0;background:url("../../images/subject_icon_graduation.png") no-repeat center;background-size:100%;}
+    .educationPage .educationBox .imgL3{left:5px;top:0;background:url("../../images/subject_icon_baby.png") no-repeat center;background-size:100%;}
+    .educationPage .educationBox .imgL4{left:5px;top:0;background:url("../../images/subject_icon_senior.png") no-repeat center;background-size:100%;}
+    .educationPage .educationBox .colBox:nth-of-type(odd):after{content:'';width:1px;height:40px;position:absolute;top:10px;right:-.5px;
+        background-color:#d5d5d5;}
+    .educationPage .educationBox1 p,.educationPage .educationBox2 p{padding-left:70px;}
+    .educationPage .noBlack{color:#333;font-size:20px;line-height:1;padding-top:2px;}
+    .educationPage .txtHui{color:#666;font-size:14px;line-height:1;}
+    .educationPage .txtHui span{font-size:12px;}
+</style>
