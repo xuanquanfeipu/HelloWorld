@@ -1,0 +1,21 @@
+<ion-view view-title="首页" hide-nav-bar="false">
+
+<ion-content>
+   <div>  
+        <ion-slide-box on-slide-changed="slideHasChanged($index)" active-slide="slideIndex"  does-continue="{{initSlideTabs.doesContinue}}" show-pager="{{initSlideTabs.showPager}}">  
+             <ion-slide ng-repeat="item in initSlideTabs.data">
+		         <div ng-include="item.tpl"></div>
+		     </ion-slide>
+
+        </ion-slide-box>  
+    </div>  
+</ion-content>  
+    
+<ion-tabs class="tabs-icon-top tabs-color-active-assertive" style="height:61px">
+      <ion-tab title="首页" icon-off="bar-home" icon-on="bar-home-on" on-select="onShowYeSelected()"></ion-tab>
+      <ion-tab title="分类专题" icon-off="bar-industry" icon-on="bar-industry-on" on-select="onContentSelected()"></ion-tab>
+      <ion-tab title="区域分析" icon-off="bar-life" icon-on="bar-life-on" on-select="onAboutSelected()"></ion-tab>
+      <ion-tab title="对比分析" icon-off="bar-business" icon-on="bar-business-on" on-select="onSettingSelected()"></ion-tab>
+</ion-tabs>
+
+</ion-view>
