@@ -1,0 +1,174 @@
+<div class="bar bar-header bar-positive detail-header item-input-inset search-title">
+    <a class="button button-clear" ng-click="vm.goBack()"><img src="../../images/search_btn_icon_back.png"/></a>
+    <h1 class="title">搜索结果</h1>
+    <a class="button button-clear" ng-click="vm.toggleque()">
+        <img src="../../images/search_icon_sx.png" style="width: 24px;height: 24px;"/>筛选
+    </a>
+</div>
+<!--<div class="row">
+    <sc-monthpicker data="vm.mplist" defaultItem="vm.mp" on-change="vm.changeMp"></sc-monthpicker>
+
+</div>-->
+<div class="row query">
+    <div class="col-20">时间</div>
+    <div class="col-33"><sc-monthpicker model="vm.startDate" on-change="vm.onDateChange" mindate="201010"></sc-monthpicker></div>
+    <div class="col-10">-</div>
+    <div class="col-33"><sc-monthpicker model="vm.endDate" on-change="vm.onDateChange" mindate="vm.endMindate"></sc-monthpicker></div>
+</div>
+<div class="row query">
+    <div class="col-20">地区</div>
+    <div class="col-50">
+        <div class="pickerInput" ng-click="vm.openAreaPicker()">{{vm.curArea}}</div>
+    </div>
+</div>
+<div class="row nodata" style="display:none" id="nodata-info">
+    <div class="col" style="color: red;text-align: center">很抱歉，你输入的关键词暂无数据</div>
+</div>
+<div class="content search" style="background-color: #EDEDED">
+    <!--<ion-list>
+        <ion-item ng-repeat="item in vm.searchResultList track by $index" class="company item-icon-right">
+            <a href="javascript:;" ng-click="vm.searchkey_click(item)">{{item.name}}</a>
+        </ion-item>
+    </ion-list>-->
+    <div style="display:flex;background-color:#fff;border-bottom:1px solid #D1D3D6">
+        <div class="head col0" style="border-right:solid 1px #D1D3D6;">指标</div>
+        <div style="overflow: hidden;white-space: nowrap;" ng-style="{'width':w+'px'}">
+            <ion-scroll direction="x" scrollbar-x="false" overflow-scroll="false" has-bouncing="false" delegate-handle="headContainerHandle" on-scroll="noScroll()" style="margin-top:0;">
+                <div style="display:flex;width: 440px">
+                    <div class="head col1">地区</div>
+                    <div class="head col2">数据时间</div>
+                    <div class="head col3">数值</div>
+                    <div class="head col4">数据频度</div>
+                    <div class="head col5" style="border-right:0;">图表</div>
+                </div>
+            </ion-scroll>
+        </div>
+    </div>
+    <div style="display:flex;margin-top:5px;">
+        <ion-scroll class="contentScroll" direction="y" scrollbar-y="false" overflow-scroll="false" has-bouncing="false" delegate-handle="leftContainerHandle" on-scroll="noScroll()" ng-style="{'height':h+'px'}">
+            <div ng-repeat="item in vm.searchResultList track by $index" class="head colleft col0">
+                {{item.name}}
+            </div>
+        </ion-scroll>
+        <div style="overflow: hidden;white-space: nowrap;"  ng-style="{'width':w+'px'}">
+            <ion-scroll class="contentScroll" direction="xy" scrollbar-x="false" scrollbar-y="false" overflow-scroll="false" has-bouncing="false" on-scroll="scrollRightHorizon()" delegate-handle="rightContainerHandle" ng-style="{'height':h+'px'}">
+                <div  style="width: 440px">
+                    <div ng-repeat="item in vm.searchResultList track by $index" style="display:flex;" class="colright">
+                        <div class="head col1">
+                            {{item.area}}
+                        </div>
+                        <div class="head col2">
+                            {{item.dataPeriod}}
+                        </div>
+                        <div class="head col3">
+                            {{item.value| currency:' ':2 }}
+                        </div>
+                        <div class="head col4">
+                            {{item.datePeriodType}}
+                        </div>
+                        <div class="head col5" style="border-right:0;">
+                            <a href="javascript:;" ng-click="vm.goToChart(item)">
+                                <img src="../../images/search_icon.png" style="width: 24px;height: 24px;"/>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </ion-scroll>
+        </div>
+    </div>
+</div>
+<script id="templates/areaPicker.html" type="text/ng-template">
+    <div class="areaPicker" style="margin-right:3px;">
+        <ion-list>
+            <ion-radio ng-model="vm.pickArea" ng-value="item.name" ng-repeat="item in vm.areaList" icon="select-icon">{{item.name}}</ion-radio>
+        </ion-list>
+
+    </div>
+</script>
+<style>
+    .bar-header.search-title{
+        //background-color: #E2E2E2;
+        height: 48px
+    }
+    .bar-header.search-title .button{
+        line-height:40px;
+    }
+    .search-title img{
+        width: 24px;
+        height: 24px;
+        vertical-align: middle;
+    }
+    .search{
+        color:#333;
+    }
+    .search .item{
+        background-color:#EDEDED;
+    }
+    .search .row.title{
+        margin-top:20px;
+        padding:0 15px;
+    }
+    .search ul li{
+        float:left;
+        margin:20px 10px 0px 10px;
+        background-color: #E2E2E2;
+        border-radius: 15px;
+        padding:5px 15px;
+    }
+    .search a{
+        text-decoration: none;
+        color:#333;
+    }
+    .head{
+        //border-bottom:solid 1px #D1D3D6;
+        //border-right:solid 1px #D1D3D6;
+        height:50px;
+        display:flex;
+        align-items:center;
+        width:80px;
+        font-size:14px;
+        color:#262626;
+        justify-content:center;
+        padding: 0 10px;
+    }
+    .query,.nodata{
+        background-color: #F1F1F1;
+        padding:12px 0;
+    }
+    .query>div{
+        text-align: center;
+        height: 32px;
+        line-height: 32px;
+        margin: 3px 0;
+    }
+    .query .pickerInput{
+        background-color: #fff;
+        border: 1px solid #666;
+        border-radius: 4px;
+        text-align: center;
+        //margin: 0 10px;
+        //padding-left: 20px;
+        width: 100%;
+    }
+    .query .input-label{
+        width:50px;
+    }
+    .colleft{
+        border-right:solid 1px #D1D3D6;
+    }
+    .colleft:nth-child(odd),.colright:nth-child(odd){
+        background-color: #ffffff;
+    }
+    .colleft:nth-child(even),.colright:nth-child(even){
+        background-color: #F1F1F1;
+    }
+    .col0{
+        width: 160px;
+    }
+    .col8{
+        width: 60px;
+    }
+    .col3,.col5{
+        width: 100px;
+    }
+</style>
