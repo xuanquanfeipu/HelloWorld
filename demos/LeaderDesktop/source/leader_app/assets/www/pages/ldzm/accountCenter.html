@@ -1,0 +1,47 @@
+<div class="bar bar-header bar-positive detail-header" >
+    <a class="button button-clear" ng-click="vm.goEnter()"><img src="../../images/universal_btn_icon_back.png"/></a>
+    <h1 class="title" style="font-size:20px;height:48px;text-align:center;color:#fff;background:#37127c;vertical-align:middle;margin:0">个人中心</h1>
+</div>
+
+<ion-content class="has-header" style="background-color:#f0f0f0" scroll="false">
+
+    <div style="padding: 2px 0px"></div>
+
+    <ion-list>
+
+        <li class="item item-icon-left item-toggle">
+            <i class="icon"><img src="../../images/icon_gesture.png"></i>
+            <span style="font-size: 20px;" >手势解锁</span>
+            <label class="toggle toggle-positive">
+                <input type="checkbox" ng-model="gestureSwitch.checked" ng-click="vm.switchGestureAuth($event)" ng-disabled="switchDisabled">
+                <div class="track">
+                    <div class="handle"></div>
+                </div>
+            </label>
+        </li>
+
+        <li class="item item-icon-left" ng-hide="hideEditGesture">
+            <i class="icon"></i>
+            <span style="font-size: 20px;" >修改手势密码</span>
+            <a style="float:right" ng-click="vm.editGesture()"><img src="../../images/universal_btn_icon_more01.png"/></a>
+
+        </li>
+
+        <li class="item item-icon-left item-toggle" ng-hide="hideFingerprint">
+            <i class="icon"><img src="../../images/icon_fingerprint_2.png"></i>
+            <span style="font-size: 20px;" >指纹解锁</span>
+            <label class="toggle toggle-positive">
+                <input type="checkbox" ng-model="fpSwitch.checked" ng-click="vm.switchFpAuth($event)" ng-disabled="switchDisabled">
+                <div class="track">
+                    <div class="handle"></div>
+                </div>
+            </label>
+        </li>
+
+    </ion-list>
+
+    <button class="button button-full button-light" style="border:0px" ng-click="vm.exit()"><span class="exit_btn_font">退出登录</span></button>
+
+</ion-content>
+
+
