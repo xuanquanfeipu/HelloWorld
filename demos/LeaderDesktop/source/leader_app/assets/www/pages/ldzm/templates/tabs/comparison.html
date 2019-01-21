@@ -1,0 +1,87 @@
+<ion-view view-title="对比" hide-nav-bar="true" ng-if="vm.power">
+	<div class="tabs tabs-top" style="top:0px;height:47px;">
+		<div class="tab-item" style="max-width:33%;border-bottom:3px solid #dce1e7;">
+			<sc-dropdown data="vm.timeList" on-change="vm.changeTime" default-item="vm.curTime"></sc-dropdown>
+
+		</div>
+
+		<div class="tab-item" style="max-width:33%;border-bottom:3px solid #dce1e7;">
+			<sc-dropdown data="vm.moduleList" on-change="vm.changeModule" default-item="vm.curmodule"></sc-dropdown>
+		</div>
+		<div class="tab-item" style="max-width:40%;border-bottom:3px solid #dce1e7;">
+			<sc-dropdown  data="vm.IndicatorList" on-change="vm.changeIndicator" default-item="vm.curindicator"></sc-dropdown>
+		</div>
+
+	</div>
+	<ion-content class="has-tabs-top" >
+		<ion-list>
+			<ion-item ng-repeat="item in vm.list track by $index" class="comparison" ng-style="{'background-color':item.name=='湖南省'?'#eff7fc':'#fff'}">
+				<div class="row">
+					<div class="col-10">
+						<img ng-if="$index==0" src="../../images/subject_icon_1.png"/>
+						<img ng-if="$index==1" src="../../images/subject_icon_2.png"/>
+						<img ng-if="$index==2" src="../../images/subject_icon_3.png"/>
+						<span ng-if="$index>=3" style="font-style:italic;font-size:20px;font-weight: bold"
+							  ng-style="{'color':item.name=='湖南省'?'#bb65c8':'#438ff5'}">{{$index+1}}</span>
+					</div>
+					<div class="col-40" style="line-height: 16px;">
+						{{item.name}}
+						<div class="line-bar-b">
+							<div class="line-bar-z" ng-style="{'width':item.bl+'%','background-color':item.name=='湖南省'?'#bb65c8':'#438ff5'}"></div>
+						</div>
+					</div>
+					<div class="col-40" style="text-align: right;padding-right: 10px;font-size: 18px">
+						{{item.value | currency:' ':2 }}<span style="font-size:16px;">{{item.dw}}</span>
+					</div>
+					<div class="col-10" style="font-size: 14px">
+						<span ng-if="item.zzl>=0" style="color:#ff0000">+{{item.zzl}}%</span>
+						<span ng-if="item.zzl<0" style="color:#339900">{{item.zzl}}%</span>
+					</div>
+				</div>
+
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>
+<ion-view view-title="对比" hide-nav-bar="true" ng-if="!vm.power">
+	<ion-header-bar align-title="center">
+		<h1 class="title" style="font-size:20px;height:48px;text-align:center;color:#fff;vertical-align:middle;background:#37127c;margin:0">
+			对比分析
+		</h1>
+	</ion-header-bar>
+	<ion-content  style="text-align:Center" scroll="true">
+		<div >
+			<img width="100%" height="{{picheight}}" src="../../images/nodata.png"/>
+		</div>
+		<div style="color:#9999cc;font-size:20px">
+			抱歉,您无权访问此模块
+		</div>
+
+
+	</ion-content>
+</ion-view>
+<style>
+	.comparison .row{
+		font-size:16px;
+		color: #333;
+		//height:35px;
+		//line-height: 35px;
+	}
+	.comparison .row>div{
+		line-height: 38px;
+		height:38px;
+	}
+	.comparison .line-bar-b{
+		background-color: #eee;
+		width:100%;
+	}
+	.comparison .line-bar-z {
+		border-radius: 4px;
+		height: 8px;
+		width: 44.3696%;
+		margin-top: 10px;
+	}
+	.comparison .row img{
+		vertical-align: middle;
+	}
+</style>
