@@ -1,0 +1,31 @@
+
+<ion-header-bar align-title="center">
+    <h1 class="title">
+        <a ng-click="vm.goBack()" class="back-style"><img width="24" height="24" src="../../images/universal_btn_icon_back.png"/></a>
+        人口总数
+    </h1>
+</ion-header-bar>
+
+<ion-view view-title="分类" hide-nav-bar="true" style="padding-top: 45px;">
+    <div class="row" style="margin-top:10%;">
+        <div id="showLabel1"  class="col" style="text-align:center;font-size:26px;color:#333">
+            {{vm.showLabel1 | currency:'':2}}
+        </div>
+    </div>
+    <div class="row" style="margin-top:-5px">
+        <div class="col" style="text-align:center;font-size:15px;color:#666;line-height: 20px;">
+            <span class="round"></span><span id="showLabel2"  style="margin-left:12px">{{vm.showLabel2}}</span>总人口数(万人)
+        </div>
+    </div>
+
+    <div id="chart1">
+        <ng-echarts class="echarts col" ng-style="{ 'width' : linewidth, 'height' : lineheight }" ec-config="vm.lineConfig" ec-option="vm.lineOption"></ng-echarts>
+    </div>
+</ion-view>
+
+<style>
+  .title{font-size:20px;height:48px;text-align:center;color:#fff;vertical-align:middle;margin:0!important;
+      background: -webkit-linear-gradient( left,#08145c,#37127c);}
+  .round{ width: 7px; height: 7px; background: #2863bd; border-radius: 50%; -webkit-border-radius: 50%;
+      display: inline-block;}
+</style>
