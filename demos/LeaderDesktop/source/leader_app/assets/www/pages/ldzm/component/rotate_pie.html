@@ -1,0 +1,38 @@
+<style>
+    .topBar{width:100%;height:364px;position:relative;
+        background-image:-webkit-linear-gradient(-60deg, #37127c, #21286a);
+        background-image:linear-gradient(-60deg, #37127c, #21286a);
+    }
+    .tips{
+        background:url("../../images/subject_tag_zfzc.png")  no-repeat;
+        background-size:cover;
+        height:45px;
+        width:123px;
+        color:#fff;
+        line-height:40px;
+        font-size:17px;
+    }
+</style>
+<div class="topBar" style="position:relative; background-image:-webkit-linear-gradient(-60deg, {{vm.endpiebgcolor}}, {{vm.startpiebgcolor}});background-image:linear-gradient(-60deg, {{vm.endpiebgcolor}}, {{vm.startpiebgcolor}});">
+    <div class="row">
+        <div  style="width:100%;text-align:center;margin-top:19px;">
+           <!--<img width="123" height="45" src="../../images/subject_tag_zfzc.png"/>-->
+            <center><div class="tips"><em id="showDataEm">{{vm.showDataEm|currency:''}}</em>{{vm.unit}}</div></center>
+        </div>
+    </div>
+    <div class="row" style="margin-top:-15px;padding:0">
+        <div class="col-15" style="width:15%;text-align:center;height:{{pieheight}};line-height:{{pieheight}}">
+            <img width="30" height="50" ng-click="vm.leftRotate()" src="../../images/{{vm.leftImg }}"/>
+        </div>
+        <div class="col-70" style="width:75%;"><ng-echarts class="echarts col" ng-style="{ 'width' : piewidth, 'height' : pieheight }" ec-config="pieConfig" ec-option="pieOption"></ng-echarts></div>
+        <div class="col-15" style="width:15%;text-align:center;height:{{pieheight}};line-height:{{pieheight}}">
+            <img width="30" height="50" ng-click="vm.rightRotate()" src="../../images/{{vm.rightImg }}"/>
+        </div>
+    </div>
+
+    <center>
+    <ng-echarts style="margin-top:-260px;" class="echarts col" ng-style="{ 'width' : piewidth1, 'height' : pieheight1 }" ec-config="pieConfig1" ec-option="pieOption1"></ng-echarts>
+    <!--<div style="width: 32%;height: 32%;position:absolute;top: 39%;left: 35%;z-index: 999999999;"></div>-->
+    </center>
+</div>
+
