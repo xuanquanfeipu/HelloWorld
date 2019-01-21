@@ -1,0 +1,83 @@
+<div class="bar bar-header bar-positive detail-header item-input-inset search-title">
+    <a class="button button-clear" ng-click="vm.goBack()"><img src="../../images/search_btn_icon_back.png"/></a>
+    <form>
+    <label class="item-input-wrapper" style="border-radius: 18px">
+        <i class="icon ion-ios-search placeholder-icon"></i>
+        <input type="search" placeholder="关键词" id="searchInput" ng-model="vm.keyword" ng-keyup="vm.searchResult()">
+        <button ng-click="vm.gotoResult()" style="display: none"></button>
+    </label>
+    </form>
+    <a class="button button-clear" ng-click="vm.indicatorDict()" style="color:#FACD5E">
+        <img src="../../images/search_icon_dic.png" style="width: 24px;height: 24px;"/>字典
+    </a>
+</div>
+<ion-content class="has-header search" style="background-color: #EDEDED">
+    <div class="row" style="display:none" id="nodata-info">
+        <div class="col" style="color: red;text-align: center;">很抱歉，你输入的关键词暂无数据</div>
+    </div>
+    <div class="row title" ng-if="vm.searchResultList.length==0">
+        <div class="col" style="padding: 0">历史搜索</div>
+        <div class="col" style="text-align: right;padding: 0">
+            <a href="javascript:;" ng-click="vm.clearHistory()"><img style="width: 22px;height: 22px;" src="../../images/search_icon_delet.png"/></a>
+        </div>
+    </div>
+    <div class="row" ng-if="vm.searchResultList.length==0">
+        <ul>
+            <li ng-repeat="item in vm.searchHistoryList track by $index" ng-click="vm.searchkey_click(item)">{{item.name}}</li>
+        </ul>
+    </div>
+    <div class="row title" ng-if="vm.searchResultList.length==0">推荐搜索</div>
+    <div class="row" ng-if="vm.searchResultList.length==0">
+        <ul>
+            <li ng-repeat="item in vm.searchSuggestList track by $index" ng-click="vm.searchkey_click(item)">{{item.name}}</li>
+        </ul>
+    </div>
+    <ion-list>
+        <ion-item ng-repeat="item in vm.searchResultList track by $index" class="company item-icon-right" ng-click="vm.searchkey_click(item)">
+            <a href="javascript:;">{{item.name}}</a>
+        </ion-item>
+    </ion-list>
+</ion-content>
+<style>
+    .bar-header.search-title{
+        height: 48px
+    }
+    .bar-header.search-title .button{
+        line-height:40px;
+    }
+    .bar-header.search-title form{
+        display: flex;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1 0;
+        -moz-box-flex: 1;
+        -moz-flex: 1 0;
+        -ms-flex: 1 0;
+        flex: 1 0;
+    }
+    .search-title img{
+        width: 24px;
+        height: 24px;
+        vertical-align: middle;
+    }
+    .search{
+        color:#333;
+    }
+    .search .item{
+        background-color:#EDEDED;
+    }
+    .search .row.title{
+        margin-top:20px;
+        padding:0 15px;
+    }
+    .search ul li{
+        float:left;
+        margin:20px 10px 0px 10px;
+        background-color: #E2E2E2;
+        border-radius: 15px;
+        padding:5px 15px;
+    }
+    .search a{
+        text-decoration: none;
+        color:#333;
+    }
+</style>
