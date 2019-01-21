@@ -1,0 +1,67 @@
+<div class="pickerInput" ng-click="openPopup($event)">{{vm.model.year}}-{{vm.model.month}}</div>
+<script id="templates/monthpicker.html" type="text/ng-template">
+        <div class="sc-monthpicker" style="margin-right:3px;">
+            <div class="row month-title" style="margin: 0">
+                <div class="col-25"><i class="ion-ios-arrow-back" ng-class="{'clickable':vm.minYear!=vm.curYear}" ng-click="vm.preYear()"></i> </div>
+                <div class="col-50">{{vm.curYear}}年</div>
+                <div class="col-25"><i class="ion-ios-arrow-forward" ng-class="{'clickable':vm.maxYear!=vm.curYear}" ng-click="vm.nextYear()"></i></div>
+            </div>
+            <div class="row">
+                <ul style="float: left;color: #000;" class="month-list">
+                    <li ng-repeat="item in vm.monthList" ng-class="{'select':item.select,'clickable':item.clickable}" ng-click="vm.changeMonth($event,item)">{{item.name}}</li>
+                </ul>
+            </div>
+
+        </div>
+</script>
+<style>
+    input.pickerInput{
+
+    }
+    .sc-monthpicker{
+        border-radius: 5px;
+        border-color: #969CBC;
+    }
+    .sc-monthpicker>li>a{
+        background-color: #F8F8F8;
+        color:#676d85;
+    }
+    .sc-monthpicker > li > a:hover, .sc-monthpicker > li > a:focus {
+        text-decoration: none;
+        color: #fff;
+        font-size:16px;
+        background-color: #5b62a2;
+    }
+    .sc-monthpicker .month-title>div{
+        text-align: center;
+        font-size: 16px;
+        height: 30px;
+        line-height: 30px;
+    }
+    .sc-monthpicker .month-title i{
+        color:#999;
+        font-size: 28px;
+    }
+    .sc-monthpicker .month-title i.clickable{
+        color:#000
+    }
+    .sc-monthpicker .month-list{
+        padding:0;
+    }
+    .sc-monthpicker .month-list li{
+        float: left;
+        width: 70px;
+        text-align: center;
+        font-size: 16px;
+        color:#999;
+        padding:10px 0;
+    }
+    .sc-monthpicker .month-list li.clickable{
+        color:#000
+    }
+    .sc-monthpicker .month-list li.select{
+        background-color:#2B71E9;
+        color:#fff
+    }
+
+</style>
