@@ -1,0 +1,155 @@
+<style>
+    .round{width:7px;height:7px;display: inline-block;font-size:20px;line-heigth:16px;text-align:center;color:#447df3;text-decoration:none}
+    .bk{
+        background: #f1f1f1;
+    }
+    .col-biside{
+        width:3.5%;
+    }
+    .col-center{
+        width:5.5%;
+    }
+    .col-left{
+        width:44%;
+        background:#ffffff;
+        height:157px;
+        border-top:#1c95c5 solid 4px;
+        padding:0;
+        border-left:#cbd1e6 solid 1px;
+        border-bottom:#cbd1e6 solid 1px;
+    }
+    .col-right{
+        width:44%;
+        background:#ffffff;
+        height:157px;
+        border-top:#1c95c5 solid 4px;
+        padding:0;
+        border-right:#cbd1e6 solid 1px;
+        border-bottom:#cbd1e6 solid 1px;
+    }
+    .img_s{
+        height: 62px;
+        line-height: 62px;
+        text-align:center;
+    }
+    .title_s{
+        height: 63px;
+        line-height: 63px;
+        text-align:center;
+        margin-top:-10px;
+        font-size:20px;
+        font-color:#333333;
+    }
+    .lock{
+        height: 32px;
+        text-align:right;
+        margin-top:-4px
+    }
+    .exit-style{
+        float:right;
+        padding-top:5px;
+        padding-right:10px;
+    }
+   /* .detail{ position: absolute; background: url("../images/img/bg_tm.png") repeat;  width: 100%; height:200px; }
+    .detail p{ position:relative; font-size: 12px; color: #fff; line-height: 24px; margin: 24px 10px; height: 150px; overflow: hidden;}
+    .hidden{ display: block;}*/
+</style>
+<ion-header-bar align-title="center">
+    <h1 class="title" style="font-size:20px;height:48px;text-align:center;color:#fff;vertical-align:middle;background:#37127c;margin:0">
+        <span class="back-style" style="margin-left:5px"><img width="28" height="24" src="../../images/logo.png"/></span>
+        湖南政务大数据平台
+        <span ng-click="vm.accountCenter()" class="exit-style"><img width="33" height="33" src="../../images/home_icon_user_default.png"/></span>
+    </h1>
+</ion-header-bar>
+<ion-content class="bk" style="" scroll="true">
+
+<div style="display:none">
+    <br><a href="javascript:alert(js.isFingerPrintSupport());">是否支持指纹识别</a><br>
+    <br><a href="javascript:alert(js.startFingerPrint());">开始指纹识别</a><br>
+    <br><a href="javascript:alert(js.stopFingerPrint());">停止指纹识别</a><br>
+    <br><a href="javascript:alert(js.getFingerprintStatus());">获取当前指纹识别状态</a><br>
+    <br>设置密码认证为：<a href="javascript:alert(js.setAppAuth('Password',true));">True</a>/<a href="javascript:alert(js.setAppAuth('Password',false));">False</a><br>
+    <br>设置指纹认证为：<a href="javascript:alert(js.setAppAuth('Fingerprint',true));">True</a>/<a href="javascript:alert(js.setAppAuth('Fingerprint',false));">False</a><br>
+    <br>设置手势认证为：<a href="javascript:alert(js.setAppAuth('Gesture',true));">True</a>/<a href="javascript:alert(js.setAppAuth('Gesture',false));">False</a><br>
+    <br><a href="javascript:alert('Password:'+js.isAppAuth('Password')+',Fingerprint:'+js.isAppAuth('Fingerprint')+',Gesture:'+js.isAppAuth('Gesture'));">获取设置状态</a><br>
+    <br><a href="javascript:alert(js.clearSettings());">清除用户缓存及设置</a><br>
+    <br><a href="javascript:alert(js.setGesture('123456'));">设置当前用户手势为123456</a><br>
+    <br><a href="javascript:alert(js.getGesture());">查询当前用户手势</a><br>
+</div>
+
+    <div class="row" style="margin-top:20px">
+        <div class="col-biside"></div>
+        <div class="col-left" id="div_app_{{vm.ldzm_app_no}}" ng-click="vm.toLdzm(vm.ldzm_lock)" on-touch="onTouch({{vm.ldzm_app_no}})" on-release="onRelease({{vm.ldzm_app_no}})">
+               <div class="lock" ng-if="vm.ldzm_lock"><img width="36.5" height="36.5" src="../../images/enter/icon_lock.png"/></div>
+               <div class="lock" ng-if="!vm.ldzm_lock"></div>
+               <div class="img_s"><img width="60" height="60" src="../../images/enter/icon_lingdao.png"/></div>
+               <div class="title_s">领导桌面</div>
+        </div>
+        <div class="col-center"></div>
+        <div class="col-right"  id="div_app_{{vm.jjyx_app_no}}" ng-click="vm.toJJYX(vm.jjyx_lock)" on-touch="onTouch({{vm.jjyx_app_no}})" on-release="onRelease({{vm.jjyx_app_no}})">
+            <div class="lock" ng-if="vm.jjyx_lock"><img width="36.5" height="36.5" src="../../images/enter/icon_lock.png"/></div>
+            <div class="lock" ng-if="!vm.jjyx_lock"></div>
+            <div class="img_s"><img width="60" height="60" src="../../images/enter/icon_economic.png"/></div>
+            <div class="title_s">经济运行</div>
+        </div>
+        <div class="col-biside"></div>
+    </div>
+
+    <div class="row" style="margin-top:20px">
+        <div class="col-biside"></div>
+        <div class="col-left"   id="div_app_{{vm.xfdc_app_no}}" ng-click="vm.toXFDC(vm.xfdc_lock)" on-touch="onTouch({{vm.xfdc_app_no}})" on-release="onRelease({{vm.xfdc_app_no}})">
+            <div class="lock" ng-if="vm.xfdc_lock"><img width="36.5" height="36.5" src="../../images/enter/icon_lock.png"/></div>
+            <div class="lock" ng-if="!vm.xfdc_lock"></div>
+            <div class="img_s"><img width="60" height="60" src="../../images/enter/icon_xiaofei.png"/></div>
+            <div class="title_s">消费洞察</div>
+        </div>
+        <div class="col-center"></div>
+        <div class="col-right"  id="div_app_{{vm.scjg_app_no}}" ng-click="vm.toSCJG(vm.scjg_lock)" on-touch="onTouch({{vm.scjg_app_no}})" on-release="onRelease({{vm.scjg_app_no}})">
+            <div class="lock" ng-if="vm.scjg_lock"><img width="36.5" height="36.5" src="../../images/enter/icon_lock.png"/></div>
+            <div class="lock" ng-if="!vm.scjg_lock"></div>
+            <div class="img_s"><img width="60" height="60" src="../../images/enter/icon_shichang.png"/></div>
+            <div class="title_s">市场监管</div>
+        </div>
+        <div class="col-biside"></div>
+    </div>
+
+
+    <div class="row" style="margin-top:20px">
+        <div class="col-biside"></div>
+        <div class="col-left"  id="div_app_{{vm.tshd_app_no}}" ng-click="vm.toTSHD(vm.tshd_lock)" on-touch="onTouch({{vm.tshd_app_no}})" on-release="onRelease({{vm.tshd_app_no}})">
+            <div class="lock" ng-if="vm.tshd_lock"><img width="36.5" height="36.5" src="../../images/enter/icon_lock.png"/></div>
+            <div class="lock" ng-if="!vm.tshd_lock"></div>
+            <div class="img_s"><img width="60" height="60" src="../../images/enter/icon_tousu.png"/></div>
+            <div class="title_s">投诉互动</div>
+        </div>
+        <div class="col-center"></div>
+        <div class="col-right"  id="div_app_{{vm.third1_app_no}}" ng-click="vm.toThird1(vm.third1_lock)" on-touch="onTouch({{vm.third1_app_no}})" on-release="onRelease({{vm.third1_app_no}})">
+            <div class="lock" ng-if="vm.third1_lock"><img width="36.5" height="36.5" src="../../images/enter/icon_lock.png"/></div>
+            <div class="lock" ng-if="!vm.third1_lock"></div>
+            <div class="img_s"><img width="60" height="60" src="../../images/enter/icon_lyjg.png"/></div>
+            <div class="title_s">林业监管</div>
+        </div>
+        <div class="col-biside"></div>
+    </div>
+
+
+    <div class="row" style="margin-top:20px;padding-bottom:20px">
+        <div class="col-biside"></div>
+        <div class="col-left"  id="div_app_{{vm.third2_app_no}}"  ng-click="vm.toThird2(vm.third2_lock)"  on-touch="onTouch({{vm.third2_app_no}})" on-release="onRelease({{vm.third2_app_no}})">
+            <div class="lock" ng-if="vm.third2_lock"><img width="36.5" height="36.5" src="../../images/enter/icon_lock.png"/></div>
+            <div class="lock" ng-if="!vm.third2_lock"></div>
+            <div class="img_s"><img width="60" height="60" src="../../images/enter/icon_jxkh.png"/></div>
+            <div class="title_s">政府效能</div>
+        </div>
+        <div class="col-center"></div>
+        <div class="col-right"  id="div_app_{{vm.third3_app_no}}"  ng-click="vm.toThird3(vm.third3_lock)"  on-touch="onTouch({{vm.third3_app_no}})" on-release="onRelease({{vm.third3_app_no}})">
+            <div class="lock" ng-if="vm.third3_lock"><img width="36.5" height="36.5" src="../../images/enter/icon_lock.png"/></div>
+            <div class="lock" ng-if="!vm.third3_lock"></div>
+            <div class="img_s"><img width="60" height="60" src="../../images/enter/icon_jzfp.png"/></div>
+            <div class="title_s">精准扶贫</div>
+        </div>
+        <div class="col-biside"></div>
+    </div>
+</ion-content>
+
+
