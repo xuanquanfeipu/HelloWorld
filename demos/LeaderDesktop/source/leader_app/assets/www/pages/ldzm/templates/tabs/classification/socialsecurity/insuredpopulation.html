@@ -1,0 +1,37 @@
+<!--<ion-header-bar class="bar-positive" style="background-color:#191e4f;padding:0;border-bottom:none;">-->
+<!--<button ng-click="vm.backToCls()">fanhui</button>-->
+<!--</ion-header-bar>-->
+<style>
+    .round{width:7px;height:7px;display: inline-block;font-size:20px;line-heigth:16px;text-align:center;color:#447df3;text-decoration:none}
+    .detail3col>div{text-align:center;font-size:15px;color:#666;width:32%;}
+</style>
+<ion-header-bar align-title="center">
+    <h1 class="title" style="font-size:20px;height:48px;text-align:center;color:#fff;vertical-align:middle;background:#37127c;margin:0">
+        <a ng-click="vm.goback()" class="back-style"><img width="24" height="24" src="../../images/universal_btn_icon_back.png"/></a>
+        社会保障总体分析
+    </h1>
+</ion-header-bar>
+<ion-view view-title="分类" hide-nav-bar="true">
+    <ion-content>
+        <div class="row detail3col" style="margin-top:38px">
+            <div>
+                <span class="round" style="color:#0090d3">●</span><span style="margin-left:15px">收入</span>
+                <div style="margin-top:10px;color:#0090d3"><span id="label1" style="font-size:20px">{{vm.label1}}</span><span style="font-size:14px">亿元</span></div>
+            </div>
+            <div style="border-left: 1px solid #c9d4ea;width:2%;height:45px;margin-left:2%;margin-top:5px"></div>
+            <div>
+                <span class="round" style="color:#f59537">●</span><span style="margin-left:15px">支出</span>
+                <div  style="margin-top:10px;color:#f59537"><span id="label2" style="font-size:20px">{{vm.label2}}</span><span style="font-size:14px">亿元</span></div>
+            </div>
+            <div style="border-left: 1px solid #c9d4ea;width:2%;height:45px;margin-left:2%;margin-top:5px"></div>
+            <div>
+                <span class="round" style="color:#15e373">●</span><span style="margin-left:15px">累计结余</span>
+                <div  style="margin-top:10px;color:#15e373"><span id="label3" style="font-size:20px">{{vm.label3}}</span><span style="font-size:14px">亿元</span></div>
+            </div>
+        </div>
+        <div>
+            <ng-echarts class="echarts col" ec-config="vm.barConfig" ec-option="vm.barOption"
+                        style="position:static;" ng-style="{ 'width' : vm.linewidth, 'height' : vm.lineheight }"></ng-echarts>
+        </div>
+    </ion-content>
+</ion-view>
