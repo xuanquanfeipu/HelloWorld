@@ -1,0 +1,27 @@
+<div class="bar bar-header bar-positive detail-header">
+    <a class="button button-clear" ng-click="vm.goBack()"><img src="../../images/universal_btn_icon_back.png"/></a>
+    <h1 class="title">{{vm.eduTypeName}}</h1>
+</div>
+<ion-view view-title="分类" hide-nav-bar="true" style="padding-top: 45px;">
+    <div class="row" style="margin-top:10%;">
+        <div class="col" style="text-align:center;font-size:26px;color:#333">
+            {{vm.showLabel1 | currency:'':2}}
+        </div>
+    </div>
+    <div class="row" style="margin-top:-5px">
+        <div class="col" style="text-align:center;font-size:15px;color:#666;line-height: 20px;">
+            <span class="round"></span><span style="margin-left:12px">{{vm.showLabel2}}(万人)</span>
+        </div>
+    </div>
+
+    <div id="chart1">
+        <ng-echarts class="echarts col" ng-style="{ 'width' : linewidth, 'height' : lineheight }" ec-config="vm.lineConfig" ec-option="vm.lineOption"></ng-echarts>
+    </div>
+</ion-view>
+
+<style>
+    .title{font-size:20px;height:48px;text-align:center;color:#fff;vertical-align:middle;margin:0!important;
+        background: -webkit-linear-gradient( left,#08145c,#37127c);}
+
+</style>
+
