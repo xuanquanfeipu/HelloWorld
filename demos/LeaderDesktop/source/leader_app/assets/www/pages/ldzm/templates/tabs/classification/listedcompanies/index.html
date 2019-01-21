@@ -1,0 +1,32 @@
+<div class="company-index">
+    <a href="#/listedcompanies-overview/1"> <ng-echarts class="echarts row" ec-config="vm.scatterConfig" ec-option="vm.scatterOption"
+                style="position:static;height:234px;padding:0;"></ng-echarts>
+    </a>
+    <ion-list>
+        <div ng-repeat="item in vm.list" class="card">
+            <div class="item title" style="padding-left: 0;">
+                <span ng-style="{'border-left':'4px solid '+item.color}" style="padding: 0 0 0 15px;">{{item.title}}</span>
+                <span class="subtitle">{{vm.queryDate}}年数据</span>
+                <a href="#/listedcompanies-category/{{item.id}}/1" style="float: right;"><img src="../../images/universal_btn_icon_more.png"/></a></div>
+            <div class="item row">
+                <ng-echarts class="echarts col-60" ec-config="$parent.radarConfig[$index]" ec-option="$parent.radarOption[$index]"
+                            style="position:static;height:160px;"></ng-echarts>
+                <div class="col" style="line-height: 30px;font-size:14px;text-align: center">
+                    综合能力: {{item.data[0]}}<br/>
+                    成长能力: {{item.data[1]}}<br/>
+                    经营能力: {{item.data[2]}}<br/>
+                    收现能力: {{item.data[3]}}<br/>
+                    盈利能力: {{item.data[4]}}<br/>
+                </div>
+            </div>
+        </div>
+    </ion-list>
+</div>
+<style>
+    .company-index{
+        background-color: #F1F1F1
+    }
+    .company-index .item{
+        border-width: 0
+    }
+</style>
