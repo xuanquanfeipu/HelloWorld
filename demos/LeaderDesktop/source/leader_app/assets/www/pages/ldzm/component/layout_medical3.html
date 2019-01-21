@@ -1,0 +1,49 @@
+<style>
+    .layout-title{height:45px;padding:15px 10px 15px 0;}
+    .layout-title div{float:left}
+    .layout-title div:nth-child(1){height:20px;width:5px;margin-right:8px;}
+    .layout-title div:nth-child(2){color:#57555e;font-size:15px;}
+    .layout-title div:last-child{color:#999;font-size:11px;margin-left:8px;}
+    .layout-row{padding:10px 5px;}
+    .layout-row div{text-align: center}
+    .layout-row .layout-data{font-size:19px;color:#2863db;}
+    .layout-row .layout-subtitle{margin-top:11px;color:#57555e;}
+    .layout-row .layout-subtitle span:first-child{font-size:14px;}
+    .layout-row .layout-subtitle span:last-child{font-size:10px;}
+    .layout-row .col-60:nth-child(1),.col-40:nth-child(2){border-right: 0px solid #e5e5e5;}
+    .width50{width:50%}
+</style>
+<div style="height:120px;margin:5px 2.7777%;background-color:#fff;border-radius:8px;" ng-click="vm.toUrl()">
+    <div class="layout-title">
+        <div style="background-color:{{vm.color}}"></div>
+        <div style="color:#57555e;font-size:16px">{{vm.title}}</div>
+        <div style="margin-left:12px;color:#999;font-size:13px">{{vm.come}}</div>
+        <div style="float:right;margin-right:-4px">
+           <!-- <a ng-click="vm.toUrl({{vm.moreurl}})"><img width="14" height="14" src="../../images/universal_btn_icon_more.png" style="margin-top:3px"/></a>-->
+            <!--<a href="{{vm.moreurl}}">--><img width="14" height="14" src="../../images/universal_btn_icon_more.png" style="margin-top:3px"/><!--</a>-->
+        </div>
+
+    </div>
+
+    <div class="row layout-row">
+        <div class="col-50">
+                <div style="float:left;margin-top:0px;margin-left:8px"><!--<img width="43" height="43" src="{{vm.img1}}"/>-->
+                    <ng-echarts class="echarts col-90" ec-config="vm.pie1Config" ec-option="vm.pie1Option" style="position: relative;height:60px;width:50px"></ng-echarts>
+                </div>
+                <div  style="float:left;margin-top:-8px;margin-left:6px">
+                    <div style="font-size:20px;color:#333;text-align:left">{{vm.num1}}</div>
+                    <div style="margin-top:10px"><em style="font-size:16px;color:#666">{{vm.title1}}</em><em style="font-size:12px;color:#666">({{vm.unit1}})</em></div>
+                </div>
+        </div>
+        <div class="col-50">
+            <div style="float:left;margin-top:0px;margin-left:8px"><!--<img width="43" height="43" src="{{vm.img2}}"/>-->
+                <ng-echarts class="echarts col-90" ec-config="vm.pie2Config" ec-option="vm.pie2Option" style="position: relative;height:60px;width:50px"></ng-echarts>
+            </div>
+            <div  style="float:left;margin-top:-8px;margin-left:6px">
+                <div style="font-size:20px;color:#333;text-align:left">{{vm.num2}}</div>
+                <div style="margin-top:10px"><em style="font-size:16px;color:#666">{{vm.title2}}</em><em style="font-size:12px;color:#666">({{vm.unit2}})</em></div>
+            </div>
+        </div>
+
+    </div>
+</div>
