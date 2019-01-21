@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+    <link href="../../css/ionic/ionic.css" rel="stylesheet">
+    <link href="../../css/ionicons/ionicons.css" rel="stylesheet">
+    <link href="../../css/pages/ldzm/index.css" rel="stylesheet">
+    <link href="../../css/pages/ldzm/population.css" rel="stylesheet">
+    <link href="../../css/pages/ldzm/accountCenter.css" rel="stylesheet">
+    <link href="../../css/pages/ldzm/login/login.css" rel="stylesheet">
+
+    <script src="../../js/ionic/ionic.bundle.js"></script>
+    <script src="../../js/ionic/ionic-angular.js"></script>
+    <!--<script src="../../cordova.js"></script>-->
+    <script src="../../js/ngCordova/dist/ng-cordova.js"></script>
+    <script src="../../js/angular/angular-translate.js"></script>
+    <script src="../../js/angular/angular-translate-loader-static-files.js"></script>
+    <script src="../../js/angular-ui/angular-ui-router.js"></script>
+    <script src="../../js/pages/common/localstorage_param.js"></script>
+    <script src="../../js/pages/common/angular-md5.js"></script>
+    
+	<script src="../../js/echarts/echarts.min.js"></script>
+	<script src="../../js/echarts/ng-echarts.js"></script>
+	
+    <script src="../../js/echarts/bmap.js"></script>
+    <script src="../../js/echarts/Heatmap_min.js"></script>
+    <script src="../../js/echarts/map.js"></script>
+
+    <script src="../../js/pages/ldzm/app.js"></script>
+    <script src="../../js/pages/ldzm/index.controller.js"></script>
+    <script src="../../js/pages/ldzm/search/search.service.js"></script>
+    <script src="../../js/pages/ldzm/search/search.controller.js"></script>
+    <script src="../../js/pages/ldzm/search/searchDict.controller.js"></script>
+    <script src="../../js/pages/ldzm/search/searchResult.controller.js"></script>
+    <script src="../../js/pages/ldzm/search/searchResultChart.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification.controller.js"></script>
+    <script src="../../js/pages/ldzm/area.controller.js"></script>
+    <script src="../../js/pages/ldzm/comparison.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/classification.economy.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/economy/gdpTotal.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/economy/gdpEstate.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/economy/gdpEstateDisease.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/economy/gdpIndustry.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/economy/gdpIndustryDisease.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/economy/economicZone.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/classification.education.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/education/compulsory.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/education/funding.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/education/fundingDisease.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/education/enrolmentrate.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/education/teacherStudent.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/classification.employment.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/employment/basefx.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/employment/jobnumbsers.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/employment/industryjobs.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/employment/childjobs.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/employment/chanyejobs.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/employment/childchanyejobs.controller.js"></script>
+
+    <script src="../../js/pages/ldzm/classification/classification.financial.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/financial/financialPage7.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/financial/financialPage1.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/financial/financialCzsrPage.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/financial/financialCzzcPage.controller.js"></script>
+
+    <script src="../../js/pages/ldzm/classification/classification.fixedasset.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/listedcompanies/company.service.js"></script>
+    <script src="../../js/pages/ldzm/classification/listedcompanies/index.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/listedcompanies/overview.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/listedcompanies/category.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/listedcompanies/company.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/classification.medical.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/classification.population.controller.js"></script>
+
+    <script src="../../js/pages/ldzm/classification/classification.residentincome.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/residentioncome/residentincomeztfx.contrller.js"></script>
+    <script src="../../js/pages/ldzm/classification/residentioncome/residentincomeJmsrPage.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/residentioncome/residentincomeJmzcPage.controller.js"></script>
+
+    <script src="../../js/pages/ldzm/classification/classification.socialsecurity.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/socialsecurity/threebarchart.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/socialsecurity/twobarchart.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/socialsecurity/onetabpiechart.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/socialsecurity/twotabpiechart.controller.js"></script>
+
+    <script src="../../js/pages/ldzm/classification/population/populationZtfx.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/population/populationDevelop.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/population/populationDistribute.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/population/populationBirth.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/population/populationCulture.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/population/populationCultureDetails.controller.js"></script>
+
+    <script src="../../js/pages/ldzm/classification/education/higherEdu.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/education/higherEdu-details.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/residentioncome/residentPage5-6.controller.js"></script>
+
+    <script src="../../js/pages/ldzm/dropdown.directive.js"></script>
+    <script src="../../js/pages/ldzm/select.directive.js"></script>
+    <script src="../../js/pages/ldzm/common.service.js"></script>
+    <script src="../../js/pages/ldzm/component/layout.directive.js"></script>
+    <script src="../../js/pages/ldzm/component/layout_medical1.directive.js"></script>
+    <script src="../../js/pages/ldzm/component/layout_medical2.directive.js"></script>
+    <script src="../../js/pages/ldzm/component/layout_medical3.directive.js"></script>
+    <script src="../../js/pages/ldzm/component/rotate_pie.directive.js"></script>
+    <script src="../../js/pages/ldzm/component/monthpicker.directive.js"></script>
+    <script src="../../js/jquery/jquery-1.9.1.js"></script>
+
+    <script src="../../js/gestureLock/gestureLock.js"></script>
+
+    <script src="../../js/pages/ldzm/classification/medical/classification.medical.medical1.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/medical/classification.medical.medical2.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/medical/classification.medical.medical3.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/medical/classification.medical.medical4.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/medical/classification.medical.medical5.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/medical/classification.medical.medical5disease.controller.js"></script>
+
+    <script src="../../js/pages/ldzm/classification/fixedasset/tzze.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/fixedasset/fdchyfz.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/fixedasset/tzhyph.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/fixedasset/tzjjq.controller.js"></script>
+    <script src="../../js/pages/ldzm/classification/fixedasset/tzhyph2.controller.js"></script>
+
+    <script src="../../js/pages/ldzm/classification/area/classification.area.detail.controller.js"></script>
+    <script src="../../js/pages/ldzm/login/loginDispatch.controller.js"></script>
+    <script src="../../js/pages/ldzm/login/login.controller.js"></script>
+    <script src="../../js/pages/ldzm/login/convenientLogin.controller.js"></script>
+    <script src="../../js/pages/ldzm/login/setGesture.controller.js"></script>
+    <script src="../../js/pages/ldzm/login/authGesture.controller.js"></script>
+
+    <script src="../../js/pages/enter.controller.js"></script>
+    <script src="../../js/pages/nopower.controller.js"></script>
+    <script src="../../js/pages/third.controller.js"></script>
+    <script src="../../js/pages/accountCenter.controller.js"></script>
+
+</head>
+
+<body ng-app="starter">
+<!--
+  The nav bar that will be updated as we navigate between views.
+-->
+<!--<ion-nav-bar class="bar-positive nav-class">-->
+    <!--<ion-nav-back-button>-->
+    <!--</ion-nav-back-button>-->
+<!--</ion-nav-bar>-->
+<!--
+  The views will be rendered in the <ion-nav-view> directive below
+  Templates are in the /templates folder (but you could also
+  have templates inline in this html file if you'd like).
+-->
+<ion-nav-view animation="slide-left-right-ios7"></ion-nav-view>
+</body>
+</html>
