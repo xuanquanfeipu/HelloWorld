@@ -1,0 +1,64 @@
+<div class="login-bg">
+    <div title="登录页面" >
+        <div class="main-content">
+            <div class="">
+            </div>
+            <div class="" >
+                <center>
+                    <img src="../../images/start_logo.png" class="img_logo">
+                    <br>
+                    <span class="logo_title">
+                  湖南省政务大数据平台
+             </span>
+                </center>
+                <div class="" style="margin-top:50px;height:20px;line-height:20px">
+                    <ul class="error_message">
+                        <li>
+                            <span>{{msgContent}}</span>
+                        </li>
+                    </ul>
+                    <div class="login-item item-input">
+                        <img ng-src="{{userImg}}" class="icon_img userImg">
+                        <input class="login-input" type="text"  placeholder="请输入用户名" ng-model="number"
+                               ng-focus="numberFocuse()"
+                               ng-blur="numberBlur()"
+                               ng-change="numberChange()">
+                        <img src="../../images/user_delete.png"  class="{{deleteImgClass}}"
+                             ng-click="deleteNumberClick()" ng-show="deleteIconIsShow">
+                        <a class="drop_down_img" >
+                            <img ng-src="{{dropDownImg}}" class="drop_down_img"
+                                 ng-show="dropDownIconIsShow()"
+                                 ng-click="dropDownImgClick()">
+                        </a>
+                    </div>
+                    <div class="{{ifHistoryDisplay}} {{hisDivHeight}}">
+                    <div style="height:138px;width: 100.3%;">
+                        <div class="history_li" ng-repeat="user in hList">
+                            <div class="history_username" ng-click="clickHisItem(user)">{{user.name}}</div>
+                            <img src="../../images/input_del2.png" class="history_delete_img"
+                                 ng-click="deleteHisClick($index,user)">
+                        </div>
+                    </div>
+                    </div>
+                    <div class="login-item item-input">
+                        <img ng-src="{{passImg}}" class="icon_img passImg">
+                        <input class="login-input" ng-focus="passFocuse()" type="password" placeholder="请输入密码" ng-model="password">
+                    </div>
+                    <!--<div class="login-item item-input">
+                        <img src="../../img/app/icon_ip.png" class="icon_img">
+                        <input class="login-input" type="text" placeholder="请输入IP地址" ng-model="ip">
+                    </div>-->
+                    <div class="login_button_div">
+                        <button class="login-submit"  ng-click="loginClick()">登录</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!--<div style="position:fixed;bottom:0;">
+            <img src="../../images/login_bg_bottom.png" ng-style="{ 'width' : bw}">
+        </div>-->
+    </div>
+
+</div>
