@@ -1,0 +1,172 @@
+<div class="economyPage">
+    <div class="topBar">
+        <a href="#/economy-gdpTotal/1" class="row">
+            <ng-echarts class="echarts col" ec-config="vm.barConfig" ec-option="vm.barOption" style="position:static;height:234px;width:100%;"></ng-echarts>
+        </a>
+    </div>
+    <div class="economyOne economyBox">
+       <a href="#/economy-gdpTotal/1" class="blockA">
+           <div class="imgL"></div>
+           <div class="txtC">全省GDP<span>(亿元)</span></div>
+           <div class="txtR">
+               <div class="txtR_top">{{vm.areaDataList[0].GDP | currency:' ':2 }}</div>
+               <div class="txtR_btm">环比 <span class='txtRed'>↑{{vm.areaDataList[0].ZZL}}%</span></div>
+           </div>      
+           <div class="btnArrows"></div>
+       </a>
+    </div>
+    <div class="economyTwo economyBox">
+        <a href="#/economy-gdpEstate">
+          <div class="txtTitle">地区生产总值产业分布</div>
+          <div class="btnArrows"></div>            
+          <div class="row">
+                <div class="col-33 estate estateOne">
+                    <div class="echartsBox">
+                       <ng-echarts class="echarts col" ec-config="vm.pieConfig1" ec-option="vm.pieOption1" style="position:static;height:120px;width:100%;"></ng-echarts>
+                    </div>
+                    <p>第一产业</p>
+                </div>
+                <div class="col-33 estate estateTwo">
+                    <div class="echartsBox">
+                    <ng-echarts class="echarts col" ec-config="vm.pieConfig2" ec-option="vm.pieOption2" style="position:static;height:120px;width:100%;"></ng-echarts>
+                    </div>
+                    <p>第二产业</p>
+                </div>
+                <div class="col-33 estate estateThree">
+                    <div class="echartsBox">
+                        <ng-echarts class="echarts col" ec-config="vm.pieConfig3" ec-option="vm.pieOption3" style="position:static;height:120px;width:100%;"></ng-echarts>
+                    </div>
+                    <p>第三产业</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="economyThree economyBox">
+        <div class="txtTitle">地区生产总值行业排行<span>单位:亿元</span></div>
+        <ul class="rankGDP">
+            <li>
+                <div class="rankTxt">{{vm.barDataName[0]}}</div>
+                <div class="rankHui">
+                    <div class="rankColor" style="width:{{vm.barDataColor[0]}}%"></div>
+                </div>
+                <div class="rankTxtR">{{vm.barData[0] | currency:' ':2 }}</div>
+            </li>
+            <li>
+                <div class="rankTxt">{{vm.barDataName[1]}}</div>
+                <div class="rankHui">
+                    <div class="rankColor" style="width:{{vm.barDataColor[1]}}%"></div>
+                </div>
+                <div class="rankTxtR">{{vm.barData[1] | currency:' ':2 }}</div>
+            </li>
+            <li>
+                <div class="rankTxt">{{vm.barDataName[2]}}</div>
+                <div class="rankHui">
+                    <div class="rankColor" style="width:{{vm.barDataColor[2]}}%"></div>
+                </div>
+                <div class="rankTxtR">{{vm.barData[2] | currency:' ':2 }}</div>
+            </li>
+        </ul>
+        <a href="#/economy-gdpIndustry">
+           <div class="lookMore">查看更多<div class="btnArrows"></div></div>
+        </a>
+    </div>
+    <div class="economyFour economyBox">
+        <div class="txtTitle">地区生产总值经济区分布</div>
+        <div class="boxFour">
+            <div class="row fourRow">
+                <div class="col-50 fourBox">
+                    <a href="#/economy-economicZone/2">
+                        <p class="txtBlue">{{vm.areaDataList[1].GDP | currency:' ':2 }} <span>亿元</span></p>
+                        <p class="txtHui">长株潭经济区</p>
+                        <div class="btnArrows"></div>
+                    </a>    
+                </div>
+                <div class="col-50 fourBox">
+                    <a href="#/economy-economicZone/3">
+                        <p class="txtBlue">{{vm.areaDataList[2].GDP | currency:' ':2 }} <span>亿元</span></p>
+                        <p class="txtHui">湘南经济区</p>
+                        <div class="btnArrows"></div>
+                    </a>    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50 fourBox">
+                    <a href="#/economy-economicZone/5">
+                        <p class="txtBlue">{{vm.areaDataList[4].GDP | currency:' ':2 }} <span>亿元</span></p>
+                        <p class="txtHui">环洞庭湖经济区</p>
+                        <div class="btnArrows"></div>
+                    </a>    
+                </div>
+                <div class="col-50 fourBox">
+                    <a href="#/economy-economicZone/4">
+                        <p class="txtBlue">{{vm.areaDataList[3].GDP | currency:' ':2 }} <span>亿元</span></p>
+                        <p class="txtHui">大湘西经济区</p>
+                        <div class="btnArrows"></div>
+                    </a>    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+a{text-decoration:none;}
+.economyPage{background-color:#f1f1f1;padding-bottom:1px;}
+.economyPage .blockA{display:inline-block;width:100%;height:100%;}
+.economyPage .txtRed{color:#ff0000;}
+.economyPage .txtTitle{position:relative;color:#57555e;font-size:16px;padding-left:15px;line-height:14px;}
+.economyPage .txtTitle:before{content:'';width:5px;height:14px;position:absolute;left:0;top:0;}
+.economyPage .btnArrows{
+    position:absolute;right:12px;width:14px;height:14px;background:url("../../images/universal_btn_icon_more.png") no-repeat center;}
+.economyPage .topBar{width:100%;height:234px;position:relative;
+    background-image:-webkit-linear-gradient(-60deg, #37127c, #21286a);
+    background-image:linear-gradient(-60deg, #37127c, #21286a);
+}
+.economyPage .topBar:after{content:'';display:block;width:100%;height:24px;background-color:rgba(0,0,0,.3);position:absolute;bottom:0;
+    left:0;}
+.economyPage .economyBox{padding:10px 0;background-color:#fff;box-shadow:5px 5px 5px #e4e4e7;margin:12px 10px;border-radius:5px;}
+.economyPage .economyOne{position:relative;height:120px;}
+.economyPage .economyOne .imgL{position:absolute;left:8px;top:30px;height:60px;width:60px;
+    background:url("../../images/subject_icon_GDP.png") no-repeat center;background-size:100%;}
+.economyPage .economyOne .txtC{font-size:18px;color:#57555e;position:absolute;left:80px;top:49px;}
+.economyPage .economyOne .txtC span{font-size:12px;}
+.economyPage .economyOne .txtR{color:#333;position:absolute;right:40px;top:40px;font-size:20px;text-align:right;}
+.economyPage .economyOne .txtR_btm{color:#999;font-size:12px;}
+.economyPage .economyOne .btnArrows{top:49px;}
+
+.economyPage .economyTwo{position:relative;height:176px;}
+.economyPage .economyTwo .txtTitle:before{background-color:#49caad;}
+.economyPage .economyTwo .btnArrows{top:10px;}
+.economyPage .economyTwo .estate{height:120px;}
+.economyPage .economyTwo .echartsBox{height:114px;}
+.economyPage .economyTwo p{text-align:center;font-size:14px;color:#666;}
+
+.economyPage .economyThree{position:relative;height:256px;}
+.economyPage .economyThree .txtTitle:before{background-color:#bb65c8;}
+.economyPage .economyThree .txtTitle span{position:absolute;right:15px;top:0;color:#999;font-size:12px;}
+.economyPage .economyThree li{position:relative;margin:30px 0;height:27px;padding-left:40px;}
+.economyPage .economyThree li .rankTxt{color:#999;font-size:14px;}
+.economyPage .economyThree li .rankHui{position:relative;width:53%;height:3px;background-color:#eee;margin-top:6px;border-radius:3px;}
+.economyPage .economyThree li .rankColor{height:5px;border-radius:5px;position:absolute;top:-1px;left:0;}
+.economyPage .economyThree li .rankTxtR{position:absolute;right:15px;bottom:0;color:#333;text-align:right;width:150px;}
+.economyPage .economyThree li:nth-of-type(1){background:url("../../images/subject_icon_1.png") no-repeat 7px;background-size:auto 100%;}
+.economyPage .economyThree li:nth-of-type(2){background:url("../../images/subject_icon_2.png") no-repeat 7px;background-size:auto 100%;}
+.economyPage .economyThree li:nth-of-type(3){background:url("../../images/subject_icon_3.png") no-repeat 7px;background-size:auto 100%;}
+.economyPage .economyThree li:nth-of-type(1) .rankColor{background-color:#438ff5;}
+.economyPage .economyThree li:nth-of-type(2) .rankColor{background-color:#bb65c8;}
+.economyPage .economyThree li:nth-of-type(3) .rankColor{background-color:#64ad4b;}
+.economyPage .economyThree .lookMore{line-height:37px;border-top:1px solid #dcdcdc;position:absolute;bottom:0;
+    left:0;width:100%;text-align:center;font-size:14px;color:#666;}
+.economyPage .economyThree .btnArrows{top:12px;right:37%;}
+
+.economyPage .economyFour{height:193px;}
+.economyPage .economyFour .txtTitle:before{background-color:#2863db;}
+.economyPage .economyFour .boxFour{margin-top:17px;}
+.economyPage .economyFour .fourRow{border-bottom:1px solid #dcdcdc;}
+.economyPage .economyFour .fourBox{height:60px;position:relative;line-height:1;}
+.economyPage .economyFour p{margin-bottom:8px;padding-left:5px;}
+.economyPage .economyFour .txtBlue{font-size:20px;color:#2863db;padding-top:8px;}
+.economyPage .economyFour .txtBlue span{font-size:14px;}
+.economyPage .economyFour .txtHui{font-size:14px;color:#666;}
+.economyPage .economyFour .btnArrows{top:23px;right:10px;}
+.economyPage .economyFour .fourBox:nth-of-type(odd){border-right:1px solid #dcdcdc;}
+</style>
