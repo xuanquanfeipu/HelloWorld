@@ -1,0 +1,26 @@
+<style>
+    .round{width:7px;height:7px;display: inline-block;font-size:20px;line-heigth:16px;text-align:center;color:#447df3;text-decoration:none}
+</style>
+<ion-header-bar align-title="center">
+    <h1 class="title" style="font-size:20px;height:48px;text-align:center;color:#fff;vertical-align:middle;background:#37127c;margin:0">
+        <a ng-click="goback()" class="back-style"><img width="24" height="24" src="../../images/universal_btn_icon_back.png"/></a>
+        就业情况行业分析
+    </h1>
+</ion-header-bar>
+
+<ion-content class="" >
+    <div class="row">
+        <div id="showLabel1" class="col" style="text-align:center;margin-top:49px;font-size:26px;color:#333">{{vm.showLabel1}}</div>
+    </div>
+    <div class="row" style="margin-top:-5px">
+        <div class="col" style="text-align:center;font-size:15px;color:#666">
+            <span class="round">●</span><span style="margin-left:12px"><span id="showLabel2">{{vm.showLabel2}}</span>年{{vm.diseaseName}}就业数({{vm.unit}})</span>
+        </div>
+    </div>
+
+    <div>
+        <ng-echarts class="echarts col" ng-style="{ 'width' : linewidth, 'height' : lineheight }" ec-config="lineConfig" ec-option="lineOption"></ng-echarts>
+    </div>
+</ion-content>
+
+
