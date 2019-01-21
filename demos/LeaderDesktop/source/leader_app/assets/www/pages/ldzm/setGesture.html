@@ -1,0 +1,36 @@
+<div class="bar bar-header bar-positive detail-header" >
+    <a class="button button-clear" ng-click="goAccountCenter()"><img src="../../images/universal_btn_icon_back.png"/></a>
+    <h1 class="title" style="font-size:20px;height:48px;text-align:center;color:#fff;background:#37127c;vertical-align:middle;margin:0" ng-bind="pageTitle"></h1>
+</div>
+
+<ion-content class="has-header" style="background-color:#fff" scroll="false">
+
+    <div class="main-content">
+        <div style="height:100%;display:flex;flex-direction:column;justify-content:center">
+            <div class="" style="padding-top:20px;height:20px;ling-height:20px">
+                <ul class="config_message">
+                    <li>
+                        <span>{{msgContent}}</span>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div style="padding-top:20px">
+                <canvas id="canvasSet"></canvas>
+            </div>
+
+        </div>
+    </div>
+
+    <div style="position:fixed;bottom:0;margin-bottom:30px;width:100%">
+        <center>
+            <!--<span class="logo_title" ng-click="switchAccount()">-->
+                <!--切换账号-->
+            <!--</span>-->
+        </center>
+    </div>
+
+</ion-content>
+
+
