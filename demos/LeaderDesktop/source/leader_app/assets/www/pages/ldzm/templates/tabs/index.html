@@ -1,0 +1,471 @@
+<ion-view view-title="首页"  hide-nav-bar="true">
+	<ion-content  style="background: #f1f1f1;">
+		<div >
+
+			<div class="topbar">
+				<div >
+					<!--<a ng-click="vm.goEnter()" class="back-style" style="margin-top:10px;margin-left:5px;z-index:9999;width:80px">
+						<img width="24" height="24" src="../../images/universal_btn_icon_back.png"/>
+					</a>-->
+				</div>
+				<div style="width:100%;height:200px;background:url(../../images/home_bg.png);opacity:0.7;filter:alpha(opacity=70);">
+					<!--<a>
+						<div ng-click="vm.exit()" class="btnArrows"></div>
+					</a>-->
+				    <div style="padding-top:88px;font-size: 24px;color: #ffffff;text-align: center">
+						领导桌面
+					</div>
+					<div style="padding-top:14px;font-size: 17px;color: #9999cc;text-align: center">
+						湖南省政务大数据监测管理平台
+					</div>
+				</div>
+				<!--<div class="comm" style="width:96%;height:55px;margin-top:-20px;border-radius: 10px 10px 10px 10px;    border: 1px solid #d2d6de;display: table;border-collapse: separate;">
+                    <img src="../../images/home_icon_search.png" style="margin-left: 8px;float: left;margin-top:4px;">
+                    <input type="text" style="  margin-left: 8px;border-bottom: 1px solid #dcdcdc;margin-top:10px;float: left; text-align:center;width:50%; height:35px;border-bottom-right-radius: 10px;border-top-right-radius: 10px;" placeholder="关键词" id="searchInput" ng-click="vm.gotoSearch()">
+                    <button class="button" style="margin-left: 8px;color:#ffffff;background-image:-webkit-linear-gradient(-60deg, #2c1e73, #37127c);background-image:linear-gradient(-60deg, #37127c, #2c1e73);width:75px;height:15px;border-bottom-right-radius: 4px;float: left;margin-top: 4px;"  ng-click="vm.gotoSearch()">搜索</button>
+                </div>-->
+			</div>
+			<div style="margin-top:15px;">
+				<div  ng-if="vm.flagList[1] && vm.unclockflagList[1]"  class="po_development comm" style="height:140px;">
+					<div class="po_title title1" style="height:40px;border-bottom: 1px solid #dcdcdc;">
+						<p style="  width:80%;  border-left: 5px solid #6153c6;">总体经济分析<span class="color9" style="margin-left: 10px;">{{vm.latestyear}}年数据</span>
+						</p>
+
+						<div class="po_btnArrows" ng-click="vm.goto(1)"></div>
+					</div>
+					<div class="row" style="padding: 0;">
+						<div class="devel_l col-60 row" style="padding: 0;">
+							<div class="icon11" ><i ></i></div>
+							<div class="col-60 po_cz_text po_text">
+								<p style="font-size:17px;color:#57555e;text-align: left;margin-top:30px;">全省GDP<span  style="font-size:12px;color:#57555e;text-align: center;margin-top:0px;"class="color9">(亿元)</span></p>
+							</div>
+						</div>
+						<div class="devel_r col-40 row" style="padding: 0;border-left: 0px solid #e5e5e5;">
+							<div class="col-70 po_nc_text po_text" >
+								<h3 style="margin-left:10px;text-align:right;margin-top:30px;font-size: 21px;color:#57555e">{{vm.GDP2015}}</h3>
+							</div>
+							<a href="#/economy-gdpTotal/0">
+								<img style="position:absolute;width:25px;height:25px;right:10px;float:right;margin-top:60px;"src="../../images/home_btn_icon_more.png">
+							</a>
+						</div>
+
+					</div>
+				</div>
+
+				<div ng-if="vm.flagList[3] && vm.unclockflagList[3]" class="po_development comm" style="height:140px;">
+					<div class="po_title title1" style="border-bottom: 1px solid #dcdcdc;">
+						<p style="    border-left: 5px solid #0090d3;">固定投资分析<span class="color9" style="margin-left: 10px;">{{vm.latestyear}}年数据</span></p>
+						<div class="po_btnArrows" ng-click="vm.goto(2)"></div>
+					</div>
+					<div class="row" style="padding: 0;margin-top:15px;">
+						<div class="col-50 colBox">
+							<ng-echarts id="mychart1" class="echarts col" ng-style="{ 'width' : '97%','height':'70px',}" ec-config="vm.mychart1Config" ec-option="vm.mychart1Option" ></ng-echarts>
+						</div>
+						<div class="col-50 colBox">
+							<div class="col-70 po_nc_text po_text" style="margin-right:0px;">
+								<div style="font-size:21px;color:#333333;text-align: center;margin-top:0px;">
+									{{vm.gdzcze15}}
+								</div>
+								<div style="font-size:17px;color:#57555e;text-align: center;margin-top:10px;">
+									固定投资总额<span  style="font-size:10px;color:#57555e;text-align: center;margin-top:0px;"class="color9">(亿元)</span>
+								</div>
+							</div>
+
+							<a href="#/fixedasset-tzze/0">
+								<img style="width:25px;height:25px;float:right;margin-top:5px;margin-top:-0px;"src="../../images/home_btn_icon_more.png">
+							</a>
+						</div>
+
+					</div>
+				</div>
+
+				<div ng-if="vm.flagList[4] && vm.unclockflagList[4]" class="po_development comm" style="height:140px;">
+					<div class="po_title title1" style="border-bottom: 1px solid #dcdcdc;">
+						<p>人口综合分析<span class="color9" style="margin-left: 10px;">{{vm.latestyear}}年数据</span></p>
+						<div class="po_btnArrows" ng-click="vm.goto(3)"></div>
+					</div>
+					<div class="row" style="padding: 0;">
+						<div class="devel_l col-50 row" style="padding: 0;">
+							<div class="rkicon1" ><i style="background: url(../../images/subject_icon_pay.png) no-repeat;"></i></div>
+							<div class="col-55 po_cz_text po_text">
+								<h3 style="font-size:21px;color:#333333;text-align: left;margin-top:0px;">{{vm.cityPopulation}}</h3>
+								<p style="font-size:17px;color:#57555e;text-align: left;margin-top:0px;">城镇人口</p>
+								<p style="float:left;"><span style="float:left;" class="color9">(万人)</span>
+
+								</p>
+
+
+							</div>
+							<a href="#/population-populationDevelop/0" style="position:absolute;width:25px;margin-top:45px;right:50%;">
+								<img style="width:25px;height:25px;float:left;margin-top:15px;"src="../../images/home_btn_icon_more.png">
+							</a>
+						</div>
+						<div class="devel_r col-50 row" style="margin-top:0px;height:100px;padding: 0;margin-top: 0px!important;">
+							<div class="rkicon2" style="margin-top:10px;"><i style="background: url(../../images/subject_icon_go.png) no-repeat;"></i></div>
+							<div class="col-55 po_nc_text po_text" style="margin-top:10px;">
+								<h3 style="font-size:21px;color:#333333;text-align: left;margin-top:0px;">{{vm.villagePopulation}}</h3>
+								<p style="font-size:17px;color:#57555e;text-align: left;margin-top:0px;">农村人口</p>
+								<p style="float:left;"><span style="float:left;" class="color9">(万人)</span>
+
+								</p>
+							</div>
+							<a href="#/population-populationDevelop/0" style="position:absolute;width:25px;margin-top:45px;right:25px;">
+								<img style="width:25px;height:25px;float:left;margin-left:15px;margin-top:25px;"src="../../images/home_btn_icon_more.png">
+							</a>
+						</div>
+					</div>
+					<!--
+                        <div class="row" style="padding: 0;height:96px;">
+                            <div class=" col-50 row" style="padding: 0;border-right: 1px solid #dcdcdc;">
+                                    <div class=" col-50 rkicon1" ><i></i></div>
+                                    <div class="col-50 po_cz_text po_text">
+                                        <h3>{{vm.cityPopulation}}</h3>
+                                        <p>城镇人口</p>
+                                        <p style="float:left;"><span style="float:left;" class="color9">(万人)</span>
+                                            <a href="#/population-populationDevelop">
+                                                <img style="width:25px;height:25px;float:left;margin-left:35px;"src="../../images/home_btn_icon_more.png">
+                                            </a>
+                                        </p>
+
+                                    </div>
+                            </div>
+                            <div class=" col-50 row" style="padding: 0;">
+                                <div class="rkicon2" ><i></i></div>
+                                <div class="col-50 po_nc_text po_text">
+                                    <h3>{{vm.villagePopulation}}</h3>
+                                    <p>农村人口</p>
+                                    <p style="float:left;"><span style="float:left;" class="color9">(万人)</span>
+                                        <a href="#/population-populationDevelop">
+                                            <img style="width:25px;height:25px;float:left;margin-left:35px;"src="../../images/home_btn_icon_more.png">
+                                        </a>
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        -->
+				</div>
+
+				<div ng-if="vm.flagList[5] && vm.unclockflagList[5]" class="po_development comm" style="height:140px;">
+					<div class="po_title title3" style="border-bottom: 1px solid #dcdcdc;">
+						<p style="    border-left: 5px solid #39ac1e;">居民收支分析<span class="color9" style="margin-left: 10px;">{{vm.latestyear}}年数据</span></p>
+						<div class="po_btnArrows" ng-click="vm.goto(4)"></div>
+					</div>
+					<div class="tzzeph-div">
+						<div class="tzzeph-div2">
+							人均可支配收入<span  style="font-size:10px;color:#57555e;text-align: center;margin-top:0px;"class="color9">(万元)</span>
+							<div class="tzzeph-div3" style=" background-color: #eee;">
+								<div class="tzzeph-div4" style="width: {{vm.top1}}%; background-color: #39ac1e;"></div>
+							</div>
+
+						</div>
+					</div>
+					<div  class="tzzeph-div5" style="color:#39ac1e">
+						{{vm.maxrjsr}}
+						<a href="#/residentincomePage56-category/1/0">
+							<img style="width:25px;height:25px;float:right;margin-top:0px;"src="../../images/home_btn_icon_more.png">
+						</a>
+					</div>
+					<div class="tzzeph-div">
+						<div class="tzzeph-div2">
+							人均可支配支出<span  style="font-size:10px;color:#57555e;text-align: center;margin-top:0px;"class="color9">(万元)</span>
+							<div class="tzzeph-div3" style=" background-color: #eee;">
+								<div class="tzzeph-div4" style="width: {{vm.top2}}%; background-color: #ffae00;"></div>
+							</div>
+
+						</div>
+					</div>
+					<div class="tzzeph-div5" style="color:#ffae00">
+						{{vm.maxrjxf}}
+						<a href="#/residentincomePage56-category/2/0">
+							<img style="width:25px;height:25px;float:right;margin-top:0px;"src="../../images/home_btn_icon_more.png">
+						</a>
+					</div>
+
+				</div>
+
+				<div ng-if="vm.flagList[6]  && vm.unclockflagList[6]" class="po_development comm" style="height:140px;">
+					<div class="po_title title1" style="border-bottom: 1px solid #dcdcdc;">
+						<p style="    border-left: 5px solid #0090d3;">教育情况分析<span class="color9" style="margin-left: 10px;">{{vm.latestyear}}年数据</span></p>
+						<div class="po_btnArrows" ng-click="vm.goto(5)"></div>
+					</div>
+					<div class="row" style="padding: 0;margin-top:10px;">
+						<div class="col-50 colBox">
+							<ng-echarts id="mychart2" class="echarts col" ng-style="{ 'width' : '87%','height':'70px',}" ec-config="vm.mychart2Config" ec-option="vm.mychart2Option" ></ng-echarts>
+						</div>
+						<div class="col-50 colBox">
+							<div style="font-size:21px;color:#333333;text-align: right;margin-top:20px;margin-right:25px;">
+								{{ vm.educationFund2015}}
+							</div>
+							<div style="font-size:17px;color:#57555e;text-align: right;margin-top:10px;margin-right:25px;">
+								教育经费<span  style="font-size:10px;color:#57555e;text-align: center;margin-top:0px;"class="color9">(万元)</span>
+							</div>
+							<a href="#/education-funding/0">
+								<img style="width:25px;height:25px;float:right;margin-top:5px;margin-top:-10px;"src="../../images/home_btn_icon_more.png">
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div ng-if="vm.flagList[7]  && vm.unclockflagList[7]" class="po_development comm" style="height:140px;">
+					<div class="po_title title1" style="border-bottom: 1px solid #dcdcdc;">
+						<p style="    border-left: 5px solid #ef7f11;">医疗卫生分析<span class="color9" style="margin-left: 10px;">{{vm.latestyear}}年数据</span></p>
+						<div class="po_btnArrows" ng-click="vm.goto(6)"></div>
+					</div>
+					<div class="row" style="padding: 0;">
+						<div class="col-60 colBox">
+							<ng-echarts class="echarts col" ng-style="{ 'width' : '80%', 'height' : '90px' }" ec-config="lineConfig" ec-option="lineOption"></ng-echarts>
+
+						</div>
+						<div class="col-40 colBox">
+							<div style="font-size:21px;color:#333333;text-align: right;margin-top:20px;margin-right:25px;">
+								{{vm.yljgs}}
+							</div>
+							<div style="font-size:17px;color:#57555e;text-align: right;margin-top:10px;margin-right:15px;">
+								医疗机构数<span  style="font-size:10px;color:#57555e;text-align: center;margin-top:0px;"class="color9">(家)</span>
+							</div>
+							<a href="#/medical1/0">
+								<img style="width:25px;height:25px;float:right;margin-top:5px;margin-top:0px;"src="../../images/home_btn_icon_more.png">
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div ng-if="vm.flagList[8]  && vm.unclockflagList[8]" class="po_development comm"  style="height:140px;">
+					<div class="po_title title1" style="border-bottom: 1px solid #dcdcdc;">
+						<p style="border-left: 5px solid #39ac1e;">财政收支分析<span class="color9" style="margin-left: 10px;">{{vm.latestyear}}年数据</span></p>
+						<div class="po_btnArrows" ng-click="vm.goto(7)"></div>
+					</div>
+					<div class="row" style="padding: 0;">
+						<div class="devel_l col-50 row" style="padding: 0;">
+							<div class="czicon1" ><i style="background: url(../../images/subject_icon_pay.png) no-repeat;"></i></div>
+							<div class="col-55 po_cz_text po_text">
+								<h3 style="font-size:21px;color:#333333;text-align: left;margin-top:0px;">{{vm.czmaxrjsr}}</h3>
+								<p style="font-size:17px;color:#57555e;text-align: left;margin-top:0px;">财政收入</p>
+								<p style="float:left;"><span style="float:left;" class="color9">(亿元)</span>
+								</p>
+							</div>
+							<a href="#/financial-category/1/0" style="position:absolute;width:25px;margin-top:45px;right:50%;">
+								<img style="width:25px;height:25px;float:left;margin-top:15px;"src="../../images/home_btn_icon_more.png">
+							</a>
+						</div>
+						<div class="devel_r col-50 row" style="margin-top:0px;height:100px;padding: 0;margin-top: 0px!important;">
+							<div class="czicon2" style="margin-top:10px;"><i style="background: url(../../images/subject_icon_go.png) no-repeat;"></i></div>
+							<div class="col-55 po_nc_text po_text" style="margin-top:10px;">
+								<h3 style="font-size:21px;color:#333333;text-align: left;margin-top:0px;">{{vm.czmaxrjzc}}</h3>
+								<p style="font-size:17px;color:#57555e;text-align: left;margin-top:0px;">财政支出</p>
+								<p style="float:left;"><span style="float:left;" class="color9">(亿元)</span>
+								</p>
+							</div>
+							<a href="#/financial-category/2/0" style="position:absolute;width:25px;margin-top:45px;right:10px;">
+								<img style="width:25px;height:25px;float:left;margin-top:25px;"src="../../images/home_btn_icon_more.png">
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div ng-if="vm.flagList[9]  && vm.unclockflagList[9]" class=" economyFour economyBox comm po_development" style="height:168px;">
+					<div class="po_title title1" style="border-bottom: 1px solid #dcdcdc;">
+						<p style="border-left: 5px solid #5b4ce8;">社会保障分析<span class="color9" style="margin-left: 10px;">2016年数据</span></p>
+						<div class="po_btnArrows" ng-click="vm.goto(8)"></div>
+					</div>
+					<div class="boxFour">
+						<div class="row fourRow">
+							<div class="col-50 fourBox" style="float:left;">
+								<p class="txtBlue">{{ vm.data21}} <span class="color9">万人</span></p>
+								<p class="txtHui"><span style="float:left;font-size: 16px;">医疗保险参保数</span>
+									<a ng-click="vm.toUrl(vm.url21,21)">
+										<img style="width:25px;height:25px;float:left;"src="../../images/home_btn_icon_more.png">
+									</a>
+								</p>
+
+							</div>
+							<div class="col-50 fourBox">
+								<p class="txtBlue">{{vm.data31}} <span class="color9">万人</span></p>
+								<p class="txtHui"><span style="float:left;font-size: 16px;">工伤保险参保数</span>
+									<a ng-click="vm.toUrl(vm.url31,31)">
+										<img style="width:25px;height:25px;float:left;"src="../../images/home_btn_icon_more.png">
+									</a>
+								</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-50 fourBox">
+								<p class="txtBlue">{{vm.data41}} <span class="color9">万人</span></p>
+								<p class="txtHui"><span style="float:left;font-size: 16px;">生育保险参保数</span>
+									<a ng-click="vm.toUrl(vm.url41,41)">
+										<img style="width:25px;height:25px;float:left;"src="../../images/home_btn_icon_more.png">
+									</a>
+								</p>
+							</div>
+							<div class="col-50 fourBox">
+								<p class="txtBlue">{{vm.data51}} <span class="color9">万人</span></p>
+								<p class="txtHui"><span style="float:left;font-size: 16px;">失业保险参保数</span>
+									<a ng-click="vm.toUrl(vm.url51,51)">
+										<img style="width:25px;height:25px;float:left;"src="../../images/home_btn_icon_more.png">
+									</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<!--<div ng-if="vm.flagList[2]  && vm.unclockflagList[2]" class="po_development comm" style="height:140px;" >
+					<div class="po_title title1" style="border-bottom: 1px solid #dcdcdc;">
+						<p style="    border-left: 5px solid #5ac1f2;">上市企业分析<span class="color9" style="margin-left: 10px;">2016年数据</span></p>
+						<div class="po_btnArrows" ng-click="vm.goto(9)"></div>
+					</div>
+					<div class="row" style="padding: 0;">
+						<div class="devel_l col-50 row" style="margin-top:17px;padding: 0px;width:50%;">
+							<div class="ssicon1" ><i style="background: url(../../images/icon_unit.png) no-repeat;"></i></div>
+							<div class="col-60 po_cz_text po_text">
+								<h3 style="width:110%;margin-top:20px;font-size:17px;color:#57555e;">上市企业(家)</h3>
+							</div>
+						</div>
+						<div class="devel_r col-30 row" style="width:30%;padding: 0;border-left: 0px solid #e5e5e5;">
+							<div style="margin-left:1px;"class="col-60 po_nc_text po_text">
+								<h3 style="font-size:21px;color:#333333;text-align:right;position:absolute;right:20px;margin-top:22px;">{{vm.ssqys}}</h3>
+							</div>
+
+							<a href="#/listedcompanies-overview/0">
+								<img style="position:absolute;width:25px;height:25px;right:10px;float:right;margin-top:60px;"src="../../images/home_btn_icon_more.png">
+							</a>
+						</div>
+					</div>
+				</div>-->
+
+				<div ng-if="vm.flagList[13]  && vm.unclockflagList[13]" class="po_development comm" style="height:140px;">
+					<div class="po_title title1" style="border-bottom: 1px solid #dcdcdc;">
+						<p style="border-left: 5px solid #7d47e9;">就业情况分析<span class="color9" style="margin-left: 10px;">{{vm.latestyear}}年数据</span></p>
+						<div class="po_btnArrows" ng-click="vm.goto(10)"></div>
+					</div>
+					<div class="row" style="padding: 0;">
+						<div class="devel_l col-50 row" style="padding: 0;">
+							<div class="jyicon1" ><i style="background: url(../../images/subject_icon_work.png) no-repeat;"></i></div>
+							<div class="col-55 po_cz_text po_text">
+								<h3 style="font-size:21px;color:#333333;text-align: left;margin-top:5px;">{{vm.jyrs}}</h3>
+								<p style="font-size:17px;color:#57555e;text-align: left;margin-top:0px;">
+									就业人数</p>
+								<p style="float:left;"><span style="float:left;" class="color9">(万人)</span>
+								</p>
+
+							</div>
+							<a href="#/employment-basefx/0" style="position:absolute;width:25px;margin-top:45px;right:50%;">
+								<img style="width:25px;height:25px;float:left;margin-top:15px;"src="../../images/home_btn_icon_more.png">
+							</a>
+
+						</div>
+
+						<div class="devel_r col-50 row" style="height:100px;padding: 0;margin-top: 0px!important;">
+							<div class="jyicon2" style="margin-top:10px;"><i style="background: url(../../images/subject_icon_lose.png) no-repeat;"></i></div>
+							<div class="col-55 po_nc_text po_text" style="margin-top:10px;">
+								<h3 style="font-size:21px;color:#333333;text-align: left;margin-top:5px;">{{vm.hnsyl}}</h3>
+								<p style="font-size:17px;color:#57555e;text-align: left;margin-top:0px;">失业率
+								</p>
+								<p style="float:left;"><span style="float:left;" class="color9">(%)</span>
+
+								</p>
+							</div>
+							<a href="#/employment-basefx/0" style="position:absolute;width:25px;margin-top:45px;right:10px;">
+								<img style="width:25px;height:25px;float:left;margin-top:25px;"src="../../images/home_btn_icon_more.png">
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+
+	</ion-content>
+</ion-view>
+<style>
+	.topbar{width:100%;height:200px;position:relative;
+		background-image:-webkit-linear-gradient(-60deg, #37127c, #21286a);
+		background-image:linear-gradient(-60deg, #37127c, #21286a);
+	}
+	.icon11 {
+		width: 60px;
+		height: 60px;
+		background: url(../../images/subject_icon_bGDP.png) no-repeat center;
+		background-size: 100%;
+		margin: 0 10px 0 10px;
+	}
+	.ssicon1 {
+		width: 60px;
+		height: 60px;
+		background: url(../../images/icon_unit.png) no-repeat center;
+		background-size: 100%;
+		margin: 0 10px 0 10px;
+	}
+	.rkicon1 {
+		width: 60px;
+		height: 60px;
+		background: url(../../images/subject_icon_city.png) no-repeat center;
+		background-size: 100%;
+		margin: 0 10px 0 10px;
+	}
+	.rkicon2 {
+		width: 60px;
+		height: 60px;
+		background: url(../../images/subject_icon_country.png) no-repeat center;
+		background-size: 100%;
+		margin: 0px 10px 0 10px;
+	}
+	 .economyFour{height:193px;}
+	 .economyFour .txtTitle:before{background-color:#2863db;}
+	 .economyFour .boxFour{margin-top:0px;}
+	 .economyFour .fourRow{border-bottom:1px solid #dcdcdc;}
+	 .economyFour .fourBox{height:60px;position:relative;line-height:1;}
+	 .economyFour p{margin-bottom:8px;padding-left:10px;}
+	 .economyFour .txtBlue{font-size:20px;color:#333333;padding-top:8px;}
+	 .economyFour .txtBlue span{font-size:14px;}
+	 .economyFour .txtHui{font-size:14px;color:#666;float:left;}
+	 .economyFour .btnArrows{top:23px;right:10px;}
+	 .economyFour .fourBox:nth-of-type(odd){border-right:1px solid #dcdcdc;}
+	.btnArrows{
+		position:absolute;top:14px;right:14px;width:25px;height:25px;background:url("../../images/home_icon_exit.png") no-repeat center;}
+	.tzzeph-div{ width: 71%; float: left;}
+	.tzzeph-div2{ width: 75%; margin-top: 7px; color: #666; font-size: 13px; margin-left: 10px; float: left;}
+	.tzzeph-div3{ width: 100%; height: 4px; float: left; margin-top: 8px; border-radius: 2px;}
+	.tzzeph-div4{ height: 6px; border-radius: 3px; margin-top: -1px;}
+	.tzzeph-div5{ width: 29%; float: right; margin-top: 18px; color: #333; font-size: 18px;}
+	.jyicon1 {
+		width: 60px;
+		height: 60px;
+		background: url(../../images/subject_icon_workb.png) no-repeat center;
+		background-size: 100%;
+		margin: 0 10px 0 10px;
+	}
+	.jyicon2 {
+		width: 60px;
+		height: 60px;
+		background: url(../../images/subject_icon_loseb.png) no-repeat center;
+		background-size: 100%;
+		margin: 0 10px 0 10px;
+	}
+	.czicon1 {
+		width: 60px;
+		height: 60px;
+		background: url(../../images/home_icon_income.png) no-repeat center;
+		background-size: 100%;
+		margin: 0 10px 0 10px;
+	}
+	.czicon2 {
+		width: 60px;
+		height: 60px;
+		background: url(../../images/home_icon_pay.png) no-repeat center;
+		background-size: 100%;
+		margin: 0 10px 0 10px;
+	}
+	.po_title .po_btnArrows {
+		position: absolute;
+		top: 16px;
+		right: 10px;
+		width: 20px;
+		height: 20px;
+		background: url(../../images/universal_btn_icon_more01.png) no-repeat center;
+	}
+</style>
