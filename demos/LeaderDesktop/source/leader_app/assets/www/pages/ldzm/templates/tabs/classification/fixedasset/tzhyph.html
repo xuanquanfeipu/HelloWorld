@@ -1,0 +1,227 @@
+<style>
+    .tzhyph-div{ width: 100%; height: 75px; padding-top: 20px; padding-bottom: 21px; padding-left: 12px;}
+    .tzhyph-div1{ width: 50%; float: left;}
+    .tzhyph-div2{ width: 50%; color: #333; font-size: 20px; float: right; margin-top: 17px; line-height: 20px; text-align: right;}
+    .tzhyph-div3{ width: 100%; height: 20px; color: #666; font-size: 18px; float: left; overflow: hidden;}
+    .tzhyph-div4{ width: 100%; height: 4px; float: left; margin-top: 13px; border-radius: 2px;}
+    .tzhyph-div5{ height: 6px; border-radius: 3px; margin-top: -1px;}
+    .img-more{ width: 14px; height: 14px; margin-top: 3px; margin-left: 10px; margin-right: 10px; float: right;}
+    .tzhyph-div6{ height: 1px; width: 95%; margin-left: 10px; background-color: #f7f7f7;}
+</style>
+<ion-header-bar align-title="center">
+    <h1 class="title" style="font-size:20px;height:48px;text-align:center;color:#fff;vertical-align:middle;background:#37127c;margin:0">
+        <a ng-click="goback()" class="back-style"><img width="24" height="24" src="../../images/universal_btn_icon_back.png"/></a>
+        固定资产投资行业排行
+    </h1>
+</ion-header-bar>
+
+<ion-content class="" >
+    <div>
+        <sc-layoutpie piedata="vm.piedata"  unit="vm.unit" currentyear = "vm.currentyear" type="vm.type"></sc-layoutpie>
+    </div>
+
+    <div class="tzhyph-div" ng-click="vm.clirkIndustry(vm.result[0].INDUSTRY_CATEGORY_NO)">
+        <div class="tzhyph-div1">
+            <div class="tzhyph-div3">{{vm.result[0].INDUSTRY_CATEGORY_NAME}}</div>
+            <div class="tzhyph-div4" style=" background-color: #eee;">
+                <div class="tzhyph-div5" style="width: {{vm.top1}}%; background-color: #438ff5;"></div>
+            </div>
+        </div>
+        <div class="tzhyph-div2">
+            {{vm.result[0].TZZL | currency:' ':2 }}亿元
+
+            <!--<a href="#/fixedasset-tzhyph2/{{vm.result[0].INDUSTRY_CATEGORY_NO}}">--><img class="img-more" src="{{vm.img_more}}"><!--</a>-->
+
+        </div>
+
+    </div>
+    <div class="tzhyph-div6"></div>
+    <div class="tzhyph-div" ng-click="vm.clirkIndustry(vm.result[1].INDUSTRY_CATEGORY_NO)">
+
+        <div class="tzhyph-div1">
+            <div class="tzhyph-div3">{{vm.result[1].INDUSTRY_CATEGORY_NAME}}</div>
+            <div class="tzhyph-div4" style=" background-color: #eee;">
+                <div class="tzhyph-div5" style="width: {{vm.top2}}%; background-color: #04b100;"></div>
+            </div>
+        </div>
+        <div class="tzhyph-div2">
+            {{vm.result[1].TZZL | currency:' ':2 }}亿元
+
+            <!--<a href="#/fixedasset-tzhyph2/{{vm.result[1].INDUSTRY_CATEGORY_NO}}">--><img class="img-more" src="{{vm.img_more}}"><!--</a>-->
+
+        </div>
+        </a>
+    </div>
+    <div class="tzhyph-div6"></div>
+    <div class="tzhyph-div" ng-click="vm.clirkIndustry(vm.result[2].INDUSTRY_CATEGORY_NO)">
+
+        <div class="tzhyph-div1">
+            <div class="tzhyph-div3">{{vm.result[2].INDUSTRY_CATEGORY_NAME}}</div>
+            <div class="tzhyph-div4" style=" background-color: #eee;">
+                <div class="tzhyph-div5" style="width: {{vm.top3}}%; background-color: #0072d3;"></div>
+            </div>
+        </div>
+        <div class="tzhyph-div2">
+            {{vm.result[2].TZZL | currency:' ':2 }}亿元
+
+           <!-- <a href="#/fixedasset-tzhyph2/{{vm.result[2].INDUSTRY_CATEGORY_NO}}">--><img class="img-more" src="{{vm.img_more}}"><!--</a>-->
+
+        </div>
+        </a>
+    </div>
+    <div class="tzhyph-div6"></div>
+    <div class="tzhyph-div" ng-click="vm.clirkIndustry(vm.result[3].INDUSTRY_CATEGORY_NO)">
+
+        <div class="tzhyph-div1">
+            <div class="tzhyph-div3">{{vm.result[3].INDUSTRY_CATEGORY_NAME}}</div>
+            <div class="tzhyph-div4" style=" background-color: #eee;">
+                <div class="tzhyph-div5" style="width: {{vm.top4}}%; background-color: #9e1ae3;"></div>
+            </div>
+        </div>
+        <div class="tzhyph-div2">
+            {{vm.result[3].TZZL | currency:' ':2 }}亿元
+
+            <!--<a href="#/fixedasset-tzhyph2/{{vm.result[3].INDUSTRY_CATEGORY_NO}}">--><img class="img-more" src="{{vm.img_more}}"><!--</a>-->
+
+        </div>
+
+    </div>
+    <div class="tzhyph-div6"></div>
+    <div class="tzhyph-div" ng-click="vm.clirkIndustry(vm.result[4].INDUSTRY_CATEGORY_NO)">
+
+        <div class="tzhyph-div1">
+            <div class="tzhyph-div3">{{vm.result[4].INDUSTRY_CATEGORY_NAME}}</div>
+            <div class="tzhyph-div4" style=" background-color: #eee;">
+                <div class="tzhyph-div5" style="width: {{vm.top5}}%; background-color: #5d2fdc;"></div>
+            </div>
+        </div>
+        <div class="tzhyph-div2">
+            {{vm.result[4].TZZL | currency:' ':2 }}亿元
+
+            <!--<a href="#/fixedasset-tzhyph2/{{vm.result[4].INDUSTRY_CATEGORY_NO}}">--><img class="img-more" src="{{vm.img_more}}"><!--</a>-->
+
+        </div>
+
+    </div>
+    <div class="tzhyph-div6"></div>
+    <div class="tzhyph-div" ng-click="vm.clirkIndustry(vm.result[5].INDUSTRY_CATEGORY_NO)">
+
+        <div class="tzhyph-div1">
+            <div class="tzhyph-div3">{{vm.result[5].INDUSTRY_CATEGORY_NAME}}</div>
+            <div class="tzhyph-div4" style=" background-color: #eee;">
+                <div class="tzhyph-div5" style="width: {{vm.top6}}%; background-color: #0054d3;"></div>
+            </div>
+        </div>
+        <div class="tzhyph-div2">
+            {{vm.result[5].TZZL | currency:' ':2 }}亿元
+
+            <!--<a href="#/fixedasset-tzhyph2/{{vm.result[5].INDUSTRY_CATEGORY_NO}}">--><img class="img-more" src="{{vm.img_more}}"><!--</a>-->
+
+        </div>
+
+    </div>
+    <div class="tzhyph-div6"></div>
+    <div class="tzhyph-div" ng-click="vm.clirkIndustry(vm.result[6].INDUSTRY_CATEGORY_NO)">
+
+        <div class="tzhyph-div1">
+            <div class="tzhyph-div3">{{vm.result[6].INDUSTRY_CATEGORY_NAME}}</div>
+            <div class="tzhyph-div4" style=" background-color: #eee;">
+                <div class="tzhyph-div5" style="width: {{vm.top7}}%; background-color: #dc143c;"></div>
+            </div>
+        </div>
+        <div class="tzhyph-div2">
+            {{vm.result[6].TZZL | currency:' ':2 }}亿元
+
+            <!--<a href="#/fixedasset-tzhyph2/{{vm.result[6].INDUSTRY_CATEGORY_NO}}">--><img class="img-more" src="{{vm.img_more}}"><!--</a>-->
+
+        </div>
+
+    </div>
+    <div class="tzhyph-div6"></div>
+    <div class="tzhyph-div" ng-click="vm.clirkIndustry(vm.result[7].INDUSTRY_CATEGORY_NO)">
+
+        <div class="tzhyph-div1">
+            <div class="tzhyph-div3">{{vm.result[7].INDUSTRY_CATEGORY_NAME}}</div>
+            <div class="tzhyph-div4" style=" background-color: #eee;">
+                <div class="tzhyph-div5" style="width: {{vm.top8}}%; background-color: #ffcf10;"></div>
+            </div>
+        </div>
+        <div class="tzhyph-div2">
+            {{vm.result[7].TZZL | currency:' ':2 }}亿元
+
+            <!--<a href="#/fixedasset-tzhyph2/{{vm.result[7].INDUSTRY_CATEGORY_NO}}">--><img class="img-more" src="{{vm.img_more}}"><!--</a>-->
+
+        </div>
+
+    </div>
+    <div class="tzhyph-div6"></div>
+    <div class="tzhyph-div" ng-click="vm.clirkIndustry(vm.result[8].INDUSTRY_CATEGORY_NO)">
+
+        <div class="tzhyph-div1">
+            <div class="tzhyph-div3">{{vm.result[8].INDUSTRY_CATEGORY_NAME}}</div>
+            <div class="tzhyph-div4" style=" background-color: #eee;">
+                <div class="tzhyph-div5" style="width: {{vm.top9}}%; background-color: #8fc31f;"></div>
+            </div>
+        </div>
+        <div class="tzhyph-div2">
+            {{vm.result[8].TZZL | currency:' ':2 }}亿元
+
+            <!--<a href="#/fixedasset-tzhyph2/{{vm.result[8].INDUSTRY_CATEGORY_NO}}">--><img class="img-more" src="{{vm.img_more}}"><!--</a>-->
+
+        </div>
+
+    </div>
+    <div class="tzhyph-div6"></div>
+    <div class="tzhyph-div" ng-click="vm.clirkIndustry(vm.result[9].INDUSTRY_CATEGORY_NO)">
+
+        <div class="tzhyph-div1">
+            <div class="tzhyph-div3">{{vm.result[9].INDUSTRY_CATEGORY_NAME}}</div>
+            <div class="tzhyph-div4" style=" background-color: #eee;">
+                <div class="tzhyph-div5" style="width: {{vm.top10}}%; background-color: #ffb25a;"></div>
+            </div>
+        </div>
+        <div class="tzhyph-div2">
+            {{vm.result[9].TZZL | currency:' ':2 }}亿元
+
+            <!--<a href="#/fixedasset-tzhyph2/{{vm.result[9].INDUSTRY_CATEGORY_NO}}">--><img class="img-more" src="{{vm.img_more}}"><!--</a>-->
+
+        </div>
+
+    </div>
+    <div class="tzhyph-div6"></div>
+    <div class="tzhyph-div" ng-click="vm.clirkIndustry(vm.result[10].INDUSTRY_CATEGORY_NO)">
+
+        <div class="tzhyph-div1">
+            <div class="tzhyph-div3">{{vm.result[10].INDUSTRY_CATEGORY_NAME}}</div>
+            <div class="tzhyph-div4" style=" background-color: #eee;">
+                <div class="tzhyph-div5" style="width: {{vm.top11}}%; background-color: #f472d0;"></div>
+            </div>
+        </div>
+        <div class="tzhyph-div2">
+            {{vm.result[10].TZZL | currency:' ':2 }}亿元
+
+            <!--<a href="#/fixedasset-tzhyph2/{{vm.result[10].INDUSTRY_CATEGORY_NO}}">--><img class="img-more" src="{{vm.img_more}}"><!--</a>-->
+
+        </div>
+
+    </div>
+    <div class="tzhyph-div6"></div>
+    <div class="tzhyph-div" ng-click="vm.clirkIndustry(vm.result[11].INDUSTRY_CATEGORY_NO)">
+
+        <div class="tzhyph-div1">
+            <div class="tzhyph-div3">{{vm.result[11].INDUSTRY_CATEGORY_NAME}}</div>
+            <div class="tzhyph-div4" style=" background-color: #eee;">
+                <div class="tzhyph-div5" style="width: {{vm.top12}}%; background-color: #00b1a2;"></div>
+            </div>
+        </div>
+        <div class="tzhyph-div2">
+            {{vm.result[11].TZZL | currency:' ':2 }}亿元
+
+            <!--<a href="#/fixedasset-tzhyph2/{{vm.result[11].INDUSTRY_CATEGORY_NO}}">--><img class="img-more" src="{{vm.img_more}}"><!--</a>-->
+
+        </div>
+
+    </div>
+    <div class="tzhyph-div6"></div>
+    <div style="height: 15px;"></div>
+</ion-content>
