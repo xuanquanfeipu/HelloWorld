@@ -1,0 +1,70 @@
+<ion-view view-title="区域" hide-nav-bar="true" ng-if="vm.power">
+	<div class="tabs tabs-top" style="top:0px;height:47px;">
+		<div class="tab-item" style="max-width:33%;border-bottom:3px solid #dce1e7;">
+			<sc-dropdown data="vm.timeList" on-change="vm.changeTime" default-item="vm.curTime"></sc-dropdown>
+
+		</div>
+
+		<div class="tab-item" style="max-width:33%;border-bottom:3px solid #dce1e7;">
+			<sc-dropdown data="vm.moduleList" on-change="vm.changeModule" default-item="vm.curmodule"></sc-dropdown>
+		</div>
+		<div class="tab-item" style="max-width:40%;border-bottom:3px solid #dce1e7;">
+			<sc-dropdown  data="vm.IndicatorList" on-change="vm.changeIndicator" default-item="vm.curindicator"></sc-dropdown>
+		</div>
+
+	</div>
+	<ion-content class="padding" >
+		<div style="margin-top:50px;">
+			   <div style="height:40px;width:92%;margin-left:14px;margin-right:14px;magrin-top:9px;float: left;border: 1px solid #d7d7de;">
+					<div style="margin-top:10px;margin-left:34px;float: left;color:#333;font-size: 16px;line-height: 18px;">{{vm.dycurAreaName}}</div>
+					<div style="margin-top:10px;margin-left:32px;float: left;color:#fcbb00;font-size: 16px;" ng-if="vm.yljgs == 0">{{ vm.economicTotal | currency:' ':2 }}{{vm.unit}}</div>
+				    <div style="margin-top:10px;margin-left:32px;float: left;color:#fcbb00;font-size: 16px;" ng-if="vm.yljgs == 1">{{ vm.economicTotal | currency:' ':0 }}{{vm.unit}}</div>
+					<div ng-if="vm.curmodule.value == 1" style="margin-top:10px;margin-left:28px;float: left;color:#ff0000;font-size: 16px;">
+						+{{vm.zzl}}%
+					</div>
+			    </div>
+			   <div class="row"  style="padding: 0;">
+					<ng-echarts class="echarts col" ec-config="vm.mapConfig" ec-option="vm.mapOption" style=" position:static;height: 400px; position:static;"></ng-echarts>
+			   </div>
+
+				<div  ng-repeat="item in vm.citydatalist" style="height:50px;width:100%;">
+                    <!--<div id="area_div_{{item.cityid}}" class="row"  on-touch="onTouch({{item.cityid}})" on-release="onRelease({{item.cityid}})">-->
+					 <div id="area_div_{{item.cityid}}" class="row" ng-click="vm.t_more('#/area-detail/{{vm.curTime.value}}/{{vm.curmodule.value}}/{{vm.curindicator.value}}/{{item.cityid}}')">
+                         <div style="width:20%" style="float: left;">
+                             {{item.name.trim()}}
+                         </div>
+                        <div  style="width:42%;margin-top:8px; height: 6px; background-color: #eee;border-radius: 6px; ">
+                            <div style=" background-color: #438ff5;border-radius: 3px;height: 6px;margin-top: 0px;" class="line-bar-z" ng-style="{'width':item.bl+'%'}"></div>
+                        </div>
+                        <div class="row"  style=" padding:0;width:40%;color: #333333; margin-top:0px;height: 26px;line-height:16px;font-size: 16px;text-align:right;padding-left: 5px;">
+							<div style="width:97%" ng-if="vm.yljgs == 0">{{item.value | currency:' ':2 }}&nbsp;{{vm.unit}}</div>
+							<div style="width:97%" ng-if="vm.yljgs == 1">{{item.value | currency:' ':0 }}&nbsp;{{vm.unit}}</div>
+							<div style="width:3%;margin-right:10px">
+
+					<a  ng-if="vm.curmodule.value == 0 ||vm.curmodule.value == 1 ||vm.curmodule.value == 2 || vm.curmodule.value == 3 || vm.curmodule.value == 5 ||  vm.curmodule.value == 4 || vm.curmodule.value == 6"><img src="../../images/universal_btn_icon_more.png"  style="margin-top:2px;width:14px;height:14px;" /></a>
+
+							</div>
+						</div>
+					</div>
+					<center><div style="width:96%;border-bottom: 1px solid #d7d7de;"></center>
+				</div>
+		</div>
+		</ion-content>
+</ion-view>
+<ion-view view-title="区域" hide-nav-bar="true" ng-if="!vm.power">
+	<ion-header-bar align-title="center">
+		<h1 class="title" style="font-size:20px;height:48px;text-align:center;color:#fff;vertical-align:middle;background:#37127c;margin:0">
+			区域分析
+		</h1>
+	</ion-header-bar>
+	<ion-content  style="text-align:Center" scroll="true">
+		<div >
+			<img width="100%" height="{{picheight}}" src="../../images/nodata.png"/>
+		</div>
+		<div style="color:#9999cc;font-size:20px">
+			抱歉,您无权访问此模块
+		</div>
+
+
+	</ion-content>
+</ion-view>
