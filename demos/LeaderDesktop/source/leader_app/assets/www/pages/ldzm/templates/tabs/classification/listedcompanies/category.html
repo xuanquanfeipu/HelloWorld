@@ -1,0 +1,51 @@
+<div class="bar bar-header bar-positive detail-header">
+    <a class="button button-clear" ng-click="vm.goBack()"><img src="../../images/universal_btn_icon_back.png"/></a>
+    <h1 class="title">{{vm.categoryName}}</h1>
+</div>
+<div class="tabs tabs-top" style="height:47px;">
+    <div class="tab-item " style="border-bottom:3px solid #dce1e7;max-width:100%;">
+        <sc-dropdown data="vm.indicatorList" on-change="vm.changeIndicator" default-item="vm.curIndicator"></sc-dropdown>
+    </div>
+    <div class="tab-item" style="border-bottom:3px solid #dce1e7;max-width:100%;">
+        <sc-dropdown data="vm.orderList" on-change="vm.changeOrder" default-item="vm.curOrder"></sc-dropdown>
+    </div>
+</div>
+<ion-content class="has-header has-tabs-top">
+    <ion-list>
+        <ion-item ng-repeat="item in vm.list track by $index" class="company" ng-click="vm.goToCompanyDetail(item)">
+            <h2><img ng-if="$index==0" src="../../images/subject_icon_1.png"/>
+                <img ng-if="$index==1" src="../../images/subject_icon_2.png"/>
+                <img ng-if="$index==2" src="../../images/subject_icon_3.png"/>
+                <span ng-if="$index>=3" style="font-style:italic">{{$index+1}}</span>
+                <span style="font-size: 18px;">{{item.name}}</span>
+                <span>{{item.value}}
+                <a href="javascript:;" style="margin-left: 10px;"><img src="../../images/universal_btn_icon_more.png"/></a>
+                </span>
+            </h2>
+
+        </ion-item>
+    </ion-list>
+</ion-content>
+<style>
+    .company h2{
+        font-size:18px;
+        color: #333;
+        height:35px;
+        line-height: 35px;
+    }
+    .company h2 span{
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .company h2 img{
+        vertical-align: middle;
+    }
+    .company h2 span:first-child{
+        color:#438ff5;
+        font-size:20px;
+        margin-right:15px;
+    }
+    .company h2 span:last-child{
+        float: right;
+    }
+</style>
