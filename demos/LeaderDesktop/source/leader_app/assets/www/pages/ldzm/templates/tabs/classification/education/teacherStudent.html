@@ -1,0 +1,37 @@
+<div class="bar bar-header bar-positive detail-header">
+    <a class="button button-clear" ng-click="vm.goBack()"><img src="../../images/universal_btn_icon_back.png"/></a>
+    <h1 class="title">全省教育基本情况</h1>
+</div>
+<ion-content class="teacherStudentClass" >
+    <div class="txtCount cf">
+        <div class="txtCountChlid txtCountChlid1">
+            <p class="txtRound txtSmall">学生(人)</p>
+            <p class="txtNumber" id='stuCount' style="color:#c47eea;">0</p>
+        </div>
+        <div class="txtCountChlid txtCountChlid1">
+            <p class="txtRound txtSmall">教师(人)</p>
+            <p class="txtNumber" id='teaCount' style="color:#2863db;">0</p>
+        </div>
+        <div class="txtCountChlid txtCountChlid2">
+            <p class="txtLine txtSmall">师生比(%)</p>
+            <p class="txtNumber" id='perCount'>0</p>
+        </div>
+    </div>
+    <div class="row">
+        <ng-echarts class="echarts col" ec-config="vm.barConfig" ec-option="vm.barOption" style="position:static;height:434px;width:100%;"></ng-echarts>
+    </div>
+</ion-content>
+<style type="text/css">
+.cf:after{content:'';display:block;width:0;height:0;clear:both;}
+.teacherStudentClass .txtCount{margin:93px auto 32px;width:90%;}
+.teacherStudentClass .txtCountChlid{position:relative;width:33%;height:50px;float:left;text-align:center;}
+.teacherStudentClass .txtCountChlid1:after{content:'';display:block;width:1px;height:40px;position:absolute;top:5px;right:-.5px;background-color:#c9d4ea;}
+.teacherStudentClass .txtSmall{font-size:14px;color:#666;line-height:1;position:relative;}
+.teacherStudentClass .txtRound{padding-left:14px;}
+.teacherStudentClass .txtRound:before{position:absolute;left:13%;top:3.5px;content:'';width:7px;height:7px;border-radius:50%;background-color:#c47eea;}
+.teacherStudentClass .txtCountChlid1:nth-of-type(2) .txtRound:before{;background-color:#2863db;}
+.teacherStudentClass .txtLine{padding-left:29px;}
+.teacherStudentClass .txtLine:before{position:absolute;left:9%;top:6px;content:'';width:20px;height:2px;border-radius:2px;background-color:#fcbb00;}
+.teacherStudentClass .txtLine:after{position:absolute;left:-moz-calc(9% + 6.5px);left:-webkit-calc(9% + 6.5px);left:calc(9% + 6.5px);top:3.5px;content:'';width:7px;height:7px;border-radius:50%;background-color:#fff;border:2px solid #fcbb00;}
+.teacherStudentClass .txtNumber{font-size:22px;color:#333;line-height:1;font-weight:bold;}
+</style>
