@@ -1,0 +1,18 @@
+<ion-header-bar align-title="center" class="bar-positive" style="background:#37127c;color:#fff;height:48px;line-height:48px;">
+    <div class="buttons">
+        <button class="button button-outline" ng-click="vm.goBack()"><img width="24" height="24" src="../../images/universal_btn_icon_back.png"/></button>
+    </div>
+    <h1 class="title">上市企业能力值分析</h1>
+</ion-header-bar>
+<ion-content class="has-header">
+    <div class="row">
+        <div class="col" style="padding: 40px 0 10px 0;text-align: center;font-size:22px;color:#333">12家</div>
+    </div>
+    <div class="row">
+        <div class="col" style="padding: 10px 0 40px 0;text-align: center;font-size:18px;color:#666">
+            <span class="round" style="font-size:20px;">●</span><span style="margin-left:15px">湖南省一类企业数量</span>
+        </div>
+    </div>
+    <ng-echarts class="echarts row" ec-config="vm.scatterConfig" ec-option="vm.scatterOption"
+                style="position:static;height:500px;padding:0;">
+</ion-content>
