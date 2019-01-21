@@ -1,0 +1,112 @@
+<ion-header-bar align-title="center" class="bar-positive" style=" background:-webkit-gradient(linear, 0 0, 0 bottom, from(#08145c), to(#37127c))">
+
+    <h1 class="title" style="font-size:20px;height:48px;text-align:center;color:#fff;vertical-align:middle;background:#37127c;margin:0">
+        <a ng-click="goback()" class="back-style"><img width="24" height="24" src="../../images/universal_btn_icon_back.png"/></a>
+        义务教育分析
+    </h1>
+</ion-header-bar>
+<ion-content class="has-header" style="background: #f1f1f1;">
+    <div id="chartDiv" class="educationPage" style="margin-left:10px;margin-right:10px;width:94.2%;height:128px;background: #ffffff;margin-top:10px;">
+        <div class="educationBox educationBox2">
+            <a href="#/education-enrolmentrate/1">
+                <div class="txtTitle" >适龄儿童入学率</div>
+                 <div class="btnArrows"></div>                
+                <div class="row colRow">
+                    <div class="col-50 colBox">
+                        <ng-echarts id="mychart1" class="echarts col" ng-style="{ 'width' : '87%','height':'70px',}" ec-config="vm.mychart1Config" ec-option="vm.mychart1Option" ></ng-echarts>
+                    </div>
+                    <div class="col-50 colBox">
+                        <div style="font-size:24px;text-align: center;margin-top:20px;">
+                            {{vm.agelv}}%
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div id="chartDiv2" class="educationPage" style="margin-left:10px;margin-right:10px;width:94.2%;height:128px;background: #ffffff;margin-top:10px;">
+        <div class="educationBox educationBox2">
+            <a href="#/education-enrolmentrate/2">
+                <div class="txtTitle" >小学升学率</div>
+                <div class="btnArrows" style="margin-top:138px;"></div>                
+                <div class="row colRow">
+                    <div class="col-50 colBox">
+                        <ng-echarts id="mychart2" class="echarts col" ng-style="{ 'width' : '87%','height':'70px',}" ec-config="vm.mychart2Config" ec-option="vm.mychart2Option" ></ng-echarts>
+
+                    </div>
+                    <div class="col-50 colBox">
+                        <div style="font-size:24px;text-align: center;margin-top:20px;">
+                            {{vm.primarylv}}%
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div id="chartDiv3" class="educationPage" style="margin-left:10px;margin-right:10px;width:94.2%;height:128px;background: #ffffff;margin-top:10px;">
+        <div class="educationBox educationBox3">
+            <a href="#/education-enrolmentrate/3">
+                <div class="txtTitle3" >初中升学率</div>
+                <div class="btnArrows" style="margin-top:276px;"></div>            
+                <div class="row colRow">
+                    <div class="col-50 colBox">
+                        <ng-echarts id="mychart3" class="echarts col" ng-style="{ 'width' : '87%','height':'70px',}" ec-config="vm.mychart3Config" ec-option="vm.mychart3Option" ></ng-echarts>
+
+                    </div>
+                    <div class="col-50 colBox">
+                        <div style="font-size:24px;text-align: center;margin-top:20px;">
+                            {{vm.midlv}}%
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div id="chartDiv4" class="educationPage" style="margin-left:10px;margin-right:10px;width:94.2%;height:128px;background: #ffffff;margin-top:10px;">
+        <div class="educationBox educationBox4">
+            <a href="#/education-enrolmentrate/4">
+                <div class="txtTitle4" >高中升学率</div>
+                <div class="btnArrows" style="margin-top:414px;"></div>               
+                <div class="row colRow">
+                    <div class="col-50 colBox">
+                        <ng-echarts id="mychart4" class="echarts col" ng-style="{ 'width' : '87%','height':'70px',}" ec-config="vm.mychart4Config" ec-option="vm.mychart4Option" ></ng-echarts>
+
+                    </div>
+                    <div class="col-50 colBox">
+                        <div style="font-size:24px;text-align: center;margin-top:20px;">
+                            {{vm.higlv}}%
+                        </div>
+                    </div>
+                </div>
+             </a>
+        </div>
+    </div>
+
+</ion-content>
+<!--
+<ng-echarts id="mychart1" class="echarts col" ng-style="{ 'width' : '340px','height':'128px',}" ec-config="vm.mychart1Config" ec-option="vm.mychart1Option" ></ng-echarts>
+-->
+<style>
+   a{text-decoration:none;color:#57555e}
+   .txtTitle{position:relative;color:#57555e;font-size:17px;padding-left:15px;padding-top:15px;line-height:14px;}
+   .txtTitle:before{content:'';width:5px;height:14px;position:absolute;left:0;top:15px;background-color: #4248c8;
+   }
+   .txtTitle3{position:relative;color:#57555e;font-size:17px;padding-left:15px;padding-top:15px;line-height:14px;}
+   .txtTitle3:before{content:'';width:5px;height:14px;position:absolute;left:0;top:15px;background-color: #ba6ed3;
+   }
+   .txtTitle4{position:relative;color:#57555e;font-size:17px;padding-left:15px;padding-top:15px;line-height:14px;}
+   .txtTitle4:before{content:'';width:5px;height:14px;position:absolute;left:0;top:15px;background-color: #42b832;
+   }
+   .educationPage .educationBox1 .txtTitle:before{background-color:#396cee;}
+   .educationPage .educationBox2 .txtTitle:before{background-color:#4248c8;}
+   .educationBox3 .txtTitle:before{background-color:#ba6ed3;}
+   .educationPage .educationBox4 .txtTitle:before{background-color:#42b832;}
+   .txtTitle{position:relative;color:#57555e;font-size:17px;padding-left:15px;padding-top:15px;line-height:14px;}
+   .educationBox2 .txtTitle:before{background-color:#2ec6cf;}
+    .educationBox1 .btnArrows,.educationPage .educationBox2 .btnArrows,.educationPage .educationBox3 .btnArrows,.educationPage .educationBox4 .btnArrows{top:12px;}
+    .educationBox .colRow{height:60px;margin-top:15px;}
+   .educationBox .colBox{position:relative;}
+   .btnArrows{
+       top:12px;position:absolute;right:30px;width:14px;height:14px;background:url("../../images/universal_btn_icon_more.png") no-repeat center;}
+</style>
