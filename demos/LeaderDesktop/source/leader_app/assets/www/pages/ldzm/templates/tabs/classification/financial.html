@@ -1,0 +1,72 @@
+<div class="resident">
+    <div class="po_top" style='height: 275px'>
+        <a href="#/JmCzPage2Ctrl-category/3" style='text-decoration: none'>
+        <ng-echarts id="po_chart1" class="chart col" ec-config="vm.lineConfig" ec-option="vm.lineOption" style="height: 250px; width: 100%; position: static;"></ng-echarts>
+        <div style="color:#fff;font-size:11px;line-height:14px;text-align:center;background: rgba(0,0,0,0.3)">
+            <div class="row">
+                <div class="col-20" >{{vm.currentYear-4}}</div>
+                <div class="col-20" >{{vm.currentYear-3}}</div>
+                <div class="col-20" >{{vm.currentYear-2}}</div>
+                <div class="col-20" >{{vm.currentYear-1}}</div>
+                <div class="col-20" >{{vm.currentYear}}</div>
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="economyOne economyBox">
+        <a href="#/financial-category/1/2" style='text-decoration: none'>
+        <div class="imgL">
+            <ng-echarts id="po_chart2" class="chart col" ec-config="vm.lineConfig2" ec-option="vm.lineOption2" style="height: 48px; width: 100%; position: static;padding: 0"></ng-echarts>
+        </div>
+        <div class="txtC">财政收入<span>(亿元)</span><span style='font-size: 8px;color: #999'>&nbsp;&nbsp;&nbsp;&nbsp;{{vm.dataDay}}年数据</span></div>
+        <div class="txtR">
+            <div class="txtR_top">{{vm.maxrjsr}}</div>
+        </div>
+        <div class="txtbl">
+            <div class="txtR_top">环比<span style='color: red'> ↑ {{vm.czsrhb}}</span></div>
+        </div>
+        <div class="btnArrows"></div>
+        </a>
+    </div>
+
+    <div class="economyOne economyBox">
+        <a href="#/financial-category/2/2" style='text-decoration: none'>
+        <div class="imgL">
+            <ng-echarts id="po_chart2" class="chart col" ec-config="vm.lineConfig3" ec-option="vm.lineOption3" style="height: 48px; width: 100%; position: static;padding: 0"></ng-echarts>
+        </div>
+        <div class="txtC" style='border-left:solid 5px #ff9600'>财政支出<span>(亿元)</span><span style='font-size: 8px;color: #999'>&nbsp;&nbsp;&nbsp;&nbsp;{{vm.dataDay}}年数据</span></div>
+        <div class="txtR">
+            <div class="txtR_top" style='color: #ff9600'>{{vm.maxrjzc}}</div>
+        </div>
+        <div class="txtbl">
+            <div class="txtR_top">环比<span style='color: red'> ↑ {{vm.czzchb}}</span></div>
+        </div>
+        <div class="btnArrows"></div>
+        </a>
+    </div>
+</div>
+<style>
+    .resident{background-color:#f1f1f1;padding-bottom:1px;}
+    .resident .txtRed{color:#ff0000;}
+    .resident .txtTitle{position:relative;color:#57555e;font-size:16px;padding-left:15px;line-height:14px;}
+    .resident .txtTitle:before{content:'';width:5px;height:14px;position:absolute;left:0;top:0;}
+    .resident .btnArrows{
+        position:absolute;right:12px;width:14px;height:14px;background:url("../../images/universal_btn_icon_more.png") no-repeat center;}
+    .resident .topBar{width:100%;height:234px;position:relative;
+        background-image:-webkit-linear-gradient(-60deg, #37127c, #21286a);
+        background-image:linear-gradient(-60deg, #37127c, #21286a);
+    }
+    .resident .topBar:after{content:'';display:block;width:100%;height:24px;background-color:rgba(0,0,0,.3);position:absolute;bottom:0;
+        left:0;}
+    .resident .economyBox{padding:0;background-color:#fff;box-shadow:5px 5px 5px #e4e4e7;margin:10px 10px 12px 10px;border-radius:5px;}
+    .resident .economyOne{position:relative;height:125px;}
+    .resident .economyOne .imgL{position:absolute;left:15px;top:44px;height:48px;width:127px;}
+    .resident .economyOne .txtC{font-size:15px;color:#57555e;position:absolute;left:0px;top:15px;border-left: solid 5px #43b637;padding-left: 10px}
+    .resident .economyOne .txtC span{font-size:12px;}
+    .resident .economyOne .txtR{color:#39ac1e;position:absolute;right:40px;top:44px;font-size:22px;text-align:right;}
+    .resident .economyOne .txtR_btm{color:#999;font-size:12px;}
+    .resident .economyOne .btnArrows{top:15px;}
+    .resident .economyOne .txtbl{color:#333;position:absolute;right:40px;top:67px;font-size:12px;text-align:right;}
+
+
+</style>
