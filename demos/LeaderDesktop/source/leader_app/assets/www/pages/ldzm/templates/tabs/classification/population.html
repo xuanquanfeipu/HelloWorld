@@ -1,0 +1,128 @@
+<style>
+    a{text-decoration:none}
+</style>
+<div>
+    <div class="po_top">
+        <a href="#/population-populationZtfx/1">
+            <ng-echarts id="po_chart1" class="chart col" ec-config="vm.lineConfig" ec-option="vm.lineOption" style="height: 205px; width: 100%; position: static;"></ng-echarts>
+        </a>
+        <div style="color:#fff;font-size:13px;line-height:20px;text-align:center;background:rgba(0,0,0,0.3);">
+            <div class="row">
+                <div class="col-20" >{{vm.currentYear-6}}</div>
+                <div class="col-20" >{{vm.currentYear-5}}</div>
+                <div class="col-20" >{{vm.currentYear-4}}</div>
+                <div class="col-20" >{{vm.currentYear-3}}</div>
+                <div class="col-20" >{{vm.currentYear-2}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="po_content">
+        <div class="po_total comm card">
+            <a href="#/population-populationZtfx/1">
+                <div class="total_wrap row">
+                    <div class="po_total_l col-15">
+                        <div class="icon"></div>
+                    </div>
+                    <div class="po_total_m col-50">
+                        <h3>总人口数<span class="color9">(万人)</span></h3>
+                    </div>
+                    <div class="po_total_r col-25">
+                        <p>{{vm.totalPopulation | currency:'':2}}</p>
+                        <div class="po_btnArrows"></div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="po_development comm card">
+            <a href="#/population-populationDevelop/1">
+                <div class="po_title title1">
+                    <p>人口发展分析</p>
+                    <div class="po_btnArrows"></div>
+                </div>
+                <div class="row" style="padding: 0;">
+                    <div class="devel_l col-50 row" style="padding: 0;">
+                        <div class="col-30 icon1"></div>
+                        <div class="col-70 po_cz_text po_text">
+                            <h3>{{vm.cityPopulation | currency:'':2}}</h3>
+                            <p>城镇<span  class="color9">(万人)</span></p>
+                        </div>
+                    </div>
+                    <div class="devel_r col-50 row" style="padding: 0;">
+                        <div class="col-30 icon2"></div>
+                        <div class="col-70 po_nc_text po_text">
+                            <h3>{{vm.villagePopulation | currency:'':2}}</h3>
+                            <p>农村<span class="color9">(万人)</span></p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="po_distribute comm card">
+            <a href="#/population-populationDistribute/1">
+                <div class="po_title title2">
+                    <p>人口分布分析</p>
+                    <div class="po_btnArrows"></div>
+                </div>
+                <div class="row" style="padding: 0;">
+                    <div class="distr_l col-50 row" style="padding: 0;">
+                        <div class="col-30 icon3"></div>
+                        <div class="col-70 po_cz_text po_text">
+                            <h3>{{vm.malePopulation | currency:'':2}}</h3>
+                            <p>男生<span  class="color9">(万人)</span></p>
+                        </div>
+                    </div>
+                    <div class="distr_r col-50 row" style="padding: 0;">
+                        <div class="col-30 icon4"></div>
+                        <div class="col-70 po_nc_text po_text">
+                            <h3>{{vm.femalePopulation | currency:'':2}}</h3>
+                            <p>女生<span class="color9">(万人)</span></p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="po_birth comm card">
+            <a href="#/population-populationBirth/1">
+                <div class="po_title title3">
+                    <p>人口总和生育率</p>
+                    <div class="po_btnArrows"></div>
+                </div>
+                <div class="row">
+                    <div class="col-33">
+                        <ng-echarts id="po_chart2" class="chart col" ec-config="vm.pieConfig" ec-option="vm.pieOption" style="height: 100px; width: 100%; position: static;"></ng-echarts>
+                    </div>
+                    <div class="col-33">
+                        <ng-echarts id="po_chart3" class="chart col" ec-config="vm.pieConfig1" ec-option="vm.pieOption1" style="height: 100px; width: 100%; position: static;"></ng-echarts>
+                    </div>
+                    <div class="col-33">
+                        <ng-echarts id="po_chart4" class="chart col" ec-config="vm.pieConfig2" ec-option="vm.pieOption2" style="height: 100px; width: 100%; position: static;"></ng-echarts>
+                    </div>
+                </div>
+                <div class="row po_textList" >
+                    <div class="col-33">出生率</div>
+                    <div class="col-33">死亡率</div>
+                    <div class="col-33">自然生长率</div>
+                </div>
+            </a>
+        </div>
+        <div class="po_ranking comm card">
+            <a href="#/population-populationCulture/1" style="text-decoration: none;">
+            <div class="po_title title3">
+                <p>人口文化排行<span class="po_unit">单位:万人</span></p>
+            </div>
+            <ul class="rankingPo">
+                <li ng-repeat="ranking in vm.topData track by $index">
+                    <div class="rankPo_txt">{{ranking.name}}</div>
+                    <div class="rankPo_hui">
+                        <div class="rankPo_per" ng-style="{ 'width' : ranking.Bl + '%' }"></div>
+                    </div>
+                    <div class="rankPo_data">{{ranking.num | currency:'':2}}</div>
+                </li>
+            </ul>
+            <div class="lookMore">查看更多 <div class="po_btnArrows"></div></div>
+            </a>
+        </div>
+    </div>
+
+</div>
+
