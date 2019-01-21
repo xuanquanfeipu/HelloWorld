@@ -1,0 +1,39 @@
+
+<ion-header-bar align-title="center">
+    <h1 class="title">
+        <a ng-click="vm.goBack()" class="back-style"><img width="24" height="24" src="../../images/universal_btn_icon_back.png"/></a>
+        人口总和生育率
+    </h1>
+</ion-header-bar>
+<ion-view view-title="分类" hide-nav-bar="true" style="padding-top: 45px;">
+    <div class="row topText" style="margin-top:15%;">
+        <div class="col-33">
+            <span class="round"></span><span style="color: #666;">出生率</span>
+            <p style="color: #333;"><strong id="birthRate" style="font-size: 26px;">{{vm.latestBirthRate}}</strong>%</p>
+        </div>
+        <div class="col-33" style="border-left: 1px solid #c9d4ea;">
+            <span class="round"></span><span style="color: #666; font-size: 15px;">死亡率</span>
+            <p style="color: #333;"><strong id="deathRate" style="font-size: 26px;">{{vm.latestDeathRate}}</strong>%</p>
+        </div>
+        <div class="col-33" style="border-left: 1px solid #c9d4ea;">
+            <span class="round"></span><span style="color: #666; font-size: 15px;">自然增长率</span>
+            <p style="color: #333;"><strong id="naturalRate" style="font-size: 26px;">{{vm.latestNaturalRate}}</strong>%</p>
+        </div>
+    </div>
+
+    <div id="chart1">
+        <ng-echarts class="echarts col" ng-style="{ 'width' : linewidth, 'height' : lineheight }" ec-config="vm.lineConfig" ec-option="vm.lineOption"></ng-echarts>
+    </div>
+</ion-view>
+
+
+<style>
+    .title{font-size:20px;height:48px;text-align:center;color:#fff;vertical-align:middle;margin:0!important;
+        background: -webkit-linear-gradient( left,#08145c,#37127c);}
+    .round{ width: 7px; height: 7px; border-radius: 50%; -webkit-border-radius: 50%;
+        display: inline-block; margin-right: 9px;}
+    .topText>div:nth-of-type(1) .round{ background: #438ff5;}
+    .topText>div:nth-of-type(2) .round{ background: #49caad;}
+    .topText>div:nth-of-type(3) .round{ background: #bb65c8;}
+    .topText>div{text-align: center; font-size: 15px; line-height: 30px;}
+</style>
