@@ -1,0 +1,34 @@
+
+<ion-header-bar align-title="center">
+    <h1 class="title">
+        <a ng-click="vm.goBack()" class="back-style"><img width="24" height="24" src="../../images/universal_btn_icon_back.png"/></a>
+        人口分布
+    </h1>
+</ion-header-bar>
+<ion-view view-title="分类" hide-nav-bar="true" style="padding-top: 45px;">
+    <div class="row topText" style="margin-top:10%">
+        <div class="col-50">
+            <div style="color: #666;"><span class="round"></span>男生人数</div>
+            <span style="color: #333;"><strong id="male" style="font-size: 26px;">{{vm.latestMale | currency:'':2}}</strong>万人</span>
+        </div>
+        <div class="col-50" style="border-left: 1px solid #c9d4ea;">
+            <div style="color: #666; font-size: 15px;"><span class="round"></span>女生人数</div>
+            <span style="color: #333;"><strong id="female" style="font-size: 26px;">{{vm.latestFemale | currency:'':2}}</strong>万人</span>
+        </div>
+    </div>
+
+    <div id="chart1">
+        <ng-echarts class="echarts col" ng-style="{ 'width' : linewidth, 'height' : lineheight }" ec-config="vm.lineConfig" ec-option="vm.lineOption"></ng-echarts>
+    </div>
+</ion-view>
+
+
+<style>
+    .title{font-size:20px;height:48px;text-align:center;color:#fff;vertical-align:middle;margin:0!important;
+        background: -webkit-linear-gradient( left,#08145c,#37127c);}
+    .round{ width: 7px; height: 7px; border-radius: 50%; -webkit-border-radius: 50%;
+        display: inline-block; margin-right: 9px;}
+    .topText>div:nth-of-type(1) .round{ background: #2863bd;}
+    .topText>div:nth-of-type(2) .round{ background: #c47eea;}
+    .topText>div{ padding-left: 33px; font-size: 15px; line-height: 30px;}
+</style>
