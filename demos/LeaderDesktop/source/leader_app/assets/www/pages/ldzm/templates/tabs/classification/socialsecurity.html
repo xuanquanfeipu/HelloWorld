@@ -1,0 +1,45 @@
+<style>
+    .socialsecurityPage{background-color:#f1f1f1;height:925px;}
+    .socialsecurityPage .topBar{
+        width:100%;height:187px;position:relative;
+        background-image:-webkit-linear-gradient(-60deg, #37127c, #21286a);
+        background-image:linear-gradient(-60deg, #37127c, #21286a);}
+    .socialsecurityPage .topBar:after{content:'';display:block;width:100%;height:24px;background-color:rgba(0,0,0,.3);
+        position:absolute;bottom:0;left:0;}
+</style>
+<div class="socialsecurityPage" >
+    <div class="topBar" style="height:234px" ng-click="vm.toChart1()">
+        <ng-echarts class="echarts col" ec-config="vm.barConfig" ec-option="vm.barOption"
+                    style="position:static;height:234px;width:100%;"></ng-echarts>
+    </div>
+    <sc-layout title="vm.title11" title2="vm.title2" color="vm.color1"
+               subtitle1="vm.subtitle11" subtitle2="vm.subtitle12" subtitle3="vm.subtitle13"
+               data1="vm.data11" data2="vm.data12" data3="vm.data13"
+               unit1="vm.unit11" unit2="vm.unit12" unit3="vm.unit13"
+               url1="vm.url11" url2="vm.url12" url3="vm.url13"
+               param1="vm.params11" param2="vm.params12" param3="vm.params13"></sc-layout>
+    <sc-layout title="vm.title12" title2="vm.title2" color="vm.color2"
+               subtitle1="vm.subtitle11" subtitle2="vm.subtitle12" subtitle3="vm.subtitle23"
+               data1="vm.data21" data2="vm.data22" data3="vm.data23"
+               unit1="vm.unit11" unit2="vm.unit12" unit3="vm.unit23"
+               url1="vm.url21" url2="vm.url22" url3="vm.url23"
+               param1="vm.params21" param2="vm.params22" param3="vm.params23"></sc-layout>
+    <sc-layout title="vm.title13" title2="vm.title2" color="vm.color3"
+               subtitle1="vm.subtitle11" subtitle2="vm.subtitle12" subtitle3="vm.subtitle13"
+               data1="vm.data31" data2="vm.data32" data3="vm.data33"
+               unit1="vm.unit11" unit2="vm.unit12" unit3="vm.unit33"
+               url1="vm.url31" url2="vm.url32" url3="vm.url33"
+               param1="vm.params31" param2="vm.params32" param3="vm.params33"></sc-layout>
+    <sc-layout title="vm.title14" title2="vm.title2" color="vm.color4"
+               subtitle1="vm.subtitle11" subtitle2="vm.subtitle12" subtitle3="vm.subtitle13"
+               data1="vm.data41" data2="vm.data42" data3="vm.data43"
+               unit1="vm.unit11" unit2="vm.unit12" unit3="vm.unit43"
+               url1="vm.url41" url2="vm.url42" url3="vm.url43"
+               param1="vm.params41" param2="vm.params42" param3="vm.params43"></sc-layout>
+    <sc-layout title="vm.title15" title2="vm.title2" color="vm.color5"
+               subtitle1="vm.subtitle11" subtitle2="vm.subtitle12" subtitle3="vm.subtitle13"
+               data1="vm.data51" data2="vm.data52" data3="vm.data53"
+               unit1="vm.unit11" unit2="vm.unit12" unit3="vm.unit53"
+               url1="vm.url51" url2="vm.url52" url3="vm.url53"
+               param1="vm.params51" param2="vm.params52" param3="vm.params53"></sc-layout>
+</div>
