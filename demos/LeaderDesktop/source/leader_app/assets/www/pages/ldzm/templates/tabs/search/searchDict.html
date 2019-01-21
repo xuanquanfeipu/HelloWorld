@@ -1,0 +1,45 @@
+<div class="bar bar-header bar-positive detail-header">
+    <a class="button button-clear" ng-click="vm.goBack()"><img src="../../images/universal_btn_icon_back.png"/></a>
+    <h1 class="title">指标字典</h1>
+</div>
+<ion-content class="has-header">
+    <div class="list">
+
+        <div ng-repeat="capital in vm.indicatorList track by $index">
+            <div class="item item-divider" id="capital_{{$index}}">
+                {{capital.capitalName}}
+            </div>
+
+            <a class="item" href="javascript:;" ng-repeat="item in capital.data track by $index" ng-click="vm.gotoSearchResult(item)">
+                {{item}}
+            </a>
+        </div>
+
+    </div>
+</ion-content>
+<div class="rightIndexList" style="display: none">
+    <ul>
+        <li ng-repeat="capital in vm.capitalIndexList track by $index" ng-click="vm.gotoCapital($event,$index,item)">{{capital}}</li>
+    </ul>
+</div>
+<style>
+    .rightIndexList{
+        width:25px;
+        text-align:center;
+        position:absolute;
+        right:8px;
+        top:50%;
+        //margin:2px 0;
+    }
+    .rightIndexList li{
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+        color:#333;
+    }
+    .rightIndexList li.active{
+        color: #fff;
+        background: #2365D9;
+        border-radius: 25px;
+    }
+</style>
