@@ -1,0 +1,149 @@
+<style>
+    /*.backdrop{top:44px;}*/
+    /*.modal-backdrop, .modal-backdrop-bg{top:44px;}*/
+    /*.view{top:44px;}*/
+    .nav-item-my-li{float:left;}
+    .nav-item-my{width:90px;height:100%;height: 45px;text-align: center;font-size:14px;}
+    .nav-item-my div{height: 100%;padding: 12px 0;width:62px;margin:0 14px;}
+    .nav-item-my .active{border-bottom:4px solid #2863DB;}
+    .scroll-bar{display:none;}
+    .platform-android .popover-backdrop.active{
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+    /*.modal-backdrop{top:44px;}*/
+    /*.modal-backdrop, .modal-backdrop-bg{top:44px;}*/
+    /*.backdrop{top:44px;}*/
+    /*.click-block-hide{height:44px;-webkit-transform:inherit;transform: inherit;}*/
+    .modal .bar{background:none;padding-top:44px;}
+    .modal .scroll-content{padding-top:44px;}
+    .modal{background:none;}
+    /*.modal{background:none;}*/
+    /*.modal-wrapper ion-modal-view{padding-top:44px;}*/
+    .modal-backdrop{padding-top:44px;}
+    .custom-menu div{text-align:center;}
+    .custom-menu>div{height:98px;border-bottom:solid 1px #dcdcdc;}
+    .custom-menu>div:nth-child(1){border-right:solid 1px #dcdcdc;}
+    .custom-menu>div:nth-child(3){border-right:solid 1px #dcdcdc;}
+    .custom-menu>div:nth-child(5){border-right:solid 1px #dcdcdc;}
+    .custom-menu>div:nth-child(7){border-right:solid 1px #dcdcdc;}
+    .custom-menu>div:nth-child(9){border-right:solid 1px #dcdcdc;}
+    .custom-menu>div>div:nth-child(1){margin-top:18px;}
+    .custom-menu>div>div:nth-child(2){margin-top:9px;font-size:16px;color:#2863db;}
+
+    .custom-menu2 div{text-align:center;}
+    .custom-menu2>div{height:98px;padding:2px;}
+    .custom-menu2>div>div{border-radius:10px;background-color:#DCE2ED;height:96px;}
+    .custom-menu2>div>div:hover {
+        transform:scale(1.02);
+        -webkit-transform:scale(1.02);
+        -moz-transform:scale(1.02);
+        -o-transform:scale(1.02);
+        -ms-transform:scale(1.02);
+        -moz-box-shadow: 5px 5px 5px #888888; /* 老的 Firefox */
+        box-shadow: 5px 5px 5px #888888;
+    }
+    .custom-menu2>div>div>div:nth-child(1){text-align: right;}
+    .custom-menu2>div>div>div:nth-child(1)>img{width:20px;height:20px;margin:4px 4px 0 0;}
+    .custom-menu2>div>div>div:nth-child(2){margin-top:-9px;height:34px;}
+    .custom-menu2>div>div>div:nth-child(3){margin-top:9px;font-size:16px;color:#2863db;}
+
+    .style1{width:36px;height:36px;margin:0 0 0 0;float:right}
+    .style2{margin-top:50px;height:34px;}
+    .style3{margin-top:9px;font-size:16px;color:#2863db;}
+</style>
+<ion-header-bar class="bar-positive" style="background-color:#191e4f;padding:0;border-bottom:none;">
+    <ion-scroll scrollbar-x="false" scrollbar-y="false" direction="x" delegate-handle="itemScroll" style="width:90%;">
+        <div id="topNavBar" class="row" style="width:902px;padding:0;" ng-style="vm.scrollWidth">
+            <ul id="menu" class="slide-tab nav-item-my-firstli">
+                <li class="nav-item-my-li" ng-repeat="topic in vm.menuTopics">
+                    <!--({ref:topic.ref,from:1})-->
+                    <!--ui-sref-opt="{reload:true}"-->
+                    <div ng-if="topic.isSelected" class="nav-item-my" ui-sref=".{{topic.ref}}" ng-click="vm.itemClick('{{topic.TOPICURL}}')">
+                        <!--<div ng-class="aaa" id="topicid_{{topic.TOPICURL}}" ng-if="topic.TOPICURL=='gdzctzfx'" style="width:90px;margin:0;">{{topic.title}}</div>-->
+                        <div ng-class="topic.class" id="topicid_{{topic.TOPICURL}}" >{{topic.title}}</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </ion-scroll>
+    <div id="openDiv" style="float:right;width:10%;" ng-click="vm.openModal()"><img src="../../images/tab_btn_icon_more01.png" style="height:16px;width:16px;margin:16px 9px;"/></div>
+</ion-header-bar>
+<ion-view view-title="分类" hide-nav-bar="true">
+	<ion-content>
+        <div ui-view=""></div>
+	</ion-content>
+    <script id="templates/modal.html" type="text/ng-template">
+        <ion-modal-view>
+            <ion-header-bar class="bar bar-header">
+                <div class="row">
+                    <div style="float:left;height:14px;width:5px;background-color:#3863DB;margin-top:10px;"></div>
+                    <div class="col-50" style="margin:7px 0 0 10px;">
+                        <span style="font-size:16px;color:#333333;">切换专题</span>
+                    </div>
+                    <div class="col-20 col-offset-25">
+                        <img id="menuCustem" src="../../images/button.png" ng-click="vm.custem()" style="width:67px;height:27px;margin-top:3px;"/>
+                        <img id="menuComplete" src="../../images/button01.png" ng-click="vm.ok()" style="width:67px;height:27px;margin-top:3px;display:none;"/>
+                        <!--<button id="menuCustem" class="button button-clear button-primary" ng-click="vm.custem()" style="float:right;color:#ed8335;">自定义</button>-->
+                        <!--<button id="menuComplete" class="button button-clear button-primary" ng-click="vm.ok()" style="float:right;color:#ed8335;display:none;">完成</button>-->
+                    </div>
+                    <div id="closeDiv" style="float:right;width:10%;position: absolute;top: 0;right: 0;" ng-click="vm.closeModal()"><img src="../../images/tab_btn_icon_more.png" style="height:16px;width:16px;margin:16px 9px;"/></div>
+                </div>
+            </ion-header-bar>
+            <ion-content class="padding" style="background-color: #ededed;">
+                <div id="div1">
+                    <div class="row-wrap row custom-menu">
+                        <div ng-repeat="topic in vm.topics" class="col-50">
+                            <div ng-if="topic.isSelected"><img src="{{topic.img}}_on.png" style="width:34px;height:34px;"/></div>
+                            <div ng-if="!topic.isSelected"><img src="{{topic.img}}_off.png" style="width:34px;height:34px;"/></div>
+                            <div ng-if="topic.isSelected">{{topic.title}}</div>
+                            <div ng-if="!topic.isSelected" style="color:#999999;">{{topic.title}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="div2" style="display:none;">
+                    <div class="row-wrap row custom-menu2">
+                        <div ng-repeat="topic in vm.topics" class="col-50">
+                            <div ng-if="topic.isSelected" ng-click="vm.selectMenu(topic.TOPICURL)">
+                                <!--<div>
+                                    <img src="../../images/define_icon_select_on.png"/>
+                                    <div style="display:none;">{{topic.TOPICID}}</div>
+                                    <div style="display:none;">{{topic.ref}}</div>
+                                </div>-->
+                           <div ng-if="topic.unlock">
+                                <img  src="../../images/define_icon_select_on.png"/>
+                                <div  style="display:none;">{{topic.TOPICID}}</div>
+                                <div  style="display:none;">{{topic.ref}}</div>
+                            </div>
+                            <div ng-if="!topic.unlock">
+                                <div>
+                                    <div style="height:36px"><img class="style1"  src="../../images/icon_lock.png"/></div>
+                                    <div class="style2" style="display:none;">{{topic.TOPICID}}</div>
+                                    <div class="style3" style="display:none;">{{topic.ref}}</div>
+                                </div>
+                            </div>
+                                <div><img src="{{topic.img}}_on.png" style="width:34px;height:34px;"/></div>
+                                <div>{{topic.title}}</div>
+                            </div>
+                            <div ng-if="!topic.isSelected" ng-click="vm.selectMenu(topic.TOPICURL)" style="background-color:#e2e2e2;">
+                                <div ng-if="topic.unlock">
+                                    <img  src="../../images/define_icon_select_default.png"/>
+                                    <div  style="display:none;">{{topic.TOPICID}}</div>
+                                    <div  style="display:none;">{{topic.ref}}</div>
+                                </div>
+                                <div ng-if="!topic.unlock">
+                                    <div>
+                                        <div style="height:36px"><img class="style1"  src="../../images/icon_lock.png"/></div>
+                                        <div class="style2" style="display:none;">{{topic.TOPICID}}</div>
+                                        <div class="style3" style="display:none;">{{topic.ref}}</div>
+                                    </div>
+                                </div>
+                                <div><img src="{{topic.img}}_off.png" style="width:34px;height:34px;"/></div>
+                                <div style="color:#666666">{{topic.title}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ion-content>
+        </ion-modal-view>
+    </script>
+</ion-view>
