@@ -1,0 +1,47 @@
+<div class="bar bar-header bar-positive detail-header">
+    <a class="button button-clear" ng-click="vm.goBack()"><img src="../../images/universal_btn_icon_back.png"/></a>
+    <h1 class="title">{{vm.company.name}}</h1>
+</div>
+<ion-content class="has-header company-detail">
+    <div class="row">
+        <div class="col title"><span class="round" ng-style="{'color':vm.company.color}">●</span><span style="margin-left:15px">{{vm.company.name}}能力值</span></div>
+    </div>
+    <div class="row">
+        <div class="col subtitle" style="padding: 10px 0 40px 0;text-align: center;font-size:18px;color:#666">
+            总能力：{{vm.company.value}}
+        </div>
+    </div>
+    <div class="row">
+    <ng-echarts class="echarts col" ec-config="vm.radarConfig" ec-option="vm.radarOption" ng-style="{'height':vm.chartHeight}">
+    </div>
+    <div class="row" style="padding:10px 20px;">
+        <div class="col" style="border-top:1px solid #eee;text-align: left;padding: 20px 10px;">{{vm.company.categoryName}}企业聚类能力值</div>
+    </div>
+    <div class="row">
+        <div class="col" ng-repeat="item in vm.company.categoryData track by $index">{{item.value}}<br/>{{item.name}}</div>
+    </div>
+</ion-content>
+<style>
+    .company-detail{
+        color:#666;
+        font-size:15px;
+    }
+    .company-detail .title{
+        padding: 40px 0 10px 0;
+        font-size:18px;
+    }
+    .company-detail .title .round{
+        font-size:20px;
+    }
+    .company-detail .subtitle{
+        padding: 40px 0 10px 0;
+        font-size:16px;
+    }
+    .company-detail .echarts{
+        position:static;
+        padding:0;
+    }
+    .company-detail .col{
+        text-align: center;
+    }
+</style>
