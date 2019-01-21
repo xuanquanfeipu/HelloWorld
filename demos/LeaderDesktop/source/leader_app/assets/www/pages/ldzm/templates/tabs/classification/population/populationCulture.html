@@ -1,0 +1,48 @@
+
+<ion-header-bar align-title="center">
+    <h1 class="title"style="font-size:20px;height:48px;text-align:center;color:#fff;vertical-align:middle;background:#37127c;margin:0">
+        <a ng-click="vm.goBack()" class="back-style"><img width="24" height="24" src="../../images/universal_btn_icon_back.png"/></a>
+        人口文化排行
+    </h1>
+</ion-header-bar>
+
+<ion-content class="">
+    <div>
+        <sc-layoutpie piedata="vm.piedata"  unit="vm.unit" currentyear = "vm.currentyear"
+                      type="vm.type"></sc-layoutpie>
+    </div>
+    <div class="row" style="padding: 0; margin: 0;">
+        <div class="col rankingCultrue">
+            <ul class="rankingList">
+                <li ng-repeat="ranking in vm.topData track by $index">
+                    <a href="#/population-populationCultureDetails/{{ranking.id}}">
+                        <div class="rankCul_txt">{{ranking.name}}</div>
+                        <div class="rankCul_hui">
+                            <div class="rankCul_per" ng-style="{ 'width' : ranking.Bl + '%' }"></div>
+                        </div>
+                        <div class="rankCul_data">{{ranking.num | currency:'':2}}万人
+                            <span class="po_btnArrows"></span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</ion-content>
+
+<style>
+    a{text-decoration: none;}
+    .title{font-size:20px;height:48px;text-align:center;color:#fff;vertical-align:middle;margin:0!important;
+        background: -webkit-linear-gradient( left,#08145c,#37127c);}
+    .rankingCultrue{ width: 96%; height: 256px; padding: 20px 10px 0 10px;}
+    .rankingList li .rankCul_txt{ font-size: 14px; color: #666; line-height: 20px; margin-bottom: 8px;}
+    .rankCul_hui{ background: #eee; height: 3px; width: 65%; border-radius:3px; -webkit-border-radius:3px; position: relative;}
+    .rankingList li:nth-of-type(1) .rankCul_hui .rankCul_per{ background: #0054d3;}
+    .rankingList li:nth-of-type(2) .rankCul_hui .rankCul_per{ background: #5d2fdc;}
+    .rankingList li:nth-of-type(3) .rankCul_hui .rankCul_per{ background: #9e1ae3;}
+    .rankingList li:nth-of-type(4) .rankCul_hui .rankCul_per{ background: #ffcf10;}
+    .rankCul_per{ height: 5px;border-radius:5px; -webkit-border-radius:5px; position: absolute; top: -1px; left: 0;}
+    .rankingList li{ position: relative; margin-bottom: 20px; height: 40px;}
+    .rankCul_data{ position: absolute; right: 5%; bottom:0; font-size: 16px; color: #333;}
+    .po_btnArrows{ position:absolute; right:-20px; top:4px;width:14px;height:14px;background:url("../../images/universal_btn_icon_more.png") no-repeat center;}
+</style>
