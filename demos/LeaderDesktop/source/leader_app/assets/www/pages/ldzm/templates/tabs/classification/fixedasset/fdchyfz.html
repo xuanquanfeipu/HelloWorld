@@ -1,0 +1,28 @@
+<style>
+    .round{width:7px;height:7px;display: inline-block;font-size:20px;line-heigth:16px;text-align:center;color:#447df3;text-decoration:none}
+</style>
+<ion-header-bar align-title="center">
+    <h1 class="title" style="font-size:20px;height:48px;text-align:center;color:#fff;vertical-align:middle;background:#37127c;margin:0">
+        <a ng-click="goback()" class="back-style"><img width="24" height="24" src="../../images/universal_btn_icon_back.png"/></a>
+        房地产行业发展情况
+    </h1>
+</ion-header-bar>
+
+<ion-content class="" >
+    <div class="row" style="margin-top:48px">
+        <div class="" style="text-align:left;font-size:15px;color:#666;width:49%">
+            <span class="round" style="margin-left:20%">●</span><span style="margin-left:15px">销售面积</span>
+            <div  style="margin-left:20%;margin-top:10px;color:#333"><span style="font-size:26px" id="showLabel1">{{vm.showLabel1 | currency:' ':2 }}</span><span style="font-size:17px">㎡</span></div>
+        </div>
+        <div style="border-left: 1px solid #c9d4ea;width:2%;height:45px;margin-left:2%;margin-right:2%;margin-top:5px">
+        </div>
+        <div class="" style="text-align:left;font-size:15px;color:#666;width:49%">
+            <span class="round" style="margin-left:8%;color:#c47eea">●</span><span style="margin-left:15px">销售额</span>
+            <div  style="margin-left:8%;margin-top:10px;color:#333"><span style="font-size:26px" id="showLabel3">{{vm.showLabel3 | currency:' ':2 }}</span><span style="font-size:17px">亿元</span></div>
+        </div>
+    </div>
+
+    <div>
+        <ng-echarts class="echarts col" ng-style="{ 'width' : linewidth, 'height' : lineheight }" ec-config="lineConfig" ec-option="lineOption"></ng-echarts>
+    </div>
+</ion-content>
