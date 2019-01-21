@@ -1,0 +1,53 @@
+<div class="login-purebg">
+    <div title="快捷登录页面" >
+        <div class="main-content">
+            <div class="">
+            </div>
+            <div class="" >
+                <center>
+                    <img src="../../images/img_user.png" class="img_logo" ng-style="logoStyle">
+                    <br>
+                    <span class="logo_title" ng-bind="number"></span>
+                </center>
+                <div class="" style="padding-top:15px;height:20px;line-height:20px">
+                    <ul class="error_message">
+                        <li>
+                            <span>{{msgContent}}</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div ng-hide="hideGesture">
+                    <canvas id="canvasLogin"></canvas>
+                </div>
+
+                <div ng-style="fpStyle" ng-hide="hideFpIcon">
+                    <center>
+                        <img src="../../images/icon_fingerprint.png" ng-click="fpTouched()">
+                        <br>
+                        <div style="padding-top:18px">
+                        <span style="color:#c6c7ff;font-size:13px;margin-top:18px" ng-hide="hideFpTip">
+                        请长按指纹键进行解锁
+                        </span>
+                        </div>
+                    </center>
+                </div>
+
+            </div>
+        </div>
+
+        <div style="position:fixed;bottom:0;margin-bottom:20px;width:100%;border-width:0px">
+            <div style="float:left;width:50%;border-color:#c6c7ff;border-style:solid;border-width:0px 1px 0px 0px;text-align:right" ng-hide="hideForgetGesture">
+                <span class="logo_title" style="margin-right:20px;" ng-click="forgetGesture()">
+                    忘记手势?
+                </span>
+            </div>
+            <div ng-style="switchAccountDivCss">
+                <span class="logo_title" ng-style="switchAccountSpanCss" ng-click="switchAccount()">
+                    切换账号
+                </span>
+            </div>
+        </div>
+    </div>
+
+</div>
