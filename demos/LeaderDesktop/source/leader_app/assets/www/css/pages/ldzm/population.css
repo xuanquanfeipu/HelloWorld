@@ -1,0 +1,72 @@
+
+
+/*人口 - 一级页面*/
+.po_top{ width: 100%; height: 234px; background: -moz-linear-gradient( -60deg,#21286a,#37127c);
+background: -webkit-linear-gradient( -60deg,#21286a,#37127c);  }
+#po_chart1{ padding: 0; margin: 0;}
+
+.po_content{ width:100%; height: auto;  background: #f1f1f1; padding: 10px 0;}
+.comm{margin: 0 auto 12px; background: #fff;
+    /*border-radius: 4px; -webkit-border-radius: 4px;*/
+    /*box-shadow: 0px 0px 10px rgba(147,146,170,0.2); -webkit-box-shadow:0px 0px 10px rgba(147,146,170,0.2);*/
+    }
+.po_total{ width: 95%; height: 99px;}
+.po_development,.po_distribute{ width: 95%; height: 120px;}
+.po_birth{width: 95%; height: 176px;}
+.total_wrap{ padding: 30px 0;}
+.po_total_l{padding: 0; height: auto;}
+.po_total_m{height: 40px;}
+.po_total_l .icon{ width: 43px; height: 43px; background: url("../../../images/subject_icon_population.png") no-repeat center; background-size: 100%;  margin: 0px 10px 0 10px;}
+.po_total_m h3{ line-height: 40px; color: #333; font-size: 20px; margin-bottom: 5px!important; font-weight: normal!important; }
+.color9{ font-size: 12px;}
+.po_total_m p{ font-size: 12px; color: #999; margin-bottom: 0!important;}
+.po_total_r{ height: 40px; position: relative; margin-right: 24px;}
+.po_total_r p{ display: inline-block; line-height: 40px; color: #333; font-size: 20px;}
+.po_total_r .po_btnArrows{position:absolute;top:14px; right:-14px;width:14px;height:14px;background:url("../../../images/universal_btn_icon_more.png") no-repeat center;}
+
+.po_title{ padding-top: 15px; position: relative; }
+.po_title p{ font-size: 16px; color: #666666; line-height: 16px; padding-left: 15px;}
+.po_development .title1 p{ border-left: 5px solid #00b1a1;}
+.po_distribute .title2 p{ border-left: 5px solid #54bcec;}
+.po_birth .title3 p{ border-left: 5px solid #438ff5;}
+.po_title .po_btnArrows{position:absolute;top:16px; right:10px;width:14px;height:14px;background:url("../../../images/universal_btn_icon_more.png") no-repeat center;}
+
+.devel_l,.devel_r,.distr_l,.distr_r{ margin: 10px 0; height: auto;}
+.devel_l .icon1{ width: 43px; height: 43px; background: url("../../../images/subject_icon_city.png") no-repeat center; background-size: 100%; margin: 0 10px 0 10px; }
+.devel_r .icon2{ width: 43px; height: 43px; background: url("../../../images/subject_icon_country.png") no-repeat center; background-size: 100%; margin: 0px 10px 0 10px;}
+.devel_r,.distr_r{ margin-top: 10px!important; border-left: 1px solid #e5e5e5;}
+.distr_l .icon3{ width: 43px; height: 43px; background: url("../../../images/subject_icon_man.png") no-repeat center; background-size: 100%; margin: 0px 10px 0 10px;}
+.distr_r .icon4{ width: 43px; height: 43px; background: url("../../../images/subject_icon_female.png") no-repeat center; background-size: 100%; margin: 0px 10px 0 10px;}
+.po_text h3{color: #333333; font-size: 20px; margin-bottom: 5px!important; font-weight: normal!important; }
+.po_text p{ font-size: 16px; color: #666666; margin-bottom: 0!important;}
+
+.po_ranking{ width: 95%; height: 256px;}
+.po_unit{ color: #999; font-size: 12px; margin-right: 20px; float: right;}
+.po_textList{ text-align: center; line-height: 20px; font-size: 16px; color: #666;}
+.rankingPo{ padding: 0 10px; margin-top:20px; border-bottom: 1px solid #dcdcdc; }
+.rankingPo li:nth-of-type(1){ background: url("../../../images/subject_icon_1.png") no-repeat 0 7px;padding-left: 40px;}
+.rankingPo li:nth-of-type(2){ background: url("../../../images/subject_icon_2.png") no-repeat 0 7px; padding-left: 40px;}
+.rankingPo li:nth-of-type(3){ background: url("../../../images/subject_icon_3.png") no-repeat 0 7px; padding-left: 40px;}
+.rankingPo li .rankPo_txt{ font-size: 14px; color: #666; line-height: 20px; margin-bottom: 8px;}
+.rankPo_hui{ background: #eee; height: 3px; width: 70%; border-radius:3px; -webkit-border-radius:3px; position: relative;}
+.rankingPo li:nth-of-type(1) .rankPo_hui .rankPo_per{ background: #438ff5;}
+.rankingPo li:nth-of-type(2) .rankPo_hui .rankPo_per{ background: #bb65c8;}
+.rankingPo li:nth-of-type(3) .rankPo_hui .rankPo_per{ background: #6ead4b;}
+.rankPo_per{ height: 5px;border-radius:5px; -webkit-border-radius:5px; position: absolute; top: -1px; left: 0;}
+.rankingPo li{ position: relative; margin-bottom: 15px; height: 40px;}
+.rankPo_data{ position: absolute; right: 10px; bottom:0; font-size: 16px; color: #333;}
+.lookMore{line-height:37px;width:100%;text-align:center;font-size:14px;color:#666; position: relative;}
+.lookMore .po_btnArrows{ position:absolute; right:35%; top:12px;width:14px;height:14px;background:url("../../../images/universal_btn_icon_more.png") no-repeat center;}
+
+
+
+
+
+
+
+
+
+
+
+
+
