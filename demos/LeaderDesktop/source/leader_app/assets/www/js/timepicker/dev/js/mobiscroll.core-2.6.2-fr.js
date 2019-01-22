@@ -1,4 +1,4 @@
-(function ($) {
+    (function ($) {
     $.mobiscroll.i18n.fr = $.extend($.mobiscroll.i18n.fr, {
         // Core
         setText: 'Terminé',
