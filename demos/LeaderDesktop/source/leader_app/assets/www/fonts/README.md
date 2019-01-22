@@ -1,4 +1,4 @@
-ionicons.eot
-ionicons.svg
-ionicons.ttf
+ionicons.eot  
+ionicons.svg  
+ionicons.ttf  
 ionicons.woff
