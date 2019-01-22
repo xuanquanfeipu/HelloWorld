@@ -1,0 +1,227 @@
+.line-bar-f{
+	background-color: #e9e8fc;
+	border-radius: 5px;
+	height: 4px;
+	//opacity: 0.2;
+}
+.line-bar-fwzs{
+  background-color: #526fce;
+  border-radius: 5px;
+  height: 8px;
+  width: 44.3696%;
+  margin-top:-6px;
+}
+.line-bar-hjzs{
+  background-color: #64b30f;
+  border-radius: 5px;
+  height: 8px;
+  width: 44.3696%;
+  margin-top:-6px;
+}
+.widht100{
+	width:100%
+}
+.zs-bar-div{
+	width:50%;
+	float:left;
+	padding-left:15px;
+	padding-right:15px
+}
+.text-center-style{
+	text-align:center
+}
+
+.zs-bar-div-no-pad{
+	width:50%;
+	float:left;
+	border-top: 1px solid #dbdbdb;
+}
+.zs-bar-div-no-pad-border-right{
+	width:50%;
+	float:left;
+	border-top: 1px solid #dbdbdb;
+	border-right: 1px solid #dbdbdb;
+}
+.btn-grey{
+	background:#DFDFDF
+}
+.clear-f{
+	clear:both
+}
+.font-type1{
+   font-size: 18px;
+	color:#515a64
+}
+
+.icon-padding{
+    padding-top:29px;
+	padding-left:11px;
+	padding-right:12px;
+}
+.nav-class{
+	background:url(../../../img/app/t_bg.png) repeat-x !important;
+	color:#fff !important;
+}
+
+.bar-home-on {
+	background:url(../../../images/nav_icon_home_on.png) no-repeat center;
+	color:#526fce;
+}
+.bar-home {
+	background:url(../../../images/nav_icon_home.png) no-repeat center;
+}
+.bar-industry {
+	background:url(../../../images/nav_icon_subject.png) no-repeat center;
+}
+.bar-industry-on {
+	background:url(../../../images/nav_icon_subject_on.png) no-repeat center;
+	color:#526fce;
+}
+.bar-life {
+	background:url(../../../images/nav_icon_hunan.png) no-repeat center;
+}
+.bar-life-on {
+	background:url(../../../images/nav_icon_hunan_on.png) no-repeat center;
+	color:#526fce;
+}
+.bar-business {
+	background:url(../../../images/nav_icon_contrast.png) no-repeat center;
+}
+.bar-business-on {
+	background:url(../../../images/nav_icon_contrast_on.png) no-repeat center;
+	color:#526fce;
+}
+.select-button{
+	//width:45%;
+	text-align:left;
+	background-color:#e9effb;
+	color:#333333;
+}
+.sqselect-button{
+	width:32.85%;
+	text-align:left;
+	background-color:#e9effb;
+	color:#333333;
+}
+/*下拉框自定义样式*/
+.popover{
+	margin-top:2px;
+}
+.popover-backdrop.active {
+	background-color: transparent;
+}
+.popover-backdrop .active{
+	width: 100%;
+}
+.platform-ios .popover-arrow{
+	display: none;
+}
+.platform-ios .popover{
+	border-radius: 0;
+}
+.platform-ios .popover .scroll-content {
+	margin: 0 0;
+	border-radius: 0;
+}
+.item-radio input:checked + .radio-content .item-content {
+	background: #fff;
+	color: #2b63db;
+}
+.item-radio input:checked + .radio-content .radio-icon {
+	color: #2b63db;
+	background: url(../../../images/icon-on1.png) no-repeat center;
+}
+.button {
+	min-height: 42px;
+}
+.bar.bar-positive{
+	border-bottom:3px solid #9badf5;
+}
+.nodata {
+	display:none;
+}
+.nodata1 {
+	display:none;
+}
+.select-icon{
+	/*background:url(../../../img/png/512/ios7-checkmark-empty.png) no-repeat center;*/
+	-webkit-background-size:30px 38px;
+	color: #2b63db;
+	background-size:30px 38px;
+	margin-right: 15px;
+}
+.alertFont{
+	font-size:16px;
+	text-align: center;
+}
+.tabs-top.tabs-striped .tab-item.tab-item-active{
+	border-width: 0px 0px 3px 0px !important;
+}
+.tabs-top.tabs-striped .tab-item{
+	opacity: 1;
+	background-color: #e9ecf0;
+	color: #333333;
+	font-size:16px;
+}
+.tabs-top.tabs-striped .tab-item:active{
+	background-color: #d1d4d8;
+}
+ion-tabs.tabs-striped.tabs-color-active-positive .tab-item.tab-item-active {
+	/*opacity: 1;*/
+	background-color: #e9ecf0;
+	color: #2863db;
+}
+.tab-item{
+	opacity: 1;
+}
+.card, .list-inset {
+	border-radius: 8px;
+}
+.card{
+	box-shadow: 0 1px 3px #ccc;
+}
+.card .item:first-child, .list-inset .item:first-child, .padding > .list .item:first-child {
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+}
+.card .item:last-child, .list-inset .item:last-child, .padding > .list .item:last-child {
+	border-bottom-right-radius: 8px;
+	border-bottom-left-radius: 8px;
+}
+.card .item.title{
+	padding-top:16px;
+	padding-bottom: 10px;
+	color: #57555e;
+	font-size: 16px;
+}
+.card .item.title .subtitle{
+	color: #999;
+	font-size: 14px;
+	margin-left: 16px;
+}
+.card, .list-inset{
+	margin: 15px 10px;
+}
+.bar.bar-positive {
+	border-bottom: none;
+}
+.back-style{
+	position: absolute;
+	left:3px;
+	top:6px
+}
+.detail-header.bar-header{
+	background:#37127c;
+	color:#fff;
+	height:48px;
+}
+.detail-header.bar-header .button,.bar-header .title{
+	line-height:48px;
+}
+.detail-header.bar-header .title{
+	height:48px;
+}
+.detail-header a img{
+	width:24px;
+	height:24px;
+}
