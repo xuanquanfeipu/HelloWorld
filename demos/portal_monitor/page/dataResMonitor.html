@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>资源监控</title>
+    <link rel="stylesheet" href="../../ipeg-common/css/easyui_modify.css" />
+    <link rel="stylesheet" href="../../ipeg-common/css/icon.css" />
+    <link rel="stylesheet" href="../../ipeg-common/css/style.css" />
+    <link rel="stylesheet" href="../../ipeg-common/css/demo.css" />
+    <link rel="stylesheet" href="../../ipeg-common/css/temp.css" />
+    <link rel="stylesheet" href="../../ipeg-common/css/common.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/dataResMonitor.css" />
+    <script type="text/javascript" src="../../ipeg-common/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../ipeg-common/js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../ipeg-common/js/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../ipeg-common/js/util.js"></script>
+    <script type="text/javascript" src="../../ipeg-common/js/easyui-custom.js"></script>
+    <script type="text/javascript" src="../../ipeg-common/js/echarts.min.js"></script>
+    <script type="text/javascript" src="../js/underscore.js"></script>
+    <script type="text/javascript" src="../js/moment.js"></script>
+    <script type="text/javascript" src="../js/dataStatistics.js"></script>
+    <script type="text/javascript" src="../js/deptDataChangedStatistics.js"></script>
+    <script type="text/javascript" src="../js/dataProviderDeptStatistics.js"></script>
+    <script type="text/javascript" src="../js/dataSubDeptStatistics.js"></script>
+    <script type="text/javascript" src="../js/resQueryProviderDeptStatistics.js"></script>
+    <script type="text/javascript" src="../js/resQuerySubDeptStatistics.js"></script>
+    <script type="text/javascript" src="../js/dataResMonitor.js"></script>
+</head>
+
+<body class="common_body">
+    <div style="width:90%;margin:auto;">
+        <div class="page_wrapper" style="">
+            <div class="chart_wrapper" style="background:transparent;">
+                <div id="frontNum" class="chart" style="width:24%;background:#fff;margin-right: 1%;">
+                    <h1 class="title">前置机数量统计</h1>
+                    <div class="image-wrapper">
+                        <div class="item img-item"></div>
+                        <div class="item" style="font-size:24px;color:#596274;"><span id="frontNumVal"></span></div>
+                        <div class="item" style="color:#8B8B8B;">已接入共享交互平台的前置机数量</div>
+                    </div>
+                </div>
+                <div id="deptDataChangedStatistic" class="chart" style="width:75%;background:#fff;"></div>
+                <div class="btn-group" style="position:absolute;right: 300px;" role="group" aria-label="...">
+                    <!-- <span style="float:left;line-height: 28px;">TOP</span>
+                <input class="input_top" style="float:left;width: 20px;margin: 0 20px 0 5px;line-height: 22px;" type="text"> -->
+                    <button type="button" class="btn btn-default active" name="oneday">近24小时</button>
+                    <button type="button" class="btn btn-default" name="threeday">近三天</button>
+                    <button type="button" class="btn btn-default" name="oneweek">近一周</button>
+                    <button type="button" class="btn btn-default" name="onemonth">近一月</button>
+                </div>
+                <div class="btn-group" style="position:absolute;" role="group" aria-label="...">
+                    <button type="button" class="btn btn-default active" name="top5">TOP5</button>
+                    <button type="button" class="btn btn-default" name="top10">TOP10</button>
+                </div>
+                <div class="btn-group btn-group-detail" style="position:absolute;" role="group" aria-label="...">
+                    <button type="button" class="btn btn-default active" id="tableWrapper_deptDataChanged_detail">查看详情</button>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+            <div class="chart_wrapper" style="">
+                <div id="deptDataChangedLineChart" class="chart chart-line" style=""></div>
+                <div class="select_wrapper" style="top:50px;">
+                    <select id="deptName" class="easyui-combobox" name="deptName" style="" data-options="valueField:'id',textField:'text',editable:false"></select>
+                </div>
+                <div class="btn-group timeafter" style="position:absolute;right: 56%;top: 45px;" role="group" aria-label="...">
+                    <!-- <span style="float:left;line-height: 28px;">TOP</span>
+                <input class="input_top" style="float:left;width: 20px;margin: 0 20px 0 5px;line-height: 22px;" type="text"> -->
+                    <button type="button" class="btn btn-default active" name="threeday">近三天</button>
+                    <button type="button" class="btn btn-default" name="oneweek">近一周</button>
+                    <button type="button" class="btn btn-default" name="onemonth">近一月</button>
+                </div>
+                <div style="width: 45%;text-align:left;margin-right:2%;position: absolute;top: 50px;right: 116px;">
+                    <!-- 从 -->
+                    <span style="margin-left: 14px;"></span>
+                    <span>时间范围：</span>
+                    <span style="margin-right: 7px;"></span>
+                    <input id="data_update_view_startTime" class="easyui-datetimebox" style="width:40%;" editable="false" />
+                    <!-- 至 -->
+                    <span style="margin-left: 7px;"></span>
+                    <span>至</span>
+                    <span style="margin-right: 7px;"></span>
+                    <input id="data_update_view_endTime" class="easyui-datetimebox" style="width:40%;" editable="false" />
+                </div>
+                <div class="btn-group" style="position: absolute;right: 70px;">
+                    <button style="margin-left:20px;top: 10px;" type="button" name="" id="searchTotal" class="btn blueButton btn_w85 active"><span>查询</span>
+                    </button>
+                </div>
+            </div>
+            <div class="chart_wrapper" style="">
+                <div id="resSubPieChart" class="chart" style="float:left;"></div>
+                <div id="resSubBarChart" class="chart" style="float:right;"></div>
+                <div class="select_wrapper" style="">
+                    <select id="deptName1" class="easyui-combobox" name="deptName" style="" data-options="valueField:'id',textField:'text',editable:false"></select>
+                </div>
+                <div class="btn-group" style="position:absolute;" role="group" aria-label="...">
+                    <button type="button" class="btn btn-default active" name="top5">TOP5</button>
+                    <button type="button" class="btn btn-default" name="top10">TOP10</button>
+                </div>
+                <div class="btn-group btn-group-detail" style="position:absolute;" role="group" aria-label="...">
+                    <button type="button" class="btn btn-default active" id="tableWrapper_resSubStatis_detail">查看详情</button>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+            <div class="chart_wrapper" style="">
+                <div id="resQueryPieChart" class="chart" style="float:left;"></div>
+                <div id="resQueryBarChart" class="chart" style="float:right;"></div>
+                <div class="select_wrapper">
+                    <select id="deptName2" class="easyui-combobox" name="deptName2" style="" data-options="valueField:'id',textField:'text',editable:false"></select>
+                </div>
+                <div class="btn-group" style="position:absolute;" role="group" aria-label="...">
+                    <button type="button" class="btn btn-default active" name="top5">TOP5</button>
+                    <button type="button" class="btn btn-default" name="top10">TOP10</button>
+                </div>
+                <div class="btn-group btn-group-detail" style="position:absolute;" role="group" aria-label="...">
+                    <button type="button" class="btn btn-default active" id="tableWrapper_resQueryStatis_detail">查看详情</button>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+            <div class="tableWrapper" style="">
+                <div class="title" style="height: 50px;line-height: 50px;">
+                    <!-- 数据使用情况统计 -->
+                    <span style="font-weight:bold;font-size:18px">委办局数据统计</span>
+                </div>
+                <div style="margin-top: 14px;height: 20px;">
+                    <div class="" style="margin-left: 20px;width: 17%;float: left;">
+                        <span>部门名称:</span>
+                        <input class="textbox" tips="请输入部门名筛选" name="" id="deptSearch" />
+                    </div>
+                    <div style="width: 45%;float: left;text-align:left;margin-right:2%;">
+                        <!-- 从 -->
+                        <span style="margin-left: 14px;"></span>
+                        <span>时间范围：</span>
+                        <span style="margin-right: 7px;"></span>
+                        <input id="dataStatisStartTime" class="easyui-datebox" style="width:40%;" editable="false" />
+                        <!-- 至 -->
+                        <span style="margin-left: 7px;"></span>
+                        <span>至</span>
+                        <span style="margin-right: 7px;"></span>
+                        <input id="dataStatisEndTime" class="easyui-datebox" style="width:40%;" editable="false" />
+                    </div>
+                    <div class="btn-group">
+                        <button style="margin-left:20px;" type="button" name="" id="searchTotal1" class="btn blueButton btn_w85" grid="dataStatistics"><span>查询</span>
+                        </button>
+                        <button type="button" name="" id="searchReset" class="btn blueButton btn_w85"><span>重置</span>
+                        </button>
+                        <button type="button" name="" id="exportTotal_dataStatistics" class="btn blueButton btn_w85"><span>导出</span>
+                        </button>
+                    </div>
+                </div>
+                <div style="padding-top: 50px;height:75%;padding:20px">
+                    <table id="dataStatistics" style="margin-top:20px;overflow-y:auto;width:100%">
+                    </table>
+                </div>
+            </div> <!-- 委办局数据统计 tableWrapper end -->
+        </div> <!-- page-wrapper end -->
+        <div id="tableWrapper_deptDataChanged" class="tableWrapper tableWrapper_hide" style="">
+            <div class="title" style="height: 50px;line-height: 50px;position: relative;">
+                <!-- 数据使用情况统计 -->
+                <span style="font-weight:bold;font-size:18px">部门数据变化量统计详情</span>
+                <i class="fa fa-reply" style="position: absolute;right: 30px;top:15px;"></i>
+            </div>
+            <div style="margin-top: 14px;height: 20px;">
+                <div class="" style="margin-left: 20px;width: 17%;float: left;">
+                    <span>部门名称:</span>
+                    <input class="textbox" tips="请输入部门名筛选" name="" id="deptSearch_deptDataChanged" />
+                </div>
+                <div style="width: 45%;float: left;text-align:left;margin-right:2%;">
+                    <!-- 从 -->
+                    <span style="margin-left: 14px;"></span>
+                    <span>时间范围：</span>
+                    <span style="margin-right: 7px;"></span>
+                    <input id="data_update_view_startTime3" class="easyui-datetimebox" style="width:40%;" editable="false" />
+                    <!-- 至 -->
+                    <span style="margin-left: 7px;"></span>
+                    <span>至</span>
+                    <span style="margin-right: 7px;"></span>
+                    <input id="data_update_view_endTime3" class="easyui-datetimebox" style="width:40%;" editable="false" />
+                </div>
+                <div class="btn-group">
+                    <button style="margin-left:20px;" type="button" name="" id="searchTotal2" class="btn blueButton btn_w85"><span>查询</span>
+                    </button>
+                    <button type="button" name="" id="searchReset2" class="btn blueButton btn_w85"><span>重置</span>
+                    </button>
+                    <button type="button" name="" id="exportTotal2" class="btn blueButton btn_w85"><span>导出</span>
+                    </button>
+                </div>
+            </div>
+            <div style="padding-top: 50px;height:75%;padding:20px">
+                <table id="deptDataStatistics" style="margin-top:20px;overflow-y:auto;width:100%">
+                </table>
+            </div>
+        </div> <!-- tableWrapper end -->
+        <div id="tableWrapper_resSubStatis" class="tableWrapper tableWrapper_hide" style="">
+            <div class="title" style="width:98%;height: 50px;line-height: 55px;position: relative;">
+                <!-- 数据使用情况统计 -->
+                <span style="font-weight:bold;font-size:18px;">数据提供部门统计详情</span>
+                <span style="font-weight:bold;font-size:18px;position: absolute;left:51%;">数据订阅部门统计详情</span>
+                <i class="fa fa-reply" style="position: absolute;right: 30px;top:15px;"></i>
+            </div>
+            <div class="tableWrapper_halfRow left" style="">
+                <div style="margin-top: 14px;height: 20px;">
+                    <div class="" style="margin-left: 20px;width: 40%;float: left;">
+                        <span>部门名称:</span>
+                        <input class="textbox" tips="请输入部门名筛选" name="" id="deptSearch_dataProviderDept" />
+                    </div>
+                    <div class="btn-group">
+                        <button style="margin-left:20px;" type="button" name="" id="searchTotal_dataProviderDept" class="btn blueButton btn_w85"><span>查询</span>
+                        </button>
+                        </button>
+                        <button type="button" name="" id="exportTotal3" class="btn blueButton btn_w85"><span>导出</span>
+                        </button>
+                    </div>
+                </div>
+                <div style="padding-top: 50px;height:75%;padding:20px">
+                    <table id="dataProviderDeptStatistics" style="margin-top:20px;overflow-y:auto;width:100%">
+                    </table>
+                </div>
+            </div>
+            <div class="tableWrapper_halfRow right" style="">
+                <div style="margin-top: 14px;height: 20px;">
+                    <div class="" style="margin-left: 20px;width: 40%;float: left;">
+                        <span>部门名称:</span>
+                        <input class="textbox" tips="请输入部门名筛选" name="" id="deptSearch_dataSubDept" />
+                    </div>
+                    <div class="btn-group">
+                        <button style="margin-left:20px;" type="button" name="" id="searchTotal_dataSubDept" class="btn blueButton btn_w85"><span>查询</span>
+                        </button>
+                        </button>
+                        <button type="button" name="" id="exportTotal4" class="btn blueButton btn_w85"><span>导出</span>
+                        </button>
+                    </div>
+                </div>
+                <div style="padding-top: 50px;height:75%;padding:20px">
+                    <table id="dataSubDeptStatistics" style="margin-top:20px;overflow-y:auto;width:100%">
+                    </table>
+                </div>
+            </div>
+        </div> <!-- tableWrapper end -->
+        <div id="tableWrapper_resQueryStatis" class="tableWrapper tableWrapper_hide" style="">
+            <div class="title" style="width:98%;height: 50px;line-height: 55px;position: relative;">
+                <!-- 数据使用情况统计 -->
+                <span style="font-weight:bold;font-size:18px;">数据提供部门统计详情</span>
+                <span style="font-weight:bold;font-size:18px;position: absolute;left:51%;">数据订阅部门统计详情</span>
+                <i class="fa fa-reply" style="position: absolute;right: 30px;top:15px;"></i>
+            </div>
+            <div class="tableWrapper_halfRow left" style="">
+                <div style="margin-top: 14px;height: 20px;">
+                    <div class="" style="margin-left: 20px;width: 40%;float: left;">
+                        <span>部门名称:</span>
+                        <input class="textbox" tips="请输入部门名筛选" name="" id="deptSearch_resQueryProvider" />
+                    </div>
+                    <div class="btn-group">
+                        <button style="margin-left:20px;" type="button" name="" id="searchTotal_resQueryProvider" class="btn blueButton btn_w85"><span>查询</span>
+                        </button>
+                        </button>
+                        <button type="button" name="" id="exportTotal_resQueryProvider" class="btn blueButton btn_w85"><span>导出</span>
+                        </button>
+                    </div>
+                </div>
+                <div style="padding-top: 50px;height:75%;padding:20px">
+                    <table id="dataQueryProviderDeptStatistics" style="margin-top:20px;overflow-y:auto;width:100%">
+                    </table>
+                </div>
+            </div>
+            <div class="tableWrapper_halfRow right" style="">
+                <div style="margin-top: 14px;height: 20px;">
+                    <div class="" style="margin-left: 20px;width: 40%;float: left;">
+                        <span>部门名称:</span>
+                        <input class="textbox" tips="请输入部门名筛选" name="" id="deptSearch_resQuerySubDept" />
+                    </div>
+                    <div class="btn-group">
+                        <button style="margin-left:20px;" type="button" name="" id="searchTotal_resQuerySubDept" class="btn blueButton btn_w85"><span>查询</span>
+                        </button>
+                        </button>
+                        <button type="button" name="" id="exportTotal_resQuerySubDept" class="btn blueButton btn_w85"><span>导出</span>
+                        </button>
+                    </div>
+                </div>
+                <div style="padding-top: 50px;height:75%;padding:20px">
+                    <table id="dataQuerySubDeptStatistics" style="margin-top:20px;overflow-y:auto;width:100%">
+                    </table>
+                </div>
+            </div>
+        </div> <!-- tableWrapper end -->
+<!-- 测试分页 -->
+        <!-- <table id="dg" title="Client Side Pagination" style="width:700px;height:300px" data-options="
+                rownumbers:true,
+                singleSelect:true,
+                autoRowHeight:false,
+                pagination:true,
+                pageSize:10">
+        <thead>
+            <tr>
+                <th field="inv" width="80">Inv No</th>
+                <th field="date" width="100">Date</th>
+                <th field="name" width="80">Name</th>
+                <th field="amount" width="80" align="right">Amount</th>
+                <th field="price" width="80" align="right">Price</th>
+                <th field="cost" width="100" align="right">Cost</th>
+                <th field="note" width="110">Note</th>
+            </tr>
+        </thead>
+    </table> -->
+    
+    </div>
+    <script>
+        function getData(){
+            var rows = [];
+            for(var i=1; i<=800; i++){
+                var amount = Math.floor(Math.random()*1000);
+                var price = Math.floor(Math.random()*1000);
+                rows.push({
+                    inv: 'Inv No '+i,
+                    date: $.fn.datebox.defaults.formatter(new Date()),
+                    name: 'Name '+i,
+                    amount: amount,
+                    price: price,
+                    cost: amount*price,
+                    note: 'Note '+i
+                });
+            }
+            return rows;
+        }
+        
+        function pagerFilter(data){
+            if (typeof data.length == 'number' && typeof data.splice == 'function'){    // is array
+                data = {
+                    total: data.length,
+                    rows: data
+                }
+            }
+            var dg = $(this);
+            var opts = dg.datagrid('options');
+            var pager = dg.datagrid('getPager');
+            pager.pagination({
+                onSelectPage:function(pageNum, pageSize){
+                    opts.pageNumber = pageNum;
+                    opts.pageSize = pageSize;
+                    pager.pagination('refresh',{
+                        pageNumber:pageNum,
+                        pageSize:pageSize
+                    });
+                    dg.datagrid('loadData',data);
+                }
+            });
+            if (!data.originalRows){
+                data.originalRows = (data.rows);
+            }
+            var start = ((opts.pageNumber||1)-1)*parseInt(opts.pageSize);
+            var end = start + parseInt(opts.pageSize);
+            data.rows = (data.originalRows.slice(start, end));
+            return data;
+        }
+        
+        $(function(){
+            // $('#dg').datagrid({loadFilter:pagerFilter}).datagrid('loadData', getData());
+        });
+    </script>
+</body>
+
+</html>
