@@ -1,0 +1,46 @@
+.datagrid-header,
+.datagrid-td-rownumber {
+  background-color:#268ED0;
+  background: -webkit-linear-gradient(top,#268ED0 0,#268ED0 100%);
+  background: -moz-linear-gradient(top,#268ED0 0,#268ED0 100%);
+  background: -o-linear-gradient(top,#268ED0 0,#268ED0 100%);
+  background: linear-gradient(to bottom,#268ED0 0,#268ED0 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#268ED0,endColorstr=#268ED0,GradientType=0);
+}
+
+.datagrid-header td{
+color:#FFFFFF;
+}
+
+.datagrid-row-alt {
+  background: #edeff5;
+}
+ .datagrid-row-over{
+ background:#d6dffa;
+ }
+ .datagrid-row-selected {
+  background: #d6dffa;
+  color: #000000;
+}
+.datagrid-header td.datagrid-header-over {
+	color:#FFFFFF;
+	background:#737993;
+ }
+ 
+ .combobox-item-hover{
+	cursor:pointer;
+ }
+ .calendar-saturday{
+ color: #000000 !important
+ }
+ .calendar-sunday{
+ color: #000000 !important
+ }
+ .calendar-selected{
+ background-color:#7ea7fc;
+ border:1px solid #7ea7fc;
+ }
+ .calendar-hover{
+ border:1px solid #7ea7fc;
+ }
