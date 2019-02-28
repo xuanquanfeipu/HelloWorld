@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>资源监控</title>
+    <link rel="stylesheet" href="../../ipeg-common/css/easyui_modify.css" />
+    <link rel="stylesheet" href="../../ipeg-common/css/icon.css" />
+    <link rel="stylesheet" href="../../ipeg-common/css/style.css" />
+    <link rel="stylesheet" href="../../ipeg-common/css/demo.css" />
+    <link rel="stylesheet" href="../../ipeg-common/css/temp.css" />
+    <link rel="stylesheet" href="../../ipeg-common/css/common.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/serviceResMonitor.css" />
+    <script type="text/javascript" src="../../ipeg-common/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../ipeg-common/js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../ipeg-common/js/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../ipeg-common/js/util.js"></script>
+    <script type="text/javascript" src="../../ipeg-common/js/easyui-custom.js"></script>
+    <script type="text/javascript" src="../../ipeg-common/js/echarts.min.js"></script>
+    <script type="text/javascript" src="../js/underscore.js"></script>
+     <script type="text/javascript" src="../js/moment.js"></script>
+    <script type="text/javascript" src="../js/serviceMonitor.js"></script>
+    <script type="text/javascript" src="../js/serviceStatistics.js"></script>
+    <script type="text/javascript" src="../js/serviceResMonitor.js"></script>
+</head>
+
+<body class="common_body">
+    <div style="width:90%;margin:auto;">
+        <div class="page_wrapper service_monitor_page" style="">
+            <div class="chart_wrapper" style="">
+                <div class="title" style="">
+                    <span style="font-weight:bold;font-size:18px">节点监控</span>
+                </div>
+                <div id="nodeMonitorReqPieChart" class="chart" style="float:left;"></div>
+                <div id="nodeMonitorFlowPieChart" class="chart" style="float:left;"></div>
+                <div id="nodeMonitorOnlineRatePieChart" class="chart" style="float:left;"></div>
+                <div class="select_wrapper" style="top:50px;">
+                    <select id="nodeName" class="easyui-combobox" name="nodeName" style="" data-options="valueField:'id',textField:'text',editable:false">                       
+                    </select>
+                </div>
+                <span style="position: absolute;top: 55px;left: 160px;">节点状态</span>
+                <span class="nodeStatus" style="position: absolute;top: 55px;left: 220px;color:#7AAD6C;">在线</span>
+                <div class="btn-group timeafter" style="" role="group" aria-label="...">
+                    <button type="button" class="btn btn-default active" name="oneday">近24小时</button>
+                    <button type="button" class="btn btn-default" name="threeday">近三天</button>
+                    <button type="button" class="btn btn-default" name="oneweek">近一周</button>
+                    <button type="button" class="btn btn-default" name="onemonth">近一月</button>
+                </div>
+                <div class="date-picker" style="">
+                    <!-- 从 -->
+                    <!-- <span style="margin-left: 14px;"></span> -->
+                    <span>时间范围：</span>
+                    <!-- <span style="margin-right: 7px;"></span> -->
+                    <input id="data_update_view_startTime" class="easyui-datetimebox" style="width:40%;" editable="false" />
+                    <!-- 至 -->
+                   <!--  <span style="margin-left: 7px;"></span> -->
+                    <span>至</span>
+                    <!-- <span style="margin-right: 7px;"></span> -->
+                    <input id="data_update_view_endTime" class="easyui-datetimebox" style="width:40%;" editable="false" />
+                </div>
+                <div class="btn-group btn-group-last" style="" role="group" aria-label="...">
+                    <button style="" type="button" name="" id="search" class="btn blueButton btn_w85 active"><span>筛选</span>
+                    </button>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+            
+            <div class="tableWrapper serviceMonitor_tableWrapper" style="">
+                <div class="title" style="height: 50px;line-height: 50px;">
+                    <span style="font-weight:bold;font-size:18px">服务监控</span>
+                </div>
+                <div style="margin-top: 14px;height: 20px;">
+                    <div class="input_param" style="margin-left: 20px;">
+                        <span>部门名称:</span>
+                        <input class="textbox" tips="请输入部门名筛选" name="" id="deptSearch" />
+                    </div>
+                    <div class="input_param" style="">
+                        <span>应用名称:</span>
+                        <input class="textbox" tips="请输入应用名筛选" name="" id="appSearch" />
+                    </div>
+                    <div class="input_param" style="">
+                        <span>服务名称:</span>
+                        <input class="textbox" tips="请输入服务名筛选" name="" id="serviceSearch" />
+                    </div>
+                    <div style="width: 450px;float: left;text-align:left;">
+                        <!-- 从 -->
+                        <span style=""></span>
+                        <span>时间范围：</span>
+                        <span style=""></span>
+                        <input id="data_update_view_startTime4" class="easyui-datetimebox" style="width:40%;" editable="false" />
+                        <!-- 至 -->
+                        <span style=""></span>
+                        <span>至</span>
+                        <span style=""></span>
+                        <input id="data_update_view_endTime4" class="easyui-datetimebox" style="width:40%;" editable="false" />
+                    </div>
+                    <div class="btn-group" style="margin-right: 12px;">
+                        <button style="margin-left:20px;" type="button" name="" id="searchTotal" class="btn blueButton btn_w85"><span>查询</span>
+                        </button>
+                        <button type="button" name="" id="searchReset" class="btn blueButton btn_w85"><span>重置</span>
+                        </button>
+                        <button type="button" name="" id="exportTotal" class="btn blueButton btn_w85"><span>导出</span>
+                        </button>
+                    </div>
+                </div>
+                <div style="padding-top: 50px;height:75%;padding:20px">
+                    <table id="serviceMonitor" style="margin-top:20px;overflow-y:auto;width:100%">
+                    </table>
+                </div>
+            </div>
+            <div class="tableWrapper" style="">
+                <div class="title" style="height: 50px;line-height: 50px;">
+                    <span style="font-weight:bold;font-size:18px">服务统计</span>
+                </div>
+                <div style="margin-top: 14px;height: 20px;">
+                    <div class="" style="margin-left: 20px;width: 17%;float: left;">
+                        <span>部门名称:</span>
+                        <input class="textbox" tips="请输入部门名筛选" name="" id="deptSearch2" />
+                    </div>
+                    <div style="width: 45%;float: left;text-align:left;margin-right:2%;">
+                        <!-- 从 -->
+                        <span style="margin-left: 14px;"></span>
+                        <span>时间范围：</span>
+                        <span style="margin-right: 7px;"></span>
+                        <input id="data_update_view_startTime5" class="easyui-datetimebox" style="width:40%;" editable="false" />
+                        <!-- 至 -->
+                        <span style="margin-left: 7px;"></span>
+                        <span>至</span>
+                        <span style="margin-right: 7px;"></span>
+                        <input id="data_update_view_endTime5" class="easyui-datetimebox" style="width:40%;" editable="false" />
+                    </div>
+                    <div class="btn-group">
+                        <button style="margin-left:20px;" type="button" name="" id="searchTotal2" class="btn blueButton btn_w85"><span>查询</span>
+                        </button>
+                        <button type="button" name="" id="searchReset2" class="btn blueButton btn_w85"><span>重置</span>
+                        </button>
+                        <button type="button" name="" id="exportTotal2" class="btn blueButton btn_w85"><span>导出</span>
+                        </button>
+                    </div>
+                </div>
+                <div style="padding-top: 50px;height:75%;padding:20px">
+                    <table id="serviceStatistics" style="margin-top:20px;overflow-y:auto;width:100%">
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
