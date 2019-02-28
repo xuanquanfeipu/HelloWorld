@@ -1,0 +1,19 @@
+.chart_wrapper .btn-group-detail{
+	right: 70px;
+}
+.image-wrapper .img-item{
+	background: url(../images/data_resmonitor.png) center center no-repeat;
+}
+.chart-line{
+	width: 100%;
+}
+.tableWrapper_halfRow{
+	width: 48%;
+	height: 520px;
+	margin: 0.5%;
+    border: 1px solid #ddd;
+    float: left;
+}
+.tableWrapper .fa-reply{
+	cursor: pointer;
+}
