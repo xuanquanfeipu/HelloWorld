@@ -1,0 +1,80 @@
+.subsystems_wrapper {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.chart {
+    flex: 1 1 auto;
+    margin: 0.5%;
+    height: 400px;
+}
+
+.box-item {
+    height: 100%;
+    flex: 1 0 16%;
+    margin: 0.5%;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.sysname {
+    margin-left: 5px;
+}
+
+.box-item span:nth-child(1) {
+    width: 24px;
+    height: 24px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.box-item.beas {
+    background-color: #F76951;
+}
+
+.box-item.beas span:nth-child(1) {
+    background-image: url(../images/beas_logo.png);
+}
+
+.box-item.dap {
+    background-color: #4CCB9E;
+}
+
+.box-item.dap span:nth-child(1) {
+    background-image: url(../images/dap_logo.png);
+}
+
+.box-item.esb {
+    background-color: #AB85D7;
+}
+
+.box-item.esb span:nth-child(1) {
+    background-image: url(../images/esb_logo.png);
+}
+
+.box-item.rds {
+    background-color: #DDB164;
+}
+
+.box-item.rds span:nth-child(1) {
+    background-image: url(../images/rds_logo.png);
+}
+
+.box-item.mdm {
+    background-color: #5C9EF5;
+}
+
+.box-item.mdm span:nth-child(1) {
+    background-image: url(../images/mdm_logo.png);
+}
+
+.box-item.dss {
+    background-color: #BDCC66;
+}
+
+.box-item.dss span:nth-child(1) {
+    background-image: url(../images/dss_logo.png);
+}
