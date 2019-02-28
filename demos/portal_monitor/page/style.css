@@ -7,3 +7,19 @@ body {
 text{
 	font-size: 9px;
 }
+/*demo*/
+body {
+	font-family:Arial;
+	font-size: 12px;
+	color: black;
+}
+.panel-title{
+	 color: #FFFFFF ;
+	 font-family:Arial;
+}
+
+
+.window .window-header {
+	background: transparent; 
+	background-color: #1b8fd3 ; 
+}
