@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>统一管控</title>
+		<link rel="stylesheet" href="../../ipeg-common/css/easyui_modify.css" />
+		<link rel="stylesheet" href="../../ipeg-common/css/icon.css" />		
+		<link rel="stylesheet" href="../../ipeg-common/css/demo.css" />
+		<link rel="stylesheet" href="../../ipeg-common/css/temp.css" />
+		<link rel="stylesheet" href="../../ipeg-common/css/common.css" />
+		<link rel="stylesheet" href="../css/subsysauthorityCommon.css" />
+	</head>
+	<body class="common_body">
+		<div id="model" class="model_color">
+			<div class="pageloading">
+				<img src="../../ipeg-common/images/loading-spinner-grey.gif">&nbsp;&nbsp;
+				<span>加载中...</span> 
+			</div>
+		</div>
+		<div id="operLogSearchSpan" style="width:90%;margin:auto;margin-bottom:18px;">   
+			<div id="operLogFilter" style="text-align:right;vetical-align:middle;">
+				<label class="formLabelLeft">用户名:</label>
+				<input id="input_sn"  type="text" style="width:180px;height:30px;font-size:14px;margin-left:8px;">
+				<input id="query" type="button" class="textInButton"  style="margin-left:10px;" value="查询">
+				<input id="refresh" type="button" class="textInButton" style="margin-left:20px;" value="刷新">
+			</div>
+		</div>
+		<div id="datagrid"></div>
+		<div id="win" style="display:none;background-color:#F6F7F8;">
+			<div id="system" userid="" style="margin-top:10%;font-size:14px;text-align:left;color:#333333;font-family:Microsoft YaHei;"></div>
+			<hr class="detail_dash_line"/>
+			<div style="margin-top:11px;margin-bottom:20px">
+				<div class="detail_cancle_button">
+					<input id="cancel" type="button" class="textInButton" value="取消">
+				</div>
+				<div class="detail_sure_button">
+					<input id="commit" type="button" class="textInButton" value="确定">
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+			
+		</div>
+		<div id="msgWin" style="display:none;background-color:#f6f7f8;text-align:center;" >
+			<div class="message-window-pannel">
+				<img src="../../ipeg-common/images/warning.png" class="message-window-pannel-img"/>
+				<div id="msg" class="message-window-pannel-info"></div>
+				<div style="clear:both;"></div>
+			</div>
+			<hr  class="detail_dash_line" />
+			<div class="detail_sure_button">
+				<input type="button" class="textInButton" style="margin-top:20px;" value="确定" onclick="closeAlertInfoWin('msgWin')">
+			</div>
+		</div>
+		<script type="text/javascript" src="../../ipeg-common/js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../ipeg-common/js/jquery.easyui.min.js"></script>
+		<script type="text/javascript" src="../../ipeg-common/js/easyui-lang-zh_CN.js"></script>
+		<script type="text/javascript" src="../../ipeg-common/js/util.js"></script>
+		<script type="text/javascript" src="../../ipeg-common/js/easyui-custom.js"></script>
+		<script type="text/javascript" src="../js/sysauthority.js"></script>
+	</body>
+</html>
