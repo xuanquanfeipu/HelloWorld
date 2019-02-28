@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>流程管理</title>
+    <link rel="stylesheet" href="../../ipeg-common/css/easyui_modify.css"/>
+    <link rel="stylesheet" href="../../ipeg-common/css/icon.css"/>
+    <link rel="stylesheet" href="../../ipeg-common/css/style.css"/>
+    <link rel="stylesheet" href="../../ipeg-common/css/demo.css"/>
+    <link rel="stylesheet" href="../../ipeg-common/css/temp.css"/>
+    <link rel="stylesheet" href="../../ipeg-common/css/common.css"/>
+    <link rel="stylesheet" href="../css/monitorCommon.css"/>
+    <link rel="stylesheet" href="../../log/css/logCommon.css"/>
+    <script type="text/javascript" src="../../ipeg-common/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../ipeg-common/js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../ipeg-common/js/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../ipeg-common/js/util.js"></script>
+</head>
+<body class="common_body">
+<div id="model" class="model_color">
+    <div class="pageloading">
+        <img src="../../ipeg-common/images/loading-spinner-grey.gif">&nbsp;&nbsp;
+        <span>加载中...</span>
+    </div>
+</div>
+<div id="logTabs" class="easyui-tabs" >
+    <div title="流程管理">
+        <div id="operLog_panel">
+            <div class="searchCubeWithoutBorder">
+                <a href="javascript:void(0);" class="monitorBtnStyle" id="startProcess">
+                    <span style="vertical-align:middle;margin-right:5px;margin-top:8px;color:#fff;" class="fa">&nbsp&nbsp启动</span>
+                </a>
+                <a href="javascript:void(0);" class="monitorBtnStyle" id="stopProcess">
+                    <span style="vertical-align:middle;margin-right:5px;margin-top:8px;color:#fff;" class="fa">&nbsp&nbsp停止</span>
+                </a>
+                <a href="javascript:void(0);" class="monitorBtnStyle" id="exProcess">
+                    <span style="vertical-align:middle;margin-right:5px;margin-top:8px;color:#fff;" class="fa">&nbsp&nbsp配置</span>
+                </a>
+                <a href="javascript:void(0);" class="monitorBtnStyle" id="delete">
+                    <span style="vertical-align:middle;margin-right:5px;margin-top:8px;color:#fff;" class="fa">&nbsp&nbsp删除</span>
+                </a>
+                <a href="javascript:void(0);" class="monitorBtnStyle" id="upload" onclick="file.click()">
+                    <span style="vertical-align:middle;margin-right:5px;margin-top:8px;color:#fff;" class="fa">&nbsp&nbsp导入</span>
+                </a>
+                <input id="file" name="file" type="file" style="display:none"/>
+                <a href="javascript:void(0);" class="monitorBtnStyle" id="download">
+                    <span style="vertical-align:middle;margin-right:5px;margin-top:8px;color:#fff;" class="fa">&nbsp&nbsp导出</span>
+                </a>
+            </div>
+
+            <div id="newdiv" class="easyui-window" closed="true" minimizable="false" modal="true">
+                <iframe id="newframe" name="newframe" style="width:100%;height:95%;" src="" scrolling="auto"
+                        frameborder="0"></iframe>
+            </div>
+
+            <div id='mywindow'></div>
+
+            <table id="processBrief"></table>
+        </div>
+    </div>
+</div>
+
+</body>
+<script type="text/javascript" src="../../ipeg-common/js/checkRight.js"></script>
+<script type="text/javascript" src="../js/ajaxfileupload.js"></script>
+<script type="text/javascript" src="../js/conf.js"></script>
+</html>
