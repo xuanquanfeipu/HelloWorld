@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>资源监控</title>
+    <link rel="stylesheet" href="../../ipeg-common/css/easyui_modify.css" />
+    <link rel="stylesheet" href="../../ipeg-common/css/icon.css" />
+    <link rel="stylesheet" href="../../ipeg-common/css/style.css" />
+    <link rel="stylesheet" href="../../ipeg-common/css/demo.css" />
+    <link rel="stylesheet" href="../../ipeg-common/css/temp.css" />
+    <link rel="stylesheet" href="../../ipeg-common/css/common.css" />
+    <link rel="stylesheet" href="../../resmonitor//css/common.css" />
+    <link rel="stylesheet" href="../css/index.css" />
+    <script type="text/javascript" src="../../ipeg-common/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../ipeg-common/js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../ipeg-common/js/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../ipeg-common/js/util.js"></script>
+    <script type="text/javascript" src="../../ipeg-common/js/easyui-custom.js"></script>
+    <script type="text/javascript" src="../../ipeg-common/js/echarts.min.js"></script>
+    <script type="text/javascript" src="../../resmonitor/js/underscore.js"></script>
+    <script type="text/javascript" src="../../resmonitor/js/moment.js"></script>
+    <script type="text/javascript" src="../js/index.js"></script>
+</head>
+
+<body class="common_body">
+   <!--  <div class="box-content">
+    </div>
+    <div id="tempBox" style="display:none;">
+        <div class="box" id="temp">
+            <div class="box-header">
+                <div class="title"></div>
+            </div>
+            <div class="box-body">
+                <ul>
+                    <li><span>严重告警<span class="badge badge-serious unusable" >0</span></span></li>
+                    <li><span>主要告警<span class="badge badge-major unusable" >0</span></span></li>
+                    <li><span>次要告警<span class="badge badge-minor unusable" >0</span></span></li>
+                    <li><span>警告<span class="badge badge-warning unusable" >0</span></span></li>
+                    <li><span>未定义级别告警<span class="badge badge-default unusable" >0</span></span></li>
+                </ul>
+                <button type="button" class="btn">进入</button>
+            </div>
+        </div>
+    </div> -->
+    <div style="width:90%;margin:auto;">
+        <div class="page_wrapper" style="">
+            <div class="chart_wrapper subsystems_wrapper box-content" style="height:80px;">
+                <!-- <div class="box-item beas"><span></span><span class="sysname"> BEAS数据交换平台 </span></div>
+                <div class="box-item dap"><span></span><span class="sysname"> DAP大数据管理系统</span></div>
+                <div class="box-item esb"><span></span><span class="sysname"> ESB服务总线系统</span></div>
+                <div class="box-item rds"><span></span><span class="sysname"> RDS目录管理系统</span></div>
+                <div class="box-item mdm"><span></span><span class="sysname"> MDM数据治理平台</span></div>
+                <div class="box-item dss"><span></span><span class="sysname"> DSS基础库</span></div> -->
+            </div>
+            <div class="chart_wrapper" style="">
+                <div id="resUploadBarChart" class="chart"></div>
+                <div id="resSubBarChart" class="chart"></div>
+                <div id="dataChangedBarChart" class="chart"></div>
+                <!--<div class="btn-group" style="position:absolute;left:25%;" role="group" aria-label="...">
+                <button type="button" class="btn btn-default">个数</button>
+                <button type="button" class="btn btn-default">大小</button>
+            </div>-->
+                <div style="clear:both;"></div>
+            </div>
+            <div class="chart_wrapper" style="">
+                <div id="serviceOpenNumBarChart" class="chart"></div>
+                <div id="currentAlarmBarChart" class="chart"></div>
+                <div id="globalDataChangedStatistic" class="chart"></div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
