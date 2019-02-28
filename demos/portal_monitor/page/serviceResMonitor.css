@@ -1,0 +1,77 @@
+.chart_wrapper {
+    background: #fff;
+}
+
+.chart {
+    width: 33%;
+    height: 400px;
+}
+
+.chart_wrapper .title {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 80px;
+    z-index: 99;
+}
+
+.chart_wrapper .date-picker {
+    width: 45%;
+    margin-top: 5px;
+    position: absolute;
+    text-align: left;
+    top: 45px;
+    right: 90px;
+}
+
+.chart_wrapper .btn-group {
+    position: absolute;
+    top: 45px;
+    right: 680px;
+}
+
+.chart_wrapper > .btn-group-last {
+    margin-left: 20px;
+    right: 60px;
+}
+
+.service_monitor_page .select_wrapper, .service_monitor_page .select_wrapper select {
+    width: 120px;
+}
+
+.serviceMonitor_tableWrapper .textbox {
+    width: 100px;
+}
+
+.serviceMonitor_tableWrapper .input_param {
+    float: left;
+    width: 163px;
+}
+
+#nodeFlowTotal li {
+    list-style: none;
+    padding-left: 40px;
+}
+
+#nodeFlowTotal li dl {
+    text-align: center;
+}
+
+#nodeFlowTotal li dt {
+    font-size: 16px;
+    color: #6D7584;
+    font-weight: bold;
+}
+
+#nodeFlowTotal li dd {
+    margin: 0;
+    color: #A9A9A9;
+}
+
+#nodeFlowTotal li:nth-child(1) {
+    background: url('../images/service_resmonitor01.png') left center no-repeat;
+}
+
+#nodeFlowTotal li:nth-child(2) {
+    background: url('../images/service_resmonitor02.png') left center no-repeat;
+}
