@@ -284,3 +284,33 @@ MyComponent.propTypes = {
 }
 ```
 
+### React 事件处理
+
+React 元素的事件处理和 DOM 元素类似。但是有一点语法上的不同:
+
+- React 事件绑定属性的命名采用驼峰式写法，而不是小写。
+- 如果采用 JSX 的语法你需要传入一个函数作为事件处理函数，而不是一个字符串(DOM 元素的写法)
+
+React 中写法为：
+
+```
+<button onClick={activateLasers}>
+  激活按钮
+</button>
+```
+
+在 React 中另一个不同是你不能使用返回 false 的方式阻止默认行为， 你必须明确的使用 **preventDefault**。
+
+你必须谨慎对待 JSX 回调函数中的 this，类的方法默认是不会绑定 this 的。
+```
+// 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+    this.handleClick = this.handleClick.bind(this);
+```
+如果使用 bind 让你很烦，这里有两种方式可以解决。如果你正在使用实验性的属性初始化器语法，你可以使用属性初始化器来正确的绑定回调函数：
+```
+handleClick = () => {
+    console.log('this is:', this);
+  }
+```
+
+
