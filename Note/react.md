@@ -3,9 +3,9 @@
 
 使用react，我们需要引入三个库： react.min.js 、react-dom.min.js 和 babel.min.js：  
 
-react.min.js - React 的核心库  
-react-dom.min.js - 提供与 DOM 相关的功能  
-babel.min.js - Babel 可以将 ES6 代码转为 ES5 代码，这样我们就能在目前不支持 ES6 浏览器上执行 React 代码。Babel 内嵌了对 JSX 的支持。通过将 Babel 和 babel-sublime 包（package）一同使用可以让源码的语法渲染上升到一个全新的水平。  
+- react.min.js - React 的核心库  
+- react-dom.min.js - 提供与 DOM 相关的功能  
+- babel.min.js - Babel 可以将 ES6 代码转为 ES5 代码，这样我们就能在目前不支持 ES6 浏览器上执行 React 代码。Babel 内嵌了对 JSX 的支持。通过将 Babel 和 babel-sublime 包（package）一同使用可以让源码的语法渲染上升到一个全新的水平。  
 
 注意：
 
@@ -62,5 +62,74 @@ JSX 是一个看起来很像 XML 的 JavaScript 语法扩展。
 - JSX 执行更快，因为它在编译为 JavaScript 代码后进行了优化。
 - 它是类型安全的，在编译过程中就能发现错误。
 - 使用 JSX 编写模板更加简单快速。
+
+元素是构成 React 应用的最小单位，JSX 就是用来声明 React 当中的元素。  
+与浏览器的 DOM 元素不同，React 当中的元素事实上是普通的对象，React DOM 可以确保 浏览器 DOM 的数据内容与 React 元素保持一致。  
+
+***注意:***
+
+*由于 JSX 就是 JavaScript，一些标识符像 class 和 for 不建议作为 XML 属性名。作为替代，React DOM 使用 className 和 htmlFor 来做对应的属性。*
+
+元素中可以嵌套多个 HTML 标签，需要使用一个 div 元素包裹它，元素添加自定义属性需要使用 data- 前缀。
+
+### 独立文件
+
+你的 React JSX 代码可以放在一个独立文件上，然后在 HTML 文件中引入该 JS 文件：
+
+```
+<body>
+  <div id="example"></div>
+<script type="text/babel" src="helloworld_react.js"></script>
+</body>
+```
+
+### JavaScript 表达式
+
+可以在 JSX 中使用 JavaScript 表达式。表达式写在花括号 {} 中。  
+在 JSX 中不能使用 if else 语句，但可以使用 conditional (三元运算) 表达式来替代。  
+
+### 样式
+
+React 推荐使用内联样式。我们可以使用 camelCase 语法来设置内联样式. React 会在指定元素数字后自动添加 px 。  
+
+```
+var myStyle = {
+    fontSize: 100,
+    color: '#FF0000'
+};
+ReactDOM.render(
+    <h1 style = {myStyle}>菜鸟教程</h1>,
+    document.getElementById('example')
+);
+```
+
+### 注释
+注释需要写在花括号中，实例如下：  
+
+```
+ReactDOM.render(
+    <div>
+    <h1>菜鸟教程</h1>
+    {/*注释...*/}
+     </div>,
+    document.getElementById('example')
+);
+```
+### 数组
+JSX 允许在模板中插入数组，数组会自动展开所有成员：  
+
+```
+var arr = [
+  <h1>菜鸟教程</h1>,
+  <h2>学的不仅是技术，更是梦想！</h2>,
+];
+ReactDOM.render(
+  <div>{arr}</div>,
+  document.getElementById('example')
+);
+```
+
+
+
 
 
