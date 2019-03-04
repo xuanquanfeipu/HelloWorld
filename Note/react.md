@@ -30,3 +30,27 @@ $ cd my-app/
 $ npm start
 ```
 manifest.json 指定了开始页面 index.html，一切的开始都从这里开始，所以这个是代码执行的源头。    
+
+### React 元素渲染
+
+要将React元素渲染到根DOM节点中，我们通过把它们都传递给 ReactDOM.render() 的方法来将其渲染到页面上：  
+
+ReactDOM.render() 方法接收两个参数：内容和渲染目标 js 对象。
+内容就是要在渲染目标中显示的东西，可以是一个React 部件，也可以是一段HTML或TEXT文本。渲染目标JS对象，就是一个DIV或TABEL,或TD 等HTML的节点对象。
+
+### 更新元素渲染
+
+React 元素都是不可变的。当元素被创建之后，你是无法改变其内容或属性的。
+
+目前更新界面的唯一办法是创建一个新的元素，然后将它传入 ReactDOM.render() 方法：
+
+可以使用函数封装要展示的部分，也可以React.Component 的 ES6 类，该类封装了要展示的元素，需要注意的是在 render() 方法中，需要使用 this.props 替换 函数中的props，使用class需要实现render方法，使用函数不需要。
+
+***React 只会更新必要的部分***
+
+*值得注意的是 React DOM 首先会比较元素内容先后的不同，而在渲染过程中只会更新改变了的部分。*
+
+
+
+
+
