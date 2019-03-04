@@ -171,6 +171,12 @@ class Welcome extends React.Component {
 我们可以通过创建多个组件来合成一个组件，即把组件的不同功能点进行分离。
 
 
+### React State(状态)
+
+React 把组件看成是一个状态机（State Machines）。通过与用户的交互，实现不同状态，然后渲染 UI，让用户界面和数据保持一致。
+
+React 里，只需更新组件的 state，然后根据新的 state 重新渲染用户界面（不要操作 DOM）
+
 
 
 
