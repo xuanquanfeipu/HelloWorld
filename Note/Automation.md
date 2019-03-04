@@ -71,8 +71,11 @@ Yarn的优点？
 	
 4. **多注册来源处理：** 所有的依赖包，不管他被不同的库间接关联引用多少次，安装这个包时，只会从一个注册来源去装，要么是 npm 要么是 bower, 防止出现混乱不一致。
 **更好的语义化：** yarn改变了一些npm命令的名称，比如 yarn add/remove，感觉上比 npm 原本的 install/uninstall 要更清晰。
+
 ---
+
 	Yarn和npm命令对比
+	
 npm			|	yarn  		| bower
 ---			|	:--:		|---:
 npm install		|	yarn    	| bower install
@@ -80,7 +83,9 @@ npm install react --save|	yarn add react  |bower install react --save
 npm uninstall react --save|	yarn remove react  | bower uninstall react 
 npm install react --save-dev|	yarn add react --dev  | bower install --save-dev
 npm update --save	|	yarn upgrade  	|bower update --save
+
 ***
+
 表头|表头|表头
 ---|:--:|---:
 内容|内容|内容
@@ -94,6 +99,7 @@ npm update --save	|	yarn upgrade  	|bower update --save
 注：原生的语法两边都要用 | 包起来。此处省略
 
 ## npm的未来：npm5.0
+
 有了yarn的压力之后，npm做了一些类似的改进。
 
 - 默认新增了类似yarn.lock的 package-lock.json；
