@@ -74,7 +74,8 @@ Yarn的优点？
 
 ---
 
-	  ** Yarn和npm命令对比 **
+## Yarn和npm命令对比
+	  
 	
 npm			|	yarn  		| bower
 ---			|	:--:		|---:
