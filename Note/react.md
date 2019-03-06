@@ -98,7 +98,7 @@ var myStyle = {
     color: '#FF0000'
 };
 ReactDOM.render(
-    <h1 style = {myStyle}>菜鸟教程</h1>,
+    <h1 style = {myStyle}>菜鸟教程</h1>,//此处如果加了引号就只能做字符串原样输出，不加引号是jsx语法
     document.getElementById('example')
 );
 ```
