@@ -36,7 +36,7 @@ manifest.json 指定了开始页面 index.html，一切的开始都从这里开�
 要将React元素渲染到根DOM节点中，我们通过把它们都传递给 ReactDOM.render() 的方法来将其渲染到页面上：  
 
 ReactDOM.render() 方法接收两个参数：内容和渲染目标 js 对象。
-内容就是要在渲染目标中显示的东西，可以是一个React 部件，也可以是一段HTML或TEXT文本。渲染目标JS对象，就是一个DIV或TABEL,或TD 等HTML的节点对象。
+内容就是要在渲染目标中显示的东西，可以是一个React 部件，也可以是一段HTML或TEXT文本。渲染目标JS对象，也就是放置内容的容器，就是一个DIV或TABEL,或TD 等HTML的节点对象，但不能是body。
 
 ### 更新元素渲染
 
@@ -53,9 +53,9 @@ React 元素都是不可变的。当元素被创建之后，你是无法改变�
 
 ### React JSX
 
-React 使用 JSX 来替代常规的 JavaScript。  
+React 使用 JSX 来替代常规的 JavaScript，Javascript XML。  
 
-JSX 是一个看起来很像 XML 的 JavaScript 语法扩展。  
+JSX 是一个看起来很像 XML 的 JavaScript 语法扩展，Javascript中融合了XML，可以在js中书写xml。  
 
 我们不需要一定使用 JSX，但它有以下优点：  
 
@@ -83,10 +83,22 @@ JSX 是一个看起来很像 XML 的 JavaScript 语法扩展。
 </body>
 ```
 
-### JavaScript 表达式
+### JavaScript 表达式（差值表达式）
 
 可以在 JSX 中使用 JavaScript 表达式。表达式写在花括号 {} 中。  
 在 JSX 中不能使用 if else 语句，但可以使用 conditional (三元运算) 表达式来替代。  
+
+- 字符串
+- 数字
+- 布尔值
+- 空
+- 未定义
+- 对象（数组）
+其中，布尔值、空、未定义输出空字符，不会报错。不能直接输出对象，但是可以输出数组。React对数组进行转字符操作，并且用空字符进行连接:arr.join('').
+
+jsx标签也支持属性设置，属性值必须使用""包含。值是可以接收差值表达式的。style属性的值必须是对象。如：style={ {color:'red'} }
+
+差值表达式只支持表达式，不支持for、if语句。表达式可以是函数表达式。
 
 ### 样式
 
@@ -163,6 +175,10 @@ class Welcome extends React.Component {
 ```
 
 2、const element = <HelloMessage /> 为用户自定义的组件。
+
+标签化：传参，通过标签属性传入。props接收来自标签上的所有属性。
+
+如果使用类实现组件，需要继承 React.Compont，并需要实现render()方法。
 
 *注意，原生 HTML 元素名以小写字母开头，而自定义的 React 类名以大写字母开头，比如 HelloMessage 不能写成 helloMessage。除此之外还需要注意组件类只能包含一个顶层标签，否则也会报错。*
 
