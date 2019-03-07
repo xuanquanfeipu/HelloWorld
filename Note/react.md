@@ -100,6 +100,10 @@ jsx标签也支持属性设置，属性值必须使用""包含。值是可以接
 
 差值表达式只支持表达式，不支持for、if语句。表达式可以是函数表达式。
 
+jsx标签属性如果有多个可以写成一个对象，然后使用{...object}的形式传递。
+
+input元素可以设置defaultValue属性。
+
 ### 样式
 
 React 推荐使用内联样式。我们可以使用 camelCase 语法来设置内联样式. React 会在指定元素数字后自动添加 px 。  
@@ -193,7 +197,7 @@ React 把组件看成是一个状态机（State Machines）。通过与用户的
 
 React 里，只需更新组件的 state，然后根据新的 state 重新渲染用户界面（不要操作 DOM）
 
-### 数据自顶向下流动
+### 数据自顶向下流动（单向数据流）
 
 父组件或子组件都不能知道某个组件是有状态还是无状态，并且它们不应该关心某组件是被定义为一个函数还是一个类。  
 
@@ -211,6 +215,14 @@ state 和 props 主要的区别在于 props 是不可变的，而 state 可以�
 ### State 和 Props
 
 我们可以在应用中组合使用 state 和 props 。可以在父组件中设置 state， 并通过在子组件上使用 props 将其传递到子组件上。  
+
+prop：组件初始要渲染的数据，不可改变。
+state：组件状态发生改变，调用render重新渲染。
+
+two-way binding addons：双向数据绑定插件 react-with-addons.js  (也可以通过使用onChange实现)
+
+组件类上添加 mixins:[React.addons.LinkedStateMixin]，组件元素上添加属性 valueLink={this.linkState('valueName')}
+
 
 ### Props 验证
 
