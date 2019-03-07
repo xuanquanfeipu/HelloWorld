@@ -493,6 +493,9 @@ React 支持一种非常特殊的属性 Ref ，你可以用来绑定到 render()
 this.refs.myInput;
 ```
 
-我们也可以使用 getDOMNode()方法获取DOM元素
+我们也可以使用 getDOMNode()方法获取DOM元素.
+
+
+React中可以利用订阅/发布模式通信。
 
 
