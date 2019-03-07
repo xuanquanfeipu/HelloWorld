@@ -382,7 +382,7 @@ Keys 可以在 DOM 中的某些元素被增加或删除的时候帮助 React 识
 ### 用keys提取组件
 
 元素的 key 只有在它和它的兄弟节点对比时才有意义。  
-比方说，如果你提取出一个 ListItem 组件，你应该把 key 保存在数组中的这个 <ListItem /> 元素上，而不是放在 ListItem 组件中的 <li> 元素上。
+比方说，如果你提取出一个 ListItem 组件，你应该把 key 保存在数组中的这个 <ListItem /> 元素上，而不是放在 ListItem 组件中的 `<li>` 元素上。
   
 ### 元素的 key 在他的兄弟元素之间应该唯一
 
@@ -390,4 +390,12 @@ Keys 可以在 DOM 中的某些元素被增加或删除的时候帮助 React 识
 
 key 会作为给 React 的提示，但不会传递给你的组件。
 
+### React 组件 API
 
+设置状态：setState
+替换状态：replaceState
+设置属性：setProps
+替换属性：replaceProps
+强制更新：forceUpdate
+获取DOM节点：findDOMNode
+判断组件挂载状态：isMounted
