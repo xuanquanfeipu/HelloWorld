@@ -178,7 +178,7 @@ class Welcome extends React.Component {
 
 标签化：传参，通过标签属性传入。props接收来自标签上的所有属性。
 
-如果使用类实现组件，需要继承 React.Compont，并需要实现render()方法。
+如果使用类实现组件，需要继承 React.Compont，并需要实现render()方法，最早的时候是通过React.createClass({ render:function(){}  })。
 
 *注意，原生 HTML 元素名以小写字母开头，而自定义的 React 类名以大写字母开头，比如 HelloMessage 不能写成 helloMessage。除此之外还需要注意组件类只能包含一个顶层标签，否则也会报错。*
 
