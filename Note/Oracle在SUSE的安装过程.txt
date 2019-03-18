@@ -1,0 +1,269 @@
+
+2、Oracle12c在SUSE上安装
+http://www.aichengxu.com/diannao/38051.htm
+OpenSuSE13.2 安装 oracle 12c
+GoldenDB01:~ # groupadd dba
+groupadd: group 'dba' already exists
+GoldenDB01:~ # groupadd oinstall
+GoldenDB01:~ # useradd -g oinstall -G dba oracle
+suse 为用户添加家目录
+GoldenDB01:/home # userdel oracle
+useradd -g oinstall -G dba oracle -mno crontab for oracle
+GoldenDB01:/home # useradd -g oinstall -G dba oracle -m
+GoldenDB01:/home # passwd oracle
+New password: 
+
+BAD PASSWORD: it is based on a dictionary word
+BAD PASSWORD: is too simple
+Retype new password: 
+
+passwd: password updated successfully
+GoldenDB01:/home # 
+
+
+GoldenDB01:~ # mkdir -p /app/oracle
+GoldenDB01:~ # chown -R oracle:oinstall /app/oracle
+GoldenDB01:~ # chmod -R 775 /app/oracle
+
+GoldenDB01:~ # mkdir -p /app/oraInventory
+GoldenDB01:~ # chown -R oracle:oinstall /app/oraInventory
+GoldenDB01:~ # chmod -R 775 /app/oraInventory
+GoldenDB01:~ # 
+
+
+
+
+zypper install binutils-*
+zypper install gcc-*
+zypper install gcc-c++-*
+zypper install glibc-*
+zypper install glibc-devel-*
+zypper install ksh-*
+zypper install libaio-*
+zypper install libaio-devel-*
+zypper install libcap1-*
+zypper install libstdc++33-*
+zypper install libstdc++33-*
+zypper install libstdc++43-devel-*
+zypper install libstdc++46-*
+zypper install libgcc46-*
+zypper install make-*
+zypper install sysstat-*
+zypper install xorg-x11-libs-*
+zypper install xorg-x11-libX11-*
+zypper install xorg-x11-libXau-*
+zypper install xorg-x11-libxcb-*
+zypper install xorg-x11-libXext-*
+
+
+
+zypper install binutils-* gcc-* gcc-c++-* glibc-* glibc-devel-* ksh-* libaio-* libaio-devel-* libcap1-*
+zypper install libstdc++33-* libstdc++33-* libstdc++43-devel-* libstdc++46-* libgcc46-*
+zypper install make-* sysstat-* xorg-x11-libs-* xorg-x11-libX11-* xorg-x11-libXau-* xorg-x11-libxcb-* xorg-x11-libXext-*
+
+GoldenDB01:~ # zypper install binutils-* gcc-* gcc-c++-* glibc-* glibc-devel-* ksh-* libaio-* libaio-devel-* libcap1-*
+Loading repository data...
+Reading installed packages...
+'gcc-c++' is already installed.
+No update candidate for 'gcc-c++-4.8-6.189.x86_64'. The highest available version is already installed.
+'gcc' is already installed.
+No update candidate for 'gcc-4.8-6.189.x86_64'. The highest available version is already installed.
+'glibc-devel' is already installed.
+No update candidate for 'glibc-devel-2.19-35.1.x86_64'. The highest available version is already installed.
+'glibc' is already installed.
+No update candidate for 'glibc-2.19-35.1.x86_64'. The highest available version is already installed.
+'libaio-devel' is already installed.
+No update candidate for 'libaio-devel-0.3.109-17.15.x86_64'. The highest available version is already installed.
+'binutils' is already installed.
+No update candidate for 'binutils-2.25.0-13.1.x86_64'. The highest available version is already installed.
+'libcap1' is already installed.
+No update candidate for 'libcap1-1.10-59.61.x86_64'. The highest available version is already installed.
+'ksh-*' not found in package names. Trying capabilities.
+No provider of 'ksh-*' found.
+'libaio-devel' providing 'libaio-*' is already installed.
+No update candidate for 'libaio-devel-0.3.109-17.15.x86_64'. The highest available version is already installed.
+Resolving package dependencies...
+
+Nothing to do.
+GoldenDB01:~ # zypper install libstdc++33-* libstdc++33-* libstdc++43-devel-* libstdc++46-* libgcc46-*
+Loading repository data...
+Reading installed packages...
+'libgcc46-*' not found in package names. Trying capabilities.
+No provider of 'libgcc46-*' found.
+'libstdc++33-*' not found in package names. Trying capabilities.
+No provider of 'libstdc++33-*' found.
+'libstdc++43-devel-*' not found in package names. Trying capabilities.
+No provider of 'libstdc++43-devel-*' found.
+'libstdc++46-*' not found in package names. Trying capabilities.
+No provider of 'libstdc++46-*' found.
+Resolving package dependencies...
+
+Nothing to do.
+GoldenDB01:~ # zypper install make-* sysstat-* xorg-x11-libs-* xorg-x11-libX11-* xorg-x11-libXau-* xorg-x11-libxcb-* xorg-x11-libXext-*
+Loading repository data...
+Reading installed packages...
+Package 'xorg-x11-libX11-*' not found.
+Package 'xorg-x11-libXau-*' not found.
+Package 'xorg-x11-libXext-*' not found.
+Package 'xorg-x11-libxcb-*' not found.
+'make' is already installed.
+No update candidate for 'make-4.0-4.1.x86_64'. The highest available version is already installed.
+'xorg-x11-libs' is already installed.
+No update candidate for 'xorg-x11-libs-7.6-45.14.noarch'. The highest available version is already installed.
+Resolving package dependencies...
+
+The following NEW package is going to be installed:
+  sysstat
+
+1 new package to install.
+Overall download size: 251.9 KiB. Already cached: 0 B. After the operation, additional 964.4 KiB will be used.
+Continue? [y/n/? shows all options] (y): 
+Retrieving package sysstat-10.2.1-3.1.x86_64                                                   (1/1), 251.9 KiB (964.4 KiB unpacked)
+Checking for file conflicts: .................................................................................................[done]
+(1/1) Installing: sysstat-10.2.1-3.1 .........................................................................................[done]
+Installation has completed with error.
+GoldenDB01:~ # 
+
+
+
+GoldenDB01:~/.vnc # vi /etc/security/limits.conf 
+oracle soft nproc 2047
+oracle hard nproc 16384
+oracle soft nofile 1024
+oracle hard nofile 65536
+oracle soft stack 10240
+oracle hard stack 10240
+
+GoldenDB01:~/.vnc # vi /etc/pam.d/login
+session required /lib/security/pam_limits.so
+session required pam_limits.so
+
+GoldenDB01:~/.vnc # vi /etc/profile
+if [ $USER = "oracle" ]; then
+ulimit -u 16384
+ulimit -n 65536
+fi
+
+GoldenDB01:~ # su - oracle
+oracle@GoldenDB01:~> vi .profile 
+TMP=/tmp; export TMP
+TMPDIR=$TMP; export TMPDIR
+ORACLE_BASE=/app/oracle; export ORACLE_BASE
+ORACLE_HOME=$ORACLE_BASE/product/12.1.0/db_1; export ORACLE_HOME
+ORACLE_SID=orcl; export ORACLE_SID
+ORACLE_TERM=xterm; export ORACLE_TERM
+PATH=/usr/sbin:$PATH; export PATH
+PATH=$ORACLE_HOME/bin:$PATH; export PATH
+LD_LIBRARY_PATH=$ORACLE_HOME/lib:/lib:/usr/lib; export LD_LIBRARY_PATH
+CLASSPATH=$ORACLE_HOME/JRE:$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib; export CLASSPATH
+if [ $USER = "oracle" ]; then
+if [ $SHELL = "/bin/ksh" ]; then
+ulimit -p 16384
+ulimit -n 65536
+else
+ulimit -u 16384 -n 65536
+fi
+fi
+
+oracle@GoldenDB01:~> source .profile 
+
+
+
+
+
+GoldenDB01:~ # vncserver
+You will require a password to access your desktops.
+Password:
+Verify:
+xauth:  file /root/.Xauthority does not exist
+New 'GoldenDB01:1 (root)' desktop is GoldenDB01:1
+Creating default startup script /root/.vnc/xstartup
+Starting applications specified in /root/.vnc/xstartup
+Log file is /root/.vnc/GoldenDB01:1.log
+GoldenDB01:~ # 
+
+suse12 vncserver黑屏
+GoldenDB01:~ # vi .vnc/xstartup 
+#xterm -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
+#icewm &
+gnome-session &
+注释前面两行，添加后面一行即可。
+
+vncserver不允许root远程登录
+貌似按上面Oracle设置权限等之后就可以了。
+
+
+ftp上传软件：
+F:\work_soft\software\database\oracle12c\
+linuxamd64_12102_database_1of2.zip
+linuxamd64_12102_database_2of2.zip
+
+
+oracle@GoldenDB01:~/soft> ll -h
+总用量 2.6G
+-rw-r--r-- 1 oracle oinstall 1.6G 3月   4 10:16 linuxamd64_12102_database_1of2.zip
+-rw-r--r-- 1 oracle oinstall 968M 3月   4 10:14 linuxamd64_12102_database_2of2.zip
+oracle@GoldenDB01:~/soft> unzip linuxamd64_12102_database_1of2.zip 
+oracle@GoldenDB01:~/soft> unzip linuxamd64_12102_database_2of2.zip
+
+
+vncviewer
+oracle@GoldenDB01:~/soft/database> DISPLAY=10.118.16.89:3.0
+oracle@GoldenDB01:~/soft/database> export DISPLAY
+oracle@GoldenDB01:~/soft/database> xhost +
+No protocol specified
+xhost:  unable to open display "10.118.16.89:3.0"
+oracle@GoldenDB01:~/soft/database> exit
+logout
+GoldenDB01:~ # xhost +
+access control disabled, clients can connect from any host
+GoldenDB01:~ # echo $DISPLAY
+:3
+GoldenDB01:~ # su - oracle
+oracle@GoldenDB01:~> cd soft/database
+oracle@GoldenDB01:~/soft/database> xhost +
+xhost:  unable to open display ""
+oracle@GoldenDB01:~/soft/database> export DISPLAY=:3
+oracle@GoldenDB01:~/soft/database> xhost +
+access control disabled, clients can connect from any host
+
+
+unset ORA_CRS_HOME
+
+oracle@GoldenDB01:~/soft/database> ./runInstaller 
+图形化方式，注意选择字符集等，下一步下一步即可。
+oracle@GoldenDB01:~> cat db.rsp
+root用户执行脚本：
+oracle@GoldenDB01:~> su - root
+密码：
+GoldenDB01:~ # /app/oraInventory/orainstRoot.sh 
+更改权限/app/oraInventory.
+添加组的读取和写入权限。
+删除全局的读取, 写入和执行权限。
+
+更改组名/app/oraInventory 到 oinstall.
+脚本的执行已完成。
+GoldenDB01:~ # /app/oracle/product/12.1.0/db_1/root.sh 
+Performing root user operation.
+
+The following environment variables are set as:
+    ORACLE_OWNER= oracle
+    ORACLE_HOME=  /app/oracle/product/12.1.0/db_1
+
+Enter the full pathname of the local bin directory: [/usr/local/bin]: 
+   Copying dbhome to /usr/local/bin ...
+   Copying oraenv to /usr/local/bin ...
+   Copying coraenv to /usr/local/bin ...
+Creating /etc/oratab file...
+Entries will be added to the /etc/oratab file as needed by
+Database Configuration Assistant when a database is created
+Finished running generic part of root script.
+Now product-specific root actions will be performed.
+GoldenDB01:~ # 
+再到图形化界面点击确定
+
+安装过程中出现内存不够，但释放内存后可以重试。
+GoldenDB01:/app/oraInventory/logs # tail -f installActions2017-03-04_01-32-56PM.log
+
+
+
