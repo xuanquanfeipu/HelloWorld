@@ -20,6 +20,13 @@
     <script type="text/javascript" src="../../ipeg-common/js/echarts.min.js"></script>
     <script type="text/javascript" src="../js/underscore.js"></script>
     <script type="text/javascript" src="../js/moment.js"></script>
+    <!-- <script type="text/javascript" src="../../backupconfig/js/jquery.i18n.properties-1.0.9.js"></script>
+    <script type="text/javascript" src="../../backupconfigjs/loadi18n.js"></script>
+    <script type="text/javascript" src="/web/newict/framework/zte/i18n/loadi18n_ipeg_universal.js"></script> -->
+    <script>
+        $.i18n = window.top.$.i18n;
+        // window.top.$.i18n.prop('ipeg-service-monitor-deptdatachanged-i18n');
+    </script>
     <script type="text/javascript" src="../js/dataStatistics.js"></script>
     <script type="text/javascript" src="../js/deptDataChangedStatistics.js"></script>
     <script type="text/javascript" src="../js/dataProviderDeptStatistics.js"></script>
@@ -34,11 +41,11 @@
         <div class="page_wrapper" style="">
             <div class="chart_wrapper" style="background:transparent;">
                 <div id="frontNum" class="chart" style="width:24%;background:#fff;margin-right: 1%;">
-                    <h1 class="title">前置机数量统计</h1>
+                    <h1 class="title" id="ipeg-service-monitor-frontend-machines-statistics-i18n" name_i18n="com_zte_ums_ict_framework_ui_i18n_sideMenu">前置机数量统计</h1>
                     <div class="image-wrapper">
                         <div class="item img-item"></div>
                         <div class="item" style="font-size:24px;color:#596274;"><span id="frontNumVal"></span></div>
-                        <div class="item" style="color:#8B8B8B;">已接入共享交互平台的前置机数量</div>
+                        <div class="item" style="color:#8B8B8B;">已接入共享交换平台的前置机数量</div>
                     </div>
                 </div>
                 <div id="deptDataChangedStatistic" class="chart" style="width:75%;background:#fff;"></div>
@@ -89,8 +96,8 @@
                 </div>
             </div>
             <div class="chart_wrapper" style="">
-                <div id="resSubPieChart" class="chart" style="float:left;"></div>
-                <div id="resSubBarChart" class="chart" style="float:right;"></div>
+                <div id="resSubPieChart" class="chart pie_chart" style="float:left;"></div>
+                <div id="resSubBarChart" class="chart bar_chart" style="float:right;"></div>
                 <div class="select_wrapper" style="">
                     <select id="deptName1" class="easyui-combobox" name="deptName" style="" data-options="valueField:'id',textField:'text',editable:false"></select>
                 </div>
@@ -104,8 +111,8 @@
                 <div style="clear:both;"></div>
             </div>
             <div class="chart_wrapper" style="">
-                <div id="resQueryPieChart" class="chart" style="float:left;"></div>
-                <div id="resQueryBarChart" class="chart" style="float:right;"></div>
+                <div id="resQueryPieChart" class="chart pie_chart" style="float:left;"></div>
+                <div id="resQueryBarChart" class="chart bar_chart" style="float:right;"></div>
                 <div class="select_wrapper">
                     <select id="deptName2" class="easyui-combobox" name="deptName2" style="" data-options="valueField:'id',textField:'text',editable:false"></select>
                 </div>
@@ -242,7 +249,7 @@
             <div class="title" style="width:98%;height: 50px;line-height: 55px;position: relative;">
                 <!-- 数据使用情况统计 -->
                 <span style="font-weight:bold;font-size:18px;">数据提供部门统计详情</span>
-                <span style="font-weight:bold;font-size:18px;position: absolute;left:51%;">数据订阅部门统计详情</span>
+                <span style="font-weight:bold;font-size:18px;position: absolute;left:51%;">数据查询部门统计详情</span>
                 <i class="fa fa-reply" style="position: absolute;right: 30px;top:15px;"></i>
             </div>
             <div class="tableWrapper_halfRow left" style="">
