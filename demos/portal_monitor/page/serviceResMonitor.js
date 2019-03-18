@@ -2,9 +2,9 @@ $(function() {
 
     //    drawnodeMonitorPieChart('nodeMonitorReqPieChart');
     //    drawnodeMonitorPieChart('nodeMonitorFlowPieChart');
-    nodeComboboxInit();
+    // nodeComboboxInit();
     timeBtnInit();
-    nodeMonitorReq();
+    nodeMonitorReq(null, 'init');
 
     $('#search').on('click', function() {
         nodeMonitorReq();
@@ -201,7 +201,8 @@ function getnodeMonitorReqParams() {
 }
 
 
-function nodeMonitorReq(params) {
+function nodeMonitorReq(params, init) {
+
     var params = params || getnodeMonitorReqParams() || {
         commandCode: 19000401,
         startDate: '2018-12-13 12:00:00',
@@ -214,18 +215,26 @@ function nodeMonitorReq(params) {
         data: params,
         dataType: 'json',
         cache: false,
-        async: false,
+        // async: false,
         success: function(result) {
-            var nodeMonitors;
+            var nodeMonitors = [],
+                nodeNames = [];
             if (result.status == 0) {
                 nodeMonitors = result.nodeMonitor;
+                nodeNames = nodeMonitors.map(function(e, i) {
+                    return {
+                        id: i,
+                        text: e.nodeName
+                    }
+                });
+                nodeNames && nodeNames[0] && (nodeNames[0].selected = true);
             } else {
                 nodeMonitors = [{
                     "failedCount": "0",
                     "flowIn": "0",
                     "flowOut": "0",
                     "inRequestCount": "0",
-                    "nodeName": "中心节点",
+                    "nodeName": "",
                     "nodeStatus": "",
                     "onlineRate": "0",
                     "outRequestCount": "0",
@@ -234,8 +243,19 @@ function nodeMonitorReq(params) {
                     "successCount": "0",
                     "totalFlow": "0"
                 }];
+                nodeNames = nodeMonitors.map(function(e, i) {
+                    return {
+                        id: i,
+                        text: e.nodeName
+                    }
+                });
+                nodeNames[0].selected = true;
             }
-            drawnodeMonitorCharts(nodeMonitors);
+            if (init) {
+                $('#nodeName').combobox("loadData", nodeNames);
+            } else {
+                drawnodeMonitorCharts(nodeMonitors);
+            }
         },
         error: function() {
             var nodeMonitors = [{
@@ -243,7 +263,7 @@ function nodeMonitorReq(params) {
                 "flowIn": "0",
                 "flowOut": "0",
                 "inRequestCount": "0",
-                "nodeName": "中心节点",
+                "nodeName": "",
                 "nodeStatus": "",
                 "onlineRate": "0",
                 "outRequestCount": "0",
@@ -260,10 +280,16 @@ function nodeMonitorReq(params) {
 }
 
 function drawnodeMonitorCharts(nodeMonitors) {
-    var nodeName = $('#nodeName').combobox('getText')
-    var nodeMonitor = nodeMonitors.filter(function(e, i) {
-        return e.nodeName == nodeName;
-    })[0];
+    var nodeName = $('#nodeName').combobox('getText');
+    var nodeMonitor = {};
+    if (nodeName) {
+        nodeMonitor = nodeMonitors.filter(function(e, i) {
+            return e.nodeName == nodeName;
+        })[0];
+
+    } else {
+        nodeMonitor = nodeMonitors[0];
+    }
     var requestCount = nodeMonitor.requestCount;
     var successCount = nodeMonitor.successCount;
     var failedCount = nodeMonitor.failedCount;
@@ -505,20 +531,20 @@ function getPieOption(myChart, data) {
         //        },
         title: {
             text: data.sum + data.unit,
-            //        subtext:'次',
+            subtext: data.serieName,
             textAlign: "center",
             textStyle: {
-                color: '#999',
+                color: '#5E6778',
                 fontSize: 20,
                 fontWeight: 'normal'
             },
-            "subtextStyle": {
-                "fontWeight": 'bold',
-                "fontSize": 18,
-                "color": '#3ea1ff'
+            subtextStyle: {
+                "fontWeight": 'normal',
+                "fontSize": 14,
+                "color": '#888888'
             },
-            left: 'center',
-            bottom: '45%',
+            left: '45%',
+            bottom: '40%',
 
             // itemGap: 60,
         },
@@ -591,10 +617,10 @@ function getPieOption(myChart, data) {
                     }
                 },
                 emphasis: {
-                    show: true,
+                    show: false,
                     textStyle: {
                         color: "#666",
-                        fontSize: 16,
+                        fontSize: 14,
                     }
                 }
             },
@@ -603,37 +629,37 @@ function getPieOption(myChart, data) {
     };
     myChart.setOption(option);
 
-    setTimeout(function() {
-        myChart.dispatchAction({
-            type: 'highlight',
-            seriesIndex: 0,
-            dataIndex: 0
-        });
+    // setTimeout(function() {
+    //     myChart.dispatchAction({
+    //         type: 'highlight',
+    //         seriesIndex: 0,
+    //         dataIndex: 0
+    //     });
 
-        myChart.on('mouseover', function(params) {
-            if (params.name == data.ydata[0] && data.ydata[0].name) {
-                myChart.dispatchAction({
-                    type: 'highlight',
-                    seriesIndex: 0,
-                    dataIndex: 0
-                });
-            } else {
-                myChart.dispatchAction({
-                    type: 'downplay',
-                    seriesIndex: 0,
-                    dataIndex: 0
-                });
-            }
-        });
+    //     myChart.on('mouseover', function(params) {
+    //         if (params.name == data.ydata[0] && data.ydata[0].name) {
+    //             myChart.dispatchAction({
+    //                 type: 'highlight',
+    //                 seriesIndex: 0,
+    //                 dataIndex: 0
+    //             });
+    //         } else {
+    //             myChart.dispatchAction({
+    //                 type: 'downplay',
+    //                 seriesIndex: 0,
+    //                 dataIndex: 0
+    //             });
+    //         }
+    //     });
 
-        myChart.on('mouseout', function(params) {
-            myChart.dispatchAction({
-                type: 'highlight',
-                seriesIndex: 0,
-                dataIndex: 0
-            });
-        });
-    }, 1000);
+    //     myChart.on('mouseout', function(params) {
+    //         myChart.dispatchAction({
+    //             type: 'highlight',
+    //             seriesIndex: 0,
+    //             dataIndex: 0
+    //         });
+    //     });
+    // }, 1000);
 
 
 
