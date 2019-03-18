@@ -15,18 +15,6 @@ var topN = {
 
 $(function() {
 
-
-    // $('#frontNumVal').text(40);
-    // var data = {};
-    // data.title = '资源订阅统计';
-    // drawResSubPieChart(data);
-    // drawResSubBarChart('1');
-    // data.title = '资源查询统计';
-    // drawResQueryPieChart(data);
-    // drawResQueryBarChart(data);
-    // drawDeptDataChangedBarChart(data);
-    // drawDeptDataChangedLineChart(data);
-
     timeBtnInit();
     comboboxInit();
     breadcrumbInit();
@@ -34,10 +22,10 @@ $(function() {
     deptInit();
     deptReq();
     frontNumReq();
-    resSubReq();
-    resQueryReq()
-    deptDataChangedReq();
-    deptDataChangedTrendReq();
+    resSubReq(); //资源订阅
+    resQueryReq() //资源查询
+    deptDataChangedReq(); //部门数据变化量
+    deptDataChangedTrendReq(); //部门数据变化量趋势
     queryDeptDataChangedTrendBtnInit();
 
 
@@ -52,18 +40,6 @@ function rebackInit() {
         showMain();
     });
 
-    $('#tableWrapper_deptDataChanged .fa-reply').on('click', function() {
-        // $("#searchReset2").trigger('click');
-        // $('#deptDataStatistics').datagrid("loadData", []);
-        // var item = $('#deptDataStatistics').datagrid('getRows');
-        // if (item) {
-        //     for (var i = item.length - 1; i >= 0; i--) {
-        //         var index = $('#deptDataStatistics').datagrid('getRowIndex', item[i]);
-        //         $('#deptDataStatistics').datagrid('deleteRow', index);
-        //     }
-        // }
-
-    });
 }
 
 function breadcrumbInit() {
@@ -112,29 +88,10 @@ function showDetail(id, title) {
         switch (id) {
             case '#tableWrapper_deptDataChanged':
 
-                // dataChangedMonitor = new DataChangedMonitor();
-                // deptDataStatis = new DeptDataStatis(dataChangedMonitor);
-
-                // deptDataStatis.init();
-                // dataChangedMonitor.init();
-
                 deptDataChangedStatisticInit();
 
                 break;
             case '#tableWrapper_resSubStatis':
-
-                // $('#deptSearch_dataProviderDept').val('');
-                // $('#deptSearch_dataSubDept').val('');
-
-                // dataProviderMonitor = new DataProviderMonitor();
-                // dataProviderDeptStatis = new DataProviderDeptStatis(dataProviderMonitor);
-                // dataProviderDeptStatis.init();
-                // dataProviderMonitor.init();
-
-                // dataSubMonitor = new DataSubMonitor();
-                // dataSubDeptStatis = new DataSubDeptStatis(dataSubMonitor);
-                // dataSubDeptStatis.init();
-                // dataSubMonitor.init();
 
                 dataProviderDeptStatisInit();
                 dataSubDeptStatisInit();
@@ -143,24 +100,11 @@ function showDetail(id, title) {
 
             case '#tableWrapper_resQueryStatis':
 
-                // $('#deptSearch_resQueryProvider').val('');
-                // $('#deptSearch_resQuerySubDept').val('');
-
-                // dataQeruyProviderMonitor = new DataQeruyProviderMonitor();
-                // dataQueryProviderDeptStatis = new DataQueryProviderDeptStatis(dataQeruyProviderMonitor);
-                // dataQueryProviderDeptStatis.init();
-                // dataQeruyProviderMonitor.init();
-
-                // dataQuerySubMonitor = new DataQuerySubMonitor();
-                // dataQuerySubDeptStatis = new DataQuerySubDeptStatis(dataQuerySubMonitor);
-                // dataQuerySubDeptStatis.init();
-                // dataQuerySubMonitor.init();
                 dataQueryProviderDeptStatisInit();
                 dataQuerySubDeptStatisInit();
 
                 break;
             default:
-                // statements_def
                 break;
         }
         $('.page_wrapper').hide();
@@ -182,7 +126,16 @@ function deptInit() {
         "id": "user",
         "text": "数据订阅部门"
     }];
-    $('#deptName1,#deptName2').combobox("loadData", deptdata);
+    var deptdata2 = [{
+        "id": "provider",
+        "text": "数据提供部门",
+        "selected": true
+    }, {
+        "id": "user",
+        "text": "数据查询部门"
+    }];
+    $('#deptName1').combobox("loadData", deptdata);
+    $('#deptName2').combobox("loadData", deptdata2);
 }
 
 function deptReq() {
@@ -195,7 +148,7 @@ function deptReq() {
         },
         dataType: 'json',
         cache: false,
-        async: false,
+        // async: false,
         success: function(result) {
             if (result.status == 0 && result.data.length) {
                 var data = result.data.map(function(e, i) {
@@ -223,7 +176,7 @@ function frontNumReq() {
         },
         dataType: 'json',
         cache: false,
-        async: false,
+        // async: false,
         success: function(result) {
             if (result.status == 0 && result.data.length) {
                 $('#frontNumVal').text(result.data[0].value + '台');
@@ -295,8 +248,8 @@ function timeBtnInit() {
         resSubReq(params);
     });
 
-    $('.chart_wrapper:eq(2) .btn-group:eq(0) .btn').on('click', function() {
-        var params = getResSubReqParams();
+    $('.chart_wrapper:eq(3) .btn-group:eq(0) .btn').on('click', function() {
+        var params = getResQueryReqParams();
         resQueryReq(params);
     });
 
@@ -378,40 +331,8 @@ function deptDataChangedReq(params) {
         data: params,
         dataType: 'json',
         cache: false,
-        async: false,
+        // async: false,
         success: function(result) {
-
-            // result = [{
-            //     "total": [{
-            //         "name": "中移动",
-            //         "value": "106"
-            //     }, {
-            //         "name": "原始库部",
-            //         "value": "55"
-            //     }]
-            // }, {
-            //     "detail": [{
-            //         "name": "新增",
-            //         "value": "66"
-            //     }, {
-            //         "name": "修改",
-            //         "value": "10"
-            //     }, {
-            //         "name": "删除",
-            //         "value": "30"
-            //     }, {
-            //         "name": "新增",
-            //         "value": "25"
-            //     }, {
-            //         "name": "修改",
-            //         "value": "20"
-            //     }, {
-            //         "name": "删除",
-            //         "value": "10"
-            //     }]
-            // }, {
-            //     "status": 0
-            // }]
 
             var data = {},
                 deptNames = [],
@@ -419,7 +340,7 @@ function deptDataChangedReq(params) {
                 increase = [],
                 change = [],
                 deleted = [],
-                _max = 100,
+                _max = 0,
                 _datamax = [];
             data.total = total;
             data.increase = increase;
@@ -428,6 +349,9 @@ function deptDataChangedReq(params) {
             data._max = _max;
             data._datamax = [];
             if (result[2] && result[2].status == 0) {
+                result[0].total = result[0].total.reverse();
+
+                result[1].detail = result[1].detail.reverse();
 
                 result[0].total.forEach(function(e, i) {
                     deptNames.push(e.name);
@@ -448,7 +372,7 @@ function deptDataChangedReq(params) {
                 data.increase = increase;
                 data.change = change;
                 data.delete = deleted;
-                data._max = Math.max(...total) || _max;
+                data._max = Math.max(...total) || 0;
                 result[0].total.forEach(function(e, i) {
                     _datamax.push(data._max);
                 });
@@ -466,7 +390,7 @@ function deptDataChangedReq(params) {
                 increase = [],
                 change = [],
                 deleted = [],
-                _max = 100,
+                _max = 0,
                 _datamax = [];
             data.total = total;
             data.increase = increase;
@@ -492,34 +416,14 @@ function deptDataChangedTrendReq() {
         data: params,
         dataType: 'json',
         cache: false,
-        async: false,
+        // async: false,
         success: function(result) {
             var data = {};
             data.dateTimes = [];
             data.dataSizes = [];
             if (result.status == 0) {
                 var odata = result.data;
-                // var deptNames = result.data.map(function(e, i) {
-                //     return {
-                //         id: i + '',
-                //         name: e.deptname
-                //     };
-                // });
-                // $('#deptName').combobox("loadData", deptNames);
 
-                // var adata = [{
-                //     "dateTime": "2019-02-15",
-                //     "dataSize": "60"
-                // }, {
-                //     "dateTime": "2019-02-16",
-                //     "dataSize": "30"
-                // }, {
-                //     "dateTime": "2019-02-17",
-                //     "dataSize": "50"
-                // }, {
-                //     "dateTime": "2019-02-18",
-                //     "dataSize": "82"
-                // }];
 
                 var deptName = $('#deptName').combobox('getText');
                 var adata = [];
@@ -540,8 +444,6 @@ function deptDataChangedTrendReq() {
                     data.dataSizes.push(e.dataSize);
                 });
 
-                // data.title = '资源订阅统计';
-                // data.legend = '资源被订阅量（条）';
 
             }
             drawDeptDataChangedLineChart(data);
@@ -563,7 +465,8 @@ function getResSubReqParams() {
         type: 'provider'
     };
 
-    var topVal = $('.chart_wrapper:eq(2) .btn-group .btn.active').eq(1).attr('name');
+    var topVal = $('.chart_wrapper:eq(2) .btn-group .btn.active').eq(0).attr('name');
+
     params.top = topN[topVal] || 5;
     params.type = $('#deptName1').combobox('getValue') || params.type;
 
@@ -584,11 +487,21 @@ function resSubReq(params) {
         data: params,
         dataType: 'json',
         cache: false,
-        async: false,
+        // async: false,
         success: function(result) {
             var data = {};
-            data.title = '资源订阅统计';
-            data.legend = '资源被订阅量（条）';
+            if (params.type === 'provider') {
+                data.title = '资源订阅统计';
+                data.legend = '资源被订阅量（个）';
+                data.color = '#9DD28E';
+                data.tooltip = '被订阅个数';
+            } else {
+
+                data.title = '资源订阅统计';
+                data.legend = '资源订阅量（个）';
+                data.color = '#9DD28E';
+                data.tooltip = '订阅个数';
+            }
             if (result.status == 0) {
                 data.values = result.data;
             }
@@ -597,8 +510,18 @@ function resSubReq(params) {
         },
         error: function() {
             var data = {};
-            data.title = '资源订阅统计';
-            data.legend = '资源被订阅量（条）';
+            if (params.type === 'provider') {
+                data.title = '资源订阅统计';
+                data.legend = '资源被订阅量（个）';
+                data.color = '#9DD28E';
+                data.tooltip = '被订阅个数';
+            } else {
+
+                data.title = '资源订阅统计';
+                data.legend = '资源订阅量（个）';
+                data.color = '#9DD28E';
+                data.tooltip = '订阅个数';
+            }
             drawResSubPieChart(data);
             drawResSubBarChart(data);
         }
@@ -612,7 +535,7 @@ function getResQueryReqParams() {
         type: 'provider'
     };
 
-    var topVal = $('.chart_wrapper:eq(3) .btn-group .btn.active').eq(1).attr('name');
+    var topVal = $('.chart_wrapper:eq(3) .btn-group .btn.active').eq(0).attr('name');
     params.top = topN[topVal] || 5;
     return params;
 }
@@ -634,11 +557,19 @@ function resQueryReq(params) {
         data: params,
         dataType: 'json',
         cache: false,
-        async: false,
+        // async: false,
         success: function(result) {
             var data = {};
             data.title = '资源查询统计';
-            data.legend = '资源被查询量（条）';
+            data.color = '#7E97B2';
+            if (params.type === 'provider') {
+                data.legend = '资源被查询量（次）';
+                data.tooltip = '被查询次数';
+            } else {
+                data.legend = '资源查询量（次）';
+                data.tooltip = '查询次数';
+
+            }
             data.values = [];
             if (result.status == 0) {
                 data.values = result.data;
@@ -650,7 +581,15 @@ function resQueryReq(params) {
         error: function() {
             var data = {};
             data.title = '资源查询统计';
-            data.legend = '资源被查询量（条）';
+            data.color = '#7E97B2';
+            if (params.type === 'provider') {
+                data.legend = '资源被查询量（次）';
+                data.tooltip = '被查询次数';
+            } else {
+                data.legend = '资源查询量（次）';
+                data.tooltip = '查询次数';
+
+            }
             data.values = [];
 
             drawResQueryPieChart(data);
@@ -766,6 +705,7 @@ function getDeptDataChangedLineOption(data) {
         },
         yAxis: {
             type: 'value',
+            minInterval: 1,
             name: '(条)',
             splitLine: {
                 lineStyle: {
@@ -824,7 +764,7 @@ function getDeptDataChangedLineOption(data) {
 
 function getDeptDataChangedBarOption(data) {
     var spNum = 5,
-        _max = data._max, //100,
+        _max = 100, //data._max,
         unit = '（条）',
         legendData = ['新增', '修改', '删除'],
         y_data = data.deptNames, //['部门1', '部门2', '部门3', '部门4', '部门5', '部门6'];
@@ -833,10 +773,16 @@ function getDeptDataChangedBarOption(data) {
         _data2 = data.change, //[19, 5, 40, 33, 15, 51],
         _data3 = data.delete, //[21, 55, 10, 13, 35, 11],
         _data4 = data.total, //[50, 75, 60, 59, 65, 73];
+        total = (_data4.length > 0) && _data4.reduce(function(a, b) {
+            return a += b;
+        }),
+        title = '部门数据变化量统计', //$.i18n.prop('ipeg-service-monitor-deptdatachanged-i18n') 
         colors = ['#9DD28E', '#7E97B2', '#E18489'];
 
     var fomatter_fn = function(v) {
-        return v.value ? (v.value / _max * 100).toFixed(0) : ''
+        // if (_max == 0) return 0;
+        // return v.value ? (v.value / _max * 100).toFixed(0) : ''
+        return v.value ? v.value : '';
     }
     var _label = {
         normal: {
@@ -852,7 +798,7 @@ function getDeptDataChangedBarOption(data) {
     option = {
         backgroundColor: '#fff',
         title: {
-            text: '部门数据变化量统计',
+            text: title, //'部门数据变化量统计',
             textStyle: {
                 color: '#757D8C'
             },
@@ -897,22 +843,27 @@ function getDeptDataChangedBarOption(data) {
                 fontSize: 16
             },
             formatter: function(p) {
-                // console.log(p);
+                // console.warn(p);
                 var _arr = p.seriesName.split('/'),
                     idx = p.seriesIndex; //1，2，3
-                return '名称：' + p.seriesName + '<br>' + '完成：' + p.value + '<br>' + '占比：' + (p.value / _max * 100).toFixed(0) + '%';
+                var rate = _max == 0 ? 0 : (p.value / total * 100).toFixed(2);
+                return '名称：' + p.seriesName + '<br>' + '条数：' + p.value + '<br>' + '占比：' + rate + '%';
             },
             extraCssText: 'box-shadow: 0 0 5px rgba(0, 0, 0, 0.1)'
         },
         xAxis: {
-            splitNumber: spNum,
-            interval: _max / spNum,
-            max: _max,
+            type: 'value',
+            splitNumber: 5,
+            // minInterval: 1,
+            // interval: _max / spNum,
+            // max: _max,
             axisLabel: {
                 show: false,
                 formatter: function(v) {
-                    var _v = (v / _max * 100).toFixed(0);
-                    return _v == 0 ? _v : _v + '%';
+                    // if (_max == 0) return 0;
+                    // var _v = (v / _max * 100).toFixed(0);
+                    // return _v == 0 ? _v : _v + '%';
+                    return v;
                 }
             },
             axisLine: {
@@ -931,6 +882,7 @@ function getDeptDataChangedBarOption(data) {
 
         },
         yAxis: [{
+            type: 'category',
             data: y_data,
             boundaryGap: false,
             axisLabel: {
@@ -961,6 +913,7 @@ function getDeptDataChangedBarOption(data) {
             label: _label,
             legendHoverLink: false,
             barWidth: 30,
+            // barMinHeight: 5,
             itemStyle: {
                 normal: {
                     color: colors[0]
@@ -1073,7 +1026,7 @@ function getSubPieOption(myChart, data) {
         return e.value;
     });
     //var color =["#BC8DEE", "#8693F3","#89C3F8","#F2A695","#FCC667","#AEB7F9","#748BFA"]
-    var color = ["#BC8DEE", "#8693F3", "#89C3F8", "#F2A695", "#FCC667", "#AEB7F9", "#748BFA"]
+    var color = ["#9DD28E", "#9EB6CF", "#A37786", "#E18489", "#E0DEB4", "#BC8DEE", "#8693F3", "#89C3F8", "#F2A695", "#FCC667", "#AEB7F9", "#748BFA"]
     option = {
         title: {
             text: data.title, //'资源订阅统计',
@@ -1088,7 +1041,8 @@ function getSubPieOption(myChart, data) {
         tooltip: {
             trigger: 'item',
             //formatter: "{b}被订阅占比 : {d}% <br/> 数据条数 : {c}条"
-            formatter: "被订阅占比 : {d}% <br/> 数据条数 : {c}条"
+            // formatter: data.tooltip + " : {d}% <br/> 被查询次数 : {c}次" //被订阅占比
+            formatter: data.tooltip + "占比" + " : {d}% <br/> " + data.tooltip + " : {c}" //被订阅占比
         },
         legend: {
             orient: "vartical",
@@ -1113,12 +1067,12 @@ function getSubPieOption(myChart, data) {
             },
         },
         series: [{
-            name: '违规次数',
+            name: '资源',
             type: 'pie',
             clockwise: false, //饼图的扇区是否是顺时针排布
             minAngle: 20, //最小的扇区角度（0 ~ 360）
-            radius: ["40%", "58%"],
-            center: ["45%", "55%"],
+            radius: ["30%", "46%"],
+            center: ["45%", "60%"],
             avoidLabelOverlap: false,
             itemStyle: { //图形样式
                 normal: {
@@ -1233,12 +1187,13 @@ function getSubBarOption(data) {
             top: '10'
         },
         backgroundColor: "rgba(255,255,255,1)",
-        color: ['#9DD28E'],
+        // color: ['#9DD28E'],
+        color: [data.color],
         grid: {
             left: '8%',
             right: '10%',
-            top: '30%',
-            bottom: '18%',
+            top: '25%',
+            bottom: '6%',
             containLabel: true
         },
         legend: {
