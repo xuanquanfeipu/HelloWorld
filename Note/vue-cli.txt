@@ -1,0 +1,356 @@
+1.//C:\Users\10154817\.npmrc  下面修改的是该文件
+npm config set proxy=http://八位工号:人事在线密码@proxynj.zte.com.cn:80
+npm config set http-proxy=http://八位工号:人事在线密码@proxynj.zte.com.cn:80
+npm config set https-proxy=https://八位工号:人事在线密码@proxynj.zte.com.cn:80
+
+2.
+//修改C:\Windows\System32\drivers\etc\hosts 文件
+	192.30.255.112  github.com
+	192.30.253.112  github.com
+	192.30.255.113	github.com
+	203.208.39.99	github.com
+	192.30.253.113	github.com
+	
+3.	
+//安装nodejs D:\nodejs 并添加NODE_PATH环境变量  D:\nodejs\node_global\node_modules
+
+4.
+//配置npm的路径
+启动cmd，键入如下的命令：
+
+npm config set prefix "d:\nodejs\node_global"
+npm config set cache "d:\nodejs\node_cache"
+path添加d:\nodejs\node_global;
+
+5.
+//安装命令行工具vue-cli
+进入到D:\nodejs\node_global目录 执行命令：
+npm install -g vue-cli
+
+6.
+//下载vue-template模板文件并解压
+在C:\Users\10154817 用户目录下新建 文件夹 .vue-templates，并将解压文件拷贝到该目录下
+
+7.
+//进入到 需要创建项目的目录，执行命令：
+vue init webpack project-name --offline
+
+8.
+//启动项目
+npm run dev
+
+二、vue项目的打包
+
+1、大家都知道使用npm run build进行打包，这个时候你直接打开dist/下的index.html,会发现文件可以打开，但是所有的js，css，img等路径有问题是指向根目录的，
+
+　  此时需要修改config/index.js里的assetsPublicPath的字段，初始项目是/他是指向项目根目录的也是为什么会出现错误，这时改为./
+
+
+2、 使用 vue-router 跳转页面
+参考页面：https://www.cnblogs.com/wisewrong/p/6277262.html
+
+npm config set proxy=http://10154817:Hhy527705@proxynj.zte.com.cn:80
+npm config set https-proxy=http://10154817:Hhy527705@proxynj.zte.com.cn:80
+//安装element-ui
+npm i element-ui -S
+
+//Failed to mount component: template or render function not defined. 错误的解决方法
+
+解决方法
+
+import Vue from “vue”; 默认引入的文件是 vue/dist/vue.runtime.common.js。这个读者可以在node_modules/vue/package.json文件里面查到。package文件的main选项指定了默认执行的文件。关键的package.json代码如下：
+
+"name": "vue",
+"version": "2.1.3",
+"description": "Reactive, component-oriented view layer for modern web interfaces.",
+"main": "dist/vue.runtime.common.js",
+
+读者可以在github上阅读vue.js 2.1.3的文档。文档位置在vue/dist/README.md。这个文档说明了 vue.runtime.common.js 文件不含编译器，因此不支持template选项。我们使用Webpack和template选项的话，可以使用vue.common.js文件。vue.common.js文件包含编译器。所以main.js中把
+
+import Vue from "vue";
+
+改写成
+
+import Vue from "vue/dist/vue.common.js";
+
+就可以了。而且可以正常使用 vue 文件。
+
+1.临时使用
+
+npm --registry https://registry.npm.taobao.org install express
+
+2.持久使用
+
+npm config set registry https://registry.npm.taobao.org
+
+配置后可通过下面方式来验证是否成功 
+npm config get registry
+或 
+npm info express
+3.通过cnpm使用
+
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+
+使用 
+cnpm install express
+
+4.换成原来的
+
+npm config set registry https://registry.npmjs.org/
+
+
+今天在win7下安装cnpm出现上图的错误，解决方法：
+
+npm config set proxy null（npm config delete proxy）
+
+npm config set https-proxy null
+
+npm config set strict-ssl false
+
+然后再安装cnmp
+
+npm install -g cnpm –registry=https://registry.npm.taobao.org
+
+
+NodeJS镜像配置
+
+nodejs和npm的仓库托管在S3上，在国内访问十分困难，这里可以用淘宝的镜像站npm.taobao.org代替。以下提供几种不同的使用淘宝NodeJS镜像的方法:
+
+nvm使用淘宝镜像
+
+很多人会使用nvm管理本地nodejs版本。而nvm支持通过环境变量指向nodejs和iojs的下载地址。
+
+配置这两个环境变量即可:
+
+NVM_NODEJS_ORG_MIRROR: https://npm.taobao.org/mirrors/node
+NVM_IOJS_ORG_MIRROR: https://npm.taobao.org/mirrors/iojs/
+Linux/Unix系统使用以下命令设置这个环境变量:
+
+export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
+export NVM_IOJS_ORG_MIRROR=https://npm.taobao.org/mirrors/iojs
+永久生效请自行添加到shell的启动脚本配置中(bash可以添加到~/.bashrc，zsh可以添加到~/.zshrc)。
+
+之后nvm ls-remote和nvm install命令将会使用淘宝的镜像了。
+
+npm使用淘宝镜像安装包
+
+npm使用registry这个属性指定仓库，因此配置这个属性即可。修改npm配置属性的几种方法详见官方文档。
+
+这里只贴出修改registry的方法，以下三种任意一种即可:
+
+修改~/.npmrc文件(没有就自行新建一个)，写入registry = https://registry.npm.taobao.org
+使用命令npm config set registry https://registry.npm.taobao.org(效果和上面等效)
+添加环境变量NPＭ_CONFIG_REGISTRY=https://registry.npm.taobao.org
+同样的方法，将disturl这个配置同样指向: https://npm.taobao.org/dist, 任选一种方案:
+
+npm config set disturl https://npm.taobao.org/dist
+
+vue init 失败 怎么办????????????????????????
+
+reference:
+
+https://segmentfault.com/q/1010000005998968
+
+简单一点，你也可以直接去github下载对应的模板(template), 然后离线初始化project
+vue init webpack-simple project --offline
+不会离线初始化? 请遵循以下操作
+
+1.下载模板
+
+在https://github.com/vuejs-templates/
+下载webpack-simple 或 webpack。
+如何下载
+
+比如: 到https://github.com/vuejs-templates/webpack-simple点Clone or Download 里的 Download ZIP
+不能上github?
+
+下个lantern或者挂vpn翻墙，此处不赘述
+2.解压zip，放置文件夹
+
+把解压出的文件夹放在
+C:\Users\{your username}\.vue-templates
+比如我的用户名是jj, 那就是
+C:\Users\jj\.vue-templates
+3.离线执行vue init
+
+到你的project的文件夹，执行
+vue init webpack project --offline
+或
+vue init webpack-simple project --offline
+与原本指令的区别
+
+在于加了--offline, 于是你的vue init是用C:\Users\{your username}\.vue-templates内的template来生成项目的
+
+
+
+Windows下因为不能用图形界面新建以点开头的文件和文件夹
+
+那么必须用cmd来新建这种类型的文件
+
+新建文件： 
+语法格式：type NUL > .文件名 
+例如 type NUL>.log ，这样就新建了以.log为名字的文件 
+这里写图片描述
+
+新建文件夹： 
+语法格式：mkdir 文件名 
+例如 mkdir .gitignore 
+这样就新建了一个以.gitignore为文件夹名字的文件夹 
+这里写图片描述
+
+
+解决办法（1）：在文件名后面再添加一个"."，文件名部分输入：".properties."，就可以成功完成创建。
+
+解决办法（2）：打开命令行，在命令行输入：echo test > .properties。
+
+npm config rm proxy
+npm config rm https-proxynj
+
+npm install -g webpack-dev-server --save-dev
+
+//配置npm的路径
+启动cmd，键入如下的命令：
+
+npm config set prefix "d:\nodejs\node_global"
+npm config set cache "d:\nodejs\node_cache"
+
+path添加d:\nodejs\node_global;
+
+检测是否配置成功
+
+以上的步骤全部完成以后，我们打开CMD，输入node,再键入require('webpack')
+
+
+
+npm ERR! code EMAXREDIRECT npm ERR! maximum redirect reached at: http://10.41.70.100/ac_portal/proxy.html?
+
+The issue was solved... I actually don't know exactly what happened but I could solve it with the following commands: 
+> npm config delete proxy > npm config delete https-proxy > npm config delete strict-ssl 
+It seems that I had some proxy configuration on my machine and I had to delete it all
+
+npm config rm proxy 
+npm config rm https-proxy
+
+
+//Vue 中标签style background-image 找不到图片
+
+注意图片是相对于bundle.js定位
+
+style里的url路径不会被解析为模块，img里的src我猜是被转成base64了，你的webroot下也压根就没有这张图片。
+//你现在要么是把这个background写进css里，css里的图片会被打包工具处理，要么是在js里require的方式引入这张图片。
+
+用绝对路径，省事。
+
+<div :style="backgroundDiv" class="background-img"></div>
+
+<script>
+  export default {
+    data () {
+      return {       
+        backgroundDiv: {
+          backgroundImage: 'url(' + require('../assets/images/1.jpg') + ')',
+        }
+      }
+    }
+  }
+</script>
+
+<style scoped>
+  .background-img {
+    background: no-repeat center top;
+    background-size: contain;
+    height: 150px;
+  }
+
+</style>
+
+//目前的三种方式都引用成功了。先上代码：
+
+<template>
+  <div>
+    <!-- 成功引入的三种方法： -->
+    <!-- 1 -->
+    <img src="~@/assets/1.jpg" width="100">
+    <!-- 2 -->
+    <div class="img1"></div>
+    <!-- 3 -->
+    <div class="img2" :style="{backgroundImage: 'url(' + img + ')' }"></div>
+  </div>
+</template>
+
+<script>
+import Img from '@/assets/1.jpg'
+
+export default {
+  data () {
+    return {
+      img: Img,
+    }
+  }
+}
+</script>
+
+<style>
+  .img1{
+    width: 100px;
+    height: 100px;
+    background: url('~@/assets/1.jpg') center center no-repeat;
+    background-size: 100px auto;
+  }
+  .img2{
+    width: 100px;
+    height: 100px;
+    background-position: center center;
+    background-repeat:  no-repeat;
+    background-size: 100px auto;
+  }
+</style>
+
+
+
+
+_this.$http({
+            url: 'auth/logout',
+            method: 'get',
+            headers: {
+              'X-Access-Token': sessionStorage.getItem('accessToken')
+            }
+          })
+          .then(function (response) {
+            
+          })
+          .catch(function (error) {
+            _this.$message('注销失败！');
+          });
+		  
+		  
+		  
+//vue中改变背景图，实现点击切换效果
+
+第一种
+
+v-bind:class="{ active: item.isActive } v-on:click="doSomething"
+active是样式名,内容是红色背景.
+item.isActive在data中，为布尔值。
+doSomething在methods中，对item.isActive取反.
+
+ 
+
+第二种<div id="playPage" class="blur" v-bind:style="{backgroundImage: 'url(' + albumpic_big + ')'}">
+
+ 
+
+第三种
+
+在.vue文件中的CSS样式中，使用背景图
+
+在webpack打包后，路径不对，怎么办呢？
+
+回答
+
+如果你用了vue-cil，那么在build目录下找到utils.js中的ExtractTextPlugin.extract({}),里面添加下面这个属性就完美解决了publicPath: ‘../../‘
+
+ 
+
+第四种
+<img :src="'product/img?id='+imgObj.id+'&thumbnail=true'" alt="图片">		  
