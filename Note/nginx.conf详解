@@ -1,0 +1,356 @@
+#[root@bogon conf]#  cat /usr/local/webserver/nginx/conf/nginx.conf
+
+user www www;	#全局块
+worker_processes 2; #设置值和CPU核心数一致
+error_log /usr/local/webserver/nginx/logs/nginx_error.log crit; #日志位置和日志级别
+pid /usr/local/webserver/nginx/nginx.pid;
+#Specifies the value for maximum file descriptors that can be opened by this process.
+worker_rlimit_nofile 65535;
+events	 #events块
+{
+  use epoll;
+  worker_connections 65535;
+}
+http	#http块
+{
+  include mime.types;	#http全局块
+  default_type application/octet-stream;
+  log_format main  '$remote_addr - $remote_user [$time_local] "$request" '
+               '$status $body_bytes_sent "$http_referer" '
+               '"$http_user_agent" $http_x_forwarded_for';
+  
+#charset gb2312;
+     
+  server_names_hash_bucket_size 128;
+  client_header_buffer_size 32k;
+  large_client_header_buffers 4 32k;
+  client_max_body_size 8m;
+     
+  sendfile on;
+  tcp_nopush on;
+  keepalive_timeout 60;
+  tcp_nodelay on;
+  fastcgi_connect_timeout 300;
+  fastcgi_send_timeout 300;
+  fastcgi_read_timeout 300;
+  fastcgi_buffer_size 64k;
+  fastcgi_buffers 4 64k;
+  fastcgi_busy_buffers_size 128k;
+  fastcgi_temp_file_write_size 128k;
+  gzip on; 
+  gzip_min_length 1k;
+  gzip_buffers 4 16k;
+  gzip_http_version 1.0;
+  gzip_comp_level 2;
+  gzip_types text/plain application/x-javascript text/css application/xml;
+  gzip_vary on;
+ 
+  #limit_zone crawler $binary_remote_addr 10m;
+ #下面是server虚拟主机的配置
+ server	#server块
+  {
+    listen 80;#监听端口		#server全局块
+    server_name localhost;#域名
+    index index.html index.htm index.php;
+    root /usr/local/webserver/nginx/html;#站点目录
+      location ~ .*\.(php|php5)?$		#location块
+    {
+      #fastcgi_pass unix:/tmp/php-cgi.sock;
+      fastcgi_pass 127.0.0.1:9000;
+      fastcgi_index index.php;
+      include fastcgi.conf;
+    }
+    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf|ico)$
+    {
+      expires 30d;
+  # access_log off;
+    }
+    location ~ .*\.(js|css)?$
+    {
+      expires 15d;
+   # access_log off;
+    }
+    access_log off;
+  }
+  
+  upstream name {                    # 负载均衡配置
+        ....
+    }
+
+}
+
+
+######################################################################################################################################
+
+#检查配置文件nginx.conf的正确性命令：
+
+#[root@bogon conf]# /usr/local/webserver/nginx/sbin/nginx -t
+
+#Nginx 启动命令如下：
+
+#[root@bogon conf]# /usr/local/webserver/nginx/sbin/nginx
+
+#/usr/local/webserver/nginx/sbin/nginx -s reload            # 重新载入配置文件
+#/usr/local/webserver/nginx/sbin/nginx -s reopen            # 重启 Nginx
+#/usr/local/webserver/nginx/sbin/nginx -s stop              # 停止 Nginx
+
+# root 指令只是将搜索的根设置为 root 设定的目录，即不会截断 uri，而是使用原始 uri 跳转该目录下查找文件
+# aias 指令则会截断匹配的 uri，然后使用 alias 设定的路径加上剩余的 uri 作为子路径进行查找
+
+# 1、全局块：配置影响nginx全局的指令。一般有运行nginx服务器的用户组，nginx进程pid存放路径，日志存放路径，配置文件引入，允许生成worker process数等。
+ #2、events块：配置影响nginx服务器或与用户的网络连接。有每个进程的最大连接数，选取哪种事件驱动模型处理连接请求，是否允许同时接受多个网路连接，开启多个网络连接序列化等。
+ #3、http块：可以嵌套多个server，配置代理，缓存，日志定义等绝大多数功能和第三方模块的配置。如文件引入，mime-type定义，日志自定义，是否使用sendfile传输文件，连接超时时间，单连接请求数等。
+#4、server块：配置虚拟主机的相关参数，一个http中可以有多个server。
+#5、location块：配置请求的路由，以及各种页面的处理情况。
+#6、upstream：用于进行负载均衡的配置
+
+
+########### 每个指令必须有分号结束。#################
+#user administrator administrators;  #配置用户或者组，默认为nobody nobody。
+#worker_processes 2;  #允许生成的进程数，默认为1
+#pid /nginx/pid/nginx.pid;   #指定nginx进程运行文件存放地址
+error_log log/error.log debug;  #制定日志路径，级别。这个设置可以放入全局块，http块，server块，级别依次为：debug|info|notice|warn|error|crit|alert|emerg
+events {
+    accept_mutex on;   #设置网路连接序列化，防止惊群现象发生，默认为on
+    multi_accept on;  #设置一个进程是否同时接受多个网络连接，默认为off
+    #use epoll;      #事件驱动模型，select|poll|kqueue|epoll|resig|/dev/poll|eventport
+    worker_connections  1024;    #最大连接数，默认为512
+}
+http {
+    include       mime.types;   #文件扩展名与文件类型映射表
+    default_type  application/octet-stream; #默认文件类型，默认为text/plain
+    #access_log off; #取消服务日志    
+    log_format myFormat '$remote_addr–$remote_user [$time_local] $request $status $body_bytes_sent $http_referer $http_user_agent $http_x_forwarded_for'; #自定义格式
+    access_log log/access.log myFormat;  #combined为日志格式的默认值
+    sendfile on;   #允许sendfile方式传输文件，默认为off，可以在http块，server块，location块。
+    sendfile_max_chunk 100k;  #每个进程每次调用传输数量不能大于设定的值，默认为0，即不设上限。
+    keepalive_timeout 65;  #连接超时时间，默认为75s，可以在http，server，location块。
+
+    upstream mysvr {   
+      server 127.0.0.1:7878;
+      server 192.168.10.121:3333 backup;  #热备
+    }
+    error_page 404 https://www.baidu.com; #错误页
+    server {
+        keepalive_requests 120; #单连接请求上限次数。
+        listen       4545;   #监听端口
+        server_name  127.0.0.1;   #监听地址       
+        location  ~*^.+$ {       #请求的url过滤，正则匹配，~为区分大小写，~*为不区分大小写。
+           #root path;  #根目录
+           #index vv.txt;  #设置默认页
+           proxy_pass  http://mysvr;  #请求转向mysvr 定义的服务器列表
+           deny 127.0.0.1;  #拒绝的ip
+           allow 172.18.5.54; #允许的ip           
+        } 
+    }
+}
+上面是nginx的基本配置，需要注意的有以下几点：
+
+1、几个常见配置项：
+
+ 1.$remote_addr 与 $http_x_forwarded_for 用以记录客户端的ip地址；
+ 2.$remote_user ：用来记录客户端用户名称；
+ 3.$time_local ： 用来记录访问时间与时区；
+ 4.$request ： 用来记录请求的url与http协议；
+ 5.$status ： 用来记录请求状态；成功是200；
+ 6.$body_bytes_s ent ：记录发送给客户端文件主体内容大小；
+ 7.$http_referer ：用来记录从那个页面链接访问过来的；
+ 8.$http_user_agent ：记录客户端浏览器的相关信息；
+2、惊群现象：一个网路连接到来，多个睡眠的进程被同事叫醒，但只有一个进程能获得链接，这样会影响系统性能。
+
+3、每个指令必须有分号结束。
+
+
+使用 X-Frame-Options 防止被iframe 造成跨域iframe 提交挂掉
+ Refused to display 'http://www.***.com/login/doLogin.html' in a frame because it set 'X-Frame-Options' to 'SAMEORIGIN'. 
+触发原因：页面的返回头被设置 X-Frame-Options SAMEORIGIN ，只能被同源的iframe 引用。跨域名的iframe 没法显示了。
+
+解决办法：
+第一步 把 服务器上的 X-Frame-Options header 去掉
+
+第二步 添加 如下代码到 不想被iframe 的页面header 里去。
+<style id="antiClickjack">body{display:none !important;}</style>
+<script>
+if (self === top) {
+var antiClickjack = document.getElementById("antiClickjack");
+antiClickjack.parentNode.removeChild(antiClickjack);
+} else {
+top.location = self.location;
+}
+</script>
+
+其他：
+
+X-Frame-Options ALLOW-FROM 只支持单一域名 想支持多个二级域名的这个无解
+
+并不是所有的浏览器都支持  这个header 所以，低版本的浏览器仍然会被iframe 成功
+
+
+server {
+        listen       80; #监听80端口，可以改成其他端口
+        server_name  localhost; # 当前服务的域名
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            proxy_pass http://localhost:81;
+            proxy_redirect default;
+        }
+
+		location /apis { #添加访问目录为/apis的代理配置
+			rewrite  ^/apis/(.*)$ /$1 break;
+			proxy_pass   http://localhost:82;
+       }
+		#以下配置省略
+		}
+		
+配置解释：
+
+1.由配置信息可知，我们让nginx监听localhost的80端口，网站A与网站B的访问都是经过localhost的80端口进行访问。
+
+2.我们特殊配置了一个“/apis”目录的访问，并且对url执行了重写，最后使以“/apis”开头的地址都转到“http://localhost:82”进行处理。
+
+3.rewrite  ^/apis/(.*)$ /$1 break; 
+
+代表重写拦截进来的请求，并且只能对域名后边以“/apis”开头的起作用，例如www.a.com/apis/msg?x=1重写。只对/apis重写。
+
+　　rewrite后面的参数是一个简单的正则 ^/apis/(.*)$ ,$1代表正则中的第一个(),$2代表第二个()的值,以此类推。
+
+　　break代表匹配一个之后停止匹配。
+
+
+
+
+#proxy服务器
+server {
+    listen       81;
+    server_name  www.domain1.com;
+
+    location / {
+        proxy_pass   http://www.domain2.com:8080;  #反向代理
+        proxy_cookie_domain www.domain2.com www.domain1.com; #修改cookie里域名
+        index  index.html index.htm;
+
+        # 当用webpack-dev-server等中间件代理接口访问nignx时，此时无浏览器参与，故没有同源限制，下面的跨域配置可不启用
+        add_header Access-Control-Allow-Origin http://www.domain1.com;  #当前端只跨域不带cookie时，可为*
+        add_header Access-Control-Allow-Credentials true;
+    }
+}
+
+
+1.) 前端代码示例：
+
+var xhr = new XMLHttpRequest();
+
+// 前端开关：浏览器是否读写cookie
+xhr.withCredentials = true;
+
+// 访问nginx中的代理服务器
+xhr.open('get', 'http://www.domain1.com:81/?user=admin', true);
+xhr.send();
+2.) Nodejs后台示例：
+
+var http = require('http');
+var server = http.createServer();
+var qs = require('querystring');
+
+server.on('request', function(req, res) {
+    var params = qs.parse(req.url.substring(2));
+
+    // 向前台写cookie
+    res.writeHead(200, {
+        'Set-Cookie': 'l=a123456;Path=/;Domain=www.domain2.com;HttpOnly'   // HttpOnly:脚本无法读取
+    });
+
+    res.write(JSON.stringify(params));
+    res.end();
+});
+
+server.listen('8080');
+console.log('Server is running at port 8080...');
+
+
+
+
+
+yum install nginx 
+
+自动安装就好了；配置文件目录在/etc/nginx 下；启动命令为 /usr/sbin/nginx ;
+
+现在开始配置文件了； 我们进入 /etc/nginx/conf.d 目录下，创建一个文件 myWeb.conf,文件要以.conf结尾，这样启动nginx时，能够自动加载这个配置文件；
+
+server {
+    listen 8080;
+    server_name ****.*****.com;
+    root /home/work/***/static/client;
+    index index.html;
+    autoindex on;
+    charset   utf-8;
+
+    location ~ /(system|car)/ {
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http://192.168.1.1:8851;
+    }
+
+    #配置Nginx动静分离，定义的静态页面直接从Nginx发布目录读取。
+    location /admin {
+        alias /home/work/****/static/admin/;
+        #expires定义用户浏览器缓存的时间为7天，如果静态页面不常更新，可以设置更长，这样可以节省带宽和缓解服务器的压力
+        expires  1d;
+        index index.html;
+	autoindex on;
+    }
+
+    access_log /home/work/****/logs/static_admin_ng_access.log;
+
+    location /api/ {
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http://192.168.1.1:8851;
+    }
+    #配置Nginx动静分离，定义的静态页面直接从Nginx发布目录读取。
+    location /client {
+        alias /home/work/****/static/client/;
+        #expires定义用户浏览器缓存的时间为7天，如果静态页面不常更新，可以设置更长，这样可以节省带宽和缓解服>务器的压力
+        expires  1d;
+        index index.html;
+	autoindex on;
+    }
+    access_log /home/work/****/logs/static_client_ng_access.log;
+
+}
+
+#############################跨域问题##################################
+
+1.nginx.conf
+
+add_header 'Access-Control-Allow-Origin' $http_origin;
+add_header 'Access-Control-Allow-Credentials' 'true';
+add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+add_header 'Access-Control-Allow-Headers' 'DNT,web-token,app-token,Authorization,Accept,Origin,Keep-Alive,User-Agent,X-Mx-ReqToken,X-Data-Type,X-Auth-Token,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,ICTAuthentication';
+add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range';
+if ($request_method = 'OPTIONS') {
+	add_header 'Access-Control-Max-Age' 1728000;
+	add_header 'Content-Type' 'text/plain; charset=utf-8';
+	add_header 'Content-Length' 0;
+	return 204;
+}
+
+2.ict-nginx-http-location-root0.conf 
+
+#add_header X-Frame-Options SAMEORIGIN; //注释掉或改成下面的形式
+
+add_header X - Frame - Options ALLOW - FROM http: //10.41.148.80:8080/;
+
+# add_header Content - Security - Policy "frame-ancestors 'self'"; //注释掉
+
+3.login.jsp
+
+if (top != window) {
+	//top.location.href = location.href;
+}
