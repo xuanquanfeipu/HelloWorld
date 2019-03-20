@@ -120,6 +120,43 @@ replace: true
 
 ```
 
+1. 简单注入方式(Simple injection method)
+```
+function myCtrl($scope,Project){};
+myModule.controller('myCtrl', myCtrl);
+```
+*或者*
+```
+myModule.controller(function($scope,Project){
+        
+})
+```
+*AngularJs会扫描function的参数，提取参数的名称(name)作为function的依赖，*
+
+*所以这种方式要求保证参数名称的正确性，但对参数的顺序并没有要求；*
+
+*但是这种注入方式有一个问题，当我们将项目发布到正式环境时都会压缩我们的代码，这时function的参数可能会变成a,b，这就会导致我们的代码出现问题，下面两种注入方式可以帮我们解决这个问题。*
+
+2. 数组注释法(array-style notation)
+```
+myModule.controller('myCtrl', ['$scope', 'Preject', function($scope, Project) {
+        
+}])
+```
+*每一个依赖的参数值（字符串）都会以相同的顺序存放在一个数组里，数组的值与后面的function参数一一对应，这样即使压缩了也不会有什么问题*
+
+3. 显示调用function的$inject
+
+*AngularJs提供了一种向injector server通知你想要注入的依赖的方式*
+```
+function myCtrl(a, b) {
+    //$scope, Project,故意改成a,b模拟压缩后的情形
+}
+myCtrl.$inject = ['$scope', 'Project'];
+myModule.controller('PhoneDetailCtrl', myCtrl);
+```
+*最后，有一个第三方的插件ng-min，它可以帮你将以简单方式注入的代码自动转换成数组注释的方式，即能满足你写简洁代码的愿望，又能避免压缩出错问题。ng-min地址：https://github.com/btford/ngmin*
+
 
 ## Markdown语法
 https://blog.csdn.net/u014061630/article/details/81359144#27-列表  
