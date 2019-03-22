@@ -70,3 +70,12 @@ find /root/sh/01 -type d -print| sed 's;01;04;'| sed 's/^/mkdir /'|sh -x
 
 cd $APPL_TOP/inv
 find . -type d -exec mkdir -p $APPL_TOP/cux/{} \;
+
+
+#网段可用IP地址
+#!/bin/sh
+ip=1
+while [ $ip != "254" ]; do
+ping 10.86.87.$ip -c 2 |grep -q "ttl=" && echo "10.86.87.$ip yes" || echo "10.86.87.$ip no"
+ip=`expr "$ip" "+" "1"`
+done
