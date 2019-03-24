@@ -2123,7 +2123,7 @@ Github：https://github.com/yueshutong
 诸葛老师BAT面试之深入理解Java虚拟机链接: 链接: pan.baidu.com/s/1WLqU2vNiVGQaGnerpu9BOg 提取码: aym2 
 诸葛 分布式协调框架Zookeeper实战 链接：pan.baidu.com/s/1AhHWw9K2Z4bENWz99hfneg  提取码：s2zx 
 
-
+深度学习
 链接: https://pan.baidu.com/s/1sYFdIKLixBrLm8m3KkQwNA 
 提取码: h75t 
  
@@ -2139,7 +2139,95 @@ Jack_20190321_高性能通信技术NIO原理详解
 
 Jack_(下午)20190319_畅聊微服务架构与敏捷开发
 链接：https://pan.baidu.com/s/1LkpVjerHE8QidNZcoYLENQ 提取码：dsgu 
-链接：https://pan.baidu.com/s/1v5xERPfa_eaN7_e5crL7Rg 
-提取码：y0xw 
+链接：https://pan.baidu.com/s/1v5xERPfa_eaN7_e5crL7Rg 提取码：y0xw 
+
+
+青山_20190316_如何快速搭建一个微服务架构
+链接：https://pan.baidu.com/s/1TLD9Npmim3RZKK3ZgwmXvQ 提取码：qxpo
+
+Tom：手写spring
+链接：https://pan.baidu.com/s/1kKLgFjCeLNQ9qt4bbdn_mA 密码：yg1o
+
+分布式事务解决方案
+链接：https://pan.baidu.com/s/1enNNLtJsJvHNC14kppRJAA 提取码：92ml
+
+《基于Netty手写Dubbo框架》
+链接：https://pan.baidu.com/s/1nZzfCQRzD2MRvWWtA5WRXw 
+提取码：5ol1
+
+《解读Tomcat架构源码设计理念》
+链接：https://pan.baidu.com/s/1O47TNZzTpAXXEJ96aUOO6A 
+提取码：6ecu
+
+Tom_20180825_自己造轮子，一步一步手写Spring
+链接：https://pan.baidu.com/s/1PunpADstGw4B4ZMGGGmoZQ 密码：0kvy
+
+James_0228面试必问之JVM
+链接：https://pan.baidu.com/s/12EQdcEogh8OtB5eYbhHvfg 提取码：zeix
+
+理解 Spring 技术栈或许没有那么难 
+链接：https://pan.baidu.com/s/1lfm-9iiAMe1CJ4v_gvciyQ 密码：pfmi
+
+
+
+1.周瑜老师-跳槽互联网公司必备之HashMap原理解析 3-22
+链接：pan.baidu.com/s/1GaSsLsXkq-JUeg9uFXFk3g 
+提取码：d6wl 
+2.子路老师-征服P7面试的主流框架源码  3-21
+链接：pan.baidu.com/s/1DUhWop1G5Gh9ZVK3F_0Plg 
+提取码：flt6 
+
+获取Python的14张思维导图-高清PDF版，请移步下载链接：
+http://pan.baidu.com/s/1slSFa9J 
+密码：j1og
+
+你的【140G超值干货资料福利包】已安全送达。
+
+【福利一 】
+10G【AI干货资料包】
+链接:https://pan.baidu.com/s/1hrRq68L0lg8ym2wv-MIYfA  密码:2vqu
+
+【福利二】
+30G+【职场办公技能干货资料包】
+链接: https://pan.baidu.com/s/1ZSGdQiSLs-IIHRUAUXoosw 密码: csj3
+
+【福利三】
+100G+【免费小语种视频资料包】
+链接:https://pan.baidu.com/s/11TRz-MUzNbENmGrXKWrNAA  密码:a63f
+
+
+Java视频地址：
+链接：https://pan.baidu.com/s/10NdIUpp-Yx7Jj08xMICe2A 密码：n37c
+
+
+AI视觉干货-1.6G
+链接：https://pan.baidu.com/s/1X42zmmdELCdQrQs8-7ym_g 密码：90rh
+
+【6G】python入门到进阶学习资料集锦
+链接：https://pan.baidu.com/s/17MTT2dC9P0q7k8Xaj-MsTg 
+密码：nygw
+
+清华大学刘洋老师244页PPT-学术写作技巧
+完整版教程链接：http://nlp.csai.tsinghua.edu.cn/~ly/talks/cwmt14_tut.pdf
+
+
+架构师必看的精品视频
+链接：https://pan.baidu.com/s/1cIMidRJzlD4grJY3wPBfSg 
+提取码：9ir6 
+
+架构师之源码视频
+链接：https://pan.baidu.com/s/1JOh1a8iJOdGJDrx8rLh0rg 
+提取码：ix2h 
+
+架构师之性能优化视频
+链接：https://pan.baidu.com/s/1OQu6-b3ssRdBHjV3bnIZyg 
+提取码：5k1u 
+
+架构师之分布式架构视频
+链接：https://pan.baidu.com/s/14-cIamd2MAXmRBBPvGHbzQ 
+提取码：z59m 
+
+
+
 
 
