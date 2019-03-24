@@ -72,6 +72,14 @@ Yarn的优点？
 4. **多注册来源处理：** 所有的依赖包，不管他被不同的库间接关联引用多少次，安装这个包时，只会从一个注册来源去装，要么是 npm 要么是 bower, 防止出现混乱不一致。
 **更好的语义化：** yarn改变了一些npm命令的名称，比如 yarn add/remove，感觉上比 npm 原本的 install/uninstall 要更清晰。
 
+node在windows下升级好像只能手动下载安装包进行覆盖。
+
+yarn在windows下可以通过三种方式升级
+1. 下载覆盖安装（针对之前也是下载安装）
+2. npm view yarn version 查看npm上最新的yarn版本
+npm install yarn@version -g
+3. npm install yarn@latest -g
+
 ---
 
 ## Yarn和npm命令对比
@@ -86,6 +94,7 @@ npm install react --save-dev|	yarn add react --dev  | bower install --save-dev
 npm update --save	|	yarn upgrade  	|bower update --save
 
 ***
+
 
 表头|表头|表头
 ---|:--:|---:
