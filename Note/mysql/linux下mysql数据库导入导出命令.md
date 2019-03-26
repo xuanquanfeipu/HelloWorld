@@ -33,7 +33,7 @@ mysqldump -uroot -p -d dbname > dbname .sql
 1. 首先建空数据库  
 mysql>create database dbname ;  
 
-2. 导入数据库
+2. 导入数据库    
 方法一：   
 （1）选择数据库  
 mysql>use dbname ;  
