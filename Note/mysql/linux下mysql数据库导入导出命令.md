@@ -17,7 +17,9 @@ var/lib/mysql --------mysql数据库data文件的存放路径
 
 确定了运行路径，执行导入、导出mysql数据库命令  
 
-一、导出数据库用mysqldump命令  
+一、导出数据库
+
+用mysqldump命令  
 （注意:先cd到mysql的运行路径下，再执行一下命令）：  
 
 1. 导出数据和表结构：  
@@ -29,11 +31,13 @@ mysqldump -uroot -p dbname > dbname .sql
 mysqldump -u用户名 -p密码 -d 数据库名 > 数据库名.sql    
 mysqldump -uroot -p -d dbname > dbname .sql   
 
-二、导入数据库     
+二、导入数据库   
+
 1. 首先建空数据库  
 mysql>create database dbname ;  
 
 2. 导入数据库    
+
 方法一：   
 （1）选择数据库  
 mysql>use dbname ;  
