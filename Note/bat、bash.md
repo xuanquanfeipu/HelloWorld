@@ -1,3 +1,54 @@
+## linux远程拷贝命令-scp
+
+### 基本命令格式
+
+由于使用ssh，登录之后的本机地址是不需要给出的。但是也可以不登录直接跨主机拷贝文件，可能会需要用户名及密码。
+
+scp基本命令格式如下：
+```
+scp [...] src_file dst_file
+```
+### 文件复制
+```
+$scp local_file remote_username@remote_ip:remote_folder
+$scp local_file remote_username@remote_ip:remote_file
+$scp local_file remote_ip:remote_folder
+$scp local_file remote_ip:remote_file
+```
+### 目录复制
+```
+$scp -r local_folder remote_username@remote_ip:remote_folder
+$scp -r local_folder remote_ip:remote_folder
+```
+
+指定用户名是需要输入密码，不指定用户名需要同时输入用户名和密码。
+
+假设主机A的ip是192.168.0.200，主机B的ip地址是192.168.0.100。
+
+### SSH登录之后
+
+我们在主机A（0.200）上通过ssh远程登录到主机B（0.100）。  
+
+从远程主机复制文件到本地
+```
+$ scp a.txt tocy@192.168.0.200:~/a.txt    # 文件  
+$ scp -r src tocy@192.168.0.200:~/src    # 目录   
+```
+上传本地文件到远程主机
+```
+$ scp tocy@192.168.0.200:~/a.txt a.txt  
+$ scp -r tocy@192.168.0.200:~/src src  
+```
+直接指定两个主机拷贝
+
+$scp tocy@192.168.0.200:/b.txt v@192.168.0.100:/from_b.txt  
+
+**注意有些主机不支持这样拷贝**
+```
+scp root@10.47.180.145:/usr/bin/beas_center.sql root@10.47.180.4:/home/uocbcp/beas_center.sql  
+
+```
+
 //window、linux下显示目录结构，并保存到文件
 
 tree > tree.txt
@@ -79,3 +130,5 @@ while [ $ip != "254" ]; do
 ping 10.86.87.$ip -c 2 |grep -q "ttl=" && echo "10.86.87.$ip yes" || echo "10.86.87.$ip no"
 ip=`expr "$ip" "+" "1"`
 done
+
+
