@@ -1,5 +1,21 @@
 ## linux下mysql数据库导入导出命令
 
+### 登录命令
+
+1. 本地登录MySQL  
+
+命令：mysql -u root -p   //root是用户名，输入这条命令按回车键后系统会提示你输入密码
+
+2. 指定端口号登录MySQL数据库  
+
+将以上命令：mysql -u root -p改为 mysql -u root -p  -P 3306  即可，注意指定端口的字母P为大写，而标识密码的p为小写。MySQL默认端口号为3306。
+
+3. 指定IP地址和端口号登录MySQL数据库  
+
+命令格式为：mysql -h ip -u root -p -P 3306例如：mysql -h 127.0.0.1 -u root -p -P 3306。   
+
+### 导入导出
+
 首先linux 下查看mysql相关目录
 
 root@ubuntu14:~# whereis mysql  
