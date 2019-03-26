@@ -29,7 +29,7 @@ mysqldump -uroot -p dbname > dbname .sql
 mysqldump -u用户名 -p密码 -d 数据库名 > 数据库名.sql    
 mysqldump -uroot -p -d dbname > dbname .sql   
 
-二、导入数据库  
+二、导入数据库     
 1. 首先建空数据库  
 mysql>create database dbname ;  
 
