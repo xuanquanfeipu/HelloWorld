@@ -87,4 +87,17 @@ ReactDOM.render(<App>
     {ele}
 </App>,document.getElementById('root'));
 ```
+**ES6写法**
+```
+const element =<h1>Hello, world!</h1>;
+const container = document.getElementById('root');
+ReactDOM.render(element, container);
+```
+**会经过babel转换成**
+```
+"use strict";
 
+var element = React.createElement("h1", null, "Hello, world!");
+var container = document.getElementById('root');
+ReactDOM.render(element, container);
+```
