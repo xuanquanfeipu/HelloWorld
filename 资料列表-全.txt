@@ -2497,4 +2497,16 @@ mysql网络数据库开发 全25讲 https://pan.baidu.com/s/1KTd7KFfDdArQrXxbKe7
 http://www.liangxu.cc
 更多免费资料请关注微信公众号：良许Linux
 
+Jack_20190328_不容错过的ConcurrentHashMap1.8源码解读
+链接：https://pan.baidu.com/s/19sbwA3-rSeszgBk941hZsg    提取码：kt4m
+
+Java Swing实现电影购票系统项目
+数据库文件: 链接: https://pan.baidu.com/s/1hUxRYtxO60W4pWt3SverCg 提取码: ia5a
+
+2018年QCon大会演讲全套PPT
+https://ppt.geekbang.org/list/qconsh2018
+30道大厂面试高频词汇
+18张最新技能图谱
+10份程序员专属简历模版
+https://pan.baidu.com/s/1C5HyFTHK-dMSqEOsxZmKSw 提取码: u4a5
 
