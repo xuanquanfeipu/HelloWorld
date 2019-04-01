@@ -153,17 +153,19 @@ Redux是flux的一种实现，Redux不单单可以用在react上面。用于reac
     tips:在redux的原则当中，
         state应当是只读的，要改变state，应当触发action然后触发reducer去改变;
 
-        reducer的操作应当是纯函数，在reducer中，reducer应该单纯只执行计算功能。（取自API文档）
+        reducer的操作应当是纯函数，在reducer中，reducer应该单纯只执行计算功能。（取自API文档）  
             不应当操作传入的参数；  
             不应当执行有副作用的操作，例如ajax，路由跳转；  
             不应当调用非纯函数，如Date.now()和Math.random();  
             
 引入Redux
-
+```
 import { createStore, bindActionCreators } from "redux";
-
+```
 createStore用于将定义好的actions和reducer对象写入redux;bindActionCreators用于将redux的actions对组件进行映射.
+
 eg:
+
 ```
     // 1、引入state中的变量，映射state
     function mapStateToProps(state){
@@ -183,7 +185,9 @@ eg:
     App = connect(mapStateToProps,mapDispatchToProps)(App)
 ```
 这里注意，
-1. 
+
+1. bindActionCreators
+
 ```
     bindActionCreators
       {
@@ -193,8 +197,10 @@ eg:
         },dispatch)
       }
 ```      
-    等同于
-    ```
+
+等同于  
+    
+```
       {
         actions:{
           changeText:()=>dispatch(changeText()),
@@ -202,18 +208,23 @@ eg:
         }
       }
 ```      
-    其中，如果不使用bindActionCreators，需要映射的函数调用的时候带有形参，那么就必须在dispatch时加入形参。        
+    其中，如果不使用bindActionCreators，需要映射的函数调用的时候带有形参，那么就必须在dispatch时加入形参。
+    
     例如buttonClick这个函数就有形参    
 
     2. connect
     
-      connect用于视图组件和store的关联，
-      connect会指定两个参数，第一个参数是state的映射
+      connect用于视图组件和store的关联，  
+      connect会指定两个参数，第一个参数是state的映射  
                             第二个参数是actions的映射
+			    
 ### Action
+
 Actions主要用来传递事件的触发，只做事件的描述和传递，不进行计算，事件触发后，state应该如何变化，不由actions来进行，actions将传递给reducer进行详细处理。
-```
+
 eg:
+
+```
     function buttonClick(inputText){
       return {
         type:"BUTTON_CLICK",
@@ -221,12 +232,17 @@ eg:
       }
     }
 ```    
+
 Tips:在这里，Actions表现为一个一个的函数，函数return的是一个对象，对象带有一个type用来判断当前的操作类型，data为自定义的值，可以更改，可以自己定义带有其他的属性值。
 
 ### 如何触发actions？
+
     在组件内部，使用this.props.actions.buttonClick(inputText);
+    
 ### Reducer
+
 还是那句话，Actions只做了事件的描述和数据的传递，没有进行计算，计算都放到了reducer中进行，
+
 ```
 eg:
     function myApp(state = initialState , action){
@@ -245,21 +261,26 @@ eg:
           }
       }
     }
-```    
+```   
+
 一般地，reducer会接收两个参数，   
     第一个参数为state，state可以定义默认值，  
     第二个参数为action。   
     通过switch来定义针对不同actions传递过来的actions.type，对数据进行不同的操作。
 
-定义actions和reducer都是定义的一个函数，
-定义好之后，需要将二者注册给redux对象。
+定义actions和reducer都是定义的一个函数，定义好之后，需要将二者注册给redux对象。
 
+```
     let store = createStore(myApp);
-Component呈递
+```
+
+## Component呈递
+
 一般情况下，redux只有一个state，因此state是全局作用的，component之间需要共享的数据，直接操作state即可。
 
 vuex store的结构
 
+```
 var store=new Vuex({
 modules:{
   modulesA:{
@@ -270,12 +291,15 @@ modules:{
    }
   }
 })  
+```
 
 mapState、mapMutations、mapAction
 
 1. mutation
 
-　　The only way to actually change state in a Vuex store is by committing a mutation, 在vue 中，只有mutation 才能改变state.  mutation 类似事件，每一个mutation都有一个类型和一个处理函数，因为只有mutation 才能改变state, 所以处理函数自动会获得一个默认参数 state. 所谓的类型其实就是名字，action去comit 一个mutation, 它要指定去commit哪个mutation, 所以mutation至少需要一个名字，commit mutation 之后， 要做什么事情，那就需要给它指定一个处理函数， 类型(名字) + 处理函数就构成了mutation. 现在store.js添加mutation.
+　　The only way to actually change state in a Vuex store is by committing a mutation, 在vue 中，只有mutation 才能改变state.  mutation 类
+    似事件，每一个mutation都有一个类型和一个处理函数，因为只有mutation 才能改变state, 所以处理函数自动会获得一个默认参数 state. 所谓的类型其实就是   名字，action去comit 一个mutation, 它要指定去commit哪个mutation, 所以mutation至少需要一个名字，commit mutation 之后， 要做什么事情，那就需要给   它指定一个处理函数， 类型(名字) + 处理函数就构成了mutation. 现在store.js添加mutation.
+    
 ```
 const store = new Vuex.Store({
     state: {
@@ -308,6 +332,7 @@ mutations: {
 	}
 }
 ```	
+
 2. action
 
 action去commit mutations, 所以还要定义action. store.js 里面添加actions.
