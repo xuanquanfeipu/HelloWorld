@@ -2614,3 +2614,83 @@ B站视频链接（有字幕）：https://www.bilibili.com/video/av46216519
 
 
 
+02【1.6G】AI_计算机视觉和深度学习干货
+链接：https://pan.baidu.com/s/1X42zmmdELCdQrQs8-7ym_g 密码：90rh
+
+02【python学习资料】12G数据学习礼包/数据包描述：12个G的数据分析“资料大礼包“：62本不得不读的python教材+10G原始练手数据+200多份数据报告参考
+链接：https://pan.baidu.com/s/1_7iV1YxI5JJrIUzspXoSdA 密码：knxl
+
+05_AI工程师_python入门学习资料【6G】
+链接：https://pan.baidu.com/s/17MTT2dC9P0q7k8Xaj-MsTg 
+密码：nygw
+
+
+java开发实战1200例1,2卷全集含代码
+链接: https://pan.baidu.com/s/1qYxDaA4 密码: ygjw
+
+Java视频地址
+如果链接有问题，请联系qq1647055738 
+链接：https://pan.baidu.com/s/10NdIUpp-Yx7Jj08xMICe2A 密码：n37c
+
+Java架构师必读源码之Tomcat8
+链接：https://pan.baidu.com/s/1ktT4K1oo8FqviJTCeFGFhg 提取码：an5n
+
+Tom_20181026_SpringCloud给分布式微服务架构带来的变革
+链接：https://pan.baidu.com/s/1Kv8HJnm97XjLfobUn8nwPQ    提取码：7wyy
+
+Mic_20181018_阿里p6必问之并发编程的原理分析
+链接: https://pan.baidu.com/s/1qRGtRCrsGjHhoY7sa-_TkQ   提取码: awf3
+
+Tom_20181023_互联网时代，程序猿必须掌握的分布式架构演进之路
+链接：https://pan.baidu.com/s/1AuJNeSFbQhCmAIc4EefPyA    提取码：3p9b
+
+Jack_20181015_架构师专场之手写专属dubbo框架
+链接：https://pan.baidu.com/s/1wPqdFo7RcPYZQcaXq_okCg   提取码：ia4o
+
+蓝桥杯嵌入式资料
+链接：https://pan.baidu.com/s/1LFw46a-QbX1rdtO3s4c3YA 
+提取码：fudx 
+
+Jack_20190321_高性能通信技术NIO原理详解
+链接：https://pan.baidu.com/s/1djTuUmEpPclRNLKY1QLUFw 提取码：h2yr
+
+
+20190320-Redis缓存穿透原理与解决方案
+链接：https://pan.baidu.com/s/13F2HLn5YqRemCrDsfkJS4Q 
+提取码：etce
+
+
+
+Jack_(下午)20190319_畅聊微服务架构与敏捷开发
+链接：https://pan.baidu.com/s/1LkpVjerHE8QidNZcoYLENQ 提取码：dsgu
+
+
+Tom：手写spring
+链接：https://pan.baidu.com/s/1kKLgFjCeLNQ9qt4bbdn_mA 密码：yg1o
+
+Tom_20181019_手写一个Spring框架，征服面试官
+链接：https://pan.baidu.com/s/1yBvsA2DwF-ou0BW595cPvA 提取码：62l2
+
+亿级数据量系统数据库性能保证-mycat
+链接：https://pan.baidu.com/s/1muTXiWekpKC-iZ5w3h4tCA    提取码：6agn
+
+Jack_20181113_基于Netty手写Dubbo框架
+链接：https://pan.baidu.com/s/1Mo4u_gKMKlVZZ-2IgiZU1Q  提取码：l174 
+
+青山_20181112_分布式架构核心组件之消息队列
+链接：https://pan.baidu.com/s/1W8Iv-8zCwutx02xckU4n5Q  提取码：nw6e
+
+seven_mycat分库分表_20181109
+链接：https://pan.baidu.com/s/1i6TvThnvxCDbEVW7SjvDBA   提取码：89f2
+
+Tom_20181108_分享Spring源码10年研究成果
+链接：https://pan.baidu.com/s/1bJC4S62sMWBx3VW8HUUVZA  提取码：1hvp
+
+anaconda可以在官网下载：https://www.anaconda.com/download/
+也可以在清华镜像下载：https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/
+
+也可使用我们提供的版本：
+链接：https://pan.baidu.com/s/1H-iXK98uVCl942nRxVK9kQ 密码：8xin
+
+
+
