@@ -2694,3 +2694,67 @@ anaconda可以在官网下载：https://www.anaconda.com/download/
 
 
 
+【6g】python入门到进阶学习资料集锦
+链接：https://pan.baidu.com/s/1yzhw6Q_rdHI3OTlcOAsHDQ 密码：rjly
+
+tableau public、postgresql10.5、sublime安装包百度网盘版
+链接：https://pan.baidu.com/s/1POb717gYje2HDeumSV9GPA 提取码：r4ga 
+
+
+Mic_20190402_站在设计者的角度思考Synchronized的设计原理
+链接: https://pan.baidu.com/s/12r3hvgM6UpbxrpzPBp2BAg 提取码: hhdy
+
+
+Jack_20190324_带你领略Tomcat8源码的世界
+链接：https://pan.baidu.com/s/1BaK2X5ZyshGuRJqdi0nuMQ 提取码：3dro
+
+
+Seven_20190323_Mycat学习分库分表
+链接：https://pan.baidu.com/s/1uXS7WmNvLwN4U5nStjzXjA 提取码：whpv
+
+
+Jack_20190321_高性能通信技术NIO原理详解
+链接：https://pan.baidu.com/s/1djTuUmEpPclRNLKY1QLUFw 提取码：h2yr
+
+
+青山_20190316_如何快速搭建一个微服务架构
+链接：https://pan.baidu.com/s/1TLD9Npmim3RZKK3ZgwmXvQ 提取码：qxpo
+
+丰富 Spring Cloud Stream 生态 - HTTP binder
+链接：https://pan.baidu.com/s/11W57F0rkgkEqwn2Pw5JWew 密码：qgjr
+
+
+Tom_20180825_自己造轮子，一步一步手写Spring
+链接：https://pan.baidu.com/s/1PunpADstGw4B4ZMGGGmoZQ 密码：0kvy
+
+
+James_0228面试必问之JVM
+链接：https://pan.baidu.com/s/12EQdcEogh8OtB5eYbhHvfg 提取码：zeix
+
+
+理解 Spring 技术栈或许没有那么难 
+链接：https://pan.baidu.com/s/1lfm-9iiAMe1CJ4v_gvciyQ 密码：pfmi
+
+
+spring Boot 2.0 新特性和我们有关系吗？
+链接：https://pan.baidu.com/s/1MY-4385LfJnfd22-JJ0aaQ 密码：06mq
+
+青山_20190401_MySQL事务与锁，原来如此
+链接：https://pan.baidu.com/s/1zRfRcv---irOuDP8LaPiqA 提取码：hl00
+
+
+Jack_20190328_不容错过的ConcurrentHashMap1.8源码解读
+链接：https://pan.baidu.com/s/1sxhGeHY7B_q6zBXEYPGkEw 提取码：hewy
+
+
+如何快速搭建一个微服务架构
+链接：https://pan.baidu.com/s/1bCHCF41FaokKKjgzMIyC5A 提取码：fled
+
+
+Java架构技术资料
+链接：https://pan.baidu.com/s/1p7_sRm9YKqQ33VPqBH5GQg 提取码：ikot
+
+
+
+
+
