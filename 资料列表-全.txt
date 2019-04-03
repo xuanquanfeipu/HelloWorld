@@ -2510,3 +2510,107 @@ https://ppt.geekbang.org/list/qconsh2018
 10份程序员专属简历模版
 https://pan.baidu.com/s/1C5HyFTHK-dMSqEOsxZmKSw 提取码: u4a5
 
+
+
+50G资料：十年架构师文集100本 + 技能知识图谱20套+技术大咖公开课近100集+程序员进阶全攻略，戳>>> https://pan.baidu.com/s/1NFVhLr2J4uFzLyyLPA64sw
+
+
+304DL课程笔记 https://pan.baidu.com/s/1nw0QwUt 
+密码: v429
+
+
+GitHub ：https://github.com/lyeoni/nlp-tutorial
+
+
+Netty实战RPC
+链接: https://pan.baidu.com/s/1Pcc5vcnNMR-ssTaWYe0jlA 提取码: 8w99 
+
+
+精选资料：
+链接：https://pan.baidu.com/s/1Xpdeiv6we6sIR6r2AQ3Rcg 提取码：s1vq 
+
+邀请码：4TVTKJYALVAE
+
+
+课程网站，有PPT和参考资料：
+http://web.stanford.edu/class/cs224n/index.html#schedule
+
+官方课程视频网站：
+http://onlinehub.stanford.edu/cs224
+
+B站视频链接（有字幕）：
+https://www.bilibili.com/video/av46216519
+
+课程优秀项目网站：
+http://web.stanford.edu/class/cs224n/project.html
+
+
+变脸源码：
+链接: https://pan.baidu.com/s/172HYIO1WsZuMmQkT6QFr0w 提取码: sjxn
+
+
+高并发方案：https://pan.baidu.com/s/1QaNhX_B77sIUuDr8bg9wZg 密码：0rrn
+零基础20小时建站链接：https://pan.baidu.com/s/1IHrr0C7H-Bj2lg14mVOC-g 密码：r58s
+知乎238个收费live链接：https://pan.baidu.com/s/1lOpw__BDQVbLuSrog9WsZA 密码：4bmx
+
+
+贪吃蛇游戏
+
+链接: https://pan.baidu.com/s/1r_3e_gCcSEtdM1vsedXVRg 提取码: 1024
+
+
+链接: https://pan.baidu.com/s/1aQsypF2hBSXqewZxO61OPw 
+提取码: thf2
+
+打包好的 exe 文件，无需 Python 环境即可安装。
+链接：https://pan.baidu.com/s/1MaPwaSIp7dRkz7-Rekf_Kw 
+提取码：cr3o 
+
+
+董付国《Python 程序设计》配套学习资源：https://github.com/inspurer/PythonLearning
+
+Python GUI编程权威指南：链接：https://pan.baidu.com/s/1g3uZpOVNtbdZ_cIM0f4E2g 提取码：42kd 
+
+Python 机器学习系列课程：链接：https://pan.baidu.com/s/1ahWJ_Al8hISChfzxBgWUzw
+提取码：c0kn 
+
+Python 大数据系列课程：链接：https://pan.baidu.com/s/1ylJJwBJj2xlrNsAme0NjPQ 
+提取码：mazi 
+
+
+Python 实现员工刷脸考勤系统：https://github.com/inspurer/WorkAttendanceSystem
+Python 实现局域网仿 QQ 互联：https://github.com/inspurer/SocketQQ
+Python 实现链家网高并发爬虫：https://github.com/Python3Spiders
+Python 实现自动化查询学校成绩：https://github.com/inspurer/PythonSpider/tree/master/csu
+更多实例请去我的 Github 主页：https://github.com/inspurer
+
+清华大学、北京大学课程
+GitHub 链接：
+https://github.com/lib-pku/libpku
+
+清华大学课程
+GitHub 链接：
+https://github.com/Trinkle23897/THU-CST-Cracker
+
+
+如果你想下载部分文件夹，可使用： 
+https://minhaskamal.github.io/DownGit/#/home
+
+浙江大学课程
+GitHub 链接：
+https://github.com/QSCTech/zju-icicles
+
+你可以通过访问 https://lib-pku.github.io/ ，点击资料链接直接下载。
+
+
+Lowjs 使用 Node.js 去开发 IoT
+
+
+课程网站，有PPT和参考资料：http://web.stanford.edu/class/cs224n/index.html#schedule
+官方课程视频网站：http://onlinehub.stanford.edu/cs224
+B站视频链接（有字幕）：https://www.bilibili.com/video/av46216519
+课程优秀项目网站：http://web.stanford.edu/class/cs224n/project.html
+
+
+
+
