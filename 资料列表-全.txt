@@ -2755,6 +2755,176 @@ Java架构技术资料
 链接：https://pan.baidu.com/s/1p7_sRm9YKqQ33VPqBH5GQg 提取码：ikot
 
 
+springboot基础 链接: https://pan.baidu.com/s/1tzrvDBabc9SWtCCLz14Sjg 提取码: bgux 
+
+
+springcloud基础 链接: https://pan.baidu.com/s/1CYbBi64ni_j0xLglTSNcuQ 提取码: 7zrx 
+
+
+《pumpkin-book》GitHub项目链接：
+https://github.com/datawhalechina/pumpkin-book
+
+在线阅读地址：
+https://datawhalechina.github.io/pumpkin-book/
+
+
+
+Java之间公众号分享资料：
+1.尚学堂200G学习资源 1808
+
+百度云盘链接:https://pan.baidu.com/s/1YbBh39wdWNjB_iEaEd9n5w 
+密码:yun9
+
+2.互联网Java工程师面试突击训练 41
+
+百度云盘链接: https://pan.baidu.com/s/1VcDLb7PWz_W6LCmWk2cCQQ
+提取码: 69cf
+
+3.基于Netty的RPC架构实战演练 netty
+
+百度云盘链接:https://pan.baidu.com/s/1b1p5i5qTWcLfxEwH7rp-Hg 
+密码:pt68
+
+4.大数据39套 大数据
+
+百度云盘链接: https://pan.baidu.com/s/143AAqreYNQMyY0-Ss5w1Zg
+提取码: jzp7
+
+5.Java面试题全集84集系列 84
+
+百度云盘链接: https://pan.baidu.com/s/1_VGNMKbj_v9QQ6K_qDMOHQ 
+提取码: uy4p
+
+6.Java8函数式编程指南 java
+
+百度云盘链接: https://pan.baidu.com/s/1v9cCQLYqOQqN8R-GCLBCZQ 
+提取码: uh64
+
+7.Java SSM 淘淘商城12天电商项目，SSM+Zookeeper+Solr+Dubbo+Redis技术栈 12
+
+百度云盘链接: https://pan.baidu.com/s/1lrLUxzs50z6fT4ebefqIJQ 
+提取码: vpx9 
+
+8.（第二版）亿级流量电商详情页系统实战-缓存架构+高可用服务架构 21
+
+百度云盘链接:https://pan.baidu.com/s/1tUfucSl9JKS2G3HoKMwsYQ 
+密码:q2ct
+
+9.Git视频教程权威指南 Git
+
+百度云盘链接: https://pan.baidu.com/s/1etCRbOXrimC8wxUr3PcU5Q 
+提取码: kg8t 
+
+10.架构师第一到第十阶段 28
+
+百度云盘链接: https://pan.baidu.com/s/1EOFp_uK5H7grL-6iAcWBDg 
+提取码: 1wan 
+
+11.Java高级架构师28课 16
+
+百度云盘链接: https://pan.baidu.com/s/1-W8x_QJe045xy3GIS3PB4A 
+提取码: 5xkz
+
+12.Java秒杀系统方案化 高性能高并发实战 秒杀
+
+百度云盘链接: https://pan.baidu.com/s/1gaRYIoypFQdIxp2ekLfbnQ 
+提取码: r8ta 
+
+13.Maven实战视频 8320
+
+百度云盘链接: https://pan.baidu.com/s/1CxrcKvsV6K61f9sCtNpqHw 
+提取码: te4p 
+
+14.尚硅谷Spring4视频教程 921
+
+百度云盘链接: https://pan.baidu.com/s/1KNDb0jkdFJQXFFX3KSt4Hw 
+提取码: r2p6
+
+Java经典书籍：链接: https://pan.baidu.com/s/1dE7m0m9 密码: y75s
+
+1、人工智能   
+https://pan.baidu.com/s/1mjsgdV6 
+密码：g5e8
+
+2、Android    
+https://pan.baidu.com/s/1mjBcUgw 
+密码：48xi
+
+3、JavaSE     
+https://pan.baidu.com/s/1VmYFN0UcBPXjqT4TSTUFeQ 
+密码：epk8
+
+4、Python     
+https://pan.baidu.com/s/1ZpY0KqZitnhG0Tw3LctLrA 
+提取码：r4xq 
+
+5、iOS        
+https://pan.baidu.com/s/1F718IthOIyx3nevkTi799w 
+密码：g6n9
+
+6、JavaWeb    
+https://pan.baidu.com/s/1pNoSxRl 
+密码：9r9l
+
+7、英语       
+https://pan.baidu.com/s/1nvyz9zF 
+密码: fn2n
+
+8、小程序     
+https://pan.baidu.com/s/1B7LGx_gHVZ78IJTkFx72dQ 
+提取码：6lp4 
+
+9、算法        
+https://pan.baidu.com/s/1odBUTXyzaCocOSYsds_UwA 
+提取码：erk6 
+
+10、大数据    
+https://pan.baidu.com/s/1teR3vpUr3qJQ7bOvWXRhxA 
+提取码：s0jk 
+
+11、前端      
+https://pan.baidu.com/s/1i7grjdN 
+密码：09jj
+
+12、区块链     
+https://pan.baidu.com/s/1W4bCZ2lKSyQtz6hS_4o1aQ 
+密码：2ppb
+
+13、C#       
+https://pan.baidu.com/s/1_OHtdXqlnqbiXjJWjAPV1A 
+密码：dem9
+
+14、C++      
+https://pan.baidu.com/s/12DjCczJ8_7MHb2imiWEP7Q 
+密码：sf3t
+
+15、Linux    
+https://pan.baidu.com/s/1FOCjnk41t88ug_LvZaNwKA 
+密码：12oi
+
+16、php       
+https://pan.baidu.com/s/11-KD79_sp3BJyqxFmJHyHg 
+密码：lsg7
+
+17、版本控制  
+https://pan.baidu.com/s/1Mfvw19LJdTkA0vUcg6zmqQ 
+密码：aw3s
+
+18、网络安全  
+https://pan.baidu.com/s/19kR55llidInRgJnMWkmk8w 
+密码：urku
+
+19、C语言    
+https://pan.baidu.com/s/1QTUNM7X3dnTHexkAAuOmCA 
+密码：pb5f
+
+20、Kotlin    
+https://pan.baidu.com/s/18CVgOk5Lx1PtntrQ5Dlwuw 密码：wqtr
+
+21、考研资料  
+https://pan.baidu.com/s/1RaAjPm3NjThxUU9ebfhq3g 
+密码：3kwv
+
 
 
 
